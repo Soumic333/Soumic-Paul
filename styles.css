@@ -890,6 +890,7 @@ em {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   font: 700 32px var(--mono);
   text-transform: uppercase;
   letter-spacing: .15em;
