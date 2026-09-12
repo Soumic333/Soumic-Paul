@@ -2878,12 +2878,25 @@ h3 {
   }
 }
 
+@media(max-width: 900px) {
+  .pc-cta {
+    display: none !important;
+  }
+}
+
 @media(min-width: 901px) {
   .nav-content {
     display: contents;
   }
-  
-  .nav-cta {
+  .nav-wrap nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .mobile-cta {
+    display: none !important;
+  }
+  .pc-cta {
     position: fixed !important;
     top: 16px;
     right: 20px;
