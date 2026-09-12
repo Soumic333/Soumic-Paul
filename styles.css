@@ -2778,6 +2778,10 @@ h3 {
 }
 
 @media(max-width: 900px) {
+  body, .hero-inner {
+    min-width: 0;
+  }
+  
   .mobile-menu-btn {
     display: flex;
   }
