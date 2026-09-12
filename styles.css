@@ -240,7 +240,7 @@ em {
    ========================================================= */
 
 .hero {
-  min-height: 100svh;
+  height: auto;
   padding-top: 0;
   padding-bottom: 0;
   position: relative;
@@ -253,8 +253,8 @@ em {
   max-width: 1400px;
   min-width: 900px;
   margin: 0 auto;
-  padding-top: 145px;
-  padding-bottom: 60px;
+  padding-top: clamp(100px, 12vh, 160px);
+  padding-bottom: clamp(60px, 8vh, 120px);
   padding-inline: clamp(40px, 7%, 100px);
   display: grid;
   grid-template-columns: 1.05fr .8fr;
