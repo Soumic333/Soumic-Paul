@@ -817,16 +817,14 @@ if (typingElement) {
     const navLinks = document.querySelectorAll('.nav-wrap nav a');
     const sections = document.querySelectorAll('section[id], main[id]');
     
-    // Default to 'top' active on load
+    // Default to 'home' active on load
     navLinks.forEach(link => {
-        if (link.getAttribute('href') === '#top') link.classList.add('active');
+        if (link.getAttribute('href') === '#home') link.classList.add('active');
     });
 
     const observer = new IntersectionObserver((entries) => {
-        // Find the entry that is most visible
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // If it's a section, or if we are at the top (main#top intersecting heavily at the top of the screen)
                 const current = entry.target.id;
                 
                 navLinks.forEach(link => {
@@ -845,26 +843,8 @@ if (typingElement) {
     });
 
     sections.forEach(sec => {
-        // Observe all sections, but main#top is a wrapper so we only want to observe its top part.
-        // Actually, let's observe a specific hero element instead for Home, since main wraps everything.
-        if (sec.id === 'top') {
-           // Skip observing main#top with this observer because it covers the whole page.
-           // We will handle 'top' manually below.
-        } else {
+        if (sec.id !== 'top') {
             observer.observe(sec);
         }
     });
-
-    // Special observer just for the Hero section to activate Home
-    const hero = document.querySelector('.hero');
-    if (hero) {
-        const topObserver = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting) {
-                navLinks.forEach(link => {
-                    link.classList.toggle('active', link.getAttribute('href') === '#top');
-                });
-            }
-        }, { threshold: 0.1 });
-        topObserver.observe(hero);
-    }
 })();

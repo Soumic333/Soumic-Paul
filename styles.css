@@ -2679,6 +2679,11 @@ h3 {
 
 @media(max-width: 900px) {
 
+  #spectator-drone,
+  #star-trail {
+    display: none !important;
+  }
+
   .about-grid,
   .skills-layout {
     grid-template-columns: 1fr;
