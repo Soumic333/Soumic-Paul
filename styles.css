@@ -506,12 +506,12 @@ em {
   line-height: 1;
   white-space: normal;
   word-break: keep-all;
-  background: linear-gradient(100deg, var(--ink) 40%, var(--neon) 48%, var(--neon-2) 54%, var(--ink) 62%);
-  background-size: 260% 100%;
+  background: linear-gradient(110deg, var(--ink) 0%, var(--neon) 22%, var(--neon-2) 42%, var(--ink) 58%, var(--neon) 78%, var(--ink) 100%);
+  background-size: 240% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: shimmer 5s linear infinite;
+  animation: glacierShine 4.5s linear infinite;
 }
 
 @keyframes shimmer {
