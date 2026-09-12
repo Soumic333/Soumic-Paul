@@ -51,6 +51,7 @@ section[id] {
 body {
   margin: 0 auto;
   max-width: 1920px;
+  min-width: 960px;
   position: relative;
   background: var(--bg);
   color: var(--ink);
@@ -240,7 +241,7 @@ em {
 
 .hero {
   min-height: 100svh;
-  padding-top: 145px;
+  padding-top: clamp(80px, 10vw, 145px);
   padding-bottom: 60px;
   display: grid;
   grid-template-columns: 1.05fr .8fr;
@@ -250,7 +251,8 @@ em {
   overflow: hidden;
   background: radial-gradient(ellipse at 20% 20%, rgba(0, 240, 255, .10), transparent 55%),
     radial-gradient(ellipse at 85% 75%, rgba(255, 43, 214, .10), transparent 55%);
-  padding-inline: 7%;
+  padding-inline: clamp(40px, 7%, 140px);
+  min-width: 900px;
 }
 
 .hero-grid {
