@@ -2793,6 +2793,12 @@ h3 {
     min-width: 0;
   }
   
+  .pad-left, .pad-right, #pad-hero {
+    top: 80px !important;
+    right: 20px !important;
+    left: auto !important;
+  }
+  
   .mobile-menu-btn {
     display: flex;
   }

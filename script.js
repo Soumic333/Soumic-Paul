@@ -572,11 +572,6 @@ window.addEventListener('load', () => {
     
     if (entryScreen && spectatorDrone) {
         const positionDroneAt = (padId, scale, flip) => {
-            if (window.innerWidth <= 900) {
-                const droneX = window.innerWidth - 85;
-                spectatorDrone.style.transform = `translate(${droneX}px, 80px) scale(0.6)`;
-                return;
-            }
             const pad = document.getElementById(padId);
             if (pad) {
                 const rect = pad.getBoundingClientRect();
