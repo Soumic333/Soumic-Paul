@@ -2010,71 +2010,121 @@ h3 {
    EDUCATION
    ========================================================= */
 
-.education {
-  background: var(--bg-soft);
+.edu-timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 60px auto 0;
+  padding: 20px 0 40px 40px; /* Padding for the left timeline */
 }
 
-}
-
-.education-card::before {
-  content: '';
+/* Vertical connecting line on the left */
+.edu-line {
   position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at var(--spot-x) var(--spot-y), rgba(198, 255, 60, .14), transparent 60%);
+  left: 54px;
+  top: 30px;
+  bottom: 0;
+  width: 2px;
+  background: rgba(0, 240, 255, 0.1);
+  overflow: hidden;
+}
+
+.edu-line-fill {
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(to bottom, var(--neon), rgba(160, 0, 255, 0.8), transparent);
+  box-shadow: 0 0 12px var(--neon);
+  transition: height 0.1s linear;
+}
+
+/* Each row */
+.edu-node {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  margin-bottom: 80px;
+  position: relative;
   opacity: 0;
-  transition: opacity .35s;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  transition-delay: var(--delay, 0s);
 }
 
-.education-card:hover::before {
+.edu-node.visible {
   opacity: 1;
+  transform: translateY(0);
 }
 
-.education-card:hover {
-  border-left-color: var(--neon);
+/* Sequence dots on the timeline */
+.edu-node-dot {
+  position: absolute;
+  left: 14px;
+  top: 0;
+  border-radius: 50%;
+  z-index: 2;
+  border: 2px solid var(--neon);
+  background: var(--bg);
+  box-shadow: 0 0 16px rgba(0, 240, 255, 0.35);
+  transition: box-shadow 0.4s;
 }
 
-.edu-logo-box {
-  width: 96px;
-  height: 96px;
-  flex-shrink: 0;
-  padding: 16px;
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  background: rgba(255, 255, 255, .04);
+.edu-dot-hollow {
+  width: 30px;
+  height: 30px;
+}
+
+.edu-dot-solid {
+  width: 36px;
+  height: 36px;
+  left: 11px; /* offset for larger size */
+  background: rgba(0, 240, 255, 0.15);
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.6), inset 0 0 20px rgba(0, 240, 255, 0.4);
+}
+
+/* Tiny dot from the sequence builder image */
+.edu-tiny-dot-wrapper {
+  position: relative;
+  width: 100%;
+  height: 40px;
+}
+.edu-tiny-dot {
+  position: absolute;
+  left: 36px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--neon);
+  box-shadow: 0 0 10px var(--neon), 0 0 20px var(--neon);
+}
+
+/* Content Area */
+.edu-node-content {
+  flex: 1;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-left: 50px;
+}
+
+.edu-content-logo {
+  width: 120px;
+  height: 120px;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  z-index: 1;
-  transition: border-color .35s, box-shadow .35s;
 }
 
-.education-card:hover .edu-logo-box {
-  border-color: var(--neon);
-  box-shadow: 0 0 22px rgba(0, 240, 255, .25);
-}
-
-.edu-logo-box img {
-  width: 100%;
-  height: 100%;
+.edu-content-logo img {
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 0 6px rgba(0, 240, 255, .2));
-}
-
-.edu-text {
-  position: relative;
-  z-index: 1;
-  flex: 1;
-}
-
-.education-card h2 {
-  font-size: clamp(26px, 3vw, 36px);
-  margin: 10px 0;
-}
-
-.education-card p {
-  color: var(--muted);
-  font-size: 15px;
+  filter: drop-shadow(0 0 8px rgba(0,240,255,0.2));
 }
 
 /* =========================================================
