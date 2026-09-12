@@ -806,3 +806,31 @@ if (typingElement) {
         }, 20); 
     }, 4200);
 }
+
+/* =========================================================
+   ACTIVE NAV INDICATOR
+   ========================================================= */
+(function() {
+    const navLinks = document.querySelectorAll('.nav-wrap nav a');
+    const sections = Array.from(document.querySelectorAll('section[id], main[id]'));
+
+    function setActive() {
+        const scrollY = window.scrollY + 100;
+        let current = '';
+
+        // Check from bottom up to find current section
+        sections.forEach(sec => {
+            if (sec.offsetTop <= scrollY) {
+                current = sec.id;
+            }
+        });
+
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href').replace('#', '');
+            link.classList.toggle('active', href === current || (href === 'top' && current === 'top'));
+        });
+    }
+
+    window.addEventListener('scroll', setActive, { passive: true });
+    setActive();
+})();

@@ -138,20 +138,24 @@ em {
 
 .nav-wrap {
   position: fixed;
-  top: 0;
+  top: 16px;
   left: 50%;
   transform: translateX(-50%);
-  width: 100%;
-  max-width: 1920px;
+  width: auto;
+  max-width: calc(100% - 40px);
   z-index: 50;
-  height: 76px;
+  height: 54px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 4%;
-  background: rgba(6, 6, 15, .72);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--line);
+  gap: 24px;
+  padding: 0 20px;
+  background: rgba(10, 10, 30, 0.45);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(160, 0, 255, 0.35);
+  border-radius: 100px;
+  box-shadow: 0 0 24px rgba(160, 0, 255, 0.15), inset 0 1px 0 rgba(255,255,255,0.05);
 }
 
 .brand {
@@ -174,39 +178,54 @@ em {
 @media(min-width: 760px) {
   .nav-wrap nav {
     display: flex;
-    gap: 30px;
+    gap: 20px;
   }
 }
 
 .nav-wrap nav a {
-  font-size: 12px;
+  font-size: 11px;
   text-transform: uppercase;
   letter-spacing: .12em;
   color: var(--muted);
   text-decoration: none;
   position: relative;
-  padding-bottom: 4px;
-  transition: color .25s var(--ease);
+  padding: 5px 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 100px;
+  transition: color .25s var(--ease), background .25s var(--ease);
+  white-space: nowrap;
+}
+
+.nav-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(160, 0, 255, 0.5);
+  box-shadow: 0 0 6px rgba(160, 0, 255, 0.7);
+  flex-shrink: 0;
+  transition: background .25s, box-shadow .25s;
+}
+
+.nav-wrap nav a:hover .nav-dot,
+.nav-wrap nav a.active .nav-dot {
+  background: rgba(160, 0, 255, 1);
+  box-shadow: 0 0 10px rgba(160, 0, 255, 1);
 }
 
 .nav-wrap nav a::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 1px;
-  background: var(--neon);
-  box-shadow: 0 0 8px var(--neon);
-  transition: width .3s var(--ease);
+  display: none;
 }
 
 .nav-wrap nav a:hover {
   color: var(--ink);
+  background: rgba(160, 0, 255, 0.12);
 }
 
-.nav-wrap nav a:hover::after {
-  width: 100%;
+.nav-wrap nav a.active {
+  color: var(--ink);
+  background: rgba(160, 0, 255, 0.15);
 }
 
 .nav-cta {
