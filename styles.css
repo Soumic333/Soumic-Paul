@@ -2792,11 +2792,15 @@ h3 {
   body, .hero-inner {
     min-width: 0;
   }
-  
   .pad-left, .pad-right, #pad-hero {
-    top: 80px !important;
-    right: 20px !important;
-    left: auto !important;
+    top: 30px !important;
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+  }
+  
+  #spectator-drone {
+    z-index: 10 !important;
   }
   
   .mobile-menu-btn {
