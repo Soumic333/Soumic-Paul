@@ -585,7 +585,8 @@ window.addEventListener('load', () => {
         // Initial setup for Loader
         document.body.style.overflow = 'hidden';
         spectatorDrone.classList.add('visible');
-        const initialScale = window.innerWidth <= 900 ? 1.2 : 4.5;
+        const initialScale = window.innerWidth <= 900 ? 1.2 : 2.5;
+        const getActiveScale = () => window.innerWidth <= 900 ? 0.35 : 0.9;
         positionDroneAt('pad-loader', initialScale, 1);
         
         let isEntryAnimating = true;
@@ -606,7 +607,7 @@ window.addEventListener('load', () => {
             }
             
             // Fly out of loader to activePad
-            positionDroneAt(activePad, 0.9, activeFlip);
+            positionDroneAt(activePad, getActiveScale(), activeFlip);
             
             setTimeout(() => {
                 entryScreen.style.display = 'none';
@@ -620,7 +621,7 @@ window.addEventListener('load', () => {
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimer);
             resizeTimer = setTimeout(() => {
-                positionDroneAt(activePad, 0.9, activeFlip);
+                positionDroneAt(activePad, getActiveScale(), activeFlip);
             }, 50);
         });
 
@@ -628,7 +629,7 @@ window.addEventListener('load', () => {
         window.addEventListener('scroll', () => {
             if (!ticking) {
                 window.requestAnimationFrame(() => {
-                    positionDroneAt(activePad, 0.9, activeFlip);
+                    positionDroneAt(activePad, getActiveScale(), activeFlip);
                     ticking = false;
                 });
                 ticking = true;
@@ -656,7 +657,7 @@ window.addEventListener('load', () => {
                     }
                     
                     if (!isEntryAnimating) {
-                        positionDroneAt(activePad, 0.9, activeFlip);
+                        positionDroneAt(activePad, getActiveScale(), activeFlip);
                     }
                 }
             });
