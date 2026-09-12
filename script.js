@@ -636,8 +636,9 @@ window.addEventListener('load', () => {
             const pad = document.getElementById(padId);
             if (pad) {
                 const rect = pad.getBoundingClientRect();
+                // Use viewport-relative coords since drone is position:fixed
                 const x = rect.left + rect.width / 2;
-                const y = rect.top + window.scrollY + rect.height / 2;
+                const y = rect.top + rect.height / 2;
                 spectatorDrone.style.transform = `translate(${x}px, ${y}px) scale(${scale}) scaleX(${flip})`;
             }
         };
@@ -665,12 +666,18 @@ window.addEventListener('load', () => {
             
         }, 4200);
         
-        // Ensure it stays at pad on resize
+        // Reposition on resize (debounced) and scroll to handle zoom/layout changes
+        let resizeTimer;
         window.addEventListener('resize', () => {
-            if (entryScreen.style.display === 'none') {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
                 positionDroneAt(activePad, 0.9, activeFlip);
-            }
+            }, 50);
         });
+
+        window.addEventListener('scroll', () => {
+            positionDroneAt(activePad, 0.9, activeFlip);
+        }, { passive: true });
 
         // Scroll Tracking Logic for the Drone
         const sections = document.querySelectorAll('section[id]');

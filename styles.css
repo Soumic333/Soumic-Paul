@@ -2681,13 +2681,208 @@ body.hovering #cyber-cursor-trail {
     scroll-behavior: auto !important;
   }
 }
+   RESPONSIVE
+   ========================================================= */
+
+@media(max-width: 1080px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-portrait {
+    grid-column: 1;
+    grid-row: auto;
+    margin-top: 40px;
+    width: min(320px, 70%);
+  }
+
+  .project-card {
+    grid-template-columns: 1fr;
+  }
+
+  .project-image {
+    min-height: 260px;
+  }
+
+  .achievement-strip {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media(max-width: 900px) {
+
+  .about-grid,
+  .skills-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bento-item.business {
+    grid-column: span 1;
+  }
+
+  .club-activities {
+    grid-template-columns: 1fr;
+  }
+
+  .stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .section-pad {
+    padding: 90px 6%;
+  }
+
+  .cert-window.collab-style-window {
+    margin-left: 0;
+  }
+
+  .collab-track {
+    animation-duration: 22s;
+  }
+
+  .collab-cert {
+    flex-basis: 290px;
+  }
+}
+
+@media(max-width: 560px) {
+  .hero-bottom {
+    gap: 24px;
+  }
+
+  .scroll-indicator {
+    margin-left: 0;
+  }
+
+  .contact-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cert-window.collab-style-window::before,
+  .cert-window.collab-style-window::after {
+    width: 40px;
+  }
+
+  .club-logo-wrap {
+    margin-left: 0;
+  }
+
+  .education-card {
+    flex-direction: column;
+    text-align: left;
+    padding: 30px;
+  }
+}
+
+/* =========================================================
+   CYBERPUNK CURSOR
+   ========================================================= */
+
+@media (pointer: fine) {
+
+  body,
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  .bento-item,
+  .project-card,
+  .activity-card {
+    cursor: none !important;
+  }
+}
+
+#cyber-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  background-color: var(--neon);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, background-color 0.2s;
+  box-shadow: 0 0 10px var(--neon);
+}
+
+#cyber-cursor-trail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(0, 240, 255, 0.4);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s, border-color 0.3s, border-radius 0.3s;
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+}
+
+body.hovering #cyber-cursor {
+  width: 12px;
+  height: 12px;
+  background-color: var(--neon-2);
+  box-shadow: 0 0 15px var(--neon-2);
+}
+
+body.hovering #cyber-cursor-trail {
+  width: 45px;
+  height: 45px;
+  border-color: var(--neon-2);
+  border-style: dashed;
+  border-width: 2px;
+  border-radius: 10px;
+  animation: radarSpin 4s linear infinite;
+  box-shadow: 0 0 20px rgba(255, 43, 214, 0.3);
+}
+
+@keyframes radarSpin {
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+
+  #cyber-cursor,
+  #cyber-cursor-trail {
+    display: none !important;
+  }
+
+  body,
+  a,
+  button,
+  .bento-item {
+    cursor: auto !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 
 /* =========================================================
    SPECTATOR DRONE
    ========================================================= */
 
 #spectator-drone {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 250px;
