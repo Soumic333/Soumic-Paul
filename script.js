@@ -808,6 +808,32 @@ if (typingElement) {
 }
 
 /* =========================================================
+   EDUCATION TIMELINE SCROLL ANIMATION
+   ========================================================= */
+(function() {
+    const nodes = document.querySelectorAll('.edu-node');
+    const line = document.querySelector('.edu-line');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.25 });
+
+    nodes.forEach(n => observer.observe(n));
+
+    // Animate the vertical line when the timeline is in view
+    if (line) {
+        const lineObs = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) line.classList.add('active');
+        }, { threshold: 0.1 });
+        lineObs.observe(line);
+    }
+})();
+
+/* =========================================================
    ACTIVE NAV INDICATOR
    ========================================================= */
 (function() {

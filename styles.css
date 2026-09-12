@@ -2014,20 +2014,6 @@ h3 {
   background: var(--bg-soft);
 }
 
-.education-card {
-  --spot-x: 50%;
-  --spot-y: 50%;
-  display: flex;
-  align-items: center;
-  gap: 32px;
-  border: 1px solid var(--line);
-  border-left: 3px solid var(--neon-3);
-  border-radius: 14px;
-  padding: 36px 44px;
-  background: rgba(255, 255, 255, .02);
-  position: relative;
-  overflow: hidden;
-  transition: border-color .35s;
 }
 
 .education-card::before {
