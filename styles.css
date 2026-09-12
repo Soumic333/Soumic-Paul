@@ -228,13 +228,6 @@ em {
   background: rgba(160, 0, 255, 0.15);
 }
 
-.nav-cta-fixed {
-  position: fixed;
-  top: 16px;
-  right: 20px;
-  z-index: 51;
-}
-
 .nav-cta {
   font-size: 11px;
   text-transform: uppercase;
