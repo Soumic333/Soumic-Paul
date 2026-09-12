@@ -2799,6 +2799,21 @@ h3 {
     transform: translateX(-50%) !important;
   }
   
+  .club-designation {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+  .club-logo-wrap {
+    margin: 0 auto !important;
+  }
+  .club-text {
+    text-align: center;
+  }
+  .timeline-body p, .role-entry p {
+    text-align: center;
+  }
+  
   #spectator-drone.drone-behind {
     z-index: 10 !important;
   }
