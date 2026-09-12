@@ -585,7 +585,8 @@ window.addEventListener('load', () => {
         // Initial setup for Loader
         document.body.style.overflow = 'hidden';
         spectatorDrone.classList.add('visible');
-        positionDroneAt('pad-loader', 4.5, 1);
+        const initialScale = window.innerWidth <= 900 ? 1.2 : 4.5;
+        positionDroneAt('pad-loader', initialScale, 1);
         
         let isEntryAnimating = true;
         let activePad = 'pad-hero';
@@ -594,6 +595,10 @@ window.addEventListener('load', () => {
         setTimeout(() => {
             entryScreen.classList.add('slide-up');
             document.body.style.overflow = '';
+            
+            if (window.innerWidth <= 900) {
+                spectatorDrone.classList.add('drone-behind');
+            }
             
             if (window.scrollY < 100) {
                 activePad = 'pad-hero';

@@ -2799,8 +2799,23 @@ h3 {
     transform: translateX(-50%) !important;
   }
   
-  #spectator-drone {
+  #spectator-drone.drone-behind {
     z-index: 10 !important;
+  }
+  
+  /* Mobile performance fixes */
+  .hero-glow, .portrait-glow, .club-logo-wrap::before, .activity-card::before {
+    display: none !important;
+  }
+  
+  .reveal {
+    filter: none !important;
+    transition: opacity .6s var(--ease), transform .6s var(--ease) !important;
+  }
+  
+  .notice-track {
+    will-change: transform;
+    transform: translateZ(0);
   }
   
   .mobile-menu-btn {
