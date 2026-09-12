@@ -2882,4 +2882,11 @@ h3 {
   .nav-content {
     display: contents;
   }
+  
+  .nav-cta {
+    position: fixed !important;
+    top: 16px;
+    right: 20px;
+    z-index: 51;
+  }
 }
