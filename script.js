@@ -590,17 +590,159 @@ function closeProject() {
 }
 
 
-document.addEventListener(
-    'keydown',
-    event => {
+function openCertificate(imgSrc, title, desc) {
+    const modal = document.getElementById('certModal');
+    const modalImg = document.getElementById('certModalImg');
+    const modalTitle = document.getElementById('certModalTitle');
+    const modalDesc = document.getElementById('certModalDesc');
+    
+    if (!modal || !modalImg) return;
+    
+    modalImg.src = imgSrc;
+    modalTitle.innerHTML = title;
+    modalDesc.innerHTML = desc;
+    
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+}
 
-        if (
-            event.key === 'Escape'
-        ) {
+function closeCertificate() {
+    const modal = document.getElementById('certModal');
+    if (!modal) return;
+    
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+}
 
-            closeProject();
-
-        }
-
+document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+        closeProject();
+        closeCertificate();
     }
-);
+});
+
+/* =========================================================
+   9. ENTRY SCREEN ANIMATION LOGIC
+   ========================================================= */
+
+window.addEventListener('load', () => {
+    const entryScreen = document.getElementById('entry-screen');
+    
+    if (entryScreen) {
+        // Prevent scrolling while animation plays
+        document.body.style.overflow = 'hidden';
+        
+        // Wait for the SVG and text animations to complete (approx 4.2s)
+        setTimeout(() => {
+            entryScreen.classList.add('slide-up');
+            
+            // Restore scrolling
+            document.body.style.overflow = '';
+            
+            // Completely remove from DOM or display:none after transition
+            setTimeout(() => {
+                entryScreen.style.display = 'none';
+            }, 800); // matches the 0.8s CSS transition
+            
+        }, 4200); 
+    }
+});
+
+/* =========================================================
+   10. CYBERPUNK CUSTOM CURSOR
+   ========================================================= */
+
+const cursor = document.getElementById('cyber-cursor');
+const trail = document.getElementById('cyber-cursor-trail');
+
+if (cursor && trail && window.matchMedia('(pointer:fine)').matches) {
+    let mouseX = 0, mouseY = 0;
+    let trailX = 0, trailY = 0;
+
+    document.addEventListener('mousemove', e => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        
+        // Instant cursor update
+        cursor.style.left = mouseX + 'px';
+        cursor.style.top = mouseY + 'px';
+    });
+
+    // Smooth trailing update using requestAnimationFrame
+    function animateTrail() {
+        trailX += (mouseX - trailX) * 0.15;
+        trailY += (mouseY - trailY) * 0.15;
+        
+        trail.style.left = trailX + 'px';
+        trail.style.top = trailY + 'px';
+        
+        requestAnimationFrame(animateTrail);
+    }
+    animateTrail();
+
+    // Hover effect on interactables
+    const interactables = document.querySelectorAll('a, button, input, .bento-item, .project-card, .activity-card');
+    
+    interactables.forEach(el => {
+        el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+        el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+    });
+}
+
+/* =========================================================
+   11. NUMBER COUNTING ANIMATION (STATS)
+   ========================================================= */
+
+const counters = document.querySelectorAll('.count-up');
+let hasCounted = false;
+
+if (counters.length > 0) {
+    const statsObserver = new IntersectionObserver((entries) => {
+        if(entries[0].isIntersecting && !hasCounted) {
+            hasCounted = true;
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const duration = 2000; 
+                const increment = target / (duration / 16); 
+                
+                let current = 0;
+                const updateCounter = () => {
+                    current += increment;
+                    if(current < target) {
+                        counter.innerText = Math.ceil(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCounter();
+            });
+        }
+    }, { threshold: 0.1 });
+    
+    const statsContainer = document.getElementById('about-stats');
+    if(statsContainer) statsObserver.observe(statsContainer);
+}
+
+/* =========================================================
+   12. HERO TYPING ANIMATION
+   ========================================================= */
+const typingElement = document.getElementById('hero-typing-text');
+if (typingElement) {
+    const textToType = typingElement.getAttribute('data-text');
+    typingElement.innerText = '';
+    let typeIndex = 0;
+    
+    setTimeout(() => {
+        const typeInterval = setInterval(() => {
+            if (typeIndex < textToType.length) {
+                typingElement.innerText += textToType.charAt(typeIndex);
+                typeIndex++;
+            } else {
+                clearInterval(typeInterval);
+            }
+        }, 20); 
+    }, 4200);
+}

@@ -1,16 +1,97 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Soumic Kundu Paul – Electrical & Electronic Engineering undergraduate, business and technology enthusiast." />
+  <meta name="description"
+    content="Soumic Kundu Paul – Electrical & Electronic Engineering undergraduate, business and technology enthusiast." />
   <title>Soumic Kundu Paul – Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
+  <!-- CYBERPUNK CURSOR -->
+  <div id="cyber-cursor"></div>
+  <div id="cyber-cursor-trail"></div>
+
+  <!-- ENTRY SCREEN OVERLAY -->
+  <div id="entry-screen">
+    <div class="entry-content">
+      <div class="combo-animation">
+        <svg viewBox="0 0 400 300" class="drone-svg" xmlns="http://www.w3.org/2000/svg">
+          <!-- Isometric Projection Group -->
+          <g class="drone-iso" transform="translate(200, 150) scale(1, 0.6) rotate(45)">
+
+            <!-- Camera (Bottom Layer) -->
+            <g class="drone-part drone-camera">
+              <circle cx="0" cy="0" r="16" fill="none" stroke="var(--neon-2)" stroke-width="3" />
+              <circle cx="0" cy="0" r="6" fill="var(--neon)" />
+            </g>
+
+            <!-- Body / Chassis -->
+            <g class="drone-part drone-body">
+              <rect x="-35" y="-35" width="70" height="70" rx="12" fill="rgba(0, 240, 255, 0.05)" stroke="var(--neon)"
+                stroke-width="4" />
+              <rect x="-18" y="-18" width="36" height="36" rx="6" fill="none" stroke="var(--neon-3)" stroke-width="2" />
+            </g>
+
+            <!-- Arm Top-Left -->
+            <g class="drone-part drone-arm-tl">
+              <line x1="-35" y1="-35" x2="-90" y2="-90" stroke="var(--neon)" stroke-width="6" stroke-linecap="round" />
+              <circle cx="-90" cy="-90" r="10" fill="var(--bg)" stroke="var(--neon-2)" stroke-width="3" />
+              <g class="drone-prop prop-tl">
+                <path d="M-120,-90 Q-90,-110 -60,-90 Q-90,-70 -120,-90 Z" fill="rgba(198,255,60,0.5)" />
+                <path d="M-90,-120 Q-70,-90 -90,-60 Q-110,-90 -90,-120 Z" fill="rgba(198,255,60,0.5)" />
+              </g>
+            </g>
+
+            <!-- Arm Top-Right -->
+            <g class="drone-part drone-arm-tr">
+              <line x1="35" y1="-35" x2="90" y2="-90" stroke="var(--neon)" stroke-width="6" stroke-linecap="round" />
+              <circle cx="90" cy="-90" r="10" fill="var(--bg)" stroke="var(--neon-2)" stroke-width="3" />
+              <g class="drone-prop prop-tr">
+                <path d="M60,-90 Q90,-110 120,-90 Q90,-70 60,-90 Z" fill="rgba(198,255,60,0.5)" />
+                <path d="M90,-120 Q110,-90 90,-60 Q70,-90 90,-120 Z" fill="rgba(198,255,60,0.5)" />
+              </g>
+            </g>
+
+            <!-- Arm Bottom-Left -->
+            <g class="drone-part drone-arm-bl">
+              <line x1="-35" y1="35" x2="-90" y2="90" stroke="var(--neon)" stroke-width="6" stroke-linecap="round" />
+              <circle cx="-90" cy="90" r="10" fill="var(--bg)" stroke="var(--neon-2)" stroke-width="3" />
+              <g class="drone-prop prop-bl">
+                <path d="M-120,90 Q-90,70 -60,90 Q-90,110 -120,90 Z" fill="rgba(198,255,60,0.5)" />
+                <path d="M-90,60 Q-70,90 -90,120 Q-110,90 -90,60 Z" fill="rgba(198,255,60,0.5)" />
+              </g>
+            </g>
+
+            <!-- Arm Bottom-Right -->
+            <g class="drone-part drone-arm-br">
+              <line x1="35" y1="35" x2="90" y2="90" stroke="var(--neon)" stroke-width="6" stroke-linecap="round" />
+              <circle cx="90" cy="90" r="10" fill="var(--bg)" stroke="var(--neon-2)" stroke-width="3" />
+              <g class="drone-prop prop-br">
+                <path d="M60,90 Q90,70 120,90 Q90,110 60,90 Z" fill="rgba(198,255,60,0.5)" />
+                <path d="M90,60 Q110,90 90,120 Q70,90 90,60 Z" fill="rgba(198,255,60,0.5)" />
+              </g>
+            </g>
+
+          </g>
+        </svg>
+      </div>
+      <div class="entry-text">
+        <p class="tagline"><span class="eng">Engineering in body,</span> <span class="bus">Business in the Soul.</span>
+        </p>
+        <h1 class="welcome-text">Welcome to <span>Soumic's World</span></h1>
+      </div>
+    </div>
+  </div>
+
   <div class="noise"></div>
   <div class="progress"><span></span></div>
   <header class="nav-wrap">
@@ -24,56 +105,109 @@
     </nav>
     <a class="nav-cta" href="assets/Soumic_Kundu_Paul_CV.pdf" target="_blank">View CV <span>→</span></a>
   </header>
-  
+
   <main id="top">
     <section class="hero" id="home">
-        <div class="space-vector" aria-hidden="true">
-            <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
-                <ellipse class="space-orbit orbit-a" cx="800" cy="450" rx="560" ry="260"/>
-                <ellipse class="space-orbit orbit-b" cx="800" cy="450" rx="380" ry="170"/>
-                <path class="space-path" d="M-100 650 C250 180 500 850 820 360 S1300 100 1750 520"/>
-                <path class="space-path path-b" d="M-150 250 C220 620 520 80 860 550 S1320 800 1750 250"/>
-                <circle class="space-dot" cx="250" cy="180" r="2"/>
-                <circle class="space-dot" cx="450" cy="700" r="2"/>
-                <circle class="space-dot" cx="1120" cy="220" r="2"/>
-                <circle class="space-dot" cx="1370" cy="650" r="2"/>
+      <div class="space-vector" aria-hidden="true">
+        <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+          <ellipse class="space-orbit orbit-a" cx="800" cy="450" rx="560" ry="260" />
+          <ellipse class="space-orbit orbit-b" cx="800" cy="450" rx="380" ry="170" />
+          <path class="space-path" d="M-100 650 C250 180 500 850 820 360 S1300 100 1750 520" />
+          <path class="space-path path-b" d="M-150 250 C220 620 520 80 860 550 S1320 800 1750 250" />
+          <circle class="space-dot" cx="250" cy="180" r="2" />
+          <circle class="space-dot" cx="450" cy="700" r="2" />
+          <circle class="space-dot" cx="1120" cy="220" r="2" />
+          <circle class="space-dot" cx="1370" cy="650" r="2" />
+        </svg>
+      </div>
+      <div class="hero-grid"></div>
+      <div class="hero-glow hero-glow-1"></div>
+      <div class="hero-glow hero-glow-2"></div>
+      <div class="hero-label"><span class="hero-dot"></span>ELECTRICAL & ELECTRONIC ENGINEERING</div>
+      <div class="name-marquee">
+        <div class="name-moving">SOUMIC KUNDU PAUL</div>
+      </div>
+
+      <div class="hero-portrait">
+        <div class="portrait-ring"></div>
+        <div class="portrait-glow"></div>
+        <img src="assets/soumic.png" alt="Soumic Kundu Paul" />
+      </div>
+
+      <div class="hero-content">
+        <div class="hero-kicker">
+          <span class="kicker-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path
+                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+              </path>
+            </svg> ENGINEER</span>
+          <span class="kicker-sep">•</span>
+          <span class="kicker-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <circle cx="12" cy="12" r="6"></circle>
+              <circle cx="12" cy="12" r="2"></circle>
+            </svg> STRATEGIST</span>
+          <span class="kicker-sep">•</span>
+          <span class="kicker-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z">
+              </path>
+            </svg> BUILDER</span>
+        </div>
+        <p id="hero-typing-text"
+          data-text="Electrical & Electronic Engineering undergraduate blending technology, business thinking and leadership.">
+        </p>
+        <div class="hero-actions">
+          <a href="#work" class="hero-btn primary">Explore my work <span>→</span></a>
+          <a href="#contact" class="hero-btn secondary">Let's connect</a>
+        </div>
+      </div>
+
+      <div class="hero-bottom">
+        <div class="hero-bottom-item">
+          <div class="hero-bottom-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--neon)" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
             </svg>
+          </div>
+          <div class="hero-bottom-text"><span>Live in</span><strong>Dhaka, Bangladesh</strong></div>
         </div>
-        <div class="hero-grid"></div>
-        <div class="hero-glow hero-glow-1"></div>
-        <div class="hero-glow hero-glow-2"></div>
-        <div class="hero-label"><span class="hero-dot"></span>ELECTRICAL & ELECTRONIC ENGINEERING</div>
-        <div class="name-marquee"><div class="name-moving">SOUMIC KUNDU PAUL</div></div>
-        
-        <div class="hero-portrait">
-            <div class="portrait-ring"></div>
-            <div class="portrait-glow"></div>
-            <img src="assets/soumic.png" alt="Soumic Kundu Paul" />
+        <div class="hero-bottom-item">
+          <div class="hero-bottom-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--neon-2)" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+          </div>
+          <div class="hero-bottom-text"><span>FOCUS</span><strong>Engineering + Business</strong></div>
         </div>
-        
-        <div class="hero-content">
-            <div class="hero-kicker">ENGINEER • STRATEGIST • BUILDER</div>               
-            <p>Electrical & Electronic Engineering undergraduate blending technology, business thinking and leadership.</p>
-            <div class="hero-actions">
-                <a href="#work" class="hero-btn primary">Explore my work <span>→</span></a>
-                <a href="#contact" class="hero-btn secondary">Let's connect</a>
-            </div>
+        <div class="scroll-indicator">
+          <span>SCROLL TO EXPLORE</span>
+          <div class="scroll-line"></div>
         </div>
-        
-        <div class="hero-bottom">
-            <div><span>Live in</span><strong>Dhaka, Bangladesh</strong></div>
-            <div><span>FOCUS</span><strong>Engineering + Business</strong></div>
-            <div class="scroll-indicator">
-                <span>SCROLL TO EXPLORE</span>
-                <div class="scroll-line"></div>
-            </div>
-        </div>
+      </div>
     </section>
 
     <section class="marquee" aria-label="Areas of interest">
       <div class="marquee-track">
-        <span>ENGINEERING</span><i>•</i><span>BUSINESS CASES</span><i>•</i><span>PROJECT LEADERSHIP</span><i>•</i><span>MARKETING</span><i>•</i><span>OPERATIONS</span><i>•</i><span>TECH ENTHUSIAST</span><i>•</i><span>GRAPHICS DESIGN</span><i>•</i>
-        <span>ENGINEERING</span><i>•</i><span>BUSINESS CASES</span><i>•</i><span>PROJECT LEADERSHIP</span><i>•</i><span>MARKETING</span><i>•</i><span>OPERATIONS</span><i>•</i><span>TECH ENTHUSIAST</span><i>•</i><span>GRAPHICS DESIGN</span><i>•</i>
+        <div class="marquee-group">
+          <span>ENGINEERING</span><i>•</i><span>BUSINESS CASES</span><i>•</i><span>PROJECT
+            LEADERSHIP</span><i>•</i><span>MARKETING</span><i>•</i><span>OPERATIONS</span><i>•</i><span>TECH
+            ENTHUSIAST</span><i>•</i><span>GRAPHICS DESIGN</span><i>•</i>
+        </div>
+        <div class="marquee-group">
+          <span>ENGINEERING</span><i>•</i><span>BUSINESS CASES</span><i>•</i><span>PROJECT
+            LEADERSHIP</span><i>•</i><span>MARKETING</span><i>•</i><span>OPERATIONS</span><i>•</i><span>TECH
+            ENTHUSIAST</span><i>•</i><span>GRAPHICS DESIGN</span><i>•</i>
+        </div>
       </div>
     </section>
 
@@ -82,12 +216,17 @@
       <div class="about-grid">
         <h2 class="reveal">A technical mind with a <span>commercial lens.</span></h2>
         <div class="about-copy reveal delay-1">
-          <p>Motivated Electrical & Electronic Engineering undergraduate with a strong blend of technical expertise and business acumen.</p>
-          <p>I enjoy solving problems where engineering fundamentals meet strategy—from hands-on systems and testing to business case analysis, project management and cross-functional execution.</p>
-          <div class="stats">
-            <div><strong>50+</strong><span>Slide Designs For Business case competition</span></div>
-            <div><strong>200+</strong><span>event participants coordinated</span></div>
-            <div><strong>70+</strong><span>volunteers coordinated</span></div>
+          <p>Motivated Electrical & Electronic Engineering undergraduate with a strong blend of technical expertise and
+            business acumen.</p>
+          <p>I enjoy solving problems where engineering fundamentals meet strategy—from hands-on systems and testing to
+            business case analysis, project management and cross-functional execution.</p>
+          <div class="stats" id="about-stats">
+            <div><strong><span class="count-up" data-target="50">0</span>+</strong><span>Slide Designs For Business case
+                competition</span></div>
+            <div><strong><span class="count-up" data-target="200">0</span>+</strong><span>event participants
+                coordinated</span></div>
+            <div><strong><span class="count-up" data-target="70">0</span>+</strong><span>volunteers coordinated</span>
+            </div>
           </div>
         </div>
       </div>
@@ -95,9 +234,11 @@
 
     <section id="work" class="work section-pad">
       <div class="section-label reveal"><span>02</span> Selected work</div>
-      <div class="work-head reveal"><h2>Projects that turn<br><em>ideas into systems.</em></h2></div>
-      
-    <article class="project-card reveal">
+      <div class="work-head reveal">
+        <h2>Projects that turn<br><em>ideas into systems.</em></h2>
+      </div>
+
+      <article class="project-card reveal">
         <div class="project-image">
           <img src="assets/Footstep.jpeg" alt="Footstep Power Harvesting System" class="project-photo" />
           <div class="project-index">01 / 01</div>
@@ -105,8 +246,10 @@
         <div class="project-info">
           <p class="mono">PROJECT LEAD • ENERGY HARVESTING</p>
           <h3>Footstep Power<br>Harvesting System</h3>
-          <p>Demonstrated a piezoelectric-based energy harvesting project, coordinating system design, implementation, testing and overall project execution.</p>
-          <div class="tag-row"><span>Piezoelectric</span><span>System Design</span><span>Testing</span><span>Leadership</span></div>
+          <p>Demonstrated a piezoelectric-based energy harvesting project, coordinating system design, implementation,
+            testing and overall project execution.</p>
+          <div class="tag-row"><span>Piezoelectric</span><span>System
+              Design</span><span>Testing</span><span>Leadership</span></div>
           <button class="text-button" type="button" onclick="openProject()">View project story <span>→</span></button>
         </div>
       </article>
@@ -114,18 +257,36 @@
       <!-- NOTICE BOARD ANIMATION -->
       <div class="notice-board-wrapper reveal">
         <div class="notice-board-header">
-            <span class="dot"></span> LIVE PROJECT BOARD
+          <span class="dot"></span> SOUMIC's LIFELESS UPDATES
         </div>
         <div class="notice-board-window">
-            <div class="notice-track">
-                <div class="notice-item"><span>UPDATE</span><h4>Footstep Power System</h4><p>Phase 1 system design and piezoelectric testing completed successfully.</p></div>
-                <div class="notice-item highlight"><span>ONGOING</span><h4>AUSTRC Mega Event</h4><p>Coordinating logistics for upcoming cross-functional robotics competition.</p></div>
-                <div class="notice-item"><span>RESEARCH</span><h4>Business Case Prep</h4><p>Analyzing supply-chain dynamics for the next national qualifier.</p></div>
-                
-                <div class="notice-item"><span>UPDATE</span><h4>Footstep Power System</h4><p>Phase 1 system design and piezoelectric testing completed successfully.</p></div>
-                <div class="notice-item highlight"><span>ONGOING</span><h4>AUSTRC Mega Event</h4><p>Coordinating logistics for upcoming cross-functional robotics competition.</p></div>
-                <div class="notice-item"><span>RESEARCH</span><h4>Business Case Prep</h4><p>Analyzing supply-chain dynamics for the next national qualifier.</p></div>
+          <div class="notice-track">
+            <div class="notice-item"><span>UPDATE</span>
+              <h4>Footstep Power System</h4>
+              <p>Phase 1 system design and piezoelectric testing completed successfully.</p>
             </div>
+            <div class="notice-item highlight"><span>ONGOING</span>
+              <h4>AUSTRC Mega Event</h4>
+              <p>Coordinating logistics for upcoming cross-functional robotics competition.</p>
+            </div>
+            <div class="notice-item"><span>RESEARCH</span>
+              <h4>Business Case Prep</h4>
+              <p>Analyzing supply-chain dynamics for the next national qualifier.</p>
+            </div>
+
+            <div class="notice-item"><span>UPDATE</span>
+              <h4>Footstep Power System</h4>
+              <p>Phase 1 system design and piezoelectric testing completed successfully.</p>
+            </div>
+            <div class="notice-item highlight"><span>ONGOING</span>
+              <h4>AUSTRC Mega Event</h4>
+              <p>Coordinating logistics for upcoming cross-functional robotics competition.</p>
+            </div>
+            <div class="notice-item"><span>RESEARCH</span>
+              <h4>Business Case Prep</h4>
+              <p>Analyzing supply-chain dynamics for the next national qualifier.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -133,60 +294,64 @@
     <section id="experience" class="experience section-pad dark-section">
       <div class="timeline-body">
         <div class="club-designation">
-            <img src="assets/soumic.png" alt="Executive Panel – Assistant Director, AUST Robotics Club" class="club-photo" />
-            <div class="club-text">
-                <p class="club-org">AUST Robotics Club</p>
-                <h3>Assistant Director – Administration</h3>
-            </div>
-            <div class="club-logo-wrap">
-              <img src="assets/AUST_RC.png" alt="AUST Robotics Club Logo" class="club-logo" />
-            </div>
+          <img src="assets/soumic.png" alt="Executive Panel – Assistant Director, AUST Robotics Club"
+            class="club-photo" />
+          <div class="club-text">
+            <p class="club-org">AUST Robotics Club</p>
+            <h3>Assistant Director – Administration</h3>
+          </div>
+          <div class="club-logo-wrap">
+            <img src="assets/AUST_RC.png" alt="AUST Robotics Club Logo" class="club-logo" />
+          </div>
         </div>
-        <p>Oversee administrative operations, coordinate cross-team workflows, schedules and organizational activities.</p>
+        <p>Oversee administrative operations, coordinate cross-team workflows, schedules and organizational activities.
+        </p>
         <ul>
-            <li>Led planning and execution of 2 major robotics events.</li>
-            <li>Coordinated 200+ participants and 70+ volunteers.</li>
-            <li>Managed vendor operations and event logistics.</li>
-            <li>Supported cross-functional collaboration for prompt execution.</li>
+          <li>Led planning and execution of 2 major robotics events.</li>
+          <li>Coordinated 200+ participants and 70+ volunteers.</li>
+          <li>Managed vendor operations and event logistics.</li>
+          <li>Supported cross-functional collaboration for prompt execution.</li>
         </ul>
 
         <!-- CLUB ANIMATION STRIP -->
         <div class="club-activities reveal">
-            <div class="activity-card">
-                <div class="act-icon">⚙️</div>
-                <h4>Educational Programs</h4>
-                <p>Workshops & Training</p>
-            </div>
-            <div class="activity-card">
-                <div class="act-icon">🏆</div>
-                <h4>Events & Competitions</h4>
-                <p>Hackathons & Contests</p>
-            </div>
-            <div class="activity-card">
-                <div class="act-icon">🔬</div>
-                <h4>Research & Projects</h4>
-                <p>Pushing tech boundaries</p>
-            </div>
+          <div class="activity-card">
+            <div class="act-icon">⚙️</div>
+            <h4>Educational Programs</h4>
+            <p>Workshops & Training</p>
+          </div>
+          <div class="activity-card">
+            <div class="act-icon">🏆</div>
+            <h4>Events & Competitions</h4>
+            <p>Hackathons & Contests</p>
+          </div>
+          <div class="activity-card">
+            <div class="act-icon">🔬</div>
+            <h4>Research & Projects</h4>
+            <p>Pushing tech boundaries</p>
+          </div>
         </div>
 
         <!-- SECOND EXPERIENCE — TICKIFY -->
         <div class="role-entry reveal">
-            <div class="club-designation">
-                <div class="club-logo-wrap small">
-                  <img src="assets/Tickify.jpg" alt="Tickify Logo" class="club-logo" />
-                </div>
-                <div class="club-text">
-                    <p class="club-org tickify">Tickify</p>
-                    <h3>Student Ambassador</h3>
-                </div>
-                <span class="role-date mono">SEPT 2026 – PRESENT</span>
+          <div class="club-designation">
+            <div class="club-logo-wrap small">
+              <img src="assets/Tickify.jpg" alt="Tickify Logo" class="club-logo" />
             </div>
-            <p>Representing Tickify within the campus community — driving awareness, onboarding students to the platform, and channeling on-ground feedback back into the product.</p>
+            <div class="club-text">
+              <p class="club-org tickify">Tickify</p>
+              <h3>Student Ambassador</h3>
+            </div>
+            <span class="role-date mono">SEPT 2026 – PRESENT</span>
+          </div>
+          <p>Representing Tickify within the campus community — driving awareness, onboarding students to the platform,
+            and channeling on-ground feedback back into the product.</p>
         </div>
       </div>
-      
+
       <div class="achievement-strip reveal">
-        <div><span>ACHIEVEMENT</span><strong>HSBC Business Case Competition 2025</strong><small>National Round Qualifier</small></div>
+        <div><span>ACHIEVEMENT</span><strong>HSBC Business Case Competition 2025</strong><small>National Round
+            Qualifier</small></div>
         <div><span>ACHIEVEMENT</span><strong>OSCILLON 1.0</strong><small>Finalist</small></div>
       </div>
     </section>
@@ -194,13 +359,48 @@
     <section id="skills" class="skills section-pad">
       <div class="section-label reveal"><span>04</span> Toolkit</div>
       <div class="skills-layout">
-        <div class="reveal"><h2>Tools I use to<br><em>make things real.</em></h2><p>Technical foundations, business problem solving and creative production—a deliberately cross-functional toolkit.</p></div>
-        <div class="skill-groups">
-          <div class="skill-group reveal"><span>01</span><div><h3>Technical</h3><p>C++ • Python • MATLAB • Arduino • Quartus • Proteus</p></div></div>
-          <div class="skill-group reveal"><span>02</span><div><h3>Business & Analytical</h3><p>Business Case Analysis • Strategic Problem Solving • Project Management • Public Presentation</p></div></div>
-          <div class="skill-group reveal"><span>03</span><div><h3>Leadership & Operations</h3><p>Team Leadership • Event Management • Administrative Coordination • Cross-Functional Collaboration</p></div></div>
-          <div class="skill-group reveal"><span>04</span><div><h3>Design & Productivity</h3><p>Canva • Adobe Photoshop • Adobe Premiere Pro • Microsoft Excel • PowerPoint • Word</p></div></div>
-          <div class="skill-group reveal"><span>05</span><div><h3>Professional</h3><p>Critical Thinking • Stakeholder Coordination • Communication</p></div></div>
+        <div class="reveal">
+          <h2>Tools I use to<br><em>make things real.</em></h2>
+          <p>Technical foundations, business problem solving and creative production—a deliberately cross-functional
+            toolkit.</p>
+        </div>
+        <div class="bento-grid">
+          <div class="bento-item tech reveal">
+            <div class="bento-header"><span>01</span>
+              <h3>Engineering & Technical</h3>
+            </div>
+            <p>C++ • Python • MATLAB • Arduino • Quartus • Proteus</p>
+            <div class="bento-icons">
+              <img src="https://cdn.simpleicons.org/cplusplus/00f0ff" alt="C++" class="bento-icon floating delay-1" />
+              <img src="https://cdn.simpleicons.org/python/00f0ff" alt="Python" class="bento-icon floating delay-2" />
+              <img src="assets/Matlab_Logo.png" alt="MATLAB" class="bento-icon floating delay-3" />
+              <img src="https://cdn.simpleicons.org/arduino/00f0ff" alt="Arduino" class="bento-icon floating delay-1" />
+            </div>
+          </div>
+
+          <div class="bento-item design reveal">
+            <div class="bento-header"><span>02</span>
+              <h3>Design & Productivity</h3>
+            </div>
+            <p>Canva • Photoshop • Premiere Pro</p>
+            <div class="bento-icons">
+              <img src="assets/Canva_Logo.webp" alt="Canva" class="bento-icon floating delay-2" />
+              <img src="assets/Photoshop_Logo.webp" alt="Photoshop" class="bento-icon floating delay-3" />
+              <img src="assets/Premire%20Pro.webp" alt="Premiere Pro" class="bento-icon floating delay-1" />
+            </div>
+          </div>
+
+          <div class="bento-item business reveal">
+            <div class="bento-header"><span>03</span>
+              <h3>Business & Operations</h3>
+            </div>
+            <p>Problem Solving • Management • Leadership</p>
+            <div class="bento-icons">
+              <img src="assets/Excel.webp" alt="Excel" class="bento-icon floating delay-3" />
+              <img src="assets/Powerpoint.webp" alt="PowerPoint" class="bento-icon floating delay-1" />
+              <img src="assets/Word.webp" alt="Word" class="bento-icon floating delay-2" />
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -209,80 +409,251 @@
       <!-- COLLABORATION NETWORK SVG -->
       <div class="collaboration-nodes" aria-hidden="true">
         <svg viewBox="0 0 1000 400" preserveAspectRatio="xMidYMid slice">
-            <path class="collab-link" d="M 100 200 Q 300 50 500 200 T 900 200" />
-            <path class="collab-link delay" d="M 150 300 Q 400 350 600 200 T 950 100" />
-            <circle class="collab-node" cx="100" cy="200" r="5"/>
-            <circle class="collab-node pulse" cx="300" cy="125" r="8"/>
-            <circle class="collab-node" cx="500" cy="200" r="6"/>
-            <circle class="collab-node pulse" cx="700" cy="275" r="8"/>
-            <circle class="collab-node" cx="900" cy="200" r="5"/>
+          <path class="collab-link" d="M 100 200 Q 300 50 500 200 T 900 200" />
+          <path class="collab-link delay" d="M 150 300 Q 400 350 600 200 T 950 100" />
+          <circle class="collab-node" cx="100" cy="200" r="5" />
+          <circle class="collab-node pulse" cx="300" cy="125" r="8" />
+          <circle class="collab-node" cx="500" cy="200" r="6" />
+          <circle class="collab-node pulse" cx="700" cy="275" r="8" />
+          <circle class="collab-node" cx="900" cy="200" r="5" />
         </svg>
       </div>
 
       <div class="section-label reveal"><span>05</span> Certificates</div>
-      <div class="cert-head reveal"><h2>Proof of the<br><em>journey.</em></h2><p>Credentials, achievements, and cross-functional leadership milestones.</p></div>
-      
+      <div class="cert-head reveal">
+        <h2>Proof of the<br><em>journey.</em></h2>
+        <p>Credentials, achievements, and cross-functional leadership milestones.</p>
+      </div>
+
       <!-- CONTINUOUS SCROLLING RTL MARQUEE CERTIFICATES -->
       <div class="cert-window collab-style-window">
         <div class="cert-track collab-track" id="certTrack">
           <!-- ORIGINAL SET -->
-          <article class="certificate collab-cert">
-            <div class="cert-top">ACHIEVEMENT</div>
-            <div class="cert-seal">🎖️</div>
-            <h3>HSBC Business Case<br>Competition 2025</h3>
-            <p>National Round Qualifier</p>
-            <span>VIEW CREDENTIAL</span>
+          <article class="certificate collab-cert"
+            onclick="openCertificate('assets/Certificates/Deputy%20Executive.png', 'Deputy Executive', 'AUST Robotics Club - Leadership & Management')">
+            <img src="assets/Certificates/Deputy%20Executive.png" alt="Deputy Executive" class="cert-thumbnail" />
+            <div class="cert-info">
+              <div class="cert-top">LEADERSHIP</div>
+              <h3>Deputy Executive</h3>
+              <p>AUST Robotics Club</p>
+            </div>
+
           </article>
-          <article class="certificate collab-cert alt">
-            <div class="cert-top">ACHIEVEMENT</div>
-            <div class="cert-seal">🎖️</div>
-            <h3>OSCILLON 1.0<br>Finalist</h3>
-            <p>National Robotics Event</p>
-            <span>VIEW CREDENTIAL</span>
+          <article class="certificate collab-cert alt"
+            onclick="openCertificate('assets/Certificates/Sub_Executive.jpg', 'Sub Executive', 'AUST Robotics Club - Operations & Coordination')">
+            <img src="assets/Certificates/Sub_Executive.jpg" alt="Sub Executive" class="cert-thumbnail" />
+            <div class="cert-info">
+              <div class="cert-top">LEADERSHIP</div>
+              <h3>Sub Executive</h3>
+              <p>AUST Robotics Club</p>
+            </div>
+
           </article>
-          <article class="certificate collab-cert">
-            <div class="cert-top">CERTIFICATE</div>
-            <div class="cert-seal">🎖️</div>
-            <h3>Project Leadership<br>Workshop</h3>
-            <p>AUSTRC Operations</p>
-            <span>VIEW CREDENTIAL</span>
+          <article class="certificate collab-cert"
+            onclick="openCertificate('assets/Certificates/HSBC_25.jpg', 'HSBC Business Case 2025', 'National Round Qualifier in Business Strategy')">
+            <img src="assets/Certificates/HSBC_25.jpg" alt="HSBC 25" class="cert-thumbnail" />
+            <div class="cert-info">
+              <div class="cert-top">ACHIEVEMENT</div>
+              <h3>HSBC Business Case</h3>
+              <p>National Round Qualifier</p>
+            </div>
+
           </article>
-          <article class="certificate collab-cert alt">
-            <div class="cert-top">CERTIFICATE</div>
-            <div class="cert-seal">🎖️</div>
-            <h3>Communication<br>& Presentation</h3>
-            <p>Cross-Functional Collaboration</p>
-            <span>VIEW CREDENTIAL</span>
+          <article class="certificate collab-cert alt"
+            onclick="openCertificate('assets/Certificates/BUP%20Capitalizer\'25.jpg', 'BUP Capitalizer \'25', 'Business Strategy and Financial Analysis Competition')">
+            <img src="assets/Certificates/BUP%20Capitalizer'25.jpg" alt="BUP Capitalizer" class="cert-thumbnail" />
+            <div class="cert-info">
+              <div class="cert-top">COMPETITION</div>
+              <h3>BUP Capitalizer '25</h3>
+              <p>Business Strategy</p>
+            </div>
+
+          </article>
+          <article class="certificate collab-cert"
+            onclick="openCertificate('assets/Certificates/Casemotion.jpg', 'Casemotion', 'Business Case Solving Finalist')">
+            <img src="assets/Certificates/Casemotion.jpg" alt="Casemotion" class="cert-thumbnail" />
+            <div class="cert-info">
+              <div class="cert-top">ACHIEVEMENT</div>
+              <h3>Casemotion</h3>
+              <p>Case Solving Finalist</p>
+            </div>
+
+          </article>
+          <article class="certificate collab-cert alt"
+            onclick="openCertificate('assets/Certificates/OSCILLON.png', 'OSCILLON 1.0 Finalist', 'National Robotics & Tech Event Finalist')">
+            <img src="assets/Certificates/OSCILLON.png" alt="Oscillon" class="cert-thumbnail" />
+            <div class="cert-info">
+              <div class="cert-top">ACHIEVEMENT</div>
+              <h3>OSCILLON 1.0</h3>
+              <p>National Finalist</p>
+            </div>
+
+          </article>
+          <article class="certificate collab-cert"
+            onclick="openCertificate('assets/Certificates/RoboMania%202.0%20Circuit%20Wizardry.png', 'Circuit Wizardry', 'RoboMania 2.0 - Hardware & Circuit Design')">
+            <img src="assets/Certificates/RoboMania%202.0%20Circuit%20Wizardry.png" alt="Circuit Wizardry"
+              class="cert-thumbnail" />
+            <div class="cert-info">
+              <div class="cert-top">COMPETITION</div>
+              <h3>Circuit Wizardry</h3>
+              <p>RoboMania 2.0</p>
+            </div>
+
+          </article>
+          <article class="certificate collab-cert alt"
+            onclick="openCertificate('assets/Certificates/Robomania%202.0%20Organizer.png', 'RoboMania 2.0 Organizer', 'Core event operations and logistics management')">
+            <img src="assets/Certificates/Robomania%202.0%20Organizer.png" alt="Robomania Organizer"
+              class="cert-thumbnail" />
+            <div class="cert-info">
+              <div class="cert-top">LEADERSHIP</div>
+              <h3>RoboMania 2.0</h3>
+              <p>Event Organizer</p>
+            </div>
+
+          </article>
+          <article class="certificate collab-cert"
+            onclick="openCertificate('assets/Certificates/ARC%202.0_organizer.jpg', 'ARC 2.0 Organizer', 'Event coordination and execution')">
+            <img src="assets/Certificates/ARC%202.0_organizer.jpg" alt="ARC 2.0" class="cert-thumbnail" />
+            <div class="cert-info">
+              <div class="cert-top">LEADERSHIP</div>
+              <h3>ARC 2.0 Organizer</h3>
+              <p>Event Coordination</p>
+            </div>
+
+          </article>
+          <article class="certificate collab-cert alt"
+            onclick="openCertificate('assets/Certificates/Thesis%20Thrust%201.0.jpeg', 'Thesis Thrust 1.0', 'Academic Research and Presentation Excellence')">
+            <img src="assets/Certificates/Thesis%20Thrust%201.0.jpeg" alt="Thesis Thrust" class="cert-thumbnail" />
+            <div class="cert-info">
+              <div class="cert-top">ACADEMIC</div>
+              <h3>Thesis Thrust 1.0</h3>
+              <p>Research Presentation</p>
+            </div>
+
+          </article>
+          <article class="certificate collab-cert"
+            onclick="openCertificate('assets/Certificates/GIthub.jpg', 'GitHub Foundations', 'Certified in Git, version control, and collaboration')">
+            <img src="assets/Certificates/GIthub.jpg" alt="Github" class="cert-thumbnail" />
+            <div class="cert-info">
+              <div class="cert-top">CERTIFICATE</div>
+              <h3>GitHub Foundations</h3>
+              <p>Version Control</p>
+            </div>
+
           </article>
 
           <!-- DUPLICATED SET (Required for infinite seamless RTL scroll) -->
-          <article class="certificate collab-cert">
-            <div class="cert-top">ACHIEVEMENT</div>
-            <div class="cert-seal">🎖️</div>
-            <h3>HSBC Business Case<br>Competition 2025</h3>
-            <p>National Round Qualifier</p>
-            <span>VIEW CREDENTIAL</span>
+          <article class="certificate collab-cert"
+            onclick="openCertificate('assets/Certificates/Deputy%20Executive.png', 'Deputy Executive', 'AUST Robotics Club - Leadership & Management')">
+            <img src="assets/Certificates/Deputy%20Executive.png" alt="Deputy Executive" class="cert-thumbnail" />
+            <div class="cert-info">
+              <div class="cert-top">LEADERSHIP</div>
+              <h3>Deputy Executive</h3>
+              <p>AUST Robotics Club</p>
+            </div>
+
           </article>
-          <article class="certificate collab-cert alt">
-            <div class="cert-top">ACHIEVEMENT</div>
-            <div class="cert-seal">🎖️</div>
-            <h3>OSCILLON 1.0<br>Finalist</h3>
-            <p>National Robotics Event</p>
-            <span>VIEW CREDENTIAL</span>
+          <article class="certificate collab-cert alt"
+            onclick="openCertificate('assets/Certificates/Sub_Executive.jpg', 'Sub Executive', 'AUST Robotics Club - Operations & Coordination')">
+            <img src="assets/Certificates/Sub_Executive.jpg" alt="Sub Executive" class="cert-thumbnail" />
+            <div class="cert-info">
+              <div class="cert-top">LEADERSHIP</div>
+              <h3>Sub Executive</h3>
+              <p>AUST Robotics Club</p>
+            </div>
+
           </article>
-          <article class="certificate collab-cert">
-            <div class="cert-top">CERTIFICATE</div>
-            <div class="cert-seal">🎖️</div>
-            <h3>Project Leadership<br>Workshop</h3>
-            <p>AUSTRC Operations</p>
-            <span>VIEW CREDENTIAL</span>
+          <article class="certificate collab-cert"
+            onclick="openCertificate('assets/Certificates/HSBC_25.jpg', 'HSBC Business Case 2025', 'National Round Qualifier in Business Strategy')">
+            <img src="assets/Certificates/HSBC_25.jpg" alt="HSBC 25" class="cert-thumbnail" />
+            <div class="cert-info">
+              <div class="cert-top">ACHIEVEMENT</div>
+              <h3>HSBC Business Case</h3>
+              <p>National Round Qualifier</p>
+            </div>
+
           </article>
-          <article class="certificate collab-cert alt">
-            <div class="cert-top">CERTIFICATE</div>
-            <div class="cert-seal">🎖️</div>
-            <h3>Communication<br>& Presentation</h3>
-            <p>Cross-Functional Collaboration</p>
-            <span>VIEW CREDENTIAL</span>
+          <article class="certificate collab-cert alt"
+            onclick="openCertificate('assets/Certificates/BUP%20Capitalizer\'25.jpg', 'BUP Capitalizer \'25', 'Business Strategy and Financial Analysis Competition')">
+            <img src="assets/Certificates/BUP%20Capitalizer'25.jpg" alt="BUP Capitalizer" class="cert-thumbnail" />
+            <div class="cert-info">
+              <div class="cert-top">COMPETITION</div>
+              <h3>BUP Capitalizer '25</h3>
+              <p>Business Strategy</p>
+            </div>
+
+          </article>
+          <article class="certificate collab-cert"
+            onclick="openCertificate('assets/Certificates/Casemotion.jpg', 'Casemotion', 'Business Case Solving Finalist')">
+            <img src="assets/Certificates/Casemotion.jpg" alt="Casemotion" class="cert-thumbnail" />
+            <div class="cert-info">
+              <div class="cert-top">ACHIEVEMENT</div>
+              <h3>Casemotion</h3>
+              <p>Case Solving Finalist</p>
+            </div>
+
+          </article>
+          <article class="certificate collab-cert alt"
+            onclick="openCertificate('assets/Certificates/OSCILLON.png', 'OSCILLON 1.0 Finalist', 'National Robotics & Tech Event Finalist')">
+            <img src="assets/Certificates/OSCILLON.png" alt="Oscillon" class="cert-thumbnail" />
+            <div class="cert-info">
+              <div class="cert-top">ACHIEVEMENT</div>
+              <h3>OSCILLON 1.0</h3>
+              <p>National Finalist</p>
+            </div>
+
+          </article>
+          <article class="certificate collab-cert"
+            onclick="openCertificate('assets/Certificates/RoboMania%202.0%20Circuit%20Wizardry.png', 'Circuit Wizardry', 'RoboMania 2.0 - Hardware & Circuit Design')">
+            <img src="assets/Certificates/RoboMania%202.0%20Circuit%20Wizardry.png" alt="Circuit Wizardry"
+              class="cert-thumbnail" />
+            <div class="cert-info">
+              <div class="cert-top">COMPETITION</div>
+              <h3>Circuit Wizardry</h3>
+              <p>RoboMania 2.0</p>
+            </div>
+            <div class="cert-seal">🔍</div>
+          </article>
+          <article class="certificate collab-cert alt"
+            onclick="openCertificate('assets/Certificates/Robomania%202.0%20Organizer.png', 'RoboMania 2.0 Organizer', 'Core event operations and logistics management')">
+            <img src="assets/Certificates/Robomania%202.0%20Organizer.png" alt="Robomania Organizer"
+              class="cert-thumbnail" />
+            <div class="cert-info">
+              <div class="cert-top">LEADERSHIP</div>
+              <h3>RoboMania 2.0</h3>
+              <p>Event Organizer</p>
+            </div>
+            <div class="cert-seal">🔍</div>
+          </article>
+          <article class="certificate collab-cert"
+            onclick="openCertificate('assets/Certificates/ARC%202.0_organizer.jpg', 'ARC 2.0 Organizer', 'Event coordination and execution')">
+            <img src="assets/Certificates/ARC%202.0_organizer.jpg" alt="ARC 2.0" class="cert-thumbnail" />
+            <div class="cert-info">
+              <div class="cert-top">LEADERSHIP</div>
+              <h3>ARC 2.0 Organizer</h3>
+              <p>Event Coordination</p>
+            </div>
+            <div class="cert-seal">🔍</div>
+          </article>
+          <article class="certificate collab-cert alt"
+            onclick="openCertificate('assets/Certificates/Thesis%20Thrust%201.0.jpeg', 'Thesis Thrust 1.0', 'Academic Research and Presentation Excellence')">
+            <img src="assets/Certificates/Thesis%20Thrust%201.0.jpeg" alt="Thesis Thrust" class="cert-thumbnail" />
+            <div class="cert-info">
+              <div class="cert-top">ACADEMIC</div>
+              <h3>Thesis Thrust 1.0</h3>
+              <p>Research Presentation</p>
+            </div>
+            <div class="cert-seal">🔍</div>
+          </article>
+          <article class="certificate collab-cert"
+            onclick="openCertificate('assets/Certificates/GIthub.jpg', 'GitHub Foundations', 'Certified in Git, version control, and collaboration')">
+            <img src="assets/Certificates/GIthub.jpg" alt="Github" class="cert-thumbnail" />
+            <div class="cert-info">
+              <div class="cert-top">CERTIFICATE</div>
+              <h3>GitHub Foundations</h3>
+              <p>Version Control</p>
+            </div>
+            <div class="cert-seal">🔍</div>
           </article>
         </div>
       </div>
@@ -294,29 +665,54 @@
         <div class="edu-logo-box">
           <img src="assets/AUST_LOGO.svg" alt="Ahsanullah University of Science & Technology logo" />
         </div>
-        <div class="edu-text"><p class="mono">2023 – PRESENT</p><h2>Bachelor of Science in<br>Electrical & Electronic Engineering</h2><p>Ahsanullah University of Science & Technology (AUST)</p></div>
+        <div class="edu-text">
+          <p class="mono">2023 – PRESENT</p>
+          <h2>Bachelor of Science in<br>Electrical & Electronic Engineering</h2>
+          <p>Ahsanullah University of Science & Technology (AUST)</p>
+        </div>
       </div>
     </section>
 
     <section id="contact" class="contact section-pad dark-section">
       <div class="section-label light reveal"><span>07</span> Contact</div>
-      <div class="contact-main reveal"><p class="eyebrow"><span class="dot"></span> Open to opportunities</p><h2>Let's build something<br><em>worth remembering.</em></h2><a class="big-email" href="mailto:soumic44@gmail.com">soumic44@gmail.com <span>→</span></a></div>
-      <div class="contact-footer"><span>© 2026 Soumic Kundu Paul</span><div><a href="mailto:soumic44@gmail.com">Email</a><a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a><a href="assets/Soumic_Kundu_Paul_CV.pdf" target="_blank">CV</a></div></div>
+      <div class="contact-main reveal">
+        <p class="eyebrow"><span class="dot"></span> Open to opportunities</p>
+        <h2>Let's build something<br><em>worth remembering.</em></h2><a class="big-email"
+          href="mailto:soumic44@gmail.com">soumic44@gmail.com <span>→</span></a>
+      </div>
+      <div class="contact-footer"><span>© 2026 Soumic Kundu Paul</span>
+        <div><a href="mailto:soumic44@gmail.com">Email</a><a href="https://www.linkedin.com/feed" target="_blank"
+            rel="noreferrer">LinkedIn</a><a href="assets/Soumic_Kundu_Paul_CV.pdf" target="_blank">CV</a></div>
+      </div>
     </section>
   </main>
-<div class="modal" id="projectModal" aria-hidden="true">
+  <div class="modal" id="projectModal" aria-hidden="true">
     <div class="modal-backdrop" onclick="closeProject()"></div>
     <div class="modal-card">
       <button class="modal-close" onclick="closeProject()">×</button>
       <p class="mono">PROJECT 01 • PROJECT STORY</p>
       <h2>Footstep Power<br><em>Harvesting System</em></h2>
-      <p>Detailed breakdown of system design, circuit implementation, piezoelectric testing, and prototype execution.</p>
+      <p>Detailed breakdown of system design, circuit implementation, piezoelectric testing, and prototype execution.
+      </p>
       <div class="modal-image-wrap">
         <img src="assets/Footstep.jpeg" alt="Footstep Power Harvesting System Prototype" class="modal-project-img" />
+      </div>
+    </div>
+  </div>
+  <div class="modal" id="certModal" aria-hidden="true">
+    <div class="modal-backdrop" onclick="closeCertificate()"></div>
+    <div class="modal-card cert-modal-card">
+      <button class="modal-close" onclick="closeCertificate()">×</button>
+      <p class="mono" id="certModalTop">CERTIFICATE</p>
+      <h2 id="certModalTitle">Certificate Title</h2>
+      <p id="certModalDesc">Certificate Description</p>
+      <div class="modal-image-wrap cert-image-wrap">
+        <img src="" alt="Certificate Image" id="certModalImg" class="modal-project-img" />
       </div>
     </div>
   </div>
 
   <script src="script.js"></script>
 </body>
+
 </html>
