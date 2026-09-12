@@ -173,6 +173,13 @@ em {
 }
 
 @media(min-width: 760px) {
+  .nav-wrap {
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom: none;
+    box-shadow: none;
+  }
   .nav-wrap nav {
     display: flex;
     gap: 20px;
