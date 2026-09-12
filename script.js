@@ -637,42 +637,76 @@ window.addEventListener('load', () => {
 });
 
 /* =========================================================
-   10. CYBERPUNK CUSTOM CURSOR
+   10. STAR TRAIL CURSOR
    ========================================================= */
 
-const cursor = document.getElementById('cyber-cursor');
-const trail = document.getElementById('cyber-cursor-trail');
+const canvas = document.getElementById('star-trail');
+if (canvas && window.matchMedia('(pointer:fine)').matches) {
+    const ctx = canvas.getContext('2d');
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
 
-if (cursor && trail && window.matchMedia('(pointer:fine)').matches) {
-    let mouseX = 0, mouseY = 0;
-    let trailX = 0, trailY = 0;
+    window.addEventListener('resize', () => {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+    });
+
+    const particles = [];
+    const colors = ['#00f0ff', '#a000ff', '#ff2bd6']; // Cyan, Purple, Pink
 
     document.addEventListener('mousemove', e => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        
-        // Instant cursor update using GPU accelerated transform
-        cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+        // Spawn particles on mouse move
+        const particleCount = Math.random() > 0.5 ? 2 : 1;
+        for (let i = 0; i < particleCount; i++) {
+            particles.push({
+                x: e.clientX,
+                y: e.clientY,
+                size: Math.random() * 2.5 + 1,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                velocityX: (Math.random() - 0.5) * 1.5,
+                velocityY: (Math.random() - 0.5) * 1.5 + 0.5, // Slight gravity effect
+                life: 1,
+                decay: Math.random() * 0.02 + 0.015
+            });
+        }
     });
 
-    // Smooth trailing update using requestAnimationFrame
-    function animateTrail() {
-        trailX += (mouseX - trailX) * 0.15;
-        trailY += (mouseY - trailY) * 0.15;
+    function animateStars() {
+        ctx.clearRect(0, 0, width, height);
         
-        trail.style.transform = `translate3d(${trailX}px, ${trailY}px, 0) translate(-50%, -50%)`;
+        for (let i = 0; i < particles.length; i++) {
+            const p = particles[i];
+            p.x += p.velocityX;
+            p.y += p.velocityY;
+            p.life -= p.decay;
+            
+            if (p.size > 0.1) p.size -= 0.02;
+
+            if (p.life <= 0 || p.size <= 0) {
+                particles.splice(i, 1);
+                i--;
+                continue;
+            }
+
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fillStyle = p.color;
+            ctx.globalAlpha = p.life;
+            ctx.shadowBlur = 8;
+            ctx.shadowColor = p.color;
+            ctx.fill();
+        }
         
-        requestAnimationFrame(animateTrail);
+        ctx.globalAlpha = 1;
+        ctx.shadowBlur = 0;
+        requestAnimationFrame(animateStars);
     }
-    animateTrail();
-
-    // Hover effect on interactables
-    const interactables = document.querySelectorAll('a, button, input, .bento-item, .project-card, .activity-card');
     
-    interactables.forEach(el => {
-        el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
-        el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
-    });
+    animateStars();
 }
 
 /* =========================================================

@@ -2749,82 +2749,17 @@ h3 {
 }
 
 /* =========================================================
-   CYBERPUNK CURSOR
+   STAR TRAIL CURSOR CANVAS
    ========================================================= */
 
-@media (pointer: fine) {
-
-  body,
-  a,
-  button,
-  input,
-  textarea,
-  select,
-  .bento-item,
-  .project-card,
-  .activity-card {
-    cursor: none !important;
-  }
-}
-
-#cyber-cursor {
+#star-trail {
   position: fixed;
   top: 0;
   left: 0;
-  width: 6px;
-  height: 6px;
-  background-color: var(--neon);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 10000;
-  will-change: transform, width, height;
-  transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
-  box-shadow: 0 0 10px var(--neon);
-}
-
-#cyber-cursor-trail {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 32px;
-  height: 32px;
-  border: 1px solid rgba(0, 240, 255, 0.5);
-  border-radius: 50%;
+  width: 100vw;
+  height: 100vh;
   pointer-events: none;
   z-index: 9999;
-  will-change: transform, width, height;
-  transition: width 0.4s ease, height 0.4s ease, border-color 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease;
-  box-shadow: 0 0 12px rgba(0, 240, 255, 0.1);
-}
-
-body.hovering #cyber-cursor {
-  width: 8px;
-  height: 8px;
-  background-color: var(--neon-2);
-  box-shadow: 0 0 15px var(--neon-2);
-}
-
-body.hovering #cyber-cursor-trail {
-  width: 48px;
-  height: 48px;
-  border-color: rgba(160, 0, 255, 0.6);
-  background-color: rgba(160, 0, 255, 0.1);
-  box-shadow: 0 0 20px rgba(160, 0, 255, 0.2), inset 0 0 10px rgba(160, 0, 255, 0.1);
-}
-
-@media (hover: none) and (pointer: coarse) {
-
-  #cyber-cursor,
-  #cyber-cursor-trail {
-    display: none !important;
-  }
-
-  body,
-  a,
-  button,
-  .bento-item {
-    cursor: auto !important;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2934,84 +2869,7 @@ body.hovering #cyber-cursor-trail {
   }
 }
 
-/* =========================================================
-   CYBERPUNK CURSOR
-   ========================================================= */
-
-@media (pointer: fine) {
-
-  body,
-  a,
-  button,
-  input,
-  textarea,
-  select,
-  .bento-item,
-  .project-card,
-  .activity-card {
-    cursor: none !important;
-  }
-}
-
-#cyber-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 6px;
-  height: 6px;
-  background-color: var(--neon);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 10000;
-  will-change: transform, width, height;
-  transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
-  box-shadow: 0 0 10px var(--neon);
-}
-
-#cyber-cursor-trail {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 32px;
-  height: 32px;
-  border: 1px solid rgba(0, 240, 255, 0.5);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  will-change: transform, width, height;
-  transition: width 0.4s ease, height 0.4s ease, border-color 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease;
-  box-shadow: 0 0 12px rgba(0, 240, 255, 0.1);
-}
-
-body.hovering #cyber-cursor {
-  width: 8px;
-  height: 8px;
-  background-color: var(--neon-2);
-  box-shadow: 0 0 15px var(--neon-2);
-}
-
-body.hovering #cyber-cursor-trail {
-  width: 48px;
-  height: 48px;
-  border-color: rgba(160, 0, 255, 0.6);
-  background-color: rgba(160, 0, 255, 0.1);
-  box-shadow: 0 0 20px rgba(160, 0, 255, 0.2), inset 0 0 10px rgba(160, 0, 255, 0.1);
-}
-
-@media (hover: none) and (pointer: coarse) {
-
-  #cyber-cursor,
-  #cyber-cursor-trail {
-    display: none !important;
-  }
-
-  body,
-  a,
-  button,
-  .bento-item {
-    cursor: auto !important;
-  }
-}
+/* Removed duplicate cursor styles */
 
 @media (prefers-reduced-motion: reduce) {
   * {
