@@ -242,12 +242,12 @@
     <section id="education" class="education section-pad">
       <div id="pad-education" class="drone-pad pad-left"></div>
       <div class="section-label reveal">Education</div>
-      <div class="edu-timeline">
-        <div class="edu-line"><div class="edu-line-fill"></div></div>
+      <div class="edu-timeline" id="edu-timeline-container">
+        <div class="edu-line"><div class="edu-line-fill" id="edu-line-fill"></div></div>
 
         <!-- University -->
         <div class="edu-node reveal-up" style="--delay:0s">
-          <div class="edu-node-dot edu-dot-lg">
+          <div class="edu-node-dot edu-dot-std">
             <img src="assets/AUST_LOGO.svg" alt="AUST" class="edu-dot-logo" />
           </div>
           <div class="edu-node-content">
@@ -260,7 +260,7 @@
 
         <!-- College -->
         <div class="edu-node reveal-up" style="--delay:0.2s">
-          <div class="edu-node-dot edu-dot-md">
+          <div class="edu-node-dot edu-dot-std">
             <img src="assets/AKMCC-Logo.png" alt="AKMCC" class="edu-dot-logo" onerror="this.style.display='none'" />
           </div>
           <div class="edu-node-content">
@@ -271,9 +271,14 @@
           </div>
         </div>
 
+        <!-- Decorative tiny dot from the image -->
+        <div class="edu-tiny-dot-wrapper">
+           <div class="edu-tiny-dot"></div>
+        </div>
+
         <!-- School -->
         <div class="edu-node reveal-up" style="--delay:0.4s">
-          <div class="edu-node-dot edu-dot-sm">
+          <div class="edu-node-dot edu-dot-std edu-dot-solid">
             <img src="assets/GSCA logo.png" alt="GSCA" class="edu-dot-logo" onerror="this.style.display='none'" />
           </div>
           <div class="edu-node-content">

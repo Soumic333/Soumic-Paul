@@ -812,7 +812,8 @@ if (typingElement) {
    ========================================================= */
 (function() {
     const nodes = document.querySelectorAll('.edu-node');
-    const line = document.querySelector('.edu-line');
+    const timeline = document.getElementById('edu-timeline-container');
+    const lineFill = document.getElementById('edu-line-fill');
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -824,12 +825,25 @@ if (typingElement) {
 
     nodes.forEach(n => observer.observe(n));
 
-    // Animate the vertical line when the timeline is in view
-    if (line) {
-        const lineObs = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting) line.classList.add('active');
-        }, { threshold: 0.1 });
-        lineObs.observe(line);
+    // Dynamic scroll-based line fill
+    if (timeline && lineFill) {
+        window.addEventListener('scroll', () => {
+            const rect = timeline.getBoundingClientRect();
+            // Start filling when top of timeline hits middle of screen
+            // Finish filling when bottom of timeline hits middle of screen
+            const start = window.innerHeight / 2;
+            
+            if (rect.top > start) {
+                lineFill.style.height = '0%';
+            } else if (rect.bottom < start) {
+                lineFill.style.height = '100%';
+            } else {
+                const total = rect.height;
+                const passed = start - rect.top;
+                const percentage = Math.max(0, Math.min(100, (passed / total) * 100));
+                lineFill.style.height = `${percentage}%`;
+            }
+        }, { passive: true });
     }
 })();
 
