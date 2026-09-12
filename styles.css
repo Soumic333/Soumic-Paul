@@ -2865,4 +2865,20 @@ h3 {
     text-align: left;
     padding: 30px;
   }
+  
+  #spectator-drone {
+    width: 150px;
+    height: 112px;
+    margin-top: -56px;
+    margin-left: -75px;
+  }
+}
+
+@media(min-width: 901px) {
+  .nav-cta {
+    position: fixed;
+    top: 16px;
+    right: 20px;
+    z-index: 51;
+  }
 }
