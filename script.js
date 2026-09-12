@@ -4,6 +4,26 @@
 
 
 /* =========================================================
+   0. MOBILE MENU TOGGLE
+   ========================================================= */
+
+const mobileBtn = document.querySelector('.mobile-menu-btn');
+const navWrap = document.querySelector('.nav-wrap');
+
+if (mobileBtn && navWrap) {
+    mobileBtn.addEventListener('click', () => {
+        navWrap.classList.toggle('menu-open');
+    });
+    const navLinks = navWrap.querySelectorAll('.nav-content a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navWrap.classList.remove('menu-open');
+        });
+    });
+}
+
+
+/* =========================================================
    0. IN-PAGE ANCHOR NAVIGATION
    Explicit smooth-scroll (more reliable across browsers/
    embedded previews than relying on default '#anchor' jump)
@@ -575,7 +595,12 @@ window.addEventListener('load', () => {
             entryScreen.classList.add('slide-up');
             document.body.style.overflow = '';
             
-            // Fly out of loader to activePad (might be pad-hero or something else if they scrolled during load)
+            if (window.scrollY < 100) {
+                activePad = 'pad-hero';
+                activeFlip = 1;
+            }
+            
+            // Fly out of loader to activePad
             positionDroneAt(activePad, 0.9, activeFlip);
             
             setTimeout(() => {

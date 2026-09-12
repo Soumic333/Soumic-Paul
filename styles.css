@@ -1830,6 +1830,7 @@ h3 {
   gap: 26px;
   width: max-content;
   animation: certMarquee 28s linear infinite;
+  will-change: transform;
 }
 
 .collab-track:hover {
@@ -2718,4 +2719,150 @@ h3 {
 }
 .about, .work, .skills, .certificates, .education, .contact, .dark-section, .experience, .hero {
   background: transparent !important;
+}
+
+/* =========================================================
+   RESPONSIVE & MOBILE MENU
+   ========================================================= */
+
+.mobile-menu-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+  z-index: 100;
+}
+
+.mobile-menu-btn span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--neon);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+}
+
+/* Hamburger animation when open */
+.menu-open .mobile-menu-btn span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.menu-open .mobile-menu-btn span:nth-child(2) {
+  opacity: 0;
+}
+.menu-open .mobile-menu-btn span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+@media(max-width: 1080px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+  .hero-portrait {
+    grid-column: 1;
+    grid-row: auto;
+    margin-top: 40px;
+    width: min(320px, 70%);
+  }
+  .project-card {
+    grid-template-columns: 1fr;
+  }
+  .project-image {
+    min-height: 260px;
+  }
+  .achievement-strip {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media(max-width: 900px) {
+  .mobile-menu-btn {
+    display: flex;
+  }
+  
+  .nav-content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(10, 10, 30, 0.95);
+    backdrop-filter: blur(15px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    z-index: 90;
+  }
+  
+  .menu-open .nav-content {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  .nav-wrap nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .nav-wrap nav a {
+    font-size: 16px;
+  }
+
+  .about-grid,
+  .skills-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+  .bento-item.business {
+    grid-column: span 1;
+  }
+  .club-activities {
+    grid-template-columns: 1fr;
+  }
+  .stats {
+    grid-template-columns: 1fr 1fr;
+  }
+  .section-pad {
+    padding: 90px 6%;
+  }
+  .cert-window.collab-style-window {
+    margin-left: 0;
+  }
+}
+
+@media(max-width: 560px) {
+  .hero-bottom {
+    gap: 24px;
+  }
+  .scroll-indicator {
+    margin-left: 0;
+  }
+  .contact-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .cert-window.collab-style-window::before,
+  .cert-window.collab-style-window::after {
+    width: 40px;
+  }
+  .club-logo-wrap {
+    margin-left: 0;
+  }
+  .education-card {
+    flex-direction: column;
+    text-align: left;
+    padding: 30px;
+  }
 }
