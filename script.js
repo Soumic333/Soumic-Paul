@@ -645,23 +645,25 @@ window.addEventListener('load', () => {
         // Initial setup for Loader
         document.body.style.overflow = 'hidden';
         spectatorDrone.classList.add('visible');
-        positionDroneAt('pad-loader', 3.5, 1);
+        positionDroneAt('pad-loader', 4.5, 1);
         
+        let isEntryAnimating = true;
+        let activePad = 'pad-hero';
+        let activeFlip = 1;
+
         setTimeout(() => {
             entryScreen.classList.add('slide-up');
             document.body.style.overflow = '';
             
-            // Fly out of loader to hero!
-            positionDroneAt('pad-hero', 0.9, 1);
+            // Fly out of loader to activePad (might be pad-hero or something else if they scrolled during load)
+            positionDroneAt(activePad, 0.9, activeFlip);
             
             setTimeout(() => {
                 entryScreen.style.display = 'none';
+                isEntryAnimating = false;
             }, 800);
             
-        }, 4200); 
-
-        let activePad = 'pad-hero';
-        let activeFlip = 1;
+        }, 4200);
         
         // Ensure it stays at pad on resize
         window.addEventListener('resize', () => {
@@ -679,12 +681,20 @@ window.addEventListener('load', () => {
                     
                     if (id === 'home') {
                         activePad = 'pad-hero';
+                        activeFlip = 1;
                     } else {
                         activePad = 'pad-' + id;
+                        const padEl = document.getElementById(activePad);
+                        if (padEl && padEl.classList.contains('pad-left')) {
+                            activeFlip = -1;
+                        } else {
+                            activeFlip = 1;
+                        }
                     }
-                    activeFlip = 1;
                     
-                    positionDroneAt(activePad, 0.9, activeFlip);
+                    if (!isEntryAnimating) {
+                        positionDroneAt(activePad, 0.9, activeFlip);
+                    }
                 }
             });
         }, { threshold: 0.35 });
