@@ -1840,16 +1840,12 @@ h3 {
 
 .collab-track {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 26px;
-  width: max-content;
-  animation: certMarquee 28s linear infinite;
-  will-change: transform;
-  transform: translateZ(0);
-}
-
-.collab-track:hover {
-  animation-play-state: paused;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 @keyframes certMarquee {
@@ -1863,7 +1859,8 @@ h3 {
 }
 
 .collab-cert {
-  flex: 0 0 340px;
+  flex: 1 1 300px;
+  max-width: 340px;
   border: 1px solid var(--line);
   border-radius: 16px;
   padding: 20px;
