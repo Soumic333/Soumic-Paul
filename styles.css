@@ -893,13 +893,13 @@ em {
   font: 700 32px var(--mono);
   text-transform: uppercase;
   letter-spacing: .15em;
-  background: linear-gradient(100deg, var(--ink) 40%, var(--neon) 48%, var(--neon-2) 54%, var(--ink) 62%);
-  background-size: 260% 100%;
+  background: linear-gradient(110deg, var(--ink) 0%, var(--neon) 22%, var(--neon-2) 42%, var(--ink) 58%, var(--neon) 78%, var(--ink) 100%);
+  background-size: 240% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   text-shadow: 0 0 22px rgba(0, 240, 255, 0.35);
-  animation: glacierShine 1s linear infinite;
+  animation: glacierShine 4.5s linear infinite;
   margin-bottom: 60px;
 }
 
