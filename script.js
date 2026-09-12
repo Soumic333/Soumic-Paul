@@ -555,9 +555,20 @@ window.addEventListener('load', () => {
             const pad = document.getElementById(padId);
             if (pad) {
                 const rect = pad.getBoundingClientRect();
-                // Use viewport-relative coords since drone is position:fixed
+                
+                // X position follows the pad (left or right)
                 const x = rect.left + rect.width / 2;
-                const y = rect.top + rect.height / 2;
+                
+                // Y position follows the pad, BUT is clamped so the drone never goes off-screen.
+                // This makes it act like a persistent guide that floats up and down with scrolling.
+                let rawY = rect.top + rect.height / 2;
+                
+                const minY = 120; // Stay below the nav bar
+                const maxY = window.innerHeight - 120; // Stay above the bottom edge
+                
+                // If it's the loader, keep it exactly where it is (centered)
+                const y = padId === 'pad-loader' ? rawY : Math.max(minY, Math.min(maxY, rawY));
+
                 spectatorDrone.style.transform = `translate(${x}px, ${y}px) scale(${scale}) scaleX(${flip})`;
             }
         };
