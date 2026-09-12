@@ -20,11 +20,9 @@
   <div id="cyber-cursor"></div>
   <div id="cyber-cursor-trail"></div>
 
-  <!-- ENTRY SCREEN OVERLAY -->
-  <div id="entry-screen">
-    <div class="entry-content">
-      <div class="combo-animation">
-        <svg viewBox="0 0 400 300" class="drone-svg" xmlns="http://www.w3.org/2000/svg">
+  <!-- SPECTATOR DRONE -->
+  <div id="spectator-drone">
+    <svg viewBox="0 0 400 300" class="drone-svg" xmlns="http://www.w3.org/2000/svg">
           <!-- Isometric Projection Group -->
           <g class="drone-iso" transform="translate(200, 150) scale(1, 0.6) rotate(45)">
 
@@ -46,8 +44,8 @@
               <line x1="-35" y1="-35" x2="-90" y2="-90" stroke="var(--neon)" stroke-width="6" stroke-linecap="round" />
               <circle cx="-90" cy="-90" r="10" fill="var(--bg)" stroke="var(--neon-2)" stroke-width="3" />
               <g class="drone-prop prop-tl">
-                <path d="M-120,-90 Q-90,-110 -60,-90 Q-90,-70 -120,-90 Z" fill="rgba(198,255,60,0.5)" />
-                <path d="M-90,-120 Q-70,-90 -90,-60 Q-110,-90 -90,-120 Z" fill="rgba(198,255,60,0.5)" />
+                <path d="M-120,-90 Q-90,-110 -60,-90 Q-90,-70 -120,-90 Z" fill="rgba(200,0,255,0.5)" />
+                <path d="M-90,-120 Q-70,-90 -90,-60 Q-110,-90 -90,-120 Z" fill="rgba(200,0,255,0.5)" />
               </g>
             </g>
 
@@ -56,8 +54,8 @@
               <line x1="35" y1="-35" x2="90" y2="-90" stroke="var(--neon)" stroke-width="6" stroke-linecap="round" />
               <circle cx="90" cy="-90" r="10" fill="var(--bg)" stroke="var(--neon-2)" stroke-width="3" />
               <g class="drone-prop prop-tr">
-                <path d="M60,-90 Q90,-110 120,-90 Q90,-70 60,-90 Z" fill="rgba(198,255,60,0.5)" />
-                <path d="M90,-120 Q110,-90 90,-60 Q70,-90 90,-120 Z" fill="rgba(198,255,60,0.5)" />
+                <path d="M60,-90 Q90,-110 120,-90 Q90,-70 60,-90 Z" fill="rgba(200,0,255,0.5)" />
+                <path d="M90,-120 Q110,-90 90,-60 Q70,-90 90,-120 Z" fill="rgba(200,0,255,0.5)" />
               </g>
             </g>
 
@@ -66,8 +64,8 @@
               <line x1="-35" y1="35" x2="-90" y2="90" stroke="var(--neon)" stroke-width="6" stroke-linecap="round" />
               <circle cx="-90" cy="90" r="10" fill="var(--bg)" stroke="var(--neon-2)" stroke-width="3" />
               <g class="drone-prop prop-bl">
-                <path d="M-120,90 Q-90,70 -60,90 Q-90,110 -120,90 Z" fill="rgba(198,255,60,0.5)" />
-                <path d="M-90,60 Q-70,90 -90,120 Q-110,90 -90,60 Z" fill="rgba(198,255,60,0.5)" />
+                <path d="M-120,90 Q-90,70 -60,90 Q-90,110 -120,90 Z" fill="rgba(200,0,255,0.5)" />
+                <path d="M-90,60 Q-70,90 -90,120 Q-110,90 -90,60 Z" fill="rgba(200,0,255,0.5)" />
               </g>
             </g>
 
@@ -76,13 +74,19 @@
               <line x1="35" y1="35" x2="90" y2="90" stroke="var(--neon)" stroke-width="6" stroke-linecap="round" />
               <circle cx="90" cy="90" r="10" fill="var(--bg)" stroke="var(--neon-2)" stroke-width="3" />
               <g class="drone-prop prop-br">
-                <path d="M60,90 Q90,70 120,90 Q90,110 60,90 Z" fill="rgba(198,255,60,0.5)" />
-                <path d="M90,60 Q110,90 90,120 Q70,90 90,60 Z" fill="rgba(198,255,60,0.5)" />
+                <path d="M60,90 Q90,70 120,90 Q90,110 60,90 Z" fill="rgba(200,0,255,0.5)" />
+                <path d="M90,60 Q110,90 90,120 Q70,90 90,60 Z" fill="rgba(200,0,255,0.5)" />
               </g>
             </g>
 
-          </g>
         </svg>
+  </div>
+
+  <!-- ENTRY SCREEN OVERLAY -->
+  <div id="entry-screen">
+    <div class="entry-content">
+      <div class="combo-animation">
+        <div id="pad-loader" class="drone-pad"></div>
       </div>
       <div class="entry-text">
         <p class="tagline"><span class="eng">Engineering in body,</span> <span class="bus">Business in the Soul.</span>
@@ -107,19 +111,20 @@
   </header>
 
   <main id="top">
+    <div class="space-vector" aria-hidden="true">
+      <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+        <ellipse class="space-orbit orbit-a" cx="800" cy="450" rx="560" ry="260" />
+        <ellipse class="space-orbit orbit-b" cx="800" cy="450" rx="380" ry="170" />
+        <path class="space-path" d="M-100 650 C250 180 500 850 820 360 S1300 100 1750 520" />
+        <path class="space-path path-b" d="M-150 250 C220 620 520 80 860 550 S1320 800 1750 250" />
+        <circle class="space-dot" cx="250" cy="180" r="2" />
+        <circle class="space-dot" cx="450" cy="700" r="2" />
+        <circle class="space-dot" cx="1120" cy="220" r="2" />
+        <circle class="space-dot" cx="1370" cy="650" r="2" />
+      </svg>
+    </div>
     <section class="hero" id="home">
-      <div class="space-vector" aria-hidden="true">
-        <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
-          <ellipse class="space-orbit orbit-a" cx="800" cy="450" rx="560" ry="260" />
-          <ellipse class="space-orbit orbit-b" cx="800" cy="450" rx="380" ry="170" />
-          <path class="space-path" d="M-100 650 C250 180 500 850 820 360 S1300 100 1750 520" />
-          <path class="space-path path-b" d="M-150 250 C220 620 520 80 860 550 S1320 800 1750 250" />
-          <circle class="space-dot" cx="250" cy="180" r="2" />
-          <circle class="space-dot" cx="450" cy="700" r="2" />
-          <circle class="space-dot" cx="1120" cy="220" r="2" />
-          <circle class="space-dot" cx="1370" cy="650" r="2" />
-        </svg>
-      </div>
+      <div id="pad-hero" class="drone-pad" style="top: 12%; left: 50%; transform: translateX(-50%);"></div>
       <div class="hero-grid"></div>
       <div class="hero-glow hero-glow-1"></div>
       <div class="hero-glow hero-glow-2"></div>
@@ -143,20 +148,16 @@
                 d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
               </path>
             </svg> ENGINEER</span>
-          <span class="kicker-sep">•</span>
           <span class="kicker-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10"></circle>
               <circle cx="12" cy="12" r="6"></circle>
               <circle cx="12" cy="12" r="2"></circle>
             </svg> STRATEGIST</span>
-          <span class="kicker-sep">•</span>
           <span class="kicker-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path
-                d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z">
-              </path>
-            </svg> BUILDER</span>
+              <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"></path>
+            </svg> AI ENTHUSIAST</span>
         </div>
         <p id="hero-typing-text"
           data-text="Electrical & Electronic Engineering undergraduate blending technology, business thinking and leadership.">
@@ -212,7 +213,8 @@
     </section>
 
     <section id="about" class="about section-pad">
-      <div class="section-label reveal"><span>01</span> About</div>
+      <div id="pad-about" class="drone-pad pad-left"></div>
+      <div class="section-label reveal">About</div>
       <div class="about-grid">
         <h2 class="reveal">A technical mind with a <span>commercial lens.</span></h2>
         <div class="about-copy reveal delay-1">
@@ -233,7 +235,8 @@
     </section>
 
     <section id="work" class="work section-pad">
-      <div class="section-label reveal"><span>02</span> Selected work</div>
+      <div id="pad-work" class="drone-pad pad-right"></div>
+      <div class="section-label reveal">Selected work</div>
       <div class="work-head reveal">
         <h2>Projects that turn<br><em>ideas into systems.</em></h2>
       </div>
@@ -292,7 +295,9 @@
     </section>
 
     <section id="experience" class="experience section-pad dark-section">
-      <div class="timeline-body">
+      <div id="pad-experience" class="drone-pad pad-left"></div>
+      <div class="section-label reveal">Extra curricular Activities</div>
+      <div class="timeline-body" style="max-width: 900px; margin: 0 auto;">
         <div class="club-designation">
           <img src="assets/soumic.png" alt="Executive Panel – Assistant Director, AUST Robotics Club"
             class="club-photo" />
@@ -357,7 +362,8 @@
     </section>
 
     <section id="skills" class="skills section-pad">
-      <div class="section-label reveal"><span>04</span> Toolkit</div>
+      <div id="pad-skills" class="drone-pad pad-right"></div>
+      <div class="section-label reveal">Toolkit</div>
       <div class="skills-layout">
         <div class="reveal">
           <h2>Tools I use to<br><em>make things real.</em></h2>
@@ -369,12 +375,13 @@
             <div class="bento-header"><span>01</span>
               <h3>Engineering & Technical</h3>
             </div>
-            <p>C++ • Python • MATLAB • Arduino • Quartus • Proteus</p>
+            <p>C++ • Python • MATLAB • Arduino • Proteus</p>
             <div class="bento-icons">
               <img src="https://cdn.simpleicons.org/cplusplus/00f0ff" alt="C++" class="bento-icon floating delay-1" />
               <img src="https://cdn.simpleicons.org/python/00f0ff" alt="Python" class="bento-icon floating delay-2" />
               <img src="assets/Matlab_Logo.png" alt="MATLAB" class="bento-icon floating delay-3" />
               <img src="https://cdn.simpleicons.org/arduino/00f0ff" alt="Arduino" class="bento-icon floating delay-1" />
+              <img src="assets/Proteus.png" alt="Proteus" class="bento-icon floating delay-2" />
             </div>
           </div>
 
@@ -405,7 +412,8 @@
       </div>
     </section>
 
-    <section class="certificates section-pad">
+    <section id="certificates" class="certificates section-pad">
+      <div id="pad-certificates" class="drone-pad pad-left"></div>
       <!-- COLLABORATION NETWORK SVG -->
       <div class="collaboration-nodes" aria-hidden="true">
         <svg viewBox="0 0 1000 400" preserveAspectRatio="xMidYMid slice">
@@ -419,7 +427,7 @@
         </svg>
       </div>
 
-      <div class="section-label reveal"><span>05</span> Certificates</div>
+      <div class="section-label reveal">Certificates</div>
       <div class="cert-head reveal">
         <h2>Proof of the<br><em>journey.</em></h2>
         <p>Credentials, achievements, and cross-functional leadership milestones.</p>
@@ -659,8 +667,9 @@
       </div>
     </section>
 
-    <section class="education section-pad">
-      <div class="section-label reveal"><span>06</span> Education</div>
+    <section id="education" class="education section-pad">
+      <div id="pad-education" class="drone-pad pad-right"></div>
+      <div class="section-label reveal">Education</div>
       <div class="education-card reveal">
         <div class="edu-logo-box">
           <img src="assets/AUST_LOGO.svg" alt="Ahsanullah University of Science & Technology logo" />
@@ -674,7 +683,8 @@
     </section>
 
     <section id="contact" class="contact section-pad dark-section">
-      <div class="section-label light reveal"><span>07</span> Contact</div>
+      <div id="pad-contact" class="drone-pad pad-left"></div>
+      <div class="section-label light reveal">Contact</div>
       <div class="contact-main reveal">
         <p class="eyebrow"><span class="dot"></span> Open to opportunities</p>
         <h2>Let's build something<br><em>worth remembering.</em></h2><a class="big-email"

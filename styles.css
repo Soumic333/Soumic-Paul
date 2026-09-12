@@ -40,12 +40,18 @@ html {
   scroll-behavior: smooth;
 }
 
+section {
+  position: relative;
+}
+
 section[id] {
   scroll-margin-top: 90px;
 }
 
 body {
-  margin: 0;
+  margin: 0 auto;
+  max-width: 1920px;
+  position: relative;
   background: var(--bg);
   color: var(--ink);
   font-family: var(--sans);
@@ -132,14 +138,16 @@ em {
 .nav-wrap {
   position: fixed;
   top: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
+  max-width: 1920px;
   z-index: 50;
   height: 76px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 4vw;
+  padding: 0 4%;
   background: rgba(6, 6, 15, .72);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--line);
@@ -237,13 +245,12 @@ em {
   display: grid;
   grid-template-columns: 1.05fr .8fr;
   align-items: center;
-  gap: 5vw;
+  gap: 5%;
   position: relative;
   overflow: hidden;
   background: radial-gradient(ellipse at 20% 20%, rgba(0, 240, 255, .10), transparent 55%),
-    radial-gradient(ellipse at 85% 75%, rgba(255, 43, 214, .10), transparent 55%),
-    var(--bg);
-  padding-inline: 7vw;
+    radial-gradient(ellipse at 85% 75%, rgba(255, 43, 214, .10), transparent 55%);
+  padding-inline: 7%;
 }
 
 .hero-grid {
@@ -311,9 +318,12 @@ em {
 }
 
 .space-vector {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
   opacity: .5;
   pointer-events: none;
   transition: transform .3s var(--ease);
@@ -390,17 +400,33 @@ em {
   position: relative;
   z-index: 1;
   grid-column: 1;
+  justify-self: center;
   display: inline-flex;
   align-items: center;
   gap: 10px;
   font: 500 11px var(--mono);
   letter-spacing: .14em;
-  color: var(--muted);
-  border: 1px solid var(--line);
+  color: var(--neon);
+  border: 1px solid rgba(0, 240, 255, 0.3);
   padding: 8px 14px;
   border-radius: 100px;
   width: max-content;
-  background: rgba(255, 255, 255, .02);
+  background: rgba(0, 240, 255, 0.05);
+  animation: heroLabelPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes heroLabelPulse {
+  0% {
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.1), inset 0 0 5px rgba(0, 240, 255, 0.05);
+    text-shadow: 0 0 5px rgba(0, 240, 255, 0.2);
+    transform: translateY(0);
+  }
+
+  100% {
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.3), inset 0 0 10px rgba(0, 240, 255, 0.1);
+    text-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
+    transform: translateY(-3px);
+  }
 }
 
 .hero-dot {
@@ -430,14 +456,18 @@ em {
   grid-column: 1;
   overflow: hidden;
   margin: 18px 0 6px;
+  justify-self: center;
+  text-align: center;
+  width: 100%;
 }
 
 .name-moving {
   display: inline-block;
-  font-size: clamp(42px, 6.6vw, 96px);
+  font-size: clamp(24px, 4.5vw, 76px);
   font-weight: 700;
   letter-spacing: -.04em;
   line-height: 1;
+  white-space: nowrap;
   background: linear-gradient(100deg, var(--ink) 40%, var(--neon) 48%, var(--neon-2) 54%, var(--ink) 62%);
   background-size: 260% 100%;
   -webkit-background-clip: text;
@@ -582,18 +612,57 @@ em {
   --tilt-y: 0deg;
   transform: perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
   transition: transform .2s var(--ease);
+  background: var(--surface);
+  border-radius: 22px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .5), 0 0 0 1px rgba(255, 255, 255, .06);
 }
 
 .portrait-ring {
   position: absolute;
   inset: -14px;
   border-radius: 26px;
-  background: conic-gradient(from 0deg, var(--neon), var(--neon-2), var(--neon-3), var(--neon));
-  animation: spin 8s linear infinite;
   padding: 2px;
+  overflow: hidden;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
+  animation: portraitPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes portraitPulse {
+  0% {
+    opacity: 0.4;
+    transform: scale(0.97);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+}
+
+.portrait-ring::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 250%;
+  height: 250%;
+  background: linear-gradient(45deg, var(--neon), var(--neon-2), var(--neon-3));
+  background-size: 200% 200%;
+  transform: translate(-50%, -50%);
+  animation: portraitGradientDrift 4s ease infinite alternate;
+  z-index: -1;
+}
+
+@keyframes portraitGradientDrift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 100% 50%;
+  }
 }
 
 .portrait-glow {
@@ -611,9 +680,8 @@ em {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 22px;
+  border-radius: inherit;
   display: block;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, .5), 0 0 0 1px rgba(255, 255, 255, .06);
 }
 
 .hero-bottom {
@@ -675,6 +743,15 @@ em {
   align-items: flex-start;
   gap: 10px;
   margin-left: auto;
+}
+
+.scroll-indicator span {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
 .scroll-line {
@@ -768,30 +845,23 @@ em {
    ========================================================= */
 
 .section-pad {
-  padding: 120px 7vw;
+  padding: 120px 7%;
 }
 
 .section-label {
   display: flex;
-  gap: 16px;
+  justify-content: center;
   align-items: center;
-  font: 500 11px var(--mono);
+  font: 700 32px var(--mono);
   text-transform: uppercase;
-  letter-spacing: .12em;
-  color: var(--muted);
+  letter-spacing: .15em;
+  background: linear-gradient(100deg, var(--ink) 40%, var(--neon) 48%, var(--neon-2) 54%, var(--ink) 62%);
+  background-size: 260% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 3s linear infinite;
   margin-bottom: 60px;
-}
-
-.section-label span {
-  color: var(--neon);
-  border: 1px solid rgba(0, 240, 255, .35);
-  border-radius: 6px;
-  padding: 3px 8px;
-  text-shadow: 0 0 8px rgba(0, 240, 255, .6);
-}
-
-.section-label.light {
-  color: rgba(255, 255, 255, .6);
 }
 
 h2 {
@@ -1726,8 +1796,8 @@ h3 {
 }
 
 .cert-window.collab-style-window {
-  width: 100vw;
-  margin-left: -7vw;
+  width: 100%;
+  margin-left: 0;
   padding: 30px 0;
   overflow: hidden;
   position: relative;
@@ -2474,11 +2544,11 @@ h3 {
   }
 
   .section-pad {
-    padding: 90px 6vw;
+    padding: 90px 6%;
   }
 
   .cert-window.collab-style-window {
-    margin-left: -6vw;
+    margin-left: 0;
   }
 
   .collab-track {
@@ -2610,8 +2680,63 @@ body.hovering #cyber-cursor-trail {
 
 @media (prefers-reduced-motion: reduce) {
   * {
-    animation-duration: .001ms !important;
+    animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: .001ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
+}
+
+/* =========================================================
+   SPECTATOR DRONE
+   ========================================================= */
+
+#spectator-drone {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 187px;
+  margin-top: -93px;
+  margin-left: -125px;
+  z-index: 10000;
+  pointer-events: none;
+  opacity: 0;
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.2, 1), opacity 0.5s ease;
+  transform-origin: center center;
+}
+
+#spectator-drone.visible {
+  opacity: 1;
+}
+
+.drone-pad {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#pad-loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.pad-left {
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.pad-right {
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.about, .work, .skills, .certificates, .education, .contact, .dark-section, .experience, .hero {
+  background: transparent !important;
 }

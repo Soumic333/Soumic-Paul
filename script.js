@@ -629,24 +629,67 @@ document.addEventListener('keydown', event => {
 
 window.addEventListener('load', () => {
     const entryScreen = document.getElementById('entry-screen');
+    const spectatorDrone = document.getElementById('spectator-drone');
     
-    if (entryScreen) {
-        // Prevent scrolling while animation plays
+    if (entryScreen && spectatorDrone) {
+        const positionDroneAt = (padId, scale, flip) => {
+            const pad = document.getElementById(padId);
+            if (pad) {
+                const rect = pad.getBoundingClientRect();
+                const x = rect.left + rect.width / 2;
+                const y = rect.top + window.scrollY + rect.height / 2;
+                spectatorDrone.style.transform = `translate(${x}px, ${y}px) scale(${scale}) scaleX(${flip})`;
+            }
+        };
+
+        // Initial setup for Loader
         document.body.style.overflow = 'hidden';
+        spectatorDrone.classList.add('visible');
+        positionDroneAt('pad-loader', 3.5, 1);
         
-        // Wait for the SVG and text animations to complete (approx 4.2s)
         setTimeout(() => {
             entryScreen.classList.add('slide-up');
-            
-            // Restore scrolling
             document.body.style.overflow = '';
             
-            // Completely remove from DOM or display:none after transition
+            // Fly out of loader to hero!
+            positionDroneAt('pad-hero', 0.9, 1);
+            
             setTimeout(() => {
                 entryScreen.style.display = 'none';
-            }, 800); // matches the 0.8s CSS transition
+            }, 800);
             
         }, 4200); 
+
+        let activePad = 'pad-hero';
+        let activeFlip = 1;
+        
+        // Ensure it stays at pad on resize
+        window.addEventListener('resize', () => {
+            if (entryScreen.style.display === 'none') {
+                positionDroneAt(activePad, 0.9, activeFlip);
+            }
+        });
+
+        // Scroll Tracking Logic for the Drone
+        const sections = document.querySelectorAll('section[id]');
+        const droneObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    
+                    if (id === 'home') {
+                        activePad = 'pad-hero';
+                    } else {
+                        activePad = 'pad-' + id;
+                    }
+                    activeFlip = 1;
+                    
+                    positionDroneAt(activePad, 0.9, activeFlip);
+                }
+            });
+        }, { threshold: 0.35 });
+
+        sections.forEach(sec => droneObserver.observe(sec));
     }
 });
 
