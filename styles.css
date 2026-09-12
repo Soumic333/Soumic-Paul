@@ -2777,7 +2777,7 @@ h3 {
   border-radius: 50%;
   pointer-events: none;
   z-index: 10000;
-  transform: translate(-50%, -50%);
+  will-change: transform, width, height;
   transition: width 0.2s, height 0.2s, background-color 0.2s;
   box-shadow: 0 0 10px var(--neon);
 }
@@ -2792,7 +2792,7 @@ h3 {
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
-  transform: translate(-50%, -50%);
+  will-change: transform, width, height;
   transition: width 0.3s, height 0.3s, border-color 0.3s, border-radius 0.3s;
   box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
 }
@@ -2817,7 +2817,7 @@ body.hovering #cyber-cursor-trail {
 
 @keyframes radarSpin {
   100% {
-    transform: translate(-50%, -50%) rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
@@ -2972,7 +2972,7 @@ body.hovering #cyber-cursor-trail {
   border-radius: 50%;
   pointer-events: none;
   z-index: 10000;
-  transform: translate(-50%, -50%);
+  will-change: transform, width, height;
   transition: width 0.2s, height 0.2s, background-color 0.2s;
   box-shadow: 0 0 10px var(--neon);
 }
@@ -2987,7 +2987,7 @@ body.hovering #cyber-cursor-trail {
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
-  transform: translate(-50%, -50%);
+  will-change: transform, width, height;
   transition: width 0.3s, height 0.3s, border-color 0.3s, border-radius 0.3s;
   box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
 }
@@ -3012,7 +3012,7 @@ body.hovering #cyber-cursor-trail {
 
 @keyframes radarSpin {
   100% {
-    transform: translate(-50%, -50%) rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 

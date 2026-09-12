@@ -271,136 +271,55 @@ if (
 
 
 /* =========================================================
-   5. HERO CIRCUIT CONSTELLATION
-   Mouse-reactive vector field
+   5. HERO CIRCUIT CONSTELLATION & GLOW PARALLAX
+   Mouse-reactive high-performance vector field
    ========================================================= */
 
-const hero =
-    document.querySelector('.hero');
+const hero = document.querySelector('.hero');
+const vector = document.querySelector('.space-vector');
+const glow1 = document.querySelector('.hero-glow-1');
+const glow2 = document.querySelector('.hero-glow-2');
 
-const vector =
-    document.querySelector('.space-vector');
+if (hero && window.matchMedia('(pointer:fine)').matches) {
+    let heroRect = hero.getBoundingClientRect();
+    let heroMouseX = 0, heroMouseY = 0;
+    let isHeroHovered = false;
+    let heroTicking = false;
 
+    // Cache rect on scroll/resize for accurate coords
+    window.addEventListener('resize', () => { heroRect = hero.getBoundingClientRect(); }, { passive: true });
+    window.addEventListener('scroll', () => { heroRect = hero.getBoundingClientRect(); }, { passive: true });
 
-if (
-    hero &&
-    vector &&
-    window.matchMedia(
-        '(pointer:fine)'
-    ).matches
-) {
+    hero.addEventListener('pointerenter', () => {
+        isHeroHovered = true;
+        heroRect = hero.getBoundingClientRect();
+    });
+    
+    hero.addEventListener('pointerleave', () => {
+        isHeroHovered = false;
+        if (vector) vector.style.transform = 'translate3d(0,0,0)';
+        if (glow1) glow1.style.transform = 'translate3d(0,0,0)';
+        if (glow2) glow2.style.transform = 'translate3d(0,0,0)';
+    });
 
-    hero.addEventListener(
-        'pointermove',
-        event => {
+    hero.addEventListener('pointermove', event => {
+        heroMouseX = event.clientX;
+        heroMouseY = event.clientY;
 
-            const rect =
-                hero.getBoundingClientRect();
+        if (!heroTicking && isHeroHovered) {
+            window.requestAnimationFrame(() => {
+                const x = (heroMouseX - heroRect.left) / heroRect.width - 0.5;
+                const y = (heroMouseY - heroRect.top) / heroRect.height - 0.5;
 
-            const x =
-                (event.clientX -
-                rect.left) /
-                rect.width -
-                0.5;
+                if (vector) vector.style.transform = `translate3d(${x * 10}px, ${y * 10}px, 0)`;
+                if (glow1) glow1.style.transform = `translate3d(${x * -20}px, ${y * -20}px, 0)`;
+                if (glow2) glow2.style.transform = `translate3d(${x * 30}px, ${y * 30}px, 0)`;
 
-            const y =
-                (event.clientY -
-                rect.top) /
-                rect.height -
-                0.5;
-
-
-            vector.style.transform =
-                `translate(
-                    ${x * 10}px,
-                    ${y * 10}px
-                )`;
-
+                heroTicking = false;
+            });
+            heroTicking = true;
         }
-    );
-
-
-    hero.addEventListener(
-        'pointerleave',
-        () => {
-
-            vector.style.transform =
-                'translate(0,0)';
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   5b. HERO NEON GLOW PARALLAX
-   ========================================================= */
-
-const glow1 =
-    document.querySelector('.hero-glow-1');
-
-const glow2 =
-    document.querySelector('.hero-glow-2');
-
-
-if (
-    hero &&
-    (glow1 || glow2) &&
-    window.matchMedia(
-        '(pointer:fine)'
-    ).matches
-) {
-
-    hero.addEventListener(
-        'pointermove',
-        event => {
-
-            const rect =
-                hero.getBoundingClientRect();
-
-            const x =
-                (event.clientX -
-                rect.left) /
-                rect.width -
-                0.5;
-
-            const y =
-                (event.clientY -
-                rect.top) /
-                rect.height -
-                0.5;
-
-            if (glow1) {
-                glow1.style.transform =
-                    `translate(
-                        ${x * 40}px,
-                        ${y * 40}px
-                    )`;
-            }
-
-            if (glow2) {
-                glow2.style.transform =
-                    `translate(
-                        ${x * -50}px,
-                        ${y * -50}px
-                    )`;
-            }
-
-        }
-    );
-
-
-    hero.addEventListener(
-        'pointerleave',
-        () => {
-
-            if (glow1) glow1.style.transform = '';
-            if (glow2) glow2.style.transform = '';
-
-        }
-    );
-
+    });
 }
 
 
@@ -675,8 +594,15 @@ window.addEventListener('load', () => {
             }, 50);
         });
 
+        let ticking = false;
         window.addEventListener('scroll', () => {
-            positionDroneAt(activePad, 0.9, activeFlip);
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    positionDroneAt(activePad, 0.9, activeFlip);
+                    ticking = false;
+                });
+                ticking = true;
+            }
         }, { passive: true });
 
         // Scroll Tracking Logic for the Drone
@@ -725,9 +651,8 @@ if (cursor && trail && window.matchMedia('(pointer:fine)').matches) {
         mouseX = e.clientX;
         mouseY = e.clientY;
         
-        // Instant cursor update
-        cursor.style.left = mouseX + 'px';
-        cursor.style.top = mouseY + 'px';
+        // Instant cursor update using GPU accelerated transform
+        cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
     });
 
     // Smooth trailing update using requestAnimationFrame
@@ -735,8 +660,7 @@ if (cursor && trail && window.matchMedia('(pointer:fine)').matches) {
         trailX += (mouseX - trailX) * 0.15;
         trailY += (mouseY - trailY) * 0.15;
         
-        trail.style.left = trailX + 'px';
-        trail.style.top = trailY + 'px';
+        trail.style.transform = `translate3d(${trailX}px, ${trailY}px, 0) translate(-50%, -50%)`;
         
         requestAnimationFrame(animateTrail);
     }
@@ -827,21 +751,26 @@ if (typingElement) {
 
     // Dynamic scroll-based line fill
     if (timeline && lineFill) {
+        let lineTicking = false;
         window.addEventListener('scroll', () => {
-            const rect = timeline.getBoundingClientRect();
-            // Start filling when top of timeline hits middle of screen
-            // Finish filling when bottom of timeline hits middle of screen
-            const start = window.innerHeight / 2;
-            
-            if (rect.top > start) {
-                lineFill.style.height = '0%';
-            } else if (rect.bottom < start) {
-                lineFill.style.height = '100%';
-            } else {
-                const total = rect.height;
-                const passed = start - rect.top;
-                const percentage = Math.max(0, Math.min(100, (passed / total) * 100));
-                lineFill.style.height = `${percentage}%`;
+            if (!lineTicking) {
+                window.requestAnimationFrame(() => {
+                    const rect = timeline.getBoundingClientRect();
+                    const start = window.innerHeight / 2;
+                    
+                    if (rect.top > start) {
+                        lineFill.style.height = '0%';
+                    } else if (rect.bottom < start) {
+                        lineFill.style.height = '100%';
+                    } else {
+                        const total = rect.height;
+                        const passed = start - rect.top;
+                        const percentage = Math.max(0, Math.min(100, (passed / total) * 100));
+                        lineFill.style.height = `${percentage}%`;
+                    }
+                    lineTicking = false;
+                });
+                lineTicking = true;
             }
         }, { passive: true });
     }
