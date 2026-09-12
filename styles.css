@@ -899,7 +899,7 @@ em {
   background-clip: text;
   color: transparent;
   text-shadow: 0 0 22px rgba(0, 240, 255, 0.35);
-  animation: glacierShine 4.5s linear infinite;
+  animation: glacierShine 1.5s linear infinite;
   margin-bottom: 60px;
 }
 
