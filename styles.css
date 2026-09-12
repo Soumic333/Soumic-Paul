@@ -506,13 +506,12 @@ em {
   line-height: 1;
   white-space: normal;
   word-break: keep-all;
-  background: linear-gradient(110deg, #f4e8ff 0%, #b34dff 22%, #7a1fcc 42%, #f4e8ff 58%, #b34dff 78%, #f4e8ff 100%);
-  background-size: 240% 100%;
+  background: linear-gradient(100deg, var(--ink) 40%, var(--neon) 48%, var(--neon-2) 54%, var(--ink) 62%);
+  background-size: 260% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  text-shadow: 0 0 22px rgba(179, 77, 255, 0.4);
-  animation: glacierShine 4.5s linear infinite;
+  animation: shimmer 5s linear infinite;
 }
 
 @keyframes shimmer {
@@ -899,7 +898,8 @@ em {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: shimmer 3s linear infinite;
+  text-shadow: 0 0 22px rgba(0, 240, 255, 0.35);
+  animation: glacierShine 4.5s linear infinite;
   margin-bottom: 60px;
 }
 
