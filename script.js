@@ -14,7 +14,7 @@ if (mobileBtn && navWrap) {
     mobileBtn.addEventListener('click', () => {
         navWrap.classList.toggle('menu-open');
     });
-    const navLinks = navWrap.querySelectorAll('.nav-content a');
+    const navLinks = navWrap.querySelectorAll('nav a');
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
             navWrap.classList.remove('menu-open');
