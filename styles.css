@@ -3044,13 +3044,14 @@ h3 {
   color: var(--ink);
   border-left: 4px solid var(--neon-2);
   padding-left: 16px;
-  margin-bottom: 40px;
+  margin-top: 20px;
+  margin-bottom: 50px;
   letter-spacing: 1px;
 }
-.cs-text {
-  color: var(--muted);
-  line-height: 1.8;
-  font-size: 16px;
+.cs-visual-card {
+  display: flex;
+  align-items: center;
+  gap: 30px;
   background: rgba(255, 255, 255, 0.02);
   padding: 40px;
   border-radius: 12px;
@@ -3058,9 +3059,32 @@ h3 {
   transition: box-shadow 0.4s var(--ease), border-color 0.4s;
   animation: floatBlock 8s ease-in-out infinite;
 }
-.cs-text:hover {
+.cs-visual-card:hover {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   border-color: rgba(255, 255, 255, 0.1);
+}
+.cs-icon-wrapper {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(0, 240, 255, 0.05);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--neon);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);
+}
+.cs-icon-wrapper svg {
+  width: 40px;
+  height: 40px;
+}
+.cs-text-content {
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 16px;
+  margin: 0;
 }
 .cs-image-frame {
   position: relative;
@@ -3134,7 +3158,7 @@ h3 {
 }
 .cs-flow-node {
   background: var(--surface);
-  border: 1px solid var(--line);
+  border: 1px solid var(--neon);
   padding: 16px;
   border-radius: 8px;
   text-align: center;
@@ -3142,11 +3166,17 @@ h3 {
   min-width: 120px;
   transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
   will-change: transform, box-shadow;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+  animation: neonBreathe 3s ease-in-out infinite alternate;
+}
+@keyframes neonBreathe {
+  0% { box-shadow: 0 0 10px rgba(0, 240, 255, 0.1); }
+  100% { box-shadow: 0 0 25px rgba(0, 240, 255, 0.4); border-color: rgba(0, 240, 255, 1); }
 }
 .cs-flow-node:hover {
   transform: translateY(-5px);
   border-color: var(--neon);
-  box-shadow: 0 10px 20px rgba(0, 240, 255, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 240, 255, 0.6);
 }
 .cs-flow-line {
   height: 2px;
@@ -3436,4 +3466,9 @@ h3 {
     right: 20px;
     z-index: 51;
   }
+}
+
+@media (max-width: 768px) {
+  .cs-visual-card { flex-direction: column; text-align: center; gap: 20px; }
+  .cs-icon-wrapper { margin: 0 auto; }
 }
