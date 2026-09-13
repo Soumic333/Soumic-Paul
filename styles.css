@@ -2446,12 +2446,13 @@ h3 {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.8s var(--ease);
+  transition: transform 1.2s cubic-bezier(0.86, 0, 0.07, 1), opacity 1s cubic-bezier(0.86, 0, 0.07, 1), filter 1s ease;
 }
 
 #entry-screen.slide-up {
-  transform: translateY(-100%);
+  transform: translateY(-100%) scale(0.95);
   opacity: 0;
+  filter: blur(10px);
   pointer-events: none;
 }
 
@@ -2514,40 +2515,40 @@ h3 {
 }
 
 .drone-camera {
-  animation: assembleCamera 4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation: assembleCamera 4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 .drone-body {
-  animation: assembleBody 4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation: assembleBody 4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 .drone-arm-tl {
-  animation: assembleArmTL 4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation: assembleArmTL 4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 .drone-arm-tr {
-  animation: assembleArmTR 4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation: assembleArmTR 4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 .drone-arm-bl {
-  animation: assembleArmBL 4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation: assembleArmBL 4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 .drone-arm-br {
-  animation: assembleArmBR 4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation: assembleArmBR 4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 @keyframes assembleCamera {
 
   0%,
   30% {
-    transform: translate(0, 150px);
+    transform: translate(0, 150px) scale(0.5);
     opacity: 0;
   }
 
   60%,
   100% {
-    transform: translate(0, 0);
+    transform: translate(0, 0) scale(1);
     opacity: 1;
   }
 }
@@ -2556,13 +2557,13 @@ h3 {
 
   0%,
   10% {
-    transform: translate(0, -150px);
+    transform: translate(0, -150px) scale(0.5);
     opacity: 0;
   }
 
   50%,
   100% {
-    transform: translate(0, 0);
+    transform: translate(0, 0) scale(1);
     opacity: 1;
   }
 }
@@ -2571,13 +2572,13 @@ h3 {
 
   0%,
   20% {
-    transform: translate(-100px, -100px);
+    transform: translate(-100px, -100px) scale(0.5);
     opacity: 0;
   }
 
   70%,
   100% {
-    transform: translate(0, 0);
+    transform: translate(0, 0) scale(1);
     opacity: 1;
   }
 }
@@ -2586,13 +2587,13 @@ h3 {
 
   0%,
   30% {
-    transform: translate(100px, -100px);
+    transform: translate(100px, -100px) scale(0.5);
     opacity: 0;
   }
 
   75%,
   100% {
-    transform: translate(0, 0);
+    transform: translate(0, 0) scale(1);
     opacity: 1;
   }
 }
@@ -2600,14 +2601,14 @@ h3 {
 @keyframes assembleArmBL {
 
   0%,
-  25% {
-    transform: translate(-100px, 100px);
+  40% {
+    transform: translate(-100px, 100px) scale(0.5);
     opacity: 0;
   }
 
-  70%,
+  80%,
   100% {
-    transform: translate(0, 0);
+    transform: translate(0, 0) scale(1);
     opacity: 1;
   }
 }
@@ -2615,14 +2616,14 @@ h3 {
 @keyframes assembleArmBR {
 
   0%,
-  35% {
-    transform: translate(100px, 100px);
+  50% {
+    transform: translate(100px, 100px) scale(0.5);
     opacity: 0;
   }
 
-  80%,
+  90%,
   100% {
-    transform: translate(0, 0);
+    transform: translate(0, 0) scale(1);
     opacity: 1;
   }
 }
