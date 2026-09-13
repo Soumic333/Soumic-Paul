@@ -3431,6 +3431,9 @@ h3 {
 }
 
 @media(min-width: 901px) {
+  .nav-content {
+    display: contents;
+  }
   .nav-wrap nav {
     position: absolute;
     left: 50%;
@@ -3442,7 +3445,7 @@ h3 {
   .pc-cta {
     position: fixed !important;
     top: 16px;
-    right: 40px;
+    right: 20px;
     z-index: 51;
   }
 }
