@@ -2809,26 +2809,61 @@ h3 {
 }
 
 @media(max-width: 900px) {
-  body, .hero-inner {
+  body {
     min-width: 0;
+  }
+  .hero-inner {
+    min-width: 0;
+    padding-inline: clamp(16px, 4vw, 24px);
   }
   .hero-bottom {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 18px;
-    margin-top: 30px;
-  }
-  .hero-item-focus {
-    order: 1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: clamp(12px, 3.5vw, 22px);
+    margin-top: 24px;
+    width: 100%;
   }
   .hero-item-live {
+    order: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .hero-item-focus {
     order: 2;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .hero-bottom-icon {
+    width: 30px;
+    height: 30px;
+    padding: 6px;
+    flex-shrink: 0;
+  }
+  .hero-bottom-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .hero-bottom-text span {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+  }
+  .hero-bottom-text strong {
+    font-size: clamp(11px, 2.7vw, 12.5px);
+    white-space: nowrap;
   }
   .scroll-indicator {
     order: 3;
+    width: 100%;
     margin-left: 0;
-    margin-top: 8px;
+    margin-top: 14px;
   }
   .pad-left, .pad-right, #pad-hero {
     top: 30px !important;
@@ -2947,9 +2982,6 @@ h3 {
 }
 
 @media(max-width: 560px) {
-  .hero-bottom {
-    gap: 18px;
-  }
   .scroll-indicator {
     margin-left: 0;
   }
