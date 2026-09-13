@@ -14,10 +14,26 @@
 </head>
 
 <body class="teammates-page">
+  <div class="noise"></div>
   <!-- STAR TRAIL CANVAS -->
   <canvas id="star-trail"></canvas>
+  
+  <div class="space-vector" aria-hidden="true">
+    <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+      <ellipse class="space-orbit orbit-a" cx="800" cy="450" rx="560" ry="260" />
+      <ellipse class="space-orbit orbit-b" cx="800" cy="450" rx="380" ry="170" />
+      <path class="space-path" d="M-100 650 C250 180 500 850 820 360 S1300 100 1750 520" />
+      <path class="space-path path-b" d="M-150 250 C220 620 520 80 860 550 S1320 800 1750 250" />
+      <circle class="space-dot" cx="250" cy="180" r="2" />
+      <circle class="space-dot" cx="450" cy="700" r="2" />
+      <circle class="space-dot" cx="1120" cy="220" r="2" />
+      <circle class="space-dot" cx="1370" cy="650" r="2" />
+    </svg>
+  </div>
+  <div class="hero-glow hero-glow-1"></div>
+  <div class="hero-glow hero-glow-2"></div>
 
-  <div class="teammates-wrapper">
+  <div class="hero teammates-wrapper">
     <div class="teammates-header">
       <div class="section-label reveal">My Beloved Teammates</div>
       <h2 class="reveal">Footstep Power Harvesting System</h2>
