@@ -2812,6 +2812,24 @@ h3 {
   body, .hero-inner {
     min-width: 0;
   }
+  .hero-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    margin-top: 30px;
+  }
+  .hero-item-focus {
+    order: 1;
+  }
+  .hero-item-live {
+    order: 2;
+  }
+  .scroll-indicator {
+    order: 3;
+    margin-left: 0;
+    margin-top: 8px;
+  }
   .pad-left, .pad-right, #pad-hero {
     top: 30px !important;
     left: 50% !important;
@@ -2930,7 +2948,7 @@ h3 {
 
 @media(max-width: 560px) {
   .hero-bottom {
-    gap: 24px;
+    gap: 18px;
   }
   .scroll-indicator {
     margin-left: 0;
