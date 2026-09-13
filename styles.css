@@ -3012,6 +3012,7 @@ h3 {
 }
 .cs-hero {
   margin-top: 40px;
+  animation: floatBlock 9s ease-in-out infinite;
 }
 .cs-hero h1 {
   font: 700 50px var(--sans);
@@ -3047,6 +3048,7 @@ h3 {
   margin-top: 20px;
   margin-bottom: 50px;
   letter-spacing: 1px;
+  animation: floatBlock 7.5s ease-in-out infinite reverse;
 }
 .cs-visual-card {
   display: flex;
@@ -3131,6 +3133,10 @@ h3 {
   align-items: center;
   gap: 16px;
   transition: transform 0.3s var(--ease), border-color 0.3s, box-shadow 0.3s;
+  animation: floatBlock 6s ease-in-out infinite;
+}
+.cs-comp-card:nth-child(even) {
+  animation: floatBlock 7s ease-in-out infinite reverse;
 }
 .cs-comp-card:hover {
   border-color: var(--neon);
@@ -3155,6 +3161,7 @@ h3 {
   border-radius: 12px;
   border: 1px solid var(--line);
   overflow-x: auto;
+  animation: floatBlock 8.5s ease-in-out infinite;
 }
 .cs-flow-node {
   background: var(--surface);
