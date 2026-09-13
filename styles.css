@@ -3432,12 +3432,16 @@ h3 {
 
 @media(min-width: 901px) {
   .nav-content {
-    display: contents;
+    /* Avoid display: contents due to Safari bugs. Make it a zero-size static container instead. */
+    position: static;
+    width: 0;
+    height: 0;
   }
   .nav-wrap nav {
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
   .mobile-cta {
     display: none !important;
