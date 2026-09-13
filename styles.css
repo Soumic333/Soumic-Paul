@@ -3044,7 +3044,8 @@ h3 {
   color: var(--ink);
   border-left: 4px solid var(--neon-2);
   padding-left: 16px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+  letter-spacing: 1px;
 }
 .cs-text {
   color: var(--muted);
@@ -3054,10 +3055,10 @@ h3 {
   padding: 40px;
   border-radius: 12px;
   border: 1px solid var(--line);
-  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s;
+  transition: box-shadow 0.4s var(--ease), border-color 0.4s;
+  animation: floatBlock 8s ease-in-out infinite;
 }
 .cs-text:hover {
-  transform: translateY(-4px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   border-color: rgba(255, 255, 255, 0.1);
 }
@@ -3069,10 +3070,10 @@ h3 {
   padding: 30px;
   background: var(--surface);
   border-radius: 12px;
-  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+  transition: box-shadow 0.5s var(--ease);
+  animation: floatBlock 7s ease-in-out infinite reverse;
 }
 .cs-image-frame:hover {
-  transform: scale(1.02);
   box-shadow: 0 20px 40px rgba(0, 240, 255, 0.15);
 }
 .cs-prototype-img {
@@ -3153,6 +3154,30 @@ h3 {
   min-width: 30px;
   background: var(--line);
   position: relative;
+  overflow: hidden;
+}
+
+.cs-flow-pulse {
+  position: absolute;
+  top: -3px;
+  left: 0;
+  width: 20px;
+  height: 8px;
+  background: var(--neon);
+  border-radius: 4px;
+  box-shadow: 0 0 10px var(--neon);
+  animation: pulseFlow 2.5s linear infinite;
+}
+.cs-flow-pulse.delay-1 { animation-delay: 0.5s; }
+.cs-flow-pulse.delay-2 { animation-delay: 1.0s; }
+.cs-flow-pulse.delay-3 { animation-delay: 1.5s; }
+.cs-flow-pulse.delay-4 { animation-delay: 2.0s; }
+
+@keyframes pulseFlow {
+  0% { left: -20px; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
 }
 
 .cs-demo-list {
@@ -3163,10 +3188,10 @@ h3 {
   padding: 30px 30px 30px 50px;
   border-radius: 12px;
   border: 1px solid var(--line);
-  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+  transition: box-shadow 0.4s var(--ease);
+  animation: floatBlock 6s ease-in-out infinite;
 }
 .cs-demo-list:hover {
-  transform: translateY(-4px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 .cs-demo-list li {
@@ -3190,11 +3215,16 @@ h3 {
   border-radius: 12px;
   border: 1px solid var(--neon-3);
   overflow-x: auto;
-  transition: transform 0.4s var(--ease), box-shadow 0.4s;
+  transition: box-shadow 0.4s;
+  animation: floatBlock 6.5s ease-in-out infinite reverse;
 }
 .cs-demo-animation:hover {
-  transform: translateY(-4px);
   box-shadow: 0 10px 30px rgba(198, 255, 60, 0.15);
+}
+
+@keyframes floatBlock {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 .demo-box {
   font: 600 12px var(--mono);
