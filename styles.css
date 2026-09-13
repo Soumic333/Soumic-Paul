@@ -2429,6 +2429,7 @@ h3 {
    ========================================================= */
 
 #entry-screen {
+  display: none !important;
   position: fixed;
   inset: 0;
   z-index: 9999;

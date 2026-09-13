@@ -562,63 +562,7 @@ document.addEventListener('keydown', event => {
     }
 });
 
-/* =========================================================
-   9. ENTRY SCREEN ANIMATION LOGIC
-   ========================================================= */
 
-window.addEventListener('load', () => {
-    const entryScreen = document.getElementById('entry-screen');
-    const spectatorDrone = document.getElementById('spectator-drone');
-    
-    if (entryScreen && spectatorDrone) {
-        if (sessionStorage.getItem('hasSeenIntro')) {
-            entryScreen.style.display = 'none';
-            spectatorDrone.style.display = 'none';
-            return;
-        }
-
-        const positionDroneAt = (padId, scale, flip) => {
-            const pad = document.getElementById(padId);
-            if (pad) {
-                const rect = pad.getBoundingClientRect();
-                // Use viewport-relative coords since drone is position:fixed
-                const x = rect.left + rect.width / 2;
-                const y = rect.top + rect.height / 2;
-                spectatorDrone.style.transform = `translate(${x}px, ${y}px) scale(${scale}) scaleX(${flip})`;
-            }
-        };
-
-        // Initial setup for Loader
-        document.body.style.overflow = 'hidden';
-        spectatorDrone.classList.add('visible');
-        const initialScale = window.innerWidth <= 900 ? 1.2 : 2.5;
-        positionDroneAt('pad-loader', initialScale, 1);
-        
-        setTimeout(() => {
-            entryScreen.classList.add('slide-up');
-            document.body.style.overflow = '';
-            
-            // Fade out the drone when the entry screen slides up
-            spectatorDrone.style.transition = 'opacity 0.6s var(--ease)';
-            spectatorDrone.style.opacity = '0';
-            
-            setTimeout(() => {
-                entryScreen.style.display = 'none';
-                spectatorDrone.style.display = 'none';
-                sessionStorage.setItem('hasSeenIntro', 'true');
-            }, 800);
-            
-        }, 4200);
-        
-        // Keep it centered if window is resized during loading
-        window.addEventListener('resize', () => {
-            if (entryScreen.style.display !== 'none') {
-                const scale = window.innerWidth <= 900 ? 1.2 : 2.5;
-                positionDroneAt('pad-loader', scale, 1);
-            }
-        });
-    }
-});
 
 /* =========================================================
    10. STAR TRAIL CURSOR
