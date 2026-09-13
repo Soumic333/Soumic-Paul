@@ -2859,7 +2859,7 @@ h3 {
     display: flex;
   }
   
-  .nav-content {
+  .nav-wrap nav {
     position: fixed;
     top: 0;
     left: 0;
@@ -2878,16 +2878,9 @@ h3 {
     z-index: 90;
   }
   
-  .menu-open .nav-content {
+  .menu-open .nav-wrap nav {
     opacity: 1;
     pointer-events: auto;
-  }
-  
-  .nav-wrap nav {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
   }
   
   .nav-wrap nav a {
@@ -3432,10 +3425,7 @@ h3 {
 
 @media(min-width: 901px) {
   .nav-content {
-    /* Avoid display: contents due to Safari bugs. Make it a zero-size static container instead. */
-    position: static;
-    width: 0;
-    height: 0;
+    display: none !important;
   }
   .nav-wrap nav {
     position: absolute;
