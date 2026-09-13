@@ -571,6 +571,12 @@ window.addEventListener('load', () => {
     const spectatorDrone = document.getElementById('spectator-drone');
     
     if (entryScreen && spectatorDrone) {
+        if (sessionStorage.getItem('hasSeenIntro')) {
+            entryScreen.style.display = 'none';
+            spectatorDrone.style.display = 'none';
+            return;
+        }
+
         const positionDroneAt = (padId, scale, flip) => {
             const pad = document.getElementById(padId);
             if (pad) {
@@ -599,6 +605,7 @@ window.addEventListener('load', () => {
             setTimeout(() => {
                 entryScreen.style.display = 'none';
                 spectatorDrone.style.display = 'none';
+                sessionStorage.setItem('hasSeenIntro', 'true');
             }, 800);
             
         }, 4200);
