@@ -3315,36 +3315,6 @@ h3 {
   .cs-flow-diagram, .cs-demo-animation {
     flex-direction: column;
     gap: 16px;
-    padding: 20px;
-  }
-  .cs-flow-line {
-    width: 2px;
-    height: 30px;
-    min-width: 2px;
-  }
-  .demo-wire {
-    width: 2px;
-    height: 30px;
-    min-width: 2px;
-  }
-  .demo-pulse {
-    top: 0;
-    left: -3px;
-    width: 8px;
-    height: 20px;
-    animation: pulseWireVertical 2s linear infinite;
-  }
-  @keyframes pulseWireVertical {
-    0% { transform: translateY(-20px); opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { transform: translateY(50px); opacity: 0; }
-  }
-  .cs-hero h1 {
-    font-size: 36px;
-  }
-}
-
 /* =========================================================
    TEAMMATES PAGE STYLES
    ========================================================= */
@@ -3484,3 +3454,30 @@ h3 {
   .cs-visual-card { flex-direction: column; text-align: center; gap: 20px; }
   .cs-icon-wrapper { margin: 0 auto; }
 }
+
+@media(max-width: 900px) {
+  .cs-flow-diagram, .cs-demo-animation {
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+  }
+  .cs-flow-line, .demo-wire {
+    width: 2px;
+    height: 30px;
+    min-width: 2px;
+  }
+  .demo-pulse, .cs-flow-pulse {
+    top: 0;
+    left: -3px;
+    width: 8px;
+    height: 20px;
+    animation-name: pulseWireVertical;
+  }
+  @keyframes pulseWireVertical {
+    0% { transform: translateY(-20px); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(50px); opacity: 0; }
+  }
+}
+
