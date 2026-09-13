@@ -3315,6 +3315,8 @@ h3 {
   .cs-flow-diagram, .cs-demo-animation {
     flex-direction: column;
     gap: 16px;
+  }
+}
 /* =========================================================
    TEAMMATES PAGE STYLES
    ========================================================= */
