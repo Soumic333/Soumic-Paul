@@ -586,84 +586,30 @@ window.addEventListener('load', () => {
         document.body.style.overflow = 'hidden';
         spectatorDrone.classList.add('visible');
         const initialScale = window.innerWidth <= 900 ? 1.2 : 2.5;
-        const getActiveScale = () => window.innerWidth <= 900 ? 0.35 : 0.9;
         positionDroneAt('pad-loader', initialScale, 1);
         
-        let isEntryAnimating = true;
-        let activePad = 'pad-hero';
-        let activeFlip = 1;
-
         setTimeout(() => {
             entryScreen.classList.add('slide-up');
             document.body.style.overflow = '';
             
-            if (window.innerWidth <= 900) {
-                spectatorDrone.classList.add('drone-behind');
-            }
-            
-            if (window.scrollY < 100) {
-                activePad = 'pad-hero';
-                activeFlip = 1;
-            }
-            
-            // Fly out of loader to activePad
-            positionDroneAt(activePad, getActiveScale(), activeFlip);
+            // Fade out the drone when the entry screen slides up
+            spectatorDrone.style.transition = 'opacity 0.6s var(--ease)';
+            spectatorDrone.style.opacity = '0';
             
             setTimeout(() => {
                 entryScreen.style.display = 'none';
-                isEntryAnimating = false;
+                spectatorDrone.style.display = 'none';
             }, 800);
             
         }, 4200);
         
-        // Reposition on resize (debounced) and scroll to handle zoom/layout changes
-        let resizeTimer;
+        // Keep it centered if window is resized during loading
         window.addEventListener('resize', () => {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(() => {
-                positionDroneAt(activePad, getActiveScale(), activeFlip);
-            }, 50);
-        });
-
-        let ticking = false;
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    positionDroneAt(activePad, getActiveScale(), activeFlip);
-                    ticking = false;
-                });
-                ticking = true;
+            if (entryScreen.style.display !== 'none') {
+                const scale = window.innerWidth <= 900 ? 1.2 : 2.5;
+                positionDroneAt('pad-loader', scale, 1);
             }
-        }, { passive: true });
-
-        // Scroll Tracking Logic for the Drone
-        const sections = document.querySelectorAll('section[id]');
-        const droneObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const id = entry.target.id;
-                    
-                    if (id === 'home') {
-                        activePad = 'pad-hero';
-                        activeFlip = 1;
-                    } else {
-                        activePad = 'pad-' + id;
-                        const padEl = document.getElementById(activePad);
-                        if (padEl && padEl.classList.contains('pad-left')) {
-                            activeFlip = -1;
-                        } else {
-                            activeFlip = 1;
-                        }
-                    }
-                    
-                    if (!isEntryAnimating) {
-                        positionDroneAt(activePad, getActiveScale(), activeFlip);
-                    }
-                }
-            });
-        }, { threshold: 0.35 });
-
-        sections.forEach(sec => droneObserver.observe(sec));
+        });
     }
 });
 
