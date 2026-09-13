@@ -2962,6 +2962,121 @@ h3 {
   }
 }
 
+/* =========================================================
+   TEAMMATES PAGE STYLES
+   ========================================================= */
+.teammates-page {
+  overflow-x: hidden;
+  background: var(--bg);
+}
+
+.teammates-wrapper {
+  position: relative;
+  z-index: 2;
+  padding: 120px 7%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.teammates-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.teammates-header h2 {
+  font: 600 50px var(--sans);
+  margin-bottom: 30px;
+  background: linear-gradient(110deg, #fff 0%, #a0a5b1 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.teammates-list {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  width: 100%;
+  max-width: 600px;
+  align-items: center;
+}
+
+.teammate-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.teammate-photo-wrap {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin-bottom: 24px;
+  border-radius: 50%;
+  padding: 4px;
+  background: linear-gradient(135deg, var(--neon), var(--neon-2), var(--neon-3), var(--neon));
+  background-size: 300% 300%;
+  animation: spinGradientBorder 6s ease infinite;
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.2);
+}
+
+.circular-box {
+  width: 100%;
+  height: 100%;
+  background: var(--surface);
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.circular-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.teammate-name {
+  font: 700 28px var(--sans);
+  margin-bottom: 8px;
+  background: linear-gradient(110deg, var(--ink) 0%, var(--neon) 22%, var(--neon-2) 42%, var(--ink) 58%, var(--neon) 78%, var(--ink) 100%);
+  background-size: 240% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: glacierShine 4.5s linear infinite;
+}
+
+.teammate-role {
+  font: 500 16px var(--mono);
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+@keyframes spinGradientBorder {
+  0% { background-position: 0% 50%; filter: hue-rotate(0deg); }
+  50% { background-position: 100% 50%; filter: hue-rotate(180deg); }
+  100% { background-position: 0% 50%; filter: hue-rotate(360deg); }
+}
+
+@media(max-width: 900px) {
+  .teammates-header h2 {
+    font-size: 36px;
+  }
+  .teammate-photo-wrap {
+    width: 160px;
+    height: 160px;
+  }
+}
+
 @media(min-width: 901px) {
   .nav-content {
     display: contents;
