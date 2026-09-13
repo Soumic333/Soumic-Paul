@@ -57,6 +57,9 @@ body {
   color: var(--ink);
   font-family: var(--sans);
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 h1,
@@ -863,14 +866,15 @@ em {
 
 .reveal {
   opacity: 0;
-  transform: translateY(26px);
+  transform: translateY(26px) translateZ(0);
   filter: blur(6px);
+  will-change: transform, opacity, filter;
   transition: opacity .8s var(--ease), transform .8s var(--ease), filter .8s var(--ease);
 }
 
 .reveal.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) translateZ(0);
   filter: blur(0);
 }
 
