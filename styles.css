@@ -2304,7 +2304,7 @@ h3 {
 }
 
 .ai-credit {
-  background: linear-gradient(90deg, var(--muted), var(--neon-2), var(--neon-3), var(--neon), var(--muted));
+  background: linear-gradient(90deg, var(--muted), var(--neon), rgba(0, 240, 255, 0.5), var(--neon), var(--muted));
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
