@@ -2315,7 +2315,7 @@ h3 {
   color: var(--muted);
 }
 
-.ai-credit {
+.cyan-shimmer {
   background: linear-gradient(90deg, var(--muted), var(--neon), rgba(0, 240, 255, 0.5), var(--neon), var(--muted));
   background-size: 200% auto;
   -webkit-background-clip: text;
