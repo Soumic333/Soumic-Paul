@@ -2301,14 +2301,76 @@ h3 {
   gap: 22px;
 }
 
-.contact-footer a {
-  color: var(--muted);
-  text-decoration: none;
-  transition: color .25s;
+.social-links {
+  display: flex;
+  gap: 16px;
+  align-items: center;
 }
 
-.contact-footer a:hover {
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--muted);
+  border: 1px solid var(--line);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.social-icon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(0, 240, 255, 0.2), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.social-icon:hover {
   color: var(--neon);
+  border-color: var(--neon);
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 240, 255, 0.15);
+}
+
+.social-icon:hover::before {
+  opacity: 1;
+}
+
+.social-icon svg {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.social-icon:hover svg {
+  transform: scale(1.1);
+}
+
+.cv-link {
+  color: var(--muted);
+  text-decoration: none;
+  font: 600 13px var(--mono);
+  letter-spacing: 0.1em;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line);
+  transition: all 0.35s ease;
+  margin-left: 10px;
+}
+
+.cv-link:hover {
+  color: var(--bg);
+  background: var(--neon);
+  border-color: var(--neon);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+  transform: translateY(-2px);
 }
 
 /* =========================================================
