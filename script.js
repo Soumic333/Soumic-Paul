@@ -7,7 +7,7 @@
    0. SMOOTH SCROLL (LENIS)
    ========================================================= */
 
-if (typeof Lenis !== 'undefined') {
+if (typeof Lenis !== 'undefined' && window.matchMedia('(pointer: fine)').matches) {
     const lenis = new Lenis({
         duration: 1.2,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
