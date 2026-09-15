@@ -2947,7 +2947,7 @@ h3 {
   .hero-portrait {
     width: min(180px, 46vw);
     aspect-ratio: 4/5;
-    margin: 14px auto 22px !important;
+    margin: 50px auto 22px !important;
     justify-self: center;
     border-radius: 18px;
   }
