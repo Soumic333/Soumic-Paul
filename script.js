@@ -537,6 +537,12 @@ function openCertificate(imgSrc, title, desc) {
     
     if (!modal || !modalImg) return;
     
+    modalImg.style.opacity = '0';
+    
+    modalImg.onload = () => {
+        modalImg.style.opacity = '1';
+    };
+    
     modalImg.src = imgSrc;
     modalTitle.innerHTML = title;
     modalDesc.innerHTML = desc;
