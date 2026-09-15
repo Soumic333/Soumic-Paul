@@ -559,27 +559,8 @@ document.addEventListener('keydown', event => {
     if (event.key === 'Escape') {
         closeProject();
         closeCertificate();
-        closeImage();
     }
 });
-
-function openImage(imgSrc) {
-    const modal = document.getElementById('imageModal');
-    const modalImg = document.getElementById('imageModalImg');
-    if (!modal || !modalImg) return;
-    modalImg.src = imgSrc;
-    modal.classList.add('open');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-}
-
-function closeImage() {
-    const modal = document.getElementById('imageModal');
-    if (!modal) return;
-    modal.classList.remove('open');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-}
 
 
 
