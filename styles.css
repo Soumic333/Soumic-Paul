@@ -452,7 +452,7 @@ em {
   z-index: 1;
   grid-column: 1;
   overflow: visible;
-  margin: 0 0 24px;
+  margin: 0 0 12px;
   justify-self: center;
   text-align: center;
   width: 100%;
@@ -505,7 +505,7 @@ em {
   font: 600 12px var(--mono);
   letter-spacing: .16em;
   color: var(--neon);
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   flex-wrap: wrap;
 }
 
@@ -542,7 +542,7 @@ em {
   line-height: 1.65;
   color: var(--muted);
   max-width: 500px;
-  margin: 0 0 32px;
+  margin: 0 0 20px;
 }
 
 #hero-typing-text {
@@ -690,7 +690,7 @@ em {
   display: flex;
   align-items: center;
   gap: 46px;
-  margin-top: 34px;
+  margin-top: 16px;
   flex-wrap: wrap;
 }
 
