@@ -3696,3 +3696,32 @@ h3 {
   .cs-icon-wrapper { margin: 0 auto; }
 }
 
+/* =========================================================
+   FULLSCREEN IMAGE MODAL
+   ========================================================= */
+.image-modal-card {
+  max-width: 95vw;
+  max-height: 95vh;
+  width: auto;
+  padding: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.image-modal-card .modal-close {
+  background: var(--surface);
+  z-index: 10;
+}
+
+.fullscreen-img {
+  max-width: 95vw;
+  max-height: 95vh;
+  object-fit: contain;
+}
+
