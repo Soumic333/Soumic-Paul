@@ -558,13 +558,20 @@ function openCertificate(imgSrc, title, desc) {
     
     if (!modal || !modalImg) return;
     
-    modalImg.src = imgSrc;
     modalTitle.innerHTML = title;
     modalDesc.innerHTML = desc;
     
+    // Open modal immediately
     modal.classList.add('open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+
+    // Defer the heavy image loading to the next frame so it doesn't block the animation
+    window.requestAnimationFrame(() => {
+        if (modalImg.getAttribute('src') !== imgSrc) {
+            modalImg.src = imgSrc;
+        }
+    });
 }
 
 function closeCertificate() {

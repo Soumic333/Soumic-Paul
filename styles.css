@@ -40,8 +40,9 @@ html {
   /* Removed scroll-behavior: smooth; to allow Lenis JS scrolling */
 }
 
-section {
+section, footer, nav {
   position: relative;
+  overflow-x: hidden;
 }
 
 section[id] {
@@ -56,7 +57,6 @@ body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--sans);
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -262,7 +262,6 @@ em {
   overflow: hidden;
   background: radial-gradient(ellipse at 20% 20%, rgba(0, 240, 255, .10), transparent 55%),
     radial-gradient(ellipse at 85% 75%, rgba(255, 43, 214, .10), transparent 55%);
-  transform: translateZ(0); /* Fix mobile ghosting */
 }
 
 .hero-inner {
@@ -347,16 +346,13 @@ em {
 
 .space-vector {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   z-index: -1;
   opacity: .5;
   pointer-events: none;
   transition: transform .3s var(--ease);
-  transform: translateZ(0);
-  will-change: transform;
 }
 
 .space-vector svg {
@@ -670,6 +666,7 @@ em {
 
 .hero-portrait img {
   position: relative;
+  z-index: 2;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1722,8 +1719,6 @@ h3 {
 
 .bento-icon.floating {
   animation: floatIcon 4s ease-in-out infinite;
-  will-change: transform;
-  transform: translateZ(0);
 }
 
 .bento-icon.delay-1 {
@@ -1834,7 +1829,6 @@ h3 {
 .collab-track {
   display: flex;
   flex-wrap: nowrap;
-  gap: 26px;
   width: max-content;
   animation: certMarquee 28s linear infinite;
   will-change: transform;
@@ -1855,12 +1849,13 @@ h3 {
   }
 
   to {
-    transform: translate3d(calc(-50% - 13px), 0, 0);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
 .collab-cert {
   flex: 0 0 340px;
+  margin-right: 26px;
   border: 1px solid var(--line);
   border-radius: 16px;
   padding: 20px;
@@ -1871,10 +1866,6 @@ h3 {
   display: flex;
   flex-direction: column;
   position: relative;
-  /* Isolate cards for mobile GPU */
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
 }
 
 .collab-cert:hover {
@@ -2916,6 +2907,15 @@ h3 {
 }
 
 @media(max-width: 900px) {
+  html, body {
+    overscroll-behavior-y: none;
+    overflow-x: visible !important;
+  }
+  
+  section {
+    contain: paint;
+  }
+  
   body {
     min-width: 0;
   }
@@ -2942,6 +2942,7 @@ h3 {
     margin: 50px auto 22px !important;
     justify-self: center;
     border-radius: 18px;
+    transform: translateZ(0) !important;
   }
   .portrait-ring {
     inset: -10px;
@@ -3056,19 +3057,41 @@ h3 {
     z-index: 10 !important;
   }
   
-  /* Mobile performance fixes */
-  .hero-glow, .portrait-glow, .club-logo-wrap::before, .activity-card::before {
+  /* Mobile performance fixes - aggressive paint reduction */
+  .hero-glow, .portrait-glow, .portrait-ring, .club-logo-wrap::before, .activity-card::before, .bento-item::before, .space-vector {
     display: none !important;
   }
   
-  .reveal {
-    filter: none !important;
-    transition: opacity .6s var(--ease), transform .6s var(--ease) !important;
+  .bento-item, .project-card, .collab-cert {
+    box-shadow: none !important;
   }
   
-  .notice-track {
-    will-change: transform;
-    transform: translateZ(0);
+  .bento-icon.floating {
+    animation: none !important;
+    transform: none !important;
+  }
+  
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+  
+  .notice-track, .collab-track {
+    will-change: auto !important;
+    backface-visibility: visible !important;
+    -webkit-backface-visibility: visible !important;
+    perspective: none !important;
+  }
+  
+  .marquee {
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
+  }
+  
+  .space-path, .space-dot {
+    animation: none !important;
   }
   
   .mobile-menu-btn {
