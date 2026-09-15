@@ -3686,6 +3686,12 @@ h3 {
   transform-origin: center 22%;
 }
 
+.teammate-img-tasmiah {
+  object-position: center 20%;
+  transform: scale(1.4);
+  transform-origin: center 20%;
+}
+
 .placeholder-avatar {
   width: 48%;
   height: 48%;
