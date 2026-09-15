@@ -2307,6 +2307,13 @@ h3 {
   align-items: center;
 }
 
+.large-socials {
+  margin-top: 32px;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .social-icon {
   display: flex;
   align-items: center;
@@ -2350,6 +2357,17 @@ h3 {
 
 .social-icon:hover svg {
   transform: scale(1.1);
+}
+
+.large-socials .social-icon {
+  width: 68px;
+  height: 68px;
+  border-radius: 18px;
+}
+
+.large-socials .social-icon svg {
+  width: 30px;
+  height: 30px;
 }
 
 .cv-link {
