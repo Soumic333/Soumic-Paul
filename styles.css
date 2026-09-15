@@ -3058,7 +3058,7 @@ h3 {
   }
   
   /* Mobile performance fixes - aggressive paint reduction */
-  .hero-glow, .portrait-glow, .portrait-ring, .club-logo-wrap::before, .activity-card::before, .bento-item::before, .space-vector {
+  .hero-glow, .club-logo-wrap::before, .activity-card::before, .bento-item::before, .space-vector {
     display: none !important;
   }
   
