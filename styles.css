@@ -452,7 +452,7 @@ em {
   z-index: 1;
   grid-column: 1;
   overflow: visible;
-  margin: 0 0 12px;
+  margin: 0 0 8px;
   justify-self: center;
   text-align: center;
   width: 100%;
