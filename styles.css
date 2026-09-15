@@ -450,7 +450,6 @@ em {
 .name-marquee {
   position: relative;
   z-index: 1;
-  grid-column: 1;
   overflow: visible;
   margin: 0 0 8px;
   justify-self: center;
@@ -484,10 +483,16 @@ em {
   }
 }
 
+.hero-left {
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .hero-content {
   position: relative;
   z-index: 1;
-  grid-column: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
