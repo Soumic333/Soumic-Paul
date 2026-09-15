@@ -452,7 +452,7 @@ em {
   z-index: 1;
   grid-column: 1;
   overflow: visible;
-  margin: 18px 0 6px;
+  margin: 0 0 24px;
   justify-self: center;
   text-align: center;
   width: 100%;
@@ -505,7 +505,7 @@ em {
   font: 600 12px var(--mono);
   letter-spacing: .16em;
   color: var(--neon);
-  margin-bottom: 14px;
+  margin-bottom: 20px;
   flex-wrap: wrap;
 }
 
@@ -542,6 +542,7 @@ em {
   line-height: 1.65;
   color: var(--muted);
   max-width: 500px;
+  margin: 0 0 32px;
 }
 
 #hero-typing-text {
@@ -558,7 +559,7 @@ em {
   display: flex;
   justify-content: center;
   gap: 14px;
-  margin: 30px 0 8px;
+  margin: 0;
   flex-wrap: wrap;
 }
 
@@ -2780,7 +2781,7 @@ h3 {
     text-align: center;
   }
   .name-marquee {
-    margin: 8px auto 4px;
+    margin: 0 auto 16px;
     text-align: center;
   }
   .name-moving {
@@ -2804,7 +2805,7 @@ h3 {
     width: 100%;
   }
   .hero-kicker {
-    margin: 0 auto 8px;
+    margin: 0 auto 12px;
     font-size: 10.5px;
     letter-spacing: 0.12em;
     gap: 6px;
@@ -2818,10 +2819,10 @@ h3 {
     font-size: 13px;
     line-height: 1.45;
     max-width: 320px;
-    margin: 0 auto 6px;
+    margin: 0 auto 20px;
   }
   .hero-actions {
-    margin: 10px auto 6px;
+    margin: 0 auto;
     gap: 10px;
   }
   .hero-btn {
