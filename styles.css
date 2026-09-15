@@ -304,7 +304,6 @@ em {
   position: absolute;
   z-index: 0;
   border-radius: 50%;
-  filter: blur(60px);
   pointer-events: none;
   transform: translateZ(0);
   will-change: transform;
@@ -316,8 +315,8 @@ em {
   height: 420px;
   top: -8%;
   left: -8%;
-  background: var(--neon);
-  opacity: .22;
+  background: radial-gradient(circle, var(--neon) 0%, transparent 65%);
+  opacity: .35;
   animation: driftA 12s ease-in-out infinite;
 }
 
@@ -326,8 +325,8 @@ em {
   height: 460px;
   bottom: -14%;
   right: -10%;
-  background: var(--neon-2);
-  opacity: .20;
+  background: radial-gradient(circle, var(--neon-2) 0%, transparent 65%);
+  opacity: .35;
   animation: driftB 14s ease-in-out infinite;
 }
 
@@ -674,7 +673,6 @@ em {
   inset: -40px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(0, 240, 255, .35), transparent 65%);
-  filter: blur(20px);
   animation: driftA 6s ease-in-out infinite;
   z-index: -1;
 }
@@ -848,15 +846,13 @@ em {
 .reveal {
   opacity: 0;
   transform: translateY(26px) translateZ(0);
-  filter: blur(6px);
-  will-change: transform, opacity, filter;
-  transition: opacity .8s var(--ease), transform .8s var(--ease), filter .8s var(--ease);
+  will-change: transform, opacity;
+  transition: opacity .8s var(--ease), transform .8s var(--ease);
 }
 
 .reveal.visible {
   opacity: 1;
   transform: translateY(0) translateZ(0);
-  filter: blur(0);
 }
 
 .reveal.delay-1 {
@@ -1293,7 +1289,6 @@ h3 {
   inset: -16px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(82, 224, 126, .4), transparent 70%);
-  filter: blur(18px);
   z-index: 0;
   animation: driftA 6s ease-in-out infinite;
 }
