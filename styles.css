@@ -1839,6 +1839,10 @@ h3 {
   animation: certMarquee 28s linear infinite;
   will-change: transform;
   transform: translateZ(0);
+  /* Mobile Safari jitter fix */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
 }
 
 .collab-track:hover {
@@ -1867,6 +1871,10 @@ h3 {
   display: flex;
   flex-direction: column;
   position: relative;
+  /* Isolate cards for mobile GPU */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .collab-cert:hover {
