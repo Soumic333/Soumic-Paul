@@ -3154,7 +3154,22 @@ h3 {
 @media(max-width: 560px) {
   .contact-footer {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+  
+  .large-socials {
+    gap: 12px;
+  }
+  .large-socials .social-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+  }
+  .large-socials .social-icon svg {
+    width: 28px;
+    height: 28px;
   }
   .cert-window.collab-style-window::before,
   .cert-window.collab-style-window::after {
