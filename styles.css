@@ -603,7 +603,7 @@ em {
   position: relative;
   z-index: 1;
   grid-column: 2;
-  grid-row: 1 / span 2;
+  grid-row: 1;
   width: min(380px, 88%);
   aspect-ratio: 4/5;
   margin-inline: auto;
