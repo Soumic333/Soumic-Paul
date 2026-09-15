@@ -254,7 +254,7 @@
             testing and overall project execution.</p>
           <div class="tag-row">
             <a href="assets/Footstep Power harvesting System.pdf" target="_blank">Presentation Slide</a>
-            <a href="javascript:void(0)" onclick="openCertificate('assets/Piezo Circuit Diagram.png', 'System Design', 'Footstep Power Harvesting System')">System Design</a>
+            <a href="javascript:void(0)" onclick="openImage('assets/Piezo Circuit Diagram.png')">System Design</a>
             <a href="teammates.html">Teammates</a>
           </div>
           <div style="display: flex; justify-content: center; margin-top: 16px;">
@@ -724,6 +724,14 @@
       <div class="modal-image-wrap cert-image-wrap">
         <img src="" alt="Certificate Image" id="certModalImg" class="modal-project-img" />
       </div>
+    </div>
+  </div>
+
+  <div class="modal" id="imageModal" aria-hidden="true">
+    <div class="modal-backdrop" onclick="closeImage()"></div>
+    <div class="modal-card image-modal-card">
+      <button class="modal-close" onclick="closeImage()">×</button>
+      <img src="" alt="Fullscreen Image" id="imageModalImg" class="fullscreen-img" />
     </div>
   </div>
 
