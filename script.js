@@ -641,13 +641,10 @@ if (canvas && window.matchMedia('(pointer:fine)').matches) {
             ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
             ctx.fillStyle = p.color;
             ctx.globalAlpha = p.life;
-            ctx.shadowBlur = 8;
-            ctx.shadowColor = p.color;
             ctx.fill();
         }
         
         ctx.globalAlpha = 1;
-        ctx.shadowBlur = 0;
         requestAnimationFrame(animateStars);
     }
     
