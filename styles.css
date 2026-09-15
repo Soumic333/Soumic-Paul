@@ -1394,9 +1394,15 @@ h3 {
   animation: blink 1.8s ease-in-out infinite;
 }
 
-.role-entry .role-date::before {
+.role-entry .role-date::before,
+.club-text .role-date::before {
   background: var(--neon);
   box-shadow: 0 0 8px var(--neon);
+}
+
+.club-text .role-date {
+  margin-left: 0;
+  margin-top: 10px;
 }
 
 .club-org.tickify {
