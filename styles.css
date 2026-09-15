@@ -793,12 +793,20 @@ em {
   background: var(--bg-soft);
   color: var(--ink);
   padding: 18px 0;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
 }
 
 .marquee-track {
   display: flex;
   width: max-content;
   animation: marquee 26s linear infinite;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .marquee-group {
@@ -811,6 +819,16 @@ em {
   text-transform: uppercase;
 }
 
+.marquee-group span {
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  cursor: default;
+}
+
+.marquee-group span:hover {
+  color: var(--neon);
+  text-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
+}
+
 .marquee i {
   color: var(--neon);
   font-style: normal;
@@ -819,7 +837,7 @@ em {
 
 @keyframes marquee {
   to {
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateZ(0);
   }
 }
 
