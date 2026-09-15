@@ -85,24 +85,20 @@ document
 const progress =
     document.querySelector('.progress span');
 
+let progressTicking = false;
+
 function updateProgress() {
-
-    const scrollHeight =
-        document.documentElement.scrollHeight -
-        window.innerHeight;
-
-    const percentage =
-        scrollHeight > 0
-            ? (window.scrollY / scrollHeight) * 100
-            : 0;
-
-    if (progress) {
-
-        progress.style.width =
-            `${percentage}%`;
-
+    if (!progressTicking) {
+        window.requestAnimationFrame(() => {
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const percentage = scrollHeight > 0 ? (window.scrollY / scrollHeight) * 100 : 0;
+            if (progress) {
+                progress.style.width = `${percentage}%`;
+            }
+            progressTicking = false;
+        });
+        progressTicking = true;
     }
-
 }
 
 window.addEventListener(
@@ -306,9 +302,9 @@ if (hero && window.matchMedia('(pointer:fine)').matches) {
     let isHeroHovered = false;
     let heroTicking = false;
 
-    // Cache rect on scroll/resize for accurate coords
+    // Cache rect on resize for accurate coords
     window.addEventListener('resize', () => { heroRect = hero.getBoundingClientRect(); }, { passive: true });
-    window.addEventListener('scroll', () => { heroRect = hero.getBoundingClientRect(); }, { passive: true });
+    // Removed expensive getBoundingClientRect() on scroll event to prevent layout thrashing
 
     hero.addEventListener('pointerenter', () => {
         isHeroHovered = true;
