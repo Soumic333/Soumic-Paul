@@ -3682,6 +3682,12 @@ h3 {
   transform-origin: center 35%;
 }
 
+.teammate-img-rifat {
+  object-position: center 25%;
+  transform: scale(1.4);
+  transform-origin: center 25%;
+}
+
 .placeholder-avatar {
   width: 48%;
   height: 48%;
