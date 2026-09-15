@@ -1582,6 +1582,7 @@ h3 {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   text-align: center;
   transition: border-color .4s, transform .4s var(--ease), box-shadow .4s;
@@ -1679,7 +1680,7 @@ h3 {
 .bento-icons {
   display: flex;
   gap: 18px;
-  margin-top: auto;
+  margin-top: 24px;
   align-items: center;
   justify-content: center;
   width: 100%;
