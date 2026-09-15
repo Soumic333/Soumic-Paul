@@ -775,4 +775,13 @@ if (typingElement) {
             observer.observe(sec);
         }
     });
+
+    // Fallback: If scrolled to the absolute bottom, always activate the last section (Contact)
+    window.addEventListener('scroll', () => {
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+            navLinks.forEach(link => link.classList.remove('active'));
+            const lastLink = navLinks[navLinks.length - 1];
+            if (lastLink) lastLink.classList.add('active');
+        }
+    }, { passive: true });
 })();
