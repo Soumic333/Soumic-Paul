@@ -435,49 +435,6 @@ em {
     r: 3.4;
   }
 }
-
-.hero-label {
-  position: relative;
-  z-index: 1;
-  grid-column: 1;
-  justify-self: center;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font: 500 11px var(--mono);
-  letter-spacing: .14em;
-  color: var(--neon);
-  border: 1px solid rgba(0, 240, 255, 0.3);
-  padding: 8px 14px;
-  border-radius: 100px;
-  width: max-content;
-  background: rgba(0, 240, 255, 0.05);
-  animation: heroLabelPulse 3s ease-in-out infinite alternate;
-}
-
-@keyframes heroLabelPulse {
-  0% {
-    box-shadow: 0 0 10px rgba(0, 240, 255, 0.1), inset 0 0 5px rgba(0, 240, 255, 0.05);
-    text-shadow: 0 0 5px rgba(0, 240, 255, 0.2);
-    transform: translateY(0);
-  }
-
-  100% {
-    box-shadow: 0 0 25px rgba(0, 240, 255, 0.3), inset 0 0 10px rgba(0, 240, 255, 0.1);
-    text-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
-    transform: translateY(-3px);
-  }
-}
-
-.hero-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--neon-3);
-  box-shadow: 0 0 0 4px rgba(198, 255, 60, .15), 0 0 10px var(--neon-3);
-  animation: blink 1.8s ease-in-out infinite;
-}
-
 @keyframes blink {
 
   0%,
@@ -2821,12 +2778,6 @@ h3 {
     flex-direction: column;
     align-items: center;
     text-align: center;
-  }
-  .hero-label {
-    margin: 0 auto;
-    justify-self: center;
-    font-size: 10px;
-    padding: 6px 12px;
   }
   .name-marquee {
     margin: 8px auto 4px;
