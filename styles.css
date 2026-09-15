@@ -3686,20 +3686,6 @@ h3 {
   .pc-cta {
     position: fixed !important;
     top: 16px;
-    right: 20px;
-    z-index: 51;
-  }
-}
-
-@media (max-width: 768px) {
-  .cs-visual-card { flex-direction: column; text-align: center; gap: 20px; }
-  .cs-icon-wrapper { margin: 0 auto; }
-}
-
-
- . i m a g e - m o d a l - c a r d   { 
-     m a x - w i d t h :   9 0 v w ; 
-     m a x - h e i g h t :   9 0 v h ; 
      w i d t h :   a u t o ; 
      p a d d i n g :   0 ; 
      b o r d e r - r a d i u s :   1 2 p x ; 
