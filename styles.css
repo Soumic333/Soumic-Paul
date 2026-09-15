@@ -177,9 +177,7 @@ em {
   .nav-wrap nav {
     display: flex;
     gap: 8px;
-    background: rgba(10, 10, 30, 0.65);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: rgba(10, 10, 30, 0.95);
     border: 1px solid rgba(160, 0, 255, 0.35);
     border-radius: 100px;
     padding: 6px 12px;
@@ -2462,8 +2460,7 @@ h3 {
 .modal-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(4, 4, 10, .8);
-  backdrop-filter: blur(6px);
+  background: rgba(4, 4, 10, 0.95);
 }
 
 .modal-card {
@@ -3082,8 +3079,7 @@ h3 {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(10, 10, 30, 0.95);
-    backdrop-filter: blur(15px);
+    background: rgba(10, 10, 30, 0.98);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -3209,8 +3205,7 @@ h3 {
   pointer-events: all;
 }
 .case-study-modal .modal-backdrop {
-  background: rgba(6, 6, 15, 0.95);
-  backdrop-filter: blur(15px);
+  background: rgba(6, 6, 15, 0.98);
 }
 .cs-container {
   position: relative;
@@ -3478,7 +3473,7 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(4, 4, 10, 0.98);
   padding: 30px;
   border-radius: 12px;
   border: 1px solid var(--neon-3);
