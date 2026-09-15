@@ -3813,3 +3813,39 @@ h3 {
   .cs-icon-wrapper { margin: 0 auto; }
 }
 
+/* =========================================================
+   FULLSCREEN IMAGE MODAL
+   ========================================================= */
+.image-modal-card {
+  max-width: 85vw;
+  max-height: 85vh;
+  width: auto;
+  padding: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  position: relative;
+}
+
+.image-modal-card .modal-close {
+  background: rgba(10, 10, 10, 0.7);
+  color: white;
+  z-index: 10;
+  top: 12px;
+  right: 12px;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.fullscreen-img {
+  max-width: 85vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
