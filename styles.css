@@ -1722,6 +1722,8 @@ h3 {
 
 .bento-icon.floating {
   animation: floatIcon 4s ease-in-out infinite;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .bento-icon.delay-1 {
