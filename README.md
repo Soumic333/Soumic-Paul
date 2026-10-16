@@ -33,7 +33,7 @@ Welcome to the repository for **Soumic Kundu Paul's** interactive portfolio webs
   - **Student Ambassador** — Tickify
 - **Achievements & Competitions**:
   - **HSBC Business Case Competition 2025**: National Round Qualifier
-  - **OSCILLON 1.0**: Finalist (National Robotics Competition)
+  - **Prism AI Creative Awards**: Finalist in Top 15 among 4,000+ Participants (AI Advertisement Segment)
 - **Interactive Toolkit**: Categorized breakdown of engineering, analytics, management, and design tools.
 - **Continuous Marquee & Certificate Wall**: Smooth RTL scrolling displays celebrating milestones and credentials.
 
