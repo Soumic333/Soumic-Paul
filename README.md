@@ -34,6 +34,7 @@ Welcome to the repository for **Soumic Kundu Paul's** interactive portfolio webs
 - **Achievements & Competitions**:
   - **HSBC Business Case Competition 2025**: National Round Qualifier
   - **Prism AI Creative Awards**: Finalist in Top 15 among 4,000+ Participants (AI Advertisement Segment)
+  - **OSCILLON 1.0**: Finalist (National Robotics Competition)
 - **Interactive Toolkit**: Categorized breakdown of engineering, analytics, management, and design tools.
 - **Continuous Marquee & Certificate Wall**: Smooth RTL scrolling displays celebrating milestones and credentials.
 
