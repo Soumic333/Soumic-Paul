@@ -112,6 +112,47 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* =========================================================
+     4B. ARCHIVE INDEX DROPDOWN
+     ========================================================= */
+
+  const navDropdown = document.getElementById('navDropdown');
+  const dropdownBtn = document.getElementById('dropdownBtn');
+
+  if (navDropdown && dropdownBtn) {
+    dropdownBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = navDropdown.classList.toggle('open');
+      dropdownBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    // Close on click outside
+    document.addEventListener('click', (e) => {
+      if (!navDropdown.contains(e.target)) {
+        navDropdown.classList.remove('open');
+        dropdownBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navDropdown.classList.contains('open')) {
+        navDropdown.classList.remove('open');
+        dropdownBtn.setAttribute('aria-expanded', 'false');
+        dropdownBtn.focus();
+      }
+    });
+
+    // Close on dropdown link click
+    const dropdownLinks = navDropdown.querySelectorAll('.dropdown-menu a');
+    dropdownLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navDropdown.classList.remove('open');
+        dropdownBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  /* =========================================================
      5. STATS COUNT-UP ANIMATION
      ========================================================= */
 
