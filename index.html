@@ -8,10 +8,10 @@
     content="Soumic Kundu Paul – The Shelby Creative Archive. Electrical & Electronic Engineering undergraduate, AI filmmaker, and creative technologist." />
   <title>Soumic Paul — The Shelby Creative Archive</title>
   
-  <!-- GOOGLE FONTS: Bebas Neue (Cinematic Display), Playfair Display (Editorial Serif), IBM Plex Mono (Archival Dossier), Inter (Body/UI) -->
+  <!-- GOOGLE FONTS: Oswald (Display Poster Headline), Cormorant Garamond & Playfair Display (Editorial Serif), Libre Franklin (Interface), DM Mono (Metadata) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Libre+Franklin:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Oswald:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -26,16 +26,12 @@
   <!-- SCROLL PROGRESS BAR -->
   <div class="progress"><span id="scroll-progress-bar"></span></div>
 
-  <!-- NAVIGATION — REDESIGNED ARCHIVE INDEX -->
+  <!-- NAVIGATION — THE ARCHIVE INDEX -->
   <header class="nav-wrap">
     <div class="nav-container">
-      <!-- LEFT: MONOGRAM & ARCHIVAL IDENTITY -->
       <a class="brand" href="#home" aria-label="Soumic Paul Dossier">
-        <span class="brand-crest">SP</span>
-        <div class="brand-text-group">
-          <span class="brand-title">SOUMIC PAUL</span>
-          <span class="brand-sub">ARCHIVE N° 1924 • BIRMINGHAM TO DHAKA</span>
-        </div>
+        <span class="brand-crest">S</span>
+        <span class="brand-title">SOUMIC PAUL <span class="brand-sub">ARCHIVE N° 1924</span></span>
       </a>
       
       <button class="mobile-menu-btn" aria-label="Toggle archive index">
@@ -44,38 +40,23 @@
         <span></span>
       </button>
       
-      <!-- CENTER: CLEAN PRIMARY DESTINATIONS & COMPACT INDEX DROPDOWN -->
       <div class="nav-content">
         <nav>
-          <a href="#about"><span class="nav-dot"></span>DOSSIER</a>
-          <a href="#work"><span class="nav-dot"></span>CASE FILES</a>
-          <a href="#reels"><span class="nav-dot"></span>AI REELS</a>
-          <a href="#investigation"><span class="nav-dot"></span>INVESTIGATION</a>
-          <a href="#gazette"><span class="nav-dot"></span>GAZETTE</a>
-          <a href="#certificates"><span class="nav-dot"></span>CREDENTIALS</a>
-          <a href="#contact"><span class="nav-dot"></span>CONTACT</a>
-          
-          <!-- COMPACT INDEX DROPDOWN FOR SECONDARY ARCHIVES -->
-          <div class="nav-dropdown" id="navDropdown">
-            <button class="dropdown-trigger" type="button" aria-haspopup="true" aria-expanded="false" id="dropdownBtn">
-              <span>INDEX</span>
-              <span class="dropdown-icon">▾</span>
-            </button>
-            <div class="dropdown-menu" id="dropdownMenu">
-              <a href="#investigation">05 // THE INVESTIGATION ROOM</a>
-              <a href="#education">06 // ACADEMIC RECORD</a>
-              <a href="#skills">07 // TECHNICAL ARSENAL</a>
-              <a href="#certificates">08 // THE EVIDENCE DECK</a>
-            </div>
-          </div>
+          <a href="#home"><span class="nav-dot"></span>01. SCENE</a>
+          <a href="#about"><span class="nav-dot"></span>02. DOSSIER</a>
+          <a href="#work"><span class="nav-dot"></span>03. CASE FILES</a>
+          <a href="#gazette"><span class="nav-dot"></span>04. GAZETTE</a>
+          <a href="#experience"><span class="nav-dot"></span>05. GUILD</a>
+          <a href="#education"><span class="nav-dot"></span>06. RECORD</a>
+          <a href="#skills"><span class="nav-dot"></span>07. ARSENAL</a>
+          <a href="#certificates"><span class="nav-dot"></span>08. DECORATIONS</a>
+          <a href="#contact"><span class="nav-dot"></span>09. TRANSMISSION</a>
         </nav>
-        
         <a class="nav-cta mobile-cta" href="assets/Soumic_Kundu_Paul_CV.pdf" target="_blank" rel="noreferrer">
           <span class="brass-seal">✦</span> INSPECT CV <span>→</span>
         </a>
       </div>
       
-      <!-- RIGHT: PROMINENT INSPECT CV BUTTON -->
       <a class="nav-cta pc-cta" href="assets/Soumic_Kundu_Paul_CV.pdf" target="_blank" rel="noreferrer">
         <span class="brass-seal">✦</span> INSPECT CV <span>→</span>
       </a>
@@ -85,10 +66,10 @@
   <main id="top" class="archive-main">
 
     <!-- =========================================================
-         CHAPTER 01: THE OPENING SCENE — PEAKY BLINDERS ASYMMETRICAL CINEMATIC HERO
-         LEFT: TYPOGRAPHIC IDENTITY | CENTER: GROUNDED PORTRAIT | RIGHT: CREATIVE DOSSIER
+         CHAPTER 01: THE OPENING SCENE — PEAKY BLINDERS CINEMATIC POSTER HERO
+         CENTERED SP_HERO PORTRAIT & POSTER TYPOGRAPHY
          ========================================================= -->
-    <section class="archive-chapter hero-chapter cinematic-dossier-hero" id="home">
+    <section class="archive-chapter hero-chapter poster-hero" id="home">
       <!-- INDUSTRIAL SKYLINE & AMBIENT LANTERNS -->
       <div class="hero-backdrop" aria-hidden="true">
         <div class="industrial-skyline"></div>
@@ -96,122 +77,85 @@
         <div class="gaslight-lantern lamp-right"></div>
       </div>
 
-      <div class="dossier-hero-grid">
-        
-        <!-- LEFT COLUMN: TYPOGRAPHIC IDENTITY -->
-        <div class="hero-col-left hero-identity-block">
-          <div class="identity-badge-wrapper entrance-item entrance-delay-1">
-            <span class="archival-kicker-label">THE CREATIVE ARCHITECT</span>
-            <span class="identity-dossier-ref">REF: SP-2026 // BIRMINGHAM ARCHIVE</span>
-          </div>
+      <div class="poster-hero-container">
+        <!-- TOP POSTER DOCKET -->
+        <div class="poster-archival-header">
+          <span class="docket-tag">SHELBY CREATIVE ARCHIVE</span>
+          <span class="docket-sep">•</span>
+          <span class="docket-tag">DIRECT WIRE // REF: SP-2026</span>
+          <span class="docket-sep">•</span>
+          <span class="docket-tag">BIRMINGHAM TO DHAKA</span>
+        </div>
 
-          <div class="hero-monumental-name entrance-item entrance-delay-2">
-            <div class="name-mask"><span class="name-line">SOUMIC</span></div>
-            <div class="name-mask"><span class="name-line name-accent">PAUL</span></div>
+        <!-- POSTER HEADLINE GROUP -->
+        <div class="poster-headline-block">
+          <h1 class="poster-main-title">SOUMIC PAUL</h1>
+          <div class="poster-motto">
+            <span class="poster-motto-text">An Engineer by Discipline. A Creator by Instinct.</span>
           </div>
-
-          <div class="hero-editorial-motto entrance-item entrance-delay-3">
-            <p class="motto-serif">An Engineer by Discipline. A Creator by Instinct.</p>
+          <div class="poster-disciplines-bar">
+            <span>AI FILMMAKING</span>
+            <span class="bullet">✦</span>
+            <span>CREATIVE TECHNOLOGY</span>
+            <span class="bullet">✦</span>
+            <span>ELECTRICAL ENGINEERING</span>
+            <span class="bullet">✦</span>
+            <span>VISUAL STORYTELLING</span>
           </div>
+        </div>
 
-          <p class="hero-editorial-synopsis entrance-item entrance-delay-4">
-            Electrical &amp; Electronic Engineering undergraduate at AUST blending kinetic energy systems, AI-directed cinema, creative technology, and strategic business leadership into immersive digital experiences.
+        <!-- CENTERED CINEMATIC FOREGROUND PORTRAIT (SP_HERO) -->
+        <div class="hero-center-portrait-wrap">
+          <div class="portrait-halo-light" aria-hidden="true"></div>
+          <div class="portrait-stage">
+            <img src="assets/SP_HERO.png" alt="Soumic Paul in dark vintage tailored suit with sunglasses" class="hero-poster-img" />
+          </div>
+          <div class="portrait-archival-tag">
+            <span class="tag-fig">FIGURE 01</span>
+            <span class="tag-title">SOUMIC PAUL // THE CREATIVE ARCHIVIST</span>
+            <span class="tag-year">EST. 2026</span>
+          </div>
+        </div>
+
+        <!-- POSTER FOOTER / LEAD COPY & ACTIONS -->
+        <div class="poster-lead-block">
+          <p class="poster-synopsis">
+            Electrical &amp; Electronic Engineering undergraduate blending technology, business thinking and leadership.
           </p>
 
-          <div class="hero-tactile-actions entrance-item entrance-delay-5">
-            <a href="#work" class="archive-btn primary-brass tactile-btn">
-              <span>EXPLORE PROJECTS</span>
+          <div class="poster-cta-row">
+            <a href="#work" class="archive-btn primary-brass">
+              <span>✦ OPEN CASE FILES</span>
               <span class="btn-arrow">→</span>
             </a>
-            <a href="#about" class="archive-btn secondary-charcoal tactile-btn">
-              <span>INSPECT DOSSIER</span>
+            <a href="#about" class="archive-btn secondary-charcoal">
+              <span>READ DOSSIER</span>
             </a>
           </div>
 
-          <div class="hero-status-ticker entrance-item entrance-delay-5">
-            <span class="status-pulse-dot"></span>
-            <span class="status-text">AVAILABLE FOR SELECT PRODUCTIONS &amp; AI DIRECTION</span>
+          <!-- CINEMATIC BILLING BLOCK -->
+          <div class="poster-billing-strip">
+            <div class="billing-col">
+              <span class="bill-label">STATION:</span>
+              <strong class="bill-val">DHAKA, BANGLADESH</strong>
+            </div>
+            <div class="billing-sep">|</div>
+            <div class="billing-col">
+              <span class="bill-label">ACADEMIC GUILD:</span>
+              <strong class="bill-val">AUST (EEE UNDERGRADUATE)</strong>
+            </div>
+            <div class="billing-sep">|</div>
+            <div class="billing-col">
+              <span class="bill-label">SPECIALIZATION:</span>
+              <strong class="bill-val">ENGINEERING + BUSINESS + AI</strong>
+            </div>
           </div>
 
-          <a href="#about" class="hero-scroll-indicator entrance-item entrance-delay-5" aria-label="Scroll to inspect dossier">
-            <span class="scroll-ind-label">OPEN ARCHIVE DOSSIER</span>
-            <span class="scroll-ind-chevron">↓</span>
-          </a>
+          <div class="scroll-invite-clean">
+            <span class="invite-label">SCROLL TO INSPECT ARCHIVES</span>
+            <span class="invite-caret">↓</span>
+          </div>
         </div>
-
-        <!-- CENTER COLUMN: HERO GROUNDED PORTRAIT (SP_HERO) -->
-        <div class="hero-col-center hero-portrait-stage entrance-item entrance-delay-3">
-          <div class="portrait-ambient-glow" aria-hidden="true"></div>
-          
-          <div class="portrait-figure-container">
-            <img src="assets/SP_HERO.png" alt="Soumic Paul in tailored vintage dark suit and black sunglasses" class="hero-grounded-portrait" />
-          </div>
-
-          <div class="portrait-archival-plaque">
-            <span class="plaque-code">FIGURE 01 // SOUMIC PAUL</span>
-            <span class="plaque-sub">THE ARCHIVIST • DHAKA, BD</span>
-          </div>
-        </div>
-
-        <!-- RIGHT COLUMN: CREATIVE DOSSIER -->
-        <div class="hero-col-right hero-dossier-block">
-          <div class="dossier-column-header entrance-item entrance-delay-2">
-            <span class="dossier-index-label">CREATIVE DOSSIER</span>
-            <span class="dossier-status-pill">INDEX // 04</span>
-          </div>
-
-          <div class="dossier-entries-list">
-            <!-- 01: ELECTRICAL ENGINEERING -->
-            <a href="#work" class="dossier-entry-card entrance-item entrance-delay-3" tabindex="0">
-              <div class="entry-meta">
-                <span class="entry-num">01</span>
-                <span class="entry-disc">HARDWARE &amp; ENERGY</span>
-              </div>
-              <h3 class="entry-title">ELECTRICAL ENGINEERING</h3>
-              <p class="entry-desc">Piezoelectric energy harvesting, power conditioning, circuit diagnostics &amp; embedded hardware.</p>
-              <div class="entry-rule"></div>
-            </a>
-
-            <!-- 02: AI FILMMAKING -->
-            <a href="#reels" class="dossier-entry-card entrance-item entrance-delay-4" tabindex="0">
-              <div class="entry-meta">
-                <span class="entry-num">02</span>
-                <span class="entry-disc">SYNTHESIS &amp; DIRECTION</span>
-              </div>
-              <h3 class="entry-title">AI FILMMAKING</h3>
-              <p class="entry-desc">PRISM Global Top 15 Finalist in AI Advertisement, visual narrative continuity &amp; cinematography.</p>
-              <div class="entry-rule"></div>
-            </a>
-
-            <!-- 03: CREATIVE TECHNOLOGY -->
-            <a href="#work" class="dossier-entry-card entrance-item entrance-delay-4" tabindex="0">
-              <div class="entry-meta">
-                <span class="entry-num">03</span>
-                <span class="entry-disc">PROTOTYPING &amp; SENSORY</span>
-              </div>
-              <h3 class="entry-title">CREATIVE TECHNOLOGY</h3>
-              <p class="entry-desc">Interactive sensory systems, generative synthesis, digital storytelling &amp; audio soundscapes.</p>
-              <div class="entry-rule"></div>
-            </a>
-
-            <!-- 04: LEADERSHIP & STRATEGY -->
-            <a href="#investigation" class="dossier-entry-card entrance-item entrance-delay-5" tabindex="0">
-              <div class="entry-meta">
-                <span class="entry-num">04</span>
-                <span class="entry-disc">COMMERCIAL ACUMEN</span>
-              </div>
-              <h3 class="entry-title">LEADERSHIP &amp; STRATEGY</h3>
-              <p class="entry-desc">HSBC Business Case National Qualifier, AUST Robotics Club Assistant Director, and operations orchestration.</p>
-              <div class="entry-rule"></div>
-            </a>
-          </div>
-
-          <a href="#work" class="dossier-scroll-invite entrance-item entrance-delay-5">
-            <span class="dossier-scroll-text">INSPECT DOSSIER CASE FILES</span>
-            <span class="dossier-scroll-arrow">↓</span>
-          </a>
-        </div>
-
       </div>
     </section>
 
@@ -270,13 +214,6 @@
             <h2 class="editorial-title">A technical mind forged in engineering, guided by a <em>cinematic lens.</em></h2>
           </div>
 
-          <div class="about-pullquote-wrap">
-            <blockquote class="editorial-pullquote">
-              “In engineering, precision is non-negotiable. In cinematic art, instinct reigns supreme. My work is forged where the two ignite each other.”
-            </blockquote>
-            <div class="brass-rule-left"></div>
-          </div>
-
           <div class="about-body-text">
             <p class="lead-paragraph">
               Motivated Electrical &amp; Electronic Engineering undergraduate with a strong blend of technical expertise, business acumen, and an obsession with moving imagery.
@@ -326,15 +263,8 @@
         <div class="brass-rule"></div>
       </div>
 
-      <div class="case-category-filters" role="tablist" aria-label="Filter case files">
-        <button class="case-filter-btn active" role="tab" aria-selected="true" data-filter="all">ALL CASE FILES</button>
-        <button class="case-filter-btn" role="tab" aria-selected="false" data-filter="engineering">01 // ENGINEERING</button>
-        <button class="case-filter-btn" role="tab" aria-selected="false" data-filter="ai-film">02 // CREATIVE TECH &amp; AI</button>
-        <button class="case-filter-btn" role="tab" aria-selected="false" data-filter="strategy">03 // STRATEGY &amp; BIZ</button>
-      </div>
-
       <!-- PRIMARY CASE FILE: FOOTSTEP POWER HARVESTING -->
-      <article class="case-file-dossier" data-category="engineering">
+      <article class="case-file-dossier">
         <div class="case-header-strip">
           <div class="case-index">CASE FILE N° 01 // ENERGY HARVESTING</div>
           <div class="case-classification">STATUS: PROTOTYPE TESTED &amp; DEMONSTRATED</div>
@@ -370,9 +300,9 @@
               <a href="assets/Footstep Power harvesting System.pdf" target="_blank" class="evidence-pill" rel="noreferrer">
                 <span>📄 Presentation Slide (PDF)</span>
               </a>
-              <button type="button" onclick="openImage('assets/Piezo Circuit Diagram.png')" class="evidence-pill">
+              <a href="javascript:void(0)" onclick="openImage('assets/Piezo Circuit Diagram.png')" class="evidence-pill">
                 <span>⚡ Circuit Blueprint</span>
-              </button>
+              </a>
               <a href="teammates.html" class="evidence-pill">
                 <span>👥 Comrades &amp; Team</span>
               </a>
@@ -389,7 +319,7 @@
       </article>
 
       <!-- SECONDARY CASE FILE: AI FILM & ADVERTISING HONORS -->
-      <article class="case-file-dossier ai-honors-file" data-category="ai-film">
+      <article class="case-file-dossier ai-honors-file">
         <div class="case-header-strip">
           <div class="case-index">CASE FILE N° 02 // CREATIVE ADVERTISING &amp; AI DIRECTION</div>
           <div class="case-classification">STATUS: TOP 15 FINALIST WORLDWIDE</div>
@@ -423,7 +353,7 @@
 
             <div class="case-evidence-links">
               <span class="evidence-pill active-pill">
-                <span>🏆 Worldwide Finalist</span>
+                <span>🏆 National / Global Finalist</span>
               </span>
               <span class="evidence-pill">
                 <span>🎬 Commercial Narrative</span>
@@ -432,367 +362,29 @@
           </div>
         </div>
       </article>
-
-      <!-- TERTIARY CASE FILE: HSBC BUSINESS CASE STRATEGY -->
-      <article class="case-file-dossier hsbc-case-file" data-category="strategy">
-        <div class="case-header-strip">
-          <div class="case-index">CASE FILE N° 03 // CORPORATE STRATEGY &amp; FINANCE</div>
-          <div class="case-classification">STATUS: NATIONAL ROUND QUALIFIER</div>
-        </div>
-
-        <div class="case-grid">
-          <div class="case-media-frame logo-focused">
-            <div class="prism-award-visual">
-              <img src="assets/HSBC_Logo.svg" alt="HSBC Business Case Competition" class="prism-dossier-logo hsbc-logo-img" />
-              <div class="award-seal">NATIONAL QUALIFIER • 2025</div>
-            </div>
-          </div>
-
-          <div class="case-details">
-            <p class="case-category-label">COMMERCIAL ACUMEN &amp; EXECUTIVE DECK ARCHITECTURE</p>
-            <h3 class="case-heading">HSBC Business Case Competition</h3>
-            <p class="case-summary">
-              Formulated data-driven corporate turnaround strategies, competitive landscape positioning, and comprehensive financial models. Designed over 50+ high-stakes presentation slides addressing market entry risks and operational efficiency under rigorous time constraints.
-            </p>
-
-            <div class="case-spec-list">
-              <div class="spec-row">
-                <span class="spec-title">CORE COMPETENCIES:</span>
-                <span class="spec-desc">Financial Structuring, Market Analysis &amp; Slide Craft</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-title">OUTCOME:</span>
-                <span class="spec-desc">Advanced to National Round amongst top collegiate teams</span>
-              </div>
-            </div>
-
-            <div class="case-evidence-links">
-              <span class="evidence-pill active-pill">
-                <span>📊 National Round</span>
-              </span>
-              <span class="evidence-pill">
-                <span>💼 Business Model Validation</span>
-              </span>
-            </div>
-          </div>
-        </div>
-      </article>
     </section>
 
     <!-- =========================================================
-         CHAPTER 04: AI WORKS — THE UNRELEASED REELS
-         ========================================================= -->
-    <section class="archive-chapter reels-chapter" id="reels">
-      <div class="chapter-badge">CHAPTER 04 // THE UNRELEASED REELS: IN-DEVELOPMENT PRODUCTIONS</div>
-
-      <div class="section-heading-centered">
-        <p class="section-kicker">CINEMATIC LABORATORY &amp; FUTURE EXHIBITIONS</p>
-        <h2 class="section-title">The Unreleased <em>Reels</em></h2>
-        <p class="section-subtitle">Stories in development. Experiments in motion. New worlds awaiting their premiere.</p>
-        <div class="brass-rule"></div>
-      </div>
-
-      <div class="reels-editorial-note">
-        <span class="reels-notice-stamp">LABORATORY DISPATCH</span>
-        <p>The following treatments represent active cinematic research, generative narrative experiments, and commercial specs currently in development. Finished films and interactive reels will debut as each project reaches its theatrical or commercial release.</p>
-      </div>
-
-      <div class="reels-deck-grid">
-        <!-- REEL 01: AI ADVERTISEMENT -->
-        <article class="reel-card" data-reel="01" tabindex="0">
-          <div class="reel-frame">
-            <div class="reel-aspect-box">
-              <div class="reel-abstract-art reel-art-chimera">
-                <div class="film-clapper-overlay">
-                  <span class="clapper-take">REEL // 01</span>
-                  <span class="clapper-fps">24 FPS • 2.39:1 CINESCOPE</span>
-                </div>
-                <div class="reel-light-sweep"></div>
-              </div>
-              <div class="reel-status-banner">
-                <span class="status-indicator-dot"></span>
-                <span class="status-name">IN DEVELOPMENT // Q2 2026</span>
-              </div>
-            </div>
-          </div>
-          <div class="reel-metadata-block">
-            <div class="reel-header-line">
-              <span class="reel-category">AI ADVERTISEMENT &amp; BRAND FILM</span>
-              <span class="reel-ref">SPEC FILE: ARC-CHIMERA</span>
-            </div>
-            <h3 class="reel-title">Project Chimera</h3>
-            <p class="reel-synopsis">
-              An exploratory commercial narrative testing photoreal visual continuity, persistent character identities, and dynamic camera choreography across complex multi-shot transitions.
-            </p>
-            <div class="reel-tech-pills">
-              <span>Prompt Choreography</span>
-              <span>Visual Continuity</span>
-              <span>Color Timing</span>
-              <span>Sound Design</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- REEL 02: EXPERIMENTAL SHORT FILM -->
-        <article class="reel-card" data-reel="02" tabindex="0">
-          <div class="reel-frame">
-            <div class="reel-aspect-box">
-              <div class="reel-abstract-art reel-art-foundry">
-                <div class="film-clapper-overlay">
-                  <span class="clapper-take">REEL // 02</span>
-                  <span class="clapper-fps">24 FPS • 1.85:1 THEATRICAL</span>
-                </div>
-                <div class="reel-light-sweep"></div>
-              </div>
-              <div class="reel-status-banner">
-                <span class="status-indicator-dot"></span>
-                <span class="status-name">STORYBOARDING &amp; SCRIPT</span>
-              </div>
-            </div>
-          </div>
-          <div class="reel-metadata-block">
-            <div class="reel-header-line">
-              <span class="reel-category">EXPERIMENTAL SHORT FILM</span>
-              <span class="reel-ref">SPEC FILE: ARC-FOUNDRY</span>
-            </div>
-            <h3 class="reel-title">Echoes of the Foundry</h3>
-            <p class="reel-synopsis">
-              A 1920s Birmingham industrial noir exploring automated labor, steam-drenched foundry aesthetics, and temporal paradoxes through rich chiaroscuro generative cinematography.
-            </p>
-            <div class="reel-tech-pills">
-              <span>Industrial Noir</span>
-              <span>Period Grading</span>
-              <span>Generative Cinema</span>
-              <span>Atmospheric Sound</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- REEL 03: AI BRAND FILM -->
-        <article class="reel-card" data-reel="03" tabindex="0">
-          <div class="reel-frame">
-            <div class="reel-aspect-box">
-              <div class="reel-abstract-art reel-art-aura">
-                <div class="film-clapper-overlay">
-                  <span class="clapper-take">REEL // 03</span>
-                  <span class="clapper-fps">24 FPS • 2.39:1 MACRO</span>
-                </div>
-                <div class="reel-light-sweep"></div>
-              </div>
-              <div class="reel-status-banner">
-                <span class="status-indicator-dot"></span>
-                <span class="status-name">LOOKDEV &amp; COLOR STUDY</span>
-              </div>
-            </div>
-          </div>
-          <div class="reel-metadata-block">
-            <div class="reel-header-line">
-              <span class="reel-category">LUXURY SPEC COMMERCIAL</span>
-              <span class="reel-ref">SPEC FILE: ARC-AURA</span>
-            </div>
-            <h3 class="reel-title">Aura Chronograph</h3>
-            <p class="reel-synopsis">
-              High-precision macro product cinematography exploring physical light reflections across brushed titanium and antique brass horological complications with synthetic audio foley.
-            </p>
-            <div class="reel-tech-pills">
-              <span>Macro Lighting</span>
-              <span>Material Physics</span>
-              <span>Horological Design</span>
-              <span>Foley Synthesis</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- REEL 04: VISUAL EXPERIMENTS -->
-        <article class="reel-card" data-reel="04" tabindex="0">
-          <div class="reel-frame">
-            <div class="reel-aspect-box">
-              <div class="reel-abstract-art reel-art-kinetic">
-                <div class="film-clapper-overlay">
-                  <span class="clapper-take">REEL // 04</span>
-                  <span class="clapper-fps">60 FPS • SENSORY STUDY</span>
-                </div>
-                <div class="reel-light-sweep"></div>
-              </div>
-              <div class="reel-status-banner">
-                <span class="status-indicator-dot"></span>
-                <span class="status-name">ONGOING LABORATORY</span>
-              </div>
-            </div>
-          </div>
-          <div class="reel-metadata-block">
-            <div class="reel-header-line">
-              <span class="reel-category">SYNTHETIC MOTION STUDIES</span>
-              <span class="reel-ref">SPEC FILE: ARC-KINETIC</span>
-            </div>
-            <h3 class="reel-title">Synthetic Motion Studies</h3>
-            <p class="reel-synopsis">
-              Ongoing research benchmarking generative video motion coherence, vector transformations, prompt cadence modulation, and physics-informed lighting interactions.
-            </p>
-            <div class="reel-tech-pills">
-              <span>Vector Dynamics</span>
-              <span>Model Benchmarking</span>
-              <span>Neural Synthesis</span>
-              <span>Visual R&amp;D</span>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- =========================================================
-         CHAPTER 05: LEADERSHIP & OPERATIONS — THE INVESTIGATION ROOM
-         SIGNATURE INTERACTIVE CAMERA-LENS APERTURE VIEWER
-         ========================================================= -->
-    <section class="archive-chapter investigation-chapter" id="investigation">
-      <div class="chapter-badge">CHAPTER 05 // THE INVESTIGATION ROOM: LEADERSHIP &amp; STRATEGY</div>
-
-      <div class="section-heading-centered">
-        <p class="section-kicker">OPERATIONAL COMMAND &amp; VERIFIED RECORDS</p>
-        <h2 class="section-title">The Investigation <em>Room</em></h2>
-        <p class="section-subtitle">Examine verified operations, organizational commands, and competition laurels through the optical camera-lens viewfinder.</p>
-        <div class="brass-rule"></div>
-      </div>
-
-      <!-- CAMERA-LENS INVESTIGATION INTERFACE -->
-      <div class="investigation-chamber" id="investigationChamber">
-        
-        <!-- LEFT: OPTICAL CAMERA-LENS VIEWFINDER -->
-        <div class="lens-viewfinder-column">
-          <div class="lens-assembly" id="lensAssembly" role="region" aria-label="Camera lens inspection viewer">
-            <!-- Brass outer barrel with engraved aperture stops -->
-            <div class="lens-barrel-outer">
-              <div class="barrel-engravings">
-                <span class="engrave-stop">f/1.4</span>
-                <span class="engrave-stop">f/2.8</span>
-                <span class="engrave-stop">f/4</span>
-                <span class="engrave-stop">f/5.6</span>
-                <span class="engrave-stop">f/8</span>
-                <span class="engrave-stop">f/11</span>
-                <span class="engrave-stop">f/16</span>
-              </div>
-              <div class="lens-index-dot" aria-hidden="true">▲</div>
-            </div>
-
-            <!-- Optical Glass Chamber with concentric reticle -->
-            <div class="lens-glass-chamber">
-              <!-- Aperture Iris Blades that expand/dilate -->
-              <div class="aperture-iris" id="apertureIris">
-                <div class="iris-blade blade-1"></div>
-                <div class="iris-blade blade-2"></div>
-                <div class="iris-blade blade-3"></div>
-                <div class="iris-blade blade-4"></div>
-                <div class="iris-blade blade-5"></div>
-                <div class="iris-blade blade-6"></div>
-              </div>
-
-              <!-- Reticle crosshairs and focus ring -->
-              <div class="lens-reticle" aria-hidden="true">
-                <div class="reticle-circle-outer"></div>
-                <div class="reticle-circle-inner"></div>
-                <div class="reticle-cross-h"></div>
-                <div class="reticle-cross-v"></div>
-                <div class="reticle-bracket tl"></div>
-                <div class="reticle-bracket tr"></div>
-                <div class="reticle-bracket bl"></div>
-                <div class="reticle-bracket br"></div>
-              </div>
-
-              <!-- Inside View: Logo / Visual with Focus Blur Effect -->
-              <div class="lens-subject-view" id="lensSubjectView">
-                <img src="assets/AUST_RC.png" alt="AUST Robotics Club" id="lensSubjectImg" class="lens-subject-img in-focus" />
-                <div class="lens-glass-glare" aria-hidden="true"></div>
-              </div>
-            </div>
-
-            <!-- Lens Focal Metadata Tag -->
-            <div class="lens-status-bar">
-              <span class="lens-optic-spec">50MM F/1.4 • ANAMORPHIC CINE OPTIC</span>
-              <span class="lens-shutter-spec" id="lensShutterSpec">EXPOSURE: RECORD 01 // 1/250S</span>
-            </div>
-          </div>
-
-          <!-- Interactive Record Selector Tabs (1 to 4) -->
-          <div class="lens-records-selector" role="tablist" aria-label="Select leadership record to inspect">
-            <button class="lens-select-tab active" role="tab" aria-selected="true" data-record="0" id="tab-rec-0" aria-controls="investigationDossierPanel" tabindex="0">
-              <span class="tab-index">01</span>
-              <span class="tab-label">AUST ROBOTICS</span>
-            </button>
-            <button class="lens-select-tab" role="tab" aria-selected="false" data-record="1" id="tab-rec-1" aria-controls="investigationDossierPanel" tabindex="0">
-              <span class="tab-index">02</span>
-              <span class="tab-label">TICKIFY</span>
-            </button>
-            <button class="lens-select-tab" role="tab" aria-selected="false" data-record="2" id="tab-rec-2" aria-controls="investigationDossierPanel" tabindex="0">
-              <span class="tab-index">03</span>
-              <span class="tab-label">HSBC CASE</span>
-            </button>
-            <button class="lens-select-tab" role="tab" aria-selected="false" data-record="3" id="tab-rec-3" aria-controls="investigationDossierPanel" tabindex="0">
-              <span class="tab-index">04</span>
-              <span class="tab-label">PRISM AI</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- RIGHT: INSPECTION RECORD DOSSIER PANEL -->
-        <div class="investigation-dossier-column" id="investigationDossierPanel" role="tabpanel" aria-labelledby="tab-rec-0">
-          <div class="lens-dossier-card" id="activeDossierCard">
-            <div class="dossier-header-strip">
-              <span class="dossier-ref" id="dossierRef">FILE REF: ARC-LD-01 // UNIVERSITY GUILD</span>
-              <span class="dossier-status-pill" id="dossierStatus">ACTIVE COMMISSION</span>
-            </div>
-            <div class="dossier-title-area">
-              <span class="dossier-org-tag" id="dossierOrg">AUST ROBOTICS CLUB</span>
-              <h3 class="dossier-role-title" id="dossierRole">Assistant Director – Administration</h3>
-              <p class="dossier-date-line" id="dossierDate">JANUARY 2025 – PRESENT • DHAKA, BANGLADESH</p>
-            </div>
-            <div class="dossier-rule"></div>
-            <p class="dossier-overview" id="dossierDesc">
-              Direct high-stakes administrative operations, coordinate cross-team engineering workflows, govern event schedules, and drive large-scale organizational initiatives across the university.
-            </p>
-            <div class="dossier-achievements-block">
-              <h4 class="dossier-subhead">VERIFIED OPERATIONAL DELIVERABLES</h4>
-              <ul class="dossier-bullets" id="dossierBullets">
-                <li>Led end-to-end planning and flawless execution of 2 major national robotics events.</li>
-                <li>Coordinated 200+ event participants and 70+ operational volunteers on the ground.</li>
-                <li>Managed vendor negotiations, equipment procurement, and comprehensive event logistics.</li>
-                <li>Engineered cross-functional frameworks for prompt conflict resolution and execution.</li>
-              </ul>
-            </div>
-            <div class="dossier-footer-bar">
-              <div class="dossier-stamp">
-                <span class="stamp-icon">✦</span>
-                <span class="stamp-text" id="dossierStamp">AUTHENTICATED DISPATCH // ARC ARCHIVE</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- =========================================================
-         CHAPTER 06: THE SHELBY GAZETTE — DISPATCHES & PERIODICALS
-         VINTAGE NEWSPAPER LAYOUT WITH UNFOLDING ANIMATION
+         CHAPTER 04: "SOUMIC'S LIFELESS UPDATES" — THE BIRMINGHAM GAZETTE
          ========================================================= -->
     <section class="archive-chapter gazette-chapter" id="gazette">
-      <div class="chapter-badge">CHAPTER 06 // THE SHELBY GAZETTE: PRINTED DISPATCHES &amp; PERIODICALS</div>
+      <div class="chapter-badge">CHAPTER 04 // THE ARCHIVAL PRESS &amp; GAZETTE</div>
 
       <div class="section-heading-centered">
         <p class="section-kicker">PRINTED DISPATCHES &amp; PERIODICALS</p>
-        <h2 class="section-title">The Shelby <em>Gazette</em></h2>
-        <p class="section-subtitle">Dispatches from the intersection of engineering, creativity, and ambition.</p>
+        <h2 class="section-title">Soumic's Lifeless Updates</h2>
         <div class="brass-rule"></div>
       </div>
 
       <!-- THE BIRMINGHAM GAZETTE BROADSHEET INTERFACE -->
-      <div class="gazette-wrapper" id="gazetteWrapper">
+      <div class="gazette-wrapper">
         <div class="newspaper-masthead">
           <div class="masthead-top">
             <span>THE ARCHIVAL CHRONICLE</span>
             <span>BIRMINGHAM TO DHAKA EDITION</span>
             <span>PRICE: ONE PENNY</span>
           </div>
-          <h3 class="gazette-paper-title">THE SHELBY GAZETTE</h3>
+          <h3 class="gazette-paper-title">THE BIRMINGHAM GAZETTE</h3>
           <div class="masthead-bottom">
             <span>ESTABLISHED 1920 • ARCHIVE REF: N° 2026</span>
             <span>VOL. IV — NO. 44</span>
@@ -889,10 +481,103 @@
     </section>
 
     <!-- =========================================================
-         CHAPTER 07: EDUCATION — THE ACADEMIC RECORD
+         CHAPTER 05: EXPERIENCE & ACHIEVEMENTS — THE GUILD DOSSIER
+         ========================================================= -->
+    <section class="archive-chapter experience-chapter" id="experience">
+      <div class="chapter-badge">CHAPTER 05 // GUILD ORDERS &amp; EXTRACURRICULAR COMMISSIONS</div>
+
+      <div class="section-heading-centered">
+        <p class="section-kicker">LEADERSHIP &amp; OPERATIONS</p>
+        <h2 class="section-title">Command, organization &amp; <em>strategic delivery.</em></h2>
+        <div class="brass-rule"></div>
+      </div>
+
+      <div class="guild-container">
+        <!-- ROLE 1: AUST ROBOTICS CLUB -->
+        <article class="guild-card">
+          <div class="guild-card-header">
+            <div class="guild-logo-box">
+              <img src="assets/AUST_RC.png" alt="AUST Robotics Club" class="guild-logo-img" />
+            </div>
+            <div class="guild-title-box">
+              <div class="guild-org">AUST ROBOTICS CLUB</div>
+              <h3 class="guild-position">Assistant Director – Administration</h3>
+              <span class="guild-dates">JAN 2025 – PRESENT // ACTIVE DISPATCH</span>
+            </div>
+          </div>
+          <div class="guild-body">
+            <p class="guild-desc">
+              Oversee high-stakes administrative operations, coordinate cross-team engineering workflows, govern schedules, and drive large-scale organizational initiatives across the university.
+            </p>
+            <ul class="guild-duties">
+              <li>Led end-to-end planning and flawless execution of 2 major national robotics events.</li>
+              <li>Coordinated 200+ event participants and 70+ operational volunteers on the ground.</li>
+              <li>Managed vendor negotiations, equipment procurement, and comprehensive event logistics.</li>
+              <li>Engineered cross-functional frameworks for prompt conflict resolution and execution.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- ROLE 2: TICKIFY -->
+        <article class="guild-card">
+          <div class="guild-card-header">
+            <div class="guild-logo-box">
+              <img src="assets/Tickify.jpg" alt="Tickify Logo" class="guild-logo-img" />
+            </div>
+            <div class="guild-title-box">
+              <div class="guild-org">TICKIFY</div>
+              <h3 class="guild-position">Student Ambassador</h3>
+              <span class="guild-dates">SEPT 2026 – PRESENT // CAMPUS LIAISON</span>
+            </div>
+          </div>
+          <div class="guild-body">
+            <p class="guild-desc">
+              Representing Tickify within the university ecosystem — driving strategic awareness, successfully onboarding student creators, and channeling vital user feedback directly back to the engineering team.
+            </p>
+          </div>
+        </article>
+
+        <!-- NATIONAL ACHIEVEMENTS PANELS -->
+        <div class="achievements-section-wrap">
+          <div class="achievements-banner">
+            <span class="archival-stamp-small">OFFICIAL COMMENDATIONS</span>
+            <h3>National Case Strategy &amp; AI Laurels</h3>
+          </div>
+
+          <div class="achievements-pair">
+            <!-- HSBC -->
+            <div class="achievement-plaque">
+              <div class="plaque-icon">
+                <img src="assets/HSBC_Logo.svg" alt="HSBC Logo" />
+              </div>
+              <div class="plaque-info">
+                <span class="plaque-badge">NATIONAL QUALIFIER • 2025</span>
+                <h4 class="plaque-title">HSBC Business Case Competition</h4>
+                <p class="plaque-text">National Round Qualifier in Corporate Strategy, Financial Modeling &amp; Case Problem Solving.</p>
+              </div>
+            </div>
+
+            <!-- PRISM -->
+            <div class="achievement-plaque">
+              <div class="plaque-icon">
+                <img src="assets/Prism_Logo.png" alt="PRISM AI Creative Awards" />
+              </div>
+              <div class="plaque-info">
+                <span class="plaque-badge prism-gold">TOP 15 FINALIST • 4,000+ ENTRANTS</span>
+                <h4 class="plaque-title">PRISM AI Creative Awards 2026</h4>
+                <p class="plaque-text">Worldwide Finalist in AI Advertisement, evaluated on cinematic storytelling and generative mastery.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         CHAPTER 06: EDUCATION — THE ACADEMIC RECORD
          ========================================================= -->
     <section class="archive-chapter education-chapter" id="education">
-      <div class="chapter-badge">CHAPTER 07 // ACADEMIC RECORD: PEDIGREE &amp; SCHOLARSHIP</div>
+      <div class="chapter-badge">CHAPTER 06 // ACADEMIC RECORD: PEDIGREE &amp; SCHOLARSHIP</div>
 
       <div class="section-heading-centered">
         <p class="section-kicker">INSTITUTIONAL FOUNDATIONS</p>
@@ -956,68 +641,48 @@
     </section>
 
     <!-- =========================================================
-         CHAPTER 08: SKILLS & EXPERTISE — THE ARSENAL
-         FIVE VERIFIED CATEGORIES: NO FAKE PERCENTAGE PROGRESS BARS
+         CHAPTER 07: SKILLS — THE TECHNICAL ARSENAL
          ========================================================= -->
     <section class="archive-chapter skills-chapter" id="skills">
-      <div class="chapter-badge">CHAPTER 08 // THE ARSENAL: CROSS-FUNCTIONAL CAPABILITIES</div>
+      <div class="chapter-badge">CHAPTER 07 // ARSENAL: TOOLS &amp; INSTRUMENTS</div>
 
       <div class="section-heading-centered">
         <p class="section-kicker">CROSS-FUNCTIONAL CAPABILITIES</p>
         <h2 class="section-title">Instruments utilized to <em>manifest visions.</em></h2>
-        <p class="section-subtitle">Verified technical capabilities, software toolchains, and strategic methodologies.</p>
         <div class="brass-rule"></div>
       </div>
 
-      <div class="arsenal-five-grid">
-        <!-- 01: ENGINEERING & ELECTRONICS -->
-        <div class="arsenal-card" tabindex="0">
+      <div class="arsenal-bento">
+        <!-- 01: ENGINEERING & TECH -->
+        <div class="arsenal-card tech-card">
           <div class="card-num">01</div>
-          <h3 class="card-title">Engineering &amp; Electronics</h3>
-          <p class="card-desc">Circuit analysis, kinetic energy harvesting, sensor interfacing &amp; embedded hardware.</p>
+          <h3 class="card-title">Engineering &amp; Hardware</h3>
+          <p class="card-desc">Low-level computation, simulation, algorithmic modeling, and circuit hardware.</p>
           <div class="arsenal-pills">
-            <span>Energy Harvesting</span>
-            <span>Circuit Analysis</span>
-            <span>Power Conditioning</span>
-            <span>Sensor Interfacing</span>
+            <span>C++</span>
+            <span>Python</span>
+            <span>MATLAB</span>
             <span>Arduino</span>
             <span>Proteus</span>
             <span>Spyder IDE</span>
           </div>
           <div class="arsenal-brand-row">
+            <img src="assets/Matlab_Logo.png" alt="MATLAB" class="arsenal-icon" />
             <img src="assets/Proteus.png" alt="Proteus" class="arsenal-icon" />
           </div>
         </div>
 
-        <!-- 02: PROGRAMMING & TECHNICAL TOOLS -->
-        <div class="arsenal-card" tabindex="0">
+        <!-- 02: DESIGN & FILMMAKING -->
+        <div class="arsenal-card design-card">
           <div class="card-num">02</div>
-          <h3 class="card-title">Programming &amp; Technical Tools</h3>
-          <p class="card-desc">Algorithmic modeling, computational mathematics, version control, and simulation pipelines.</p>
+          <h3 class="card-title">Cinematic &amp; Creative Direction</h3>
+          <p class="card-desc">Generative AI direction, visual styling, video editing, poster art, and branding.</p>
           <div class="arsenal-pills">
-            <span>C++</span>
-            <span>Python</span>
-            <span>MATLAB</span>
-            <span>Git &amp; GitHub</span>
-            <span>Numerical Methods</span>
-          </div>
-          <div class="arsenal-brand-row">
-            <img src="assets/Matlab_Logo.png" alt="MATLAB" class="arsenal-icon" />
-          </div>
-        </div>
-
-        <!-- 03: CREATIVE PRODUCTION -->
-        <div class="arsenal-card" tabindex="0">
-          <div class="card-num">03</div>
-          <h3 class="card-title">Creative Production</h3>
-          <p class="card-desc">Generative AI direction, prompt choreography, visual grading, video editing &amp; poster design.</p>
-          <div class="arsenal-pills">
-            <span>Generative AI</span>
             <span>Premiere Pro</span>
             <span>Photoshop</span>
-            <span>Color Grading</span>
             <span>Canva</span>
-            <span>Visual Consistency</span>
+            <span>Generative AI</span>
+            <span>Color Grading</span>
           </div>
           <div class="arsenal-brand-row">
             <img src="assets/Premire%20Pro.webp" alt="Premiere Pro" class="arsenal-icon" />
@@ -1026,53 +691,38 @@
           </div>
         </div>
 
-        <!-- 04: LEADERSHIP & OPERATIONS -->
-        <div class="arsenal-card" tabindex="0">
-          <div class="card-num">04</div>
-          <h3 class="card-title">Leadership &amp; Operations</h3>
-          <p class="card-desc">Cross-functional team administration, event logistics, volunteer mobilization &amp; stakeholder management.</p>
+        <!-- 03: BUSINESS STRATEGY -->
+        <div class="arsenal-card business-card">
+          <div class="card-num">03</div>
+          <h3 class="card-title">Business &amp; Operations</h3>
+          <p class="card-desc">Case competition analytics, financial presentation, team orchestration, and execution.</p>
           <div class="arsenal-pills">
-            <span>Event Management</span>
-            <span>Team Orchestration</span>
-            <span>200+ Attendees</span>
-            <span>70+ Volunteers</span>
-            <span>Vendor Relations</span>
-            <span>Crisis Resolution</span>
-          </div>
-        </div>
-
-        <!-- 05: BUSINESS & STRATEGY -->
-        <div class="arsenal-card" tabindex="0">
-          <div class="card-num">05</div>
-          <h3 class="card-title">Business &amp; Strategy</h3>
-          <p class="card-desc">Case competition analytics, financial presentation architecture, corporate turnaround modeling.</p>
-          <div class="arsenal-pills">
-            <span>Corporate Strategy</span>
             <span>Problem Solving</span>
-            <span>50+ Slide Decks</span>
-            <span>Financial Structuring</span>
+            <span>Strategy</span>
+            <span>Leadership</span>
             <span>Excel</span>
             <span>PowerPoint</span>
+            <span>Word</span>
           </div>
           <div class="arsenal-brand-row">
             <img src="assets/Excel.webp" alt="Excel" class="arsenal-icon" />
             <img src="assets/Powerpoint.webp" alt="PowerPoint" class="arsenal-icon" />
+            <img src="assets/Word.webp" alt="Word" class="arsenal-icon" />
           </div>
         </div>
       </div>
     </section>
 
     <!-- =========================================================
-         CHAPTER 09: CERTIFICATES — THE EVIDENCE ARCHIVE
-         INTERACTIVE CARD STACK WITH FANNING & PREVIEW MODAL
+         CHAPTER 08: CERTIFICATES — THE ACHIEVEMENT DECK
          ========================================================= -->
     <section class="archive-chapter certificates-chapter" id="certificates">
-      <div class="chapter-badge">CHAPTER 09 // THE EVIDENCE ARCHIVE: AUTHENTICATED CREDENTIAL DECK</div>
+      <div class="chapter-badge">CHAPTER 08 // THE ACHIEVEMENT DECK: CERTIFICATES &amp; SEALS</div>
 
       <div class="section-heading-centered">
         <p class="section-kicker">VERIFIED ARCHIVAL DOCUMENTS</p>
-        <h2 class="section-title">The Evidence <em>Archive</em></h2>
-        <p class="section-subtitle">Authenticated credential deck of leadership commissions, competition honors, and academic citations.</p>
+        <h2 class="section-title">The Shelby Archive Deck</h2>
+        <p class="section-subtitle">A collection of authenticated honors, leadership credentials, and competition recognitions.</p>
         <div class="brass-rule"></div>
       </div>
 
@@ -1289,7 +939,7 @@
          CHAPTER 09: CONTACT & FOOTER — THE FINAL FRAME
          ========================================================= -->
     <section class="archive-chapter contact-chapter" id="contact">
-      <div class="chapter-badge">CHAPTER 10 // FINAL TRANSMISSION: DIRECT WIRE &amp; CLOSING CREDITS</div>
+      <div class="chapter-badge">CHAPTER 09 // TRANSMISSION: THE FINAL FRAME</div>
 
       <div class="contact-dossier-inner">
         <div class="closing-slate">
