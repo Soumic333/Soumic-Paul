@@ -8,10 +8,10 @@
     content="Soumic Kundu Paul – The Shelby Creative Archive. Electrical & Electronic Engineering undergraduate, AI filmmaker, and creative technologist." />
   <title>Soumic Paul — The Shelby Creative Archive</title>
   
-  <!-- GOOGLE FONTS: Oswald (Display), Playfair Display (Editorial Serif), Libre Franklin (Interface & Body), DM Mono (Monospace) -->
+  <!-- GOOGLE FONTS: Oswald (Display Poster Headline), Cormorant Garamond & Playfair Display (Editorial Serif), Libre Franklin (Interface), DM Mono (Metadata) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Libre+Franklin:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Oswald:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Libre+Franklin:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Oswald:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -29,7 +29,7 @@
   <!-- NAVIGATION — THE ARCHIVE INDEX -->
   <header class="nav-wrap">
     <div class="nav-container">
-      <a class="brand" href="#top" aria-label="Soumic Paul Dossier">
+      <a class="brand" href="#home" aria-label="Soumic Paul Dossier">
         <span class="brand-crest">S</span>
         <span class="brand-title">SOUMIC PAUL <span class="brand-sub">ARCHIVE N° 1924</span></span>
       </a>
@@ -66,94 +66,96 @@
   <main id="top" class="archive-main">
 
     <!-- =========================================================
-         CHAPTER 01: THE OPENING SCENE (HERO)
+         CHAPTER 01: THE OPENING SCENE — PEAKY BLINDERS CINEMATIC POSTER HERO
+         CENTERED SP_HERO PORTRAIT & POSTER TYPOGRAPHY
          ========================================================= -->
-    <section class="archive-chapter hero-chapter" id="home">
-      <div class="chapter-badge">CHAPTER 01 // THE OPENING SCENE</div>
-      
-      <!-- INDUSTRIAL SKYLINE & LANTERNS BACKGROUND -->
+    <section class="archive-chapter hero-chapter poster-hero" id="home">
+      <!-- INDUSTRIAL SKYLINE & AMBIENT LANTERNS -->
       <div class="hero-backdrop" aria-hidden="true">
         <div class="industrial-skyline"></div>
         <div class="gaslight-lantern lamp-left"></div>
         <div class="gaslight-lantern lamp-right"></div>
-        <div class="fog-drift fog-layer-1"></div>
-        <div class="fog-drift fog-layer-2"></div>
       </div>
 
-      <div class="hero-inner">
-        <div class="hero-editorial">
-          <div class="archive-stamp">
-            <span class="stamp-pill">CLASSIFIED DOSSIER</span>
-            <span class="stamp-ref">REF: SP-2026 // BIRMINGHAM ARCHIVE</span>
-          </div>
+      <div class="poster-hero-container">
+        <!-- TOP POSTER DOCKET -->
+        <div class="poster-archival-header">
+          <span class="docket-tag">SHELBY CREATIVE ARCHIVE</span>
+          <span class="docket-sep">•</span>
+          <span class="docket-tag">DIRECT WIRE // REF: SP-2026</span>
+          <span class="docket-sep">•</span>
+          <span class="docket-tag">BIRMINGHAM TO DHAKA</span>
+        </div>
 
-          <div class="hero-title-group">
-            <h1 class="hero-name">SOUMIC PAUL</h1>
-            <div class="hero-motto">
-              <span class="motto-lead">AN ENGINEER BY DISCIPLINE.</span>
-              <span class="motto-sub">A CREATOR BY INSTINCT.</span>
-            </div>
+        <!-- POSTER HEADLINE GROUP -->
+        <div class="poster-headline-block">
+          <h1 class="poster-main-title">SOUMIC PAUL</h1>
+          <div class="poster-motto">
+            <span class="poster-motto-text">An Engineer by Discipline. A Creator by Instinct.</span>
           </div>
-
-          <div class="hero-disciplines">
-            <span class="disc-tag">AI FILMMAKING</span>
-            <span class="disc-sep">•</span>
-            <span class="disc-tag">CREATIVE TECHNOLOGY</span>
-            <span class="disc-sep">•</span>
-            <span class="disc-tag">ELECTRICAL ENGINEERING</span>
-            <span class="disc-sep">•</span>
-            <span class="disc-tag">VISUAL STORYTELLING</span>
+          <div class="poster-disciplines-bar">
+            <span>AI FILMMAKING</span>
+            <span class="bullet">✦</span>
+            <span>CREATIVE TECHNOLOGY</span>
+            <span class="bullet">✦</span>
+            <span>ELECTRICAL ENGINEERING</span>
+            <span class="bullet">✦</span>
+            <span>VISUAL STORYTELLING</span>
           </div>
+        </div>
 
-          <p class="hero-lead-text" id="hero-typing-text"
-            data-text="Electrical & Electronic Engineering undergraduate blending technology, business thinking and leadership.">
-            Electrical & Electronic Engineering undergraduate blending technology, business thinking and leadership.
+        <!-- CENTERED CINEMATIC FOREGROUND PORTRAIT (SP_HERO) -->
+        <div class="hero-center-portrait-wrap">
+          <div class="portrait-halo-light" aria-hidden="true"></div>
+          <div class="portrait-stage">
+            <img src="assets/SP_HERO.png" alt="Soumic Paul in dark vintage tailored suit with sunglasses" class="hero-poster-img" />
+          </div>
+          <div class="portrait-archival-tag">
+            <span class="tag-fig">FIGURE 01</span>
+            <span class="tag-title">SOUMIC PAUL // THE CREATIVE ARCHIVIST</span>
+            <span class="tag-year">EST. 2026</span>
+          </div>
+        </div>
+
+        <!-- POSTER FOOTER / LEAD COPY & ACTIONS -->
+        <div class="poster-lead-block">
+          <p class="poster-synopsis">
+            Electrical &amp; Electronic Engineering undergraduate blending technology, business thinking and leadership.
           </p>
 
-          <div class="hero-actions">
+          <div class="poster-cta-row">
             <a href="#work" class="archive-btn primary-brass">
-              <span>OPEN CASE FILES</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
+              <span>✦ OPEN CASE FILES</span>
+              <span class="btn-arrow">→</span>
             </a>
             <a href="#about" class="archive-btn secondary-charcoal">
               <span>READ DOSSIER</span>
             </a>
           </div>
 
-          <div class="hero-metadata-grid">
-            <div class="meta-item">
-              <span class="meta-label">CURRENT STATION</span>
-              <strong class="meta-val">Dhaka, Bangladesh</strong>
+          <!-- CINEMATIC BILLING BLOCK -->
+          <div class="poster-billing-strip">
+            <div class="billing-col">
+              <span class="bill-label">STATION:</span>
+              <strong class="bill-val">DHAKA, BANGLADESH</strong>
             </div>
-            <div class="meta-item">
-              <span class="meta-label">PRIMARY FOCUS</span>
-              <strong class="meta-val">Engineering + Strategy + AI</strong>
+            <div class="billing-sep">|</div>
+            <div class="billing-col">
+              <span class="bill-label">ACADEMIC GUILD:</span>
+              <strong class="bill-val">AUST (EEE UNDERGRADUATE)</strong>
             </div>
-            <div class="meta-item">
-              <span class="meta-label">CLASSIFICATION</span>
-              <strong class="meta-val">Multidisciplinary Creator</strong>
+            <div class="billing-sep">|</div>
+            <div class="billing-col">
+              <span class="bill-label">SPECIALIZATION:</span>
+              <strong class="bill-val">ENGINEERING + BUSINESS + AI</strong>
             </div>
           </div>
-        </div>
 
-        <!-- HERO FOREGROUND PORTRAIT (SP_HERO) -->
-        <div class="hero-portrait-frame">
-          <div class="portrait-archival-backing" aria-hidden="true"></div>
-          <div class="portrait-vignette" aria-hidden="true"></div>
-          <img src="assets/SP_HERO.png" alt="Soumic Paul in dark vintage tailored suit with sunglasses" class="hero-sp-img" />
-          <div class="portrait-caption">
-            <span class="caption-id">FIG. 01 // SOUMIC PAUL</span>
-            <span class="caption-date">BIRMINGHAM TO DHAKA • 2026</span>
+          <div class="scroll-invite-clean">
+            <span class="invite-label">SCROLL TO INSPECT ARCHIVES</span>
+            <span class="invite-caret">↓</span>
           </div>
         </div>
-      </div>
-
-      <div class="chapter-scroll-invite">
-        <span class="scroll-text">CONTINUE THROUGH THE ARCHIVES</span>
-        <div class="scroll-pendulum"></div>
       </div>
     </section>
 
@@ -214,7 +216,7 @@
 
           <div class="about-body-text">
             <p class="lead-paragraph">
-              Motivated Electrical & Electronic Engineering undergraduate with a strong blend of technical expertise, business acumen, and an obsession with moving imagery.
+              Motivated Electrical &amp; Electronic Engineering undergraduate with a strong blend of technical expertise, business acumen, and an obsession with moving imagery.
             </p>
             <p>
               I operate at the intersection where engineering fundamentals meet strategy—from hands-on systems, circuit diagnostics, and physical prototyping to high-stakes business case analysis, project management, and AI-directed cinematic storytelling.
@@ -370,7 +372,6 @@
 
       <div class="section-heading-centered">
         <p class="section-kicker">PRINTED DISPATCHES &amp; PERIODICALS</p>
-        <!-- PRESERVED TITLE EXACTLY AS REQUIRED -->
         <h2 class="section-title">Soumic's Lifeless Updates</h2>
         <div class="brass-rule"></div>
       </div>
@@ -721,17 +722,17 @@
       <div class="section-heading-centered">
         <p class="section-kicker">VERIFIED ARCHIVAL DOCUMENTS</p>
         <h2 class="section-title">The Shelby Archive Deck</h2>
-        <p class="section-subtitle">Interact with the archival documents or shuffle the presentation order.</p>
+        <p class="section-subtitle">A collection of authenticated honors, leadership credentials, and competition recognitions.</p>
         <div class="brass-rule"></div>
       </div>
 
       <!-- SHUFFLE CONTROLLER -->
       <div class="deck-controls">
-        <button class="archive-btn primary-brass shuffle-btn" id="shuffleDeckBtn" aria-label="Shuffle the certificates archive">
+        <button class="archive-btn primary-brass shuffle-btn" id="shuffleDeckBtn" type="button" aria-label="Shuffle the certificates archive">
           <span class="btn-icon">🔀</span>
           <span>SHUFFLE THE ARCHIVE</span>
         </button>
-        <span class="deck-counter" id="deckCounter">DISPLAYING 12 ARCHIVAL RECORDS</span>
+        <span class="deck-counter" id="deckCounter">SELECT A CARD TO INSPECT CREDENTIAL</span>
       </div>
 
       <!-- 3D CARD SHUFFLING DECK CONTAINER -->
@@ -739,7 +740,7 @@
         <div class="deck-stack" id="certificateDeck">
           
           <!-- 1. DEPUTY EXECUTIVE -->
-          <article class="archive-deck-card" data-index="0"
+          <article class="archive-deck-card" data-index="0" tabindex="0" role="button" aria-label="Inspect Deputy Executive Certificate"
             onclick="openCertificate('assets/Certificates/Deputy%20Executive.png', 'Deputy Executive', 'AUST Robotics Club - Leadership &amp; Management')">
             <div class="card-inner-frame">
               <div class="card-header-tag">LEADERSHIP</div>
@@ -750,12 +751,12 @@
                 <h4>Deputy Executive</h4>
                 <p>AUST Robotics Club</p>
               </div>
-              <div class="card-seal-mark">✦ SEALED</div>
+              <div class="card-seal-mark">✦ INSPECT RECORD</div>
             </div>
           </article>
 
           <!-- 2. SUB EXECUTIVE -->
-          <article class="archive-deck-card" data-index="1"
+          <article class="archive-deck-card" data-index="1" tabindex="0" role="button" aria-label="Inspect Sub Executive Certificate"
             onclick="openCertificate('assets/Certificates/Sub_Executive.jpg', 'Sub Executive', 'AUST Robotics Club - Operations &amp; Coordination')">
             <div class="card-inner-frame">
               <div class="card-header-tag">LEADERSHIP</div>
@@ -766,12 +767,12 @@
                 <h4>Sub Executive</h4>
                 <p>AUST Robotics Club</p>
               </div>
-              <div class="card-seal-mark">✦ SEALED</div>
+              <div class="card-seal-mark">✦ INSPECT RECORD</div>
             </div>
           </article>
 
           <!-- 3. HSBC 25 -->
-          <article class="archive-deck-card" data-index="2"
+          <article class="archive-deck-card" data-index="2" tabindex="0" role="button" aria-label="Inspect HSBC Business Case Certificate"
             onclick="openCertificate('assets/Certificates/HSBC_25.jpg', 'HSBC Business Case 2025', 'National Round Qualifier in Business Strategy')">
             <div class="card-inner-frame">
               <div class="card-header-tag">ACHIEVEMENT</div>
@@ -782,28 +783,28 @@
                 <h4>HSBC Business Case</h4>
                 <p>National Round Qualifier</p>
               </div>
-              <div class="card-seal-mark">✦ SEALED</div>
+              <div class="card-seal-mark">✦ INSPECT RECORD</div>
             </div>
           </article>
 
           <!-- 4. BUP CAPITALIZER -->
-          <article class="archive-deck-card" data-index="3"
+          <article class="archive-deck-card" data-index="3" tabindex="0" role="button" aria-label="Inspect BUP Capitalizer Certificate"
             onclick="openCertificate('assets/Certificates/BUP%20Capitalizer%2725.jpg', 'BUP Capitalizer \'25', 'Business Strategy and Financial Analysis Competition')">
             <div class="card-inner-frame">
               <div class="card-header-tag">COMPETITION</div>
               <div class="card-preview-thumb">
-                <img src="assets/Certificates/BUP%20Capitalizer'25.jpg" alt="BUP Capitalizer Certificate" loading="lazy" />
+                <img src="assets/Certificates/BUP%20Capitalizer%2725.jpg" alt="BUP Capitalizer Certificate" loading="lazy" />
               </div>
               <div class="card-caption-block">
                 <h4>BUP Capitalizer '25</h4>
                 <p>Business Strategy</p>
               </div>
-              <div class="card-seal-mark">✦ SEALED</div>
+              <div class="card-seal-mark">✦ INSPECT RECORD</div>
             </div>
           </article>
 
           <!-- 5. CASEMOTION -->
-          <article class="archive-deck-card" data-index="4"
+          <article class="archive-deck-card" data-index="4" tabindex="0" role="button" aria-label="Inspect Casemotion Certificate"
             onclick="openCertificate('assets/Certificates/Casemotion.jpg', 'Casemotion', 'Business Case Solving Finalist')">
             <div class="card-inner-frame">
               <div class="card-header-tag">ACHIEVEMENT</div>
@@ -814,12 +815,12 @@
                 <h4>Casemotion</h4>
                 <p>Case Solving Finalist</p>
               </div>
-              <div class="card-seal-mark">✦ SEALED</div>
+              <div class="card-seal-mark">✦ INSPECT RECORD</div>
             </div>
           </article>
 
           <!-- 6. OSCILLON -->
-          <article class="archive-deck-card" data-index="5"
+          <article class="archive-deck-card" data-index="5" tabindex="0" role="button" aria-label="Inspect OSCILLON 1.0 Certificate"
             onclick="openCertificate('assets/Certificates/OSCILLON.png', 'OSCILLON 1.0 Finalist', 'National Robotics &amp; Tech Event Finalist')">
             <div class="card-inner-frame">
               <div class="card-header-tag">ACHIEVEMENT</div>
@@ -830,12 +831,12 @@
                 <h4>OSCILLON 1.0</h4>
                 <p>National Finalist</p>
               </div>
-              <div class="card-seal-mark">✦ SEALED</div>
+              <div class="card-seal-mark">✦ INSPECT RECORD</div>
             </div>
           </article>
 
           <!-- 7. CIRCUIT WIZARDRY -->
-          <article class="archive-deck-card" data-index="6"
+          <article class="archive-deck-card" data-index="6" tabindex="0" role="button" aria-label="Inspect Circuit Wizardry Certificate"
             onclick="openCertificate('assets/Certificates/RoboMania%202.0%20Circuit%20Wizardry.png', 'Circuit Wizardry', 'RoboMania 2.0 - Hardware &amp; Circuit Design')">
             <div class="card-inner-frame">
               <div class="card-header-tag">COMPETITION</div>
@@ -846,12 +847,12 @@
                 <h4>Circuit Wizardry</h4>
                 <p>RoboMania 2.0</p>
               </div>
-              <div class="card-seal-mark">✦ SEALED</div>
+              <div class="card-seal-mark">✦ INSPECT RECORD</div>
             </div>
           </article>
 
           <!-- 8. ROBOMANIA ORGANIZER -->
-          <article class="archive-deck-card" data-index="7"
+          <article class="archive-deck-card" data-index="7" tabindex="0" role="button" aria-label="Inspect RoboMania 2.0 Organizer Certificate"
             onclick="openCertificate('assets/Certificates/Robomania%202.0%20Organizer.png', 'RoboMania 2.0 Organizer', 'Core event operations and logistics management')">
             <div class="card-inner-frame">
               <div class="card-header-tag">LEADERSHIP</div>
@@ -862,12 +863,12 @@
                 <h4>RoboMania 2.0</h4>
                 <p>Event Organizer</p>
               </div>
-              <div class="card-seal-mark">✦ SEALED</div>
+              <div class="card-seal-mark">✦ INSPECT RECORD</div>
             </div>
           </article>
 
           <!-- 9. ARC 2.0 ORGANIZER -->
-          <article class="archive-deck-card" data-index="8"
+          <article class="archive-deck-card" data-index="8" tabindex="0" role="button" aria-label="Inspect ARC 2.0 Organizer Certificate"
             onclick="openCertificate('assets/Certificates/ARC%202.0_organizer.jpg', 'ARC 2.0 Organizer', 'Event coordination and execution')">
             <div class="card-inner-frame">
               <div class="card-header-tag">LEADERSHIP</div>
@@ -878,12 +879,12 @@
                 <h4>ARC 2.0 Organizer</h4>
                 <p>Event Coordination</p>
               </div>
-              <div class="card-seal-mark">✦ SEALED</div>
+              <div class="card-seal-mark">✦ INSPECT RECORD</div>
             </div>
           </article>
 
           <!-- 10. THESIS THRUST -->
-          <article class="archive-deck-card" data-index="9"
+          <article class="archive-deck-card" data-index="9" tabindex="0" role="button" aria-label="Inspect Thesis Thrust Certificate"
             onclick="openCertificate('assets/Certificates/Thesis%20Thrust%201.0.jpeg', 'Thesis Thrust 1.0', 'Academic Research and Presentation Excellence')">
             <div class="card-inner-frame">
               <div class="card-header-tag">ACADEMIC</div>
@@ -894,12 +895,12 @@
                 <h4>Thesis Thrust 1.0</h4>
                 <p>Research Presentation</p>
               </div>
-              <div class="card-seal-mark">✦ SEALED</div>
+              <div class="card-seal-mark">✦ INSPECT RECORD</div>
             </div>
           </article>
 
           <!-- 11. GITHUB -->
-          <article class="archive-deck-card" data-index="10"
+          <article class="archive-deck-card" data-index="10" tabindex="0" role="button" aria-label="Inspect GitHub Foundations Certificate"
             onclick="openCertificate('assets/Certificates/GIthub.jpg', 'GitHub Foundations', 'Certified in Git, version control, and collaboration')">
             <div class="card-inner-frame">
               <div class="card-header-tag">CERTIFICATION</div>
@@ -910,12 +911,12 @@
                 <h4>GitHub Foundations</h4>
                 <p>Version Control</p>
               </div>
-              <div class="card-seal-mark">✦ SEALED</div>
+              <div class="card-seal-mark">✦ INSPECT RECORD</div>
             </div>
           </article>
 
           <!-- 12. EEE 3100 -->
-          <article class="archive-deck-card" data-index="11"
+          <article class="archive-deck-card" data-index="11" tabindex="0" role="button" aria-label="Inspect EEE 3100 Certificate"
             onclick="openCertificate('assets/Certificates/EEE%203100.png', 'EEE 3100', 'Project Certificate')">
             <div class="card-inner-frame">
               <div class="card-header-tag">ACADEMIC</div>
@@ -926,7 +927,7 @@
                 <h4>EEE 3100</h4>
                 <p>Project Certificate</p>
               </div>
-              <div class="card-seal-mark">✦ SEALED</div>
+              <div class="card-seal-mark">✦ INSPECT RECORD</div>
             </div>
           </article>
 
@@ -982,7 +983,7 @@
               <p class="credits-irony">"All credit goes to Ai, I am just good at prompting nothing else."</p>
             </div>
             <div class="credits-right">
-              <a href="#top" class="return-top-btn" aria-label="Return to opening scene">
+              <a href="#home" class="return-top-btn" aria-label="Return to opening scene">
                 <span>RETURN TO SCENE 01</span>
                 <span>↑</span>
               </a>
@@ -1021,7 +1022,6 @@
   </div>
 
   <!-- SCRIPTS -->
-  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
   <script src="script.js"></script>
 </body>
 

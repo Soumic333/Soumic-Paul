@@ -4,38 +4,36 @@
    ========================================================= */
 
 :root {
-  /* SHELBY CINEMATIC COLOR SYSTEM */
-  --color-background: #10100F;
-  --color-background-secondary: #181714;
-  --color-surface: #211F1A;
-  --color-surface-elevated: #29261F;
-  --color-text-primary: #EEE7D9;
-  --color-text-secondary: #B4ADA0;
-  --color-text-muted: #827C71;
-  --color-accent: #A88956;
-  --color-accent-light: #C8A66A;
-  --color-accent-dark: #705637;
-  --color-olive: #66674D;
-  --color-border: rgba(210, 193, 157, 0.18);
-  --color-border-bright: rgba(200, 166, 106, 0.45);
-  --color-overlay: rgba(8, 8, 7, 0.78);
-  --color-glow: rgba(168, 137, 86, 0.18);
-  --color-paper: #E8E1D1;
+  /* SHELBY CINEMATIC COLOR SYSTEM (EXACT SPECIFICATION) */
+  --color-coal: #10100F;           /* Coal Black - Primary Background */
+  --color-charcoal: #1A1917;       /* Charcoal - Secondary Background */
+  --color-surface: #211F1C;        /* Elevated Surface */
+  --color-surface-elevated: #282522;
+  --color-vintage-brown: #49382C;   /* Vintage Brown */
+  --color-antique-bronze: #9A7448;  /* Antique Bronze */
+  --color-warm-amber: #C49A63;      /* Warm Amber / Gold Leaf */
+  --color-aged-ivory: #E7DDCA;      /* Aged Ivory - Primary Typography */
+  --color-muted-gray: #A7A198;      /* Muted Gray - Secondary Typography */
+  
+  --color-border: rgba(196, 154, 99, 0.22);
+  --color-border-bright: rgba(196, 154, 99, 0.55);
+  --color-glow: rgba(196, 154, 99, 0.16);
+  --color-paper: #ECE5D8;
   --color-paper-ink: #1C1A17;
 
   /* TYPOGRAPHY TOKENS */
   --font-display: 'Oswald', sans-serif;
-  --font-editorial: 'Playfair Display', serif;
+  --font-serif: 'Cormorant Garamond', 'Playfair Display', serif;
   --font-sans: 'Libre Franklin', sans-serif;
   --font-mono: 'DM Mono', monospace;
 
-  /* TRANSITION EASING */
+  /* EASING */
   --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* =========================================================
-   BASE RESET & ATMOSPHERE
+   1. BASE RESET & NATURAL SMOOTH SCROLLING
    ========================================================= */
 
 *, *::before, *::after {
@@ -45,27 +43,28 @@
 }
 
 html {
-  background-color: var(--color-background);
-  color: var(--color-text-primary);
+  background-color: var(--color-coal);
+  color: var(--color-aged-ivory);
   font-family: var(--font-sans);
   font-size: 16px;
   line-height: 1.6;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  scroll-behavior: smooth;
+  /* Scroll behavior set to normal for instant, zero-latency wheel & trackpad response */
+  scroll-behavior: auto;
 }
 
 body.shelby-archive {
-  background-color: var(--color-background);
-  color: var(--color-text-primary);
+  background-color: var(--color-coal);
+  color: var(--color-aged-ivory);
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
 }
 
 ::selection {
-  background: var(--color-accent);
-  color: #0A0A09;
+  background: var(--color-warm-amber);
+  color: #0E0D0B;
 }
 
 /* FILM GRAIN TEXTURE */
@@ -75,9 +74,9 @@ body.shelby-archive {
   left: 0;
   width: 100vw;
   height: 100vh;
-  pointer-events: none;
+  pointer-events: none !important;
   z-index: 999;
-  opacity: 0.038;
+  opacity: 0.032;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
@@ -88,19 +87,19 @@ body.shelby-archive {
   left: 0;
   width: 100vw;
   height: 100vh;
-  pointer-events: none;
+  pointer-events: none !important;
   z-index: 1;
-  opacity: 0.7;
+  opacity: 0.65;
 }
 
 /* WARM AMBIENT GASLIGHT GLOWS */
 .ambient-glow {
   position: fixed;
-  pointer-events: none;
+  pointer-events: none !important;
   z-index: 0;
   border-radius: 50%;
   filter: blur(120px);
-  opacity: 0.15;
+  opacity: 0.12;
 }
 
 .amber-top-left {
@@ -108,7 +107,7 @@ body.shelby-archive {
   left: -10vw;
   width: 50vw;
   height: 50vw;
-  background: radial-gradient(circle, var(--color-accent-light) 0%, transparent 70%);
+  background: radial-gradient(circle, var(--color-warm-amber) 0%, transparent 70%);
 }
 
 .amber-bottom-right {
@@ -116,7 +115,7 @@ body.shelby-archive {
   right: -10vw;
   width: 60vw;
   height: 60vw;
-  background: radial-gradient(circle, var(--color-accent) 0%, transparent 70%);
+  background: radial-gradient(circle, var(--color-antique-bronze) 0%, transparent 70%);
 }
 
 /* SCROLL PROGRESS INDICATOR */
@@ -126,20 +125,21 @@ body.shelby-archive {
   left: 0;
   width: 100%;
   height: 3px;
-  background: rgba(168, 137, 86, 0.1);
+  background: rgba(196, 154, 99, 0.12);
   z-index: 1001;
+  pointer-events: none;
 }
 
 .progress span {
   display: block;
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, var(--color-accent-dark), var(--color-accent), var(--color-accent-light));
-  transition: width 0.1s ease-out;
+  background: linear-gradient(90deg, var(--color-vintage-brown), var(--color-antique-bronze), var(--color-warm-amber));
+  transition: width 0.08s ease-out;
 }
 
 /* =========================================================
-   NAVIGATION — THE ARCHIVE INDEX
+   2. NAVIGATION — THE ARCHIVE INDEX
    ========================================================= */
 
 .nav-wrap {
@@ -148,11 +148,11 @@ body.shelby-archive {
   left: 0;
   width: 100%;
   z-index: 1000;
-  background: rgba(16, 16, 15, 0.88);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(16, 16, 15, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-border);
-  transition: background 0.3s ease, border-color 0.3s ease;
+  transition: background 0.25s ease;
 }
 
 .nav-container {
@@ -170,7 +170,7 @@ body.shelby-archive {
   align-items: center;
   gap: 12px;
   text-decoration: none;
-  color: var(--color-text-primary);
+  color: var(--color-aged-ivory);
 }
 
 .brand-crest {
@@ -179,9 +179,9 @@ body.shelby-archive {
   justify-content: center;
   width: 32px;
   height: 32px;
-  border: 1px solid var(--color-accent);
+  border: 1px solid var(--color-antique-bronze);
   background: var(--color-surface);
-  color: var(--color-accent-light);
+  color: var(--color-warm-amber);
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 16px;
@@ -200,7 +200,7 @@ body.shelby-archive {
 .brand-sub {
   font-family: var(--font-mono);
   font-size: 9px;
-  color: var(--color-accent);
+  color: var(--color-antique-bronze);
   letter-spacing: 0.15em;
   font-weight: 400;
 }
@@ -222,32 +222,32 @@ body.shelby-archive {
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.08em;
-  color: var(--color-text-secondary);
+  color: var(--color-muted-gray);
   text-decoration: none;
   display: flex;
   align-items: center;
   gap: 6px;
   padding: 6px 0;
   position: relative;
-  transition: color 0.25s ease;
+  transition: color 0.2s ease;
 }
 
 .nav-dot {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: var(--color-text-muted);
-  transition: background 0.25s ease, transform 0.25s ease;
+  background: var(--color-vintage-brown);
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .nav-content nav a:hover,
 .nav-content nav a.active {
-  color: var(--color-text-primary);
+  color: var(--color-aged-ivory);
 }
 
 .nav-content nav a:hover .nav-dot,
 .nav-content nav a.active .nav-dot {
-  background: var(--color-accent);
+  background: var(--color-warm-amber);
   transform: scale(1.5);
 }
 
@@ -258,7 +258,7 @@ body.shelby-archive {
   left: 0;
   width: 0%;
   height: 1px;
-  background: var(--color-accent);
+  background: var(--color-warm-amber);
   transition: width 0.25s var(--ease-cinematic);
 }
 
@@ -276,27 +276,27 @@ body.shelby-archive {
   font-weight: 600;
   letter-spacing: 0.1em;
   padding: 8px 18px;
-  border: 1px solid var(--color-accent);
-  background: rgba(168, 137, 86, 0.08);
-  color: var(--color-accent-light);
+  border: 1px solid var(--color-antique-bronze);
+  background: rgba(196, 154, 99, 0.08);
+  color: var(--color-warm-amber);
   text-decoration: none;
   transition: all 0.25s var(--ease-cinematic);
 }
 
 .nav-cta:hover {
-  background: var(--color-accent);
-  color: #0D0C0A;
-  box-shadow: 0 4px 18px rgba(168, 137, 86, 0.3);
+  background: var(--color-warm-amber);
+  color: #0E0D0B;
+  box-shadow: 0 4px 18px rgba(196, 154, 99, 0.35);
   transform: translateY(-1px);
 }
 
 .brass-seal {
   font-size: 11px;
-  color: var(--color-accent-light);
+  color: var(--color-warm-amber);
 }
 
 .nav-cta:hover .brass-seal {
-  color: #0D0C0A;
+  color: #0E0D0B;
 }
 
 .mobile-cta {
@@ -321,12 +321,12 @@ body.shelby-archive {
   display: block;
   width: 22px;
   height: 2px;
-  background: var(--color-text-primary);
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  background: var(--color-aged-ivory);
+  transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
 /* =========================================================
-   CHAPTER ARCHIVE SYSTEM — CARD-AFTER-CARD EXPERIENCE
+   3. ARCHIVE CHAPTER SYSTEM — FLUID SEQUENTIAL PANELS
    ========================================================= */
 
 .archive-main {
@@ -334,23 +334,18 @@ body.shelby-archive {
   z-index: 2;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 100px 32px 60px;
+  padding: 92px 32px 60px;
 }
 
 .archive-chapter {
   position: relative;
-  background: var(--color-background-secondary);
+  background: var(--color-charcoal);
   border: 1px solid var(--color-border);
   border-radius: 4px;
-  padding: 64px 56px;
-  margin-bottom: 72px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(210, 193, 157, 0.1) inset;
-  transition: transform 0.4s var(--ease-cinematic), border-color 0.4s ease, box-shadow 0.4s ease;
-}
-
-.archive-chapter:hover {
-  border-color: rgba(200, 166, 106, 0.35);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), 0 0 30px var(--color-glow);
+  padding: 60px 48px;
+  margin-bottom: 64px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+  /* Transform transition removed on chapter container to guarantee buttery smooth scrolling */
 }
 
 .chapter-badge {
@@ -359,11 +354,11 @@ body.shelby-archive {
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.16em;
-  color: var(--color-accent);
+  color: var(--color-warm-amber);
   padding: 6px 14px;
-  border: 1px solid rgba(168, 137, 86, 0.3);
-  background: rgba(168, 137, 86, 0.06);
-  margin-bottom: 36px;
+  border: 1px solid rgba(196, 154, 99, 0.3);
+  background: rgba(196, 154, 99, 0.06);
+  margin-bottom: 32px;
   text-transform: uppercase;
 }
 
@@ -371,48 +366,48 @@ body.shelby-archive {
 .section-heading-centered {
   text-align: center;
   max-width: 800px;
-  margin: 0 auto 52px;
+  margin: 0 auto 48px;
 }
 
 .section-kicker {
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.2em;
-  color: var(--color-accent);
+  color: var(--color-warm-amber);
   text-transform: uppercase;
   margin-bottom: 12px;
 }
 
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(32px, 4.5vw, 56px);
+  font-size: clamp(32px, 4.2vw, 54px);
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1.12;
   letter-spacing: 0.04em;
-  color: var(--color-text-primary);
+  color: var(--color-aged-ivory);
   text-transform: uppercase;
 }
 
 .section-title em {
-  font-family: var(--font-editorial);
+  font-family: var(--font-serif);
   font-style: italic;
   font-weight: 400;
   text-transform: none;
-  color: var(--color-accent-light);
+  color: var(--color-warm-amber);
 }
 
 .section-subtitle {
   font-family: var(--font-sans);
   font-size: 15px;
-  color: var(--color-text-secondary);
-  margin-top: 12px;
+  color: var(--color-muted-gray);
+  margin-top: 10px;
 }
 
 .brass-rule {
-  width: 80px;
+  width: 72px;
   height: 2px;
-  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
-  margin: 24px auto 0;
+  background: linear-gradient(90deg, transparent, var(--color-warm-amber), transparent);
+  margin: 20px auto 0;
 }
 
 /* BUTTONS */
@@ -425,53 +420,54 @@ body.shelby-archive {
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.12em;
-  padding: 14px 28px;
+  padding: 13px 26px;
   text-decoration: none;
   cursor: pointer;
   border-radius: 2px;
-  transition: all 0.3s var(--ease-cinematic);
+  transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
 }
 
 .primary-brass {
-  background: var(--color-accent);
+  background: var(--color-warm-amber);
   color: #0E0D0B;
-  border: 1px solid var(--color-accent-light);
-  box-shadow: 0 4px 20px rgba(168, 137, 86, 0.25);
+  border: 1px solid var(--color-warm-amber);
+  box-shadow: 0 4px 18px rgba(196, 154, 99, 0.25);
 }
 
 .primary-brass:hover {
-  background: var(--color-accent-light);
+  background: #D8AF76;
   color: #0A0A09;
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(200, 166, 106, 0.4);
+  box-shadow: 0 8px 26px rgba(196, 154, 99, 0.4);
 }
 
 .secondary-charcoal {
   background: var(--color-surface);
-  color: var(--color-text-primary);
+  color: var(--color-aged-ivory);
   border: 1px solid var(--color-border);
 }
 
 .secondary-charcoal:hover {
   background: var(--color-surface-elevated);
-  border-color: var(--color-accent);
-  color: var(--color-accent-light);
+  border-color: var(--color-warm-amber);
+  color: var(--color-warm-amber);
   transform: translateY(-2px);
 }
 
 /* =========================================================
-   CHAPTER 01: HERO — THE OPENING SCENE
+   4. PEAKY BLINDERS CINEMATIC POSTER HERO (CENTERED PORTRAIT)
    ========================================================= */
 
-.hero-chapter {
-  min-height: 82vh;
+.poster-hero {
+  min-height: 88vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
   overflow: hidden;
-  padding: 72px 56px 48px;
-  background: radial-gradient(circle at 65% 50%, rgba(33, 31, 26, 0.8) 0%, #12110F 100%);
+  padding: 56px 40px 48px;
+  background: radial-gradient(circle at 50% 45%, rgba(33, 31, 28, 0.95) 0%, #10100F 100%);
+  text-align: center;
 }
 
 .hero-backdrop {
@@ -480,7 +476,7 @@ body.shelby-archive {
   left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none;
+  pointer-events: none !important;
   z-index: 1;
 }
 
@@ -489,258 +485,269 @@ body.shelby-archive {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 240px;
+  height: 280px;
   background-image: 
-    radial-gradient(ellipse at 70% 80%, rgba(168, 137, 86, 0.12) 0%, transparent 60%),
-    linear-gradient(to top, rgba(16, 16, 15, 0.95), transparent 90%);
+    radial-gradient(ellipse at 50% 90%, rgba(196, 154, 99, 0.14) 0%, transparent 70%),
+    linear-gradient(to top, rgba(16, 16, 15, 0.98), transparent 90%);
 }
 
 .gaslight-lantern {
   position: absolute;
-  width: 140px;
-  height: 140px;
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
-  filter: blur(50px);
-  opacity: 0.35;
+  filter: blur(55px);
+  opacity: 0.3;
 }
 
 .lamp-left {
-  top: 15%;
-  left: 8%;
+  top: 25%;
+  left: 12%;
   background: radial-gradient(circle, #E6AF5C 0%, transparent 70%);
 }
 
 .lamp-right {
-  top: 30%;
-  right: 15%;
+  top: 25%;
+  right: 12%;
   background: radial-gradient(circle, #D49B48 0%, transparent 70%);
 }
 
-.hero-inner {
+.poster-hero-container {
   position: relative;
   z-index: 2;
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  max-width: 980px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 48px;
 }
 
-.archive-stamp {
+/* TOP POSTER DOCKET */
+.poster-archival-header {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 12px;
-  margin-bottom: 24px;
-}
-
-.stamp-pill {
-  font-family: var(--font-display);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  padding: 4px 10px;
-  background: #702626;
-  color: #F5E8E8;
-  border-radius: 2px;
-}
-
-.stamp-ref {
   font-family: var(--font-mono);
   font-size: 11px;
-  color: var(--color-accent);
-  letter-spacing: 0.12em;
-}
-
-.hero-name {
-  font-family: var(--font-display);
-  font-size: clamp(48px, 6vw, 84px);
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  line-height: 0.95;
-  color: var(--color-text-primary);
-  margin-bottom: 16px;
-  text-transform: uppercase;
-}
-
-.hero-motto {
-  display: flex;
-  flex-direction: column;
+  letter-spacing: 0.18em;
+  color: var(--color-warm-amber);
+  padding: 6px 18px;
+  border: 1px solid var(--color-border);
+  background: rgba(16, 16, 15, 0.85);
   margin-bottom: 24px;
-  gap: 4px;
 }
 
-.motto-lead {
-  font-family: var(--font-editorial);
-  font-style: italic;
-  font-size: clamp(20px, 2.3vw, 32px);
-  color: var(--color-accent-light);
-  font-weight: 400;
+.docket-sep {
+  color: var(--color-vintage-brown);
+  font-size: 8px;
 }
 
-.motto-sub {
+/* POSTER HEADLINE BLOCK */
+.poster-headline-block {
+  margin-bottom: 24px;
+}
+
+.poster-main-title {
   font-family: var(--font-display);
-  font-size: clamp(16px, 1.8vw, 24px);
-  letter-spacing: 0.12em;
-  color: var(--color-text-secondary);
-  font-weight: 600;
+  font-size: clamp(52px, 8.5vw, 102px);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 0.92;
+  color: var(--color-aged-ivory);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
 }
 
-.hero-disciplines {
+.poster-motto {
+  margin-bottom: 14px;
+}
+
+.poster-motto-text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(22px, 3.2vw, 36px);
+  color: var(--color-warm-amber);
+  letter-spacing: 0.02em;
+}
+
+.poster-disciplines-bar {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px 12px;
-  margin-bottom: 24px;
-}
-
-.disc-tag {
+  justify-content: center;
+  gap: 8px 14px;
   font-family: var(--font-mono);
   font-size: 11px;
-  color: var(--color-accent);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.14em;
+  color: var(--color-muted-gray);
 }
 
-.disc-sep {
-  color: var(--color-text-muted);
-  font-size: 10px;
+.poster-disciplines-bar .bullet {
+  color: var(--color-antique-bronze);
+  font-size: 9px;
 }
 
-.hero-lead-text {
-  font-size: 16px;
-  color: var(--color-text-secondary);
-  line-height: 1.7;
-  max-width: 580px;
-  margin-bottom: 32px;
-  min-height: 52px;
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-bottom: 40px;
-}
-
-.hero-metadata-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  padding-top: 24px;
-  border-top: 1px solid var(--color-border);
-}
-
-.meta-item {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.meta-label {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--color-text-muted);
-  letter-spacing: 0.12em;
-}
-
-.meta-val {
-  font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--color-text-primary);
-}
-
-/* HERO FOREGROUND PORTRAIT (SP_HERO) */
-.hero-portrait-frame {
+/* CENTERED CINEMATIC FOREGROUND PORTRAIT (SP_HERO) */
+.hero-center-portrait-wrap {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
+  margin: 16px auto 28px;
+  width: 100%;
+  max-width: 520px;
 }
 
-.portrait-archival-backing {
+.portrait-halo-light {
   position: absolute;
-  top: 10%;
-  left: 10%;
-  right: 10%;
-  bottom: 0;
-  border: 1px solid var(--color-border);
-  background: radial-gradient(circle at 50% 40%, rgba(168, 137, 86, 0.15) 0%, rgba(16, 16, 15, 0.6) 80%);
-  border-radius: 4px;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(196, 154, 99, 0.18) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
   z-index: 0;
 }
 
-.hero-sp-img {
+.portrait-stage {
   position: relative;
   z-index: 1;
+  display: flex;
+  justify-content: center;
   width: 100%;
-  max-width: 460px;
+}
+
+.hero-poster-img {
+  width: 100%;
+  max-width: 420px;
   height: auto;
+  max-height: 540px;
   object-fit: contain;
   display: block;
-  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.7));
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.85));
   transform: translateZ(0);
   will-change: transform;
 }
 
-.portrait-caption {
+.portrait-archival-tag {
   position: relative;
   z-index: 2;
-  width: 100%;
-  max-width: 440px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  width: 100%;
+  max-width: 420px;
   padding: 8px 14px;
-  background: rgba(24, 23, 20, 0.9);
+  background: rgba(24, 23, 20, 0.95);
   border: 1px solid var(--color-border);
   font-family: var(--font-mono);
   font-size: 10px;
-  color: var(--color-text-secondary);
-  letter-spacing: 0.1em;
-  margin-top: -12px;
+  letter-spacing: 0.14em;
+  color: var(--color-muted-gray);
+  margin-top: -16px;
 }
 
-.chapter-scroll-invite {
+.tag-title {
+  color: var(--color-aged-ivory);
+  font-weight: 500;
+}
+
+.tag-year {
+  color: var(--color-warm-amber);
+}
+
+/* POSTER FOOTER / LEAD COPY & ACTIONS */
+.poster-lead-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 680px;
+}
+
+.poster-synopsis {
+  font-size: 16px;
+  color: var(--color-muted-gray);
+  line-height: 1.65;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.poster-cta-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.btn-arrow {
+  font-size: 15px;
+  transition: transform 0.2s ease;
+}
+
+.primary-brass:hover .btn-arrow {
+  transform: translateX(3px);
+}
+
+/* CINEMATIC BILLING BLOCK */
+.poster-billing-strip {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-top: 36px;
-  padding-top: 20px;
-  border-top: 1px dashed rgba(210, 193, 157, 0.15);
-}
-
-.scroll-text {
+  justify-content: center;
+  gap: 16px;
+  padding: 16px 24px;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  width: 100%;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  margin-bottom: 20px;
+}
+
+.billing-col {
+  display: flex;
+  gap: 6px;
+}
+
+.bill-label {
+  color: var(--color-antique-bronze);
+}
+
+.bill-val {
+  color: var(--color-aged-ivory);
+  font-weight: 600;
+}
+
+.billing-sep {
+  color: var(--color-vintage-brown);
+}
+
+.scroll-invite-clean {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
   letter-spacing: 0.18em;
-  color: var(--color-text-muted);
+  color: var(--color-antique-bronze);
 }
 
-.scroll-pendulum {
-  width: 40px;
-  height: 1px;
-  background: var(--color-accent);
-  position: relative;
-  overflow: hidden;
+.invite-caret {
+  animation: bounceDown 1.8s ease-in-out infinite;
 }
 
-.scroll-pendulum::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 10px;
-  height: 100%;
-  background: #FFF;
-  animation: pendulumMove 2s ease-in-out infinite alternate;
-}
-
-@keyframes pendulumMove {
-  from { transform: translateX(0); }
-  to { transform: translateX(30px); }
+@keyframes bounceDown {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
 }
 
 /* =========================================================
-   VINTAGE TICKER STRIP
+   5. VINTAGE TICKER STRIP
    ========================================================= */
 
 .vintage-ticker {
@@ -749,7 +756,7 @@ body.shelby-archive {
   border-bottom: 1px solid var(--color-border);
   padding: 14px 0;
   overflow: hidden;
-  margin-bottom: 72px;
+  margin-bottom: 64px;
   position: relative;
   z-index: 2;
 }
@@ -771,12 +778,12 @@ body.shelby-archive {
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.16em;
-  color: var(--color-text-secondary);
+  color: var(--color-muted-gray);
 }
 
 .ticker-content i {
   font-style: normal;
-  color: var(--color-accent);
+  color: var(--color-warm-amber);
   font-size: 12px;
 }
 
@@ -786,7 +793,7 @@ body.shelby-archive {
 }
 
 /* =========================================================
-   CHAPTER 02: ABOUT — THE MAN BEHIND THE WORK
+   6. CHAPTER 02: ABOUT — THE MAN BEHIND THE WORK
    ========================================================= */
 
 .about-grid {
@@ -794,10 +801,6 @@ body.shelby-archive {
   grid-template-columns: 0.85fr 1.15fr;
   gap: 56px;
   align-items: center;
-}
-
-.about-visual-column {
-  position: relative;
 }
 
 .about-photo-wrapper {
@@ -814,18 +817,13 @@ body.shelby-archive {
   display: block;
   border-radius: 2px;
   filter: contrast(105%) brightness(95%);
-  transition: filter 0.4s ease;
-}
-
-.about-photo-wrapper:hover .about-sp-img {
-  filter: contrast(110%) brightness(100%);
 }
 
 .archival-corner {
   position: absolute;
   width: 14px;
   height: 14px;
-  border-color: var(--color-accent);
+  border-color: var(--color-warm-amber);
   pointer-events: none;
 }
 
@@ -839,10 +837,10 @@ body.shelby-archive {
   justify-content: space-between;
   margin-top: 12px;
   padding-top: 8px;
-  border-top: 1px solid rgba(210, 193, 157, 0.12);
+  border-top: 1px solid rgba(196, 154, 99, 0.15);
   font-family: var(--font-mono);
   font-size: 10px;
-  color: var(--color-text-muted);
+  color: var(--color-muted-gray);
   letter-spacing: 0.12em;
 }
 
@@ -851,23 +849,23 @@ body.shelby-archive {
 }
 
 .editorial-title {
-  font-family: var(--font-editorial);
-  font-size: clamp(26px, 3.2vw, 42px);
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 3.4vw, 44px);
   line-height: 1.25;
-  color: var(--color-text-primary);
+  color: var(--color-aged-ivory);
   font-weight: 600;
 }
 
 .editorial-title em {
   font-style: italic;
-  color: var(--color-accent-light);
+  color: var(--color-warm-amber);
 }
 
 .about-body-text {
   display: flex;
   flex-direction: column;
   gap: 18px;
-  color: var(--color-text-secondary);
+  color: var(--color-muted-gray);
   font-size: 15px;
   line-height: 1.75;
   margin-bottom: 36px;
@@ -875,7 +873,7 @@ body.shelby-archive {
 
 .lead-paragraph {
   font-size: 17px;
-  color: var(--color-text-primary);
+  color: var(--color-aged-ivory);
   font-weight: 400;
 }
 
@@ -900,19 +898,19 @@ body.shelby-archive {
   font-family: var(--font-display);
   font-size: 38px;
   font-weight: 700;
-  color: var(--color-accent-light);
+  color: var(--color-warm-amber);
   line-height: 1;
 }
 
 .stat-number .plus {
-  color: var(--color-accent);
+  color: var(--color-antique-bronze);
   font-size: 28px;
 }
 
 .stat-label {
   font-family: var(--font-sans);
   font-size: 12px;
-  color: var(--color-text-muted);
+  color: var(--color-muted-gray);
   line-height: 1.4;
 }
 
@@ -934,17 +932,17 @@ body.shelby-archive {
   font-family: var(--font-mono);
   font-size: 9px;
   letter-spacing: 0.14em;
-  color: var(--color-text-muted);
+  color: var(--color-muted-gray);
 }
 
 .meta-tag strong {
   font-family: var(--font-sans);
   font-size: 13px;
-  color: var(--color-text-primary);
+  color: var(--color-aged-ivory);
 }
 
 /* =========================================================
-   CHAPTER 03: PROJECTS — THE CASE FILES
+   7. CHAPTER 03: PROJECTS — THE CASE FILES
    ========================================================= */
 
 .case-file-dossier {
@@ -969,12 +967,12 @@ body.shelby-archive {
 }
 
 .case-index {
-  color: var(--color-accent-light);
+  color: var(--color-warm-amber);
   font-weight: 500;
 }
 
 .case-classification {
-  color: var(--color-text-muted);
+  color: var(--color-muted-gray);
 }
 
 .case-grid {
@@ -998,11 +996,6 @@ body.shelby-archive {
   height: 340px;
   object-fit: cover;
   display: block;
-  transition: transform 0.5s ease;
-}
-
-.case-file-dossier:hover .case-main-photo {
-  transform: scale(1.03);
 }
 
 .case-photo-overlay {
@@ -1015,9 +1008,9 @@ body.shelby-archive {
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.1em;
-  background: rgba(16, 16, 15, 0.88);
+  background: rgba(16, 16, 15, 0.9);
   border: 1px solid var(--color-border);
-  color: var(--color-accent-light);
+  color: var(--color-warm-amber);
   padding: 5px 12px;
   border-radius: 2px;
 }
@@ -1026,7 +1019,7 @@ body.shelby-archive {
   font-family: var(--font-mono);
   font-size: 10.5px;
   letter-spacing: 0.16em;
-  color: var(--color-accent);
+  color: var(--color-antique-bronze);
   margin-bottom: 8px;
 }
 
@@ -1035,14 +1028,14 @@ body.shelby-archive {
   font-size: 32px;
   font-weight: 700;
   letter-spacing: 0.04em;
-  color: var(--color-text-primary);
+  color: var(--color-aged-ivory);
   margin-bottom: 16px;
   line-height: 1.15;
 }
 
 .case-summary {
   font-size: 15px;
-  color: var(--color-text-secondary);
+  color: var(--color-muted-gray);
   line-height: 1.7;
   margin-bottom: 24px;
 }
@@ -1053,7 +1046,7 @@ body.shelby-archive {
   gap: 8px;
   padding: 16px;
   background: var(--color-surface-elevated);
-  border: 1px solid rgba(210, 193, 157, 0.08);
+  border: 1px solid rgba(196, 154, 99, 0.1);
   margin-bottom: 24px;
   font-size: 13px;
 }
@@ -1066,12 +1059,12 @@ body.shelby-archive {
 .spec-title {
   font-family: var(--font-mono);
   font-size: 11px;
-  color: var(--color-text-muted);
+  color: var(--color-muted-gray);
   min-width: 140px;
 }
 
 .spec-desc {
-  color: var(--color-text-primary);
+  color: var(--color-aged-ivory);
   font-weight: 500;
 }
 
@@ -1085,21 +1078,20 @@ body.shelby-archive {
 .evidence-pill {
   font-family: var(--font-mono);
   font-size: 11.5px;
-  color: var(--color-text-primary);
-  background: rgba(168, 137, 86, 0.08);
+  color: var(--color-aged-ivory);
+  background: rgba(196, 154, 99, 0.08);
   border: 1px solid var(--color-border);
   padding: 8px 14px;
   text-decoration: none;
   border-radius: 2px;
-  transition: all 0.25s ease;
+  transition: all 0.2s ease;
 }
 
 .evidence-pill:hover,
 .evidence-pill.active-pill {
-  background: rgba(168, 137, 86, 0.2);
-  border-color: var(--color-accent);
-  color: var(--color-accent-light);
-  transform: translateY(-1px);
+  background: rgba(196, 154, 99, 0.2);
+  border-color: var(--color-warm-amber);
+  color: var(--color-warm-amber);
 }
 
 .prism-award-visual {
@@ -1108,7 +1100,7 @@ body.shelby-archive {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at center, #231C14 0%, #10100F 100%);
+  background: radial-gradient(circle at center, #241D16 0%, #10100F 100%);
   padding: 40px;
   gap: 20px;
 }
@@ -1117,25 +1109,25 @@ body.shelby-archive {
   max-width: 200px;
   max-height: 140px;
   object-fit: contain;
-  filter: drop-shadow(0 0 25px rgba(200, 166, 106, 0.25));
+  filter: drop-shadow(0 0 25px rgba(196, 154, 99, 0.25));
 }
 
 .award-seal {
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.15em;
-  color: var(--color-accent-light);
-  border: 1px solid var(--color-accent);
+  color: var(--color-warm-amber);
+  border: 1px solid var(--color-warm-amber);
   padding: 6px 14px;
-  background: rgba(168, 137, 86, 0.1);
+  background: rgba(196, 154, 99, 0.1);
 }
 
 /* =========================================================
-   CHAPTER 04: "SOUMIC'S LIFELESS UPDATES" — THE BIRMINGHAM GAZETTE
+   8. CHAPTER 04: "SOUMIC'S LIFELESS UPDATES" — THE BIRMINGHAM GAZETTE
    ========================================================= */
 
 .gazette-chapter {
-  background: radial-gradient(circle at 50% 30%, #1A1814 0%, #11100E 100%);
+  background: radial-gradient(circle at 50% 30%, #1A1815 0%, #11100E 100%);
 }
 
 .gazette-wrapper {
@@ -1172,7 +1164,7 @@ body.shelby-archive {
 }
 
 .gazette-paper-title {
-  font-family: var(--font-editorial);
+  font-family: var(--font-serif);
   font-size: clamp(36px, 5.5vw, 68px);
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -1194,13 +1186,13 @@ body.shelby-archive {
   padding: 24px;
   position: relative;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-  transition: transform 0.3s var(--ease-cinematic), box-shadow 0.3s ease, z-index 0.3s ease;
+  transition: transform 0.25s var(--ease-cinematic), box-shadow 0.25s ease;
   cursor: pointer;
 }
 
 .news-clipping:hover, .news-clipping:focus {
-  transform: scale(1.04) rotate(0deg) !important;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
+  transform: scale(1.03) rotate(0deg) !important;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.22);
   z-index: 10;
   outline: none;
 }
@@ -1233,7 +1225,7 @@ body.shelby-archive {
 }
 
 .clip-headline {
-  font-family: var(--font-editorial);
+  font-family: var(--font-serif);
   font-size: 19px;
   font-weight: 700;
   line-height: 1.25;
@@ -1267,7 +1259,7 @@ body.shelby-archive {
 
 .highlight-clip {
   background: #FFFDF8;
-  border-color: #A88956;
+  border-color: var(--color-antique-bronze);
 }
 
 .wanted-clip {
@@ -1280,7 +1272,7 @@ body.shelby-archive {
 }
 
 /* =========================================================
-   CHAPTER 05: EXPERIENCE — THE GUILD DOSSIER
+   9. CHAPTER 05: EXPERIENCE — THE GUILD DOSSIER
    ========================================================= */
 
 .guild-container {
@@ -1325,7 +1317,7 @@ body.shelby-archive {
 .guild-org {
   font-family: var(--font-mono);
   font-size: 11px;
-  color: var(--color-accent);
+  color: var(--color-warm-amber);
   letter-spacing: 0.16em;
 }
 
@@ -1333,19 +1325,19 @@ body.shelby-archive {
   font-family: var(--font-display);
   font-size: 26px;
   font-weight: 700;
-  color: var(--color-text-primary);
+  color: var(--color-aged-ivory);
   margin: 4px 0 6px;
 }
 
 .guild-dates {
   font-family: var(--font-mono);
   font-size: 11px;
-  color: var(--color-text-muted);
+  color: var(--color-muted-gray);
 }
 
 .guild-desc {
   font-size: 15px;
-  color: var(--color-text-secondary);
+  color: var(--color-muted-gray);
   line-height: 1.7;
   margin-bottom: 18px;
 }
@@ -1361,7 +1353,7 @@ body.shelby-archive {
   position: relative;
   padding-left: 20px;
   font-size: 14px;
-  color: var(--color-text-secondary);
+  color: var(--color-muted-gray);
 }
 
 .guild-duties li::before {
@@ -1369,7 +1361,7 @@ body.shelby-archive {
   position: absolute;
   left: 0;
   top: 1px;
-  color: var(--color-accent);
+  color: var(--color-warm-amber);
   font-size: 11px;
 }
 
@@ -1388,14 +1380,14 @@ body.shelby-archive {
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.18em;
-  color: var(--color-accent);
+  color: var(--color-warm-amber);
 }
 
 .achievements-banner h3 {
   font-family: var(--font-display);
   font-size: 28px;
   font-weight: 700;
-  color: var(--color-text-primary);
+  color: var(--color-aged-ivory);
   margin-top: 6px;
 }
 
@@ -1437,7 +1429,7 @@ body.shelby-archive {
   font-family: var(--font-mono);
   font-size: 9.5px;
   letter-spacing: 0.14em;
-  color: var(--color-accent);
+  color: var(--color-warm-amber);
   font-weight: 600;
 }
 
@@ -1445,17 +1437,17 @@ body.shelby-archive {
   font-family: var(--font-display);
   font-size: 18px;
   font-weight: 700;
-  color: var(--color-text-primary);
+  color: var(--color-aged-ivory);
   margin: 4px 0;
 }
 
 .plaque-text {
   font-size: 13px;
-  color: var(--color-text-secondary);
+  color: var(--color-muted-gray);
 }
 
 /* =========================================================
-   CHAPTER 06: EDUCATION — THE ACADEMIC RECORD
+   10. CHAPTER 06: EDUCATION — THE ACADEMIC RECORD
    ========================================================= */
 
 .archival-timeline {
@@ -1471,14 +1463,14 @@ body.shelby-archive {
   bottom: 0;
   left: 28px;
   width: 2px;
-  background: rgba(210, 193, 157, 0.15);
+  background: rgba(196, 154, 99, 0.15);
 }
 
 .timeline-fill {
   width: 100%;
   height: 0%;
-  background: var(--color-accent);
-  transition: height 0.15s ease-out;
+  background: var(--color-warm-amber);
+  transition: height 0.12s ease-out;
 }
 
 .timeline-entry {
@@ -1497,15 +1489,15 @@ body.shelby-archive {
   height: 58px;
   border-radius: 50%;
   background: var(--color-surface-elevated);
-  border: 1.5px solid var(--color-accent);
-  color: var(--color-accent-light);
+  border: 1.5px solid var(--color-warm-amber);
+  color: var(--color-warm-amber);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 16px;
   flex-shrink: 0;
   z-index: 2;
-  box-shadow: 0 0 18px var(--color-glow);
+  box-shadow: 0 0 16px var(--color-glow);
 }
 
 .timeline-card {
@@ -1541,32 +1533,32 @@ body.shelby-archive {
   font-family: var(--font-mono);
   font-size: 10.5px;
   letter-spacing: 0.14em;
-  color: var(--color-accent);
+  color: var(--color-warm-amber);
 }
 
 .timeline-degree {
   font-family: var(--font-display);
   font-size: 21px;
   font-weight: 700;
-  color: var(--color-text-primary);
+  color: var(--color-aged-ivory);
   margin: 4px 0;
 }
 
 .timeline-inst {
-  font-family: var(--font-editorial);
+  font-family: var(--font-serif);
   font-style: italic;
-  font-size: 15px;
-  color: var(--color-accent-light);
+  font-size: 16px;
+  color: var(--color-warm-amber);
   margin-bottom: 8px;
 }
 
 .timeline-note {
   font-size: 13px;
-  color: var(--color-text-secondary);
+  color: var(--color-muted-gray);
 }
 
 /* =========================================================
-   CHAPTER 07: SKILLS — THE TECHNICAL ARSENAL
+   11. CHAPTER 07: SKILLS — THE TECHNICAL ARSENAL
    ========================================================= */
 
 .arsenal-bento {
@@ -1583,19 +1575,19 @@ body.shelby-archive {
   display: flex;
   flex-direction: column;
   position: relative;
-  transition: transform 0.35s var(--ease-cinematic), border-color 0.35s ease;
+  transition: transform 0.25s var(--ease-cinematic), border-color 0.25s ease;
 }
 
 .arsenal-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--color-accent);
+  transform: translateY(-3px);
+  border-color: var(--color-warm-amber);
 }
 
 .card-num {
   font-family: var(--font-mono);
   font-size: 13px;
   font-weight: 700;
-  color: var(--color-accent);
+  color: var(--color-warm-amber);
   margin-bottom: 16px;
 }
 
@@ -1603,13 +1595,13 @@ body.shelby-archive {
   font-family: var(--font-display);
   font-size: 24px;
   font-weight: 700;
-  color: var(--color-text-primary);
+  color: var(--color-aged-ivory);
   margin-bottom: 12px;
 }
 
 .card-desc {
   font-size: 14px;
-  color: var(--color-text-secondary);
+  color: var(--color-muted-gray);
   line-height: 1.6;
   margin-bottom: 24px;
   flex: 1;
@@ -1628,7 +1620,7 @@ body.shelby-archive {
   padding: 4px 10px;
   background: var(--color-surface-elevated);
   border: 1px solid var(--color-border);
-  color: var(--color-text-primary);
+  color: var(--color-aged-ivory);
   border-radius: 2px;
 }
 
@@ -1637,7 +1629,7 @@ body.shelby-archive {
   gap: 16px;
   align-items: center;
   padding-top: 16px;
-  border-top: 1px solid rgba(210, 193, 157, 0.1);
+  border-top: 1px solid rgba(196, 154, 99, 0.12);
 }
 
 .arsenal-icon {
@@ -1648,21 +1640,22 @@ body.shelby-archive {
 }
 
 /* =========================================================
-   CHAPTER 08: CERTIFICATES — THE ACHIEVEMENT DECK
+   12. CHAPTER 08: CERTIFICATES — THE ACHIEVEMENT DECK
+   POLISHED CARD-SHUFFLING & FANNED ARRANGEMENT
    ========================================================= */
 
 .deck-controls {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 900px;
+  max-width: 960px;
   margin: 0 auto 36px;
   padding: 0 16px;
 }
 
 .shuffle-btn {
   font-size: 13px;
-  padding: 10px 22px;
+  padding: 11px 24px;
 }
 
 .btn-icon {
@@ -1673,50 +1666,54 @@ body.shelby-archive {
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.15em;
-  color: var(--color-text-muted);
+  color: var(--color-muted-gray);
 }
 
-/* DECK STAGE & 3D CARD SHUFFLE ENGINE */
+/* DECK STAGE */
 .achievement-deck-stage {
   max-width: 1200px;
   margin: 0 auto;
-  min-height: 460px;
+  min-height: 480px;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  perspective: 1200px;
+  perspective: 1400px;
+  padding: 20px 0;
 }
 
 .deck-stack {
   position: relative;
   width: 100%;
-  max-width: 960px;
+  max-width: 980px;
   height: 440px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+/* INDIVIDUAL ARCHIVE DECK CARD */
 .archive-deck-card {
   position: absolute;
   width: 280px;
   height: 380px;
-  background: #181714;
+  background: var(--color-charcoal);
   border: 1.5px solid var(--color-border);
   border-radius: 4px;
   padding: 16px;
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65);
   cursor: pointer;
   transform-origin: center bottom;
-  transition: transform 0.6s var(--ease-cinematic), box-shadow 0.4s ease, border-color 0.4s ease;
   user-select: none;
+  outline: none;
+  transition: transform 0.4s var(--ease-cinematic), box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-.archive-deck-card:hover {
-  border-color: var(--color-accent-light);
-  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.8), 0 0 25px var(--color-glow);
-  transform: translateY(-24px) scale(1.06) !important;
+.archive-deck-card:hover,
+.archive-deck-card:focus {
+  border-color: var(--color-warm-amber);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.85), 0 0 25px var(--color-glow);
+  transform: translateY(-26px) scale(1.06) !important;
   z-index: 99 !important;
 }
 
@@ -1724,7 +1721,7 @@ body.shelby-archive {
   height: 100%;
   display: flex;
   flex-direction: column;
-  border: 1px dashed rgba(210, 193, 157, 0.2);
+  border: 1px dashed rgba(196, 154, 99, 0.25);
   padding: 14px;
   background: var(--color-surface);
 }
@@ -1733,7 +1730,7 @@ body.shelby-archive {
   font-family: var(--font-mono);
   font-size: 9.5px;
   letter-spacing: 0.16em;
-  color: var(--color-accent);
+  color: var(--color-warm-amber);
   font-weight: 600;
   margin-bottom: 12px;
 }
@@ -1758,14 +1755,14 @@ body.shelby-archive {
   font-family: var(--font-display);
   font-size: 16px;
   font-weight: 700;
-  color: var(--color-text-primary);
+  color: var(--color-aged-ivory);
   margin-bottom: 4px;
   line-height: 1.2;
 }
 
 .card-caption-block p {
   font-size: 12px;
-  color: var(--color-text-muted);
+  color: var(--color-muted-gray);
 }
 
 .card-seal-mark {
@@ -1773,12 +1770,12 @@ body.shelby-archive {
   font-family: var(--font-mono);
   font-size: 9px;
   letter-spacing: 0.12em;
-  color: var(--color-accent-dark);
+  color: var(--color-antique-bronze);
   text-align: right;
 }
 
 /* =========================================================
-   CHAPTER 09: CONTACT & FOOTER — THE FINAL FRAME
+   13. CHAPTER 09: CONTACT & FOOTER — THE FINAL FRAME
    ========================================================= */
 
 .contact-chapter {
@@ -1789,34 +1786,34 @@ body.shelby-archive {
 
 .closing-slate {
   max-width: 760px;
-  margin: 0 auto 44px;
+  margin: 0 auto 40px;
 }
 
 .slate-label {
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.2em;
-  color: var(--color-accent);
+  color: var(--color-warm-amber);
   text-transform: uppercase;
   margin-bottom: 16px;
 }
 
 .slate-heading {
-  font-family: var(--font-editorial);
+  font-family: var(--font-serif);
   font-style: italic;
   font-size: clamp(34px, 5vw, 62px);
-  color: var(--color-text-primary);
+  color: var(--color-aged-ivory);
   line-height: 1.1;
   margin-bottom: 16px;
 }
 
 .slate-sub {
   font-size: 16px;
-  color: var(--color-text-secondary);
+  color: var(--color-muted-gray);
 }
 
 .contact-wire-action {
-  margin-bottom: 48px;
+  margin-bottom: 44px;
 }
 
 .big-telegram-btn {
@@ -1825,22 +1822,22 @@ body.shelby-archive {
   gap: 16px;
   padding: 18px 40px;
   background: var(--color-surface);
-  border: 1.5px solid var(--color-accent);
-  color: var(--color-accent-light);
+  border: 1.5px solid var(--color-antique-bronze);
+  color: var(--color-warm-amber);
   text-decoration: none;
   font-family: var(--font-display);
   font-size: clamp(18px, 2.5vw, 26px);
   font-weight: 600;
   letter-spacing: 0.08em;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-  transition: all 0.3s var(--ease-cinematic);
+  transition: all 0.25s var(--ease-cinematic);
 }
 
 .big-telegram-btn:hover {
-  background: var(--color-accent);
+  background: var(--color-warm-amber);
   color: #0E0D0B;
-  transform: translateY(-3px);
-  box-shadow: 0 12px 40px rgba(168, 137, 86, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(196, 154, 99, 0.35);
 }
 
 .social-channels {
@@ -1848,7 +1845,7 @@ body.shelby-archive {
   flex-wrap: wrap;
   justify-content: center;
   gap: 14px;
-  margin-bottom: 64px;
+  margin-bottom: 60px;
 }
 
 .social-pill {
@@ -1858,21 +1855,21 @@ body.shelby-archive {
   padding: 10px 22px;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  color: var(--color-text-secondary);
+  color: var(--color-muted-gray);
   text-decoration: none;
-  transition: all 0.25s ease;
+  transition: all 0.2s ease;
 }
 
 .social-pill:hover {
-  border-color: var(--color-accent);
-  color: var(--color-accent-light);
+  border-color: var(--color-warm-amber);
+  color: var(--color-warm-amber);
   background: var(--color-surface-elevated);
   transform: translateY(-2px);
 }
 
 .highlight-pill {
-  border-color: var(--color-accent-dark);
-  color: var(--color-accent-light);
+  border-color: var(--color-antique-bronze);
+  color: var(--color-warm-amber);
 }
 
 .film-closing-credits {
@@ -1885,7 +1882,7 @@ body.shelby-archive {
   width: 100%;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--color-border), transparent);
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
 .credits-row {
@@ -1894,12 +1891,12 @@ body.shelby-archive {
   align-items: center;
   font-family: var(--font-mono);
   font-size: 11px;
-  color: var(--color-text-muted);
+  color: var(--color-muted-gray);
 }
 
 .credits-irony {
   font-size: 10px;
-  color: var(--color-accent-dark);
+  color: var(--color-antique-bronze);
   margin-top: 4px;
   font-style: italic;
 }
@@ -1908,19 +1905,19 @@ body.shelby-archive {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: var(--color-accent);
+  color: var(--color-warm-amber);
   text-decoration: none;
   letter-spacing: 0.14em;
   transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .return-top-btn:hover {
-  color: var(--color-accent-light);
+  color: #D8AF76;
   transform: translateY(-2px);
 }
 
 /* =========================================================
-   MODAL WINDOWS (CERTIFICATES & IMAGES)
+   14. MODAL DIALOGS
    ========================================================= */
 
 .modal {
@@ -1936,7 +1933,7 @@ body.shelby-archive {
   padding: 24px;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.25s ease;
 }
 
 .modal.open {
@@ -1950,23 +1947,23 @@ body.shelby-archive {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(8, 8, 7, 0.88);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(16, 16, 15, 0.9);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .modal-card {
   position: relative;
   z-index: 2;
   background: var(--color-surface);
-  border: 1.5px solid var(--color-accent);
+  border: 1.5px solid var(--color-warm-amber);
   border-radius: 4px;
   max-width: 820px;
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
   padding: 36px;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 40px var(--color-glow);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 35px var(--color-glow);
 }
 
 .modal-close {
@@ -1977,7 +1974,7 @@ body.shelby-archive {
   height: 36px;
   background: var(--color-surface-elevated);
   border: 1px solid var(--color-border);
-  color: var(--color-text-primary);
+  color: var(--color-aged-ivory);
   font-size: 16px;
   display: flex;
   align-items: center;
@@ -1987,8 +1984,8 @@ body.shelby-archive {
 }
 
 .modal-close:hover {
-  background: var(--color-accent);
-  color: #000;
+  background: var(--color-warm-amber);
+  color: #0E0D0B;
 }
 
 .modal-dossier-header {
@@ -1999,7 +1996,7 @@ body.shelby-archive {
   font-family: var(--font-mono);
   font-size: 10.5px;
   letter-spacing: 0.16em;
-  color: var(--color-accent);
+  color: var(--color-warm-amber);
   margin-bottom: 6px;
 }
 
@@ -2007,13 +2004,13 @@ body.shelby-archive {
   font-family: var(--font-display);
   font-size: 28px;
   font-weight: 700;
-  color: var(--color-text-primary);
+  color: var(--color-aged-ivory);
   margin-bottom: 8px;
 }
 
 .modal-dossier-header p {
   font-size: 14px;
-  color: var(--color-text-secondary);
+  color: var(--color-muted-gray);
 }
 
 .modal-image-wrap {
@@ -2045,16 +2042,16 @@ body.shelby-archive {
 }
 
 /* =========================================================
-   CASE STUDY & TEAMMATES PAGES COMPATIBILITY
+   15. CASE STUDY & TEAMMATES SECONDARY PAGES
    ========================================================= */
 
 .teammates-page {
-  background-color: var(--color-background);
-  color: var(--color-text-primary);
+  background-color: var(--color-coal);
+  color: var(--color-aged-ivory);
 }
 
 .cs-page-wrapper {
-  padding: 120px 32px 60px;
+  padding: 110px 32px 60px;
   max-width: 1100px;
   margin: 0 auto;
 }
@@ -2063,7 +2060,7 @@ body.shelby-archive {
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.12em;
-  color: var(--color-accent-light);
+  color: var(--color-warm-amber);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -2072,11 +2069,11 @@ body.shelby-archive {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   margin-bottom: 36px;
-  transition: all 0.25s ease;
+  transition: all 0.2s ease;
 }
 
 .cs-back-btn:hover {
-  background: var(--color-accent);
+  background: var(--color-warm-amber);
   color: #0E0D0B;
 }
 
@@ -2088,7 +2085,7 @@ body.shelby-archive {
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.16em;
-  color: var(--color-accent);
+  color: var(--color-warm-amber);
   margin-bottom: 12px;
 }
 
@@ -2096,20 +2093,20 @@ body.shelby-archive {
   font-family: var(--font-display);
   font-size: clamp(36px, 5vw, 60px);
   font-weight: 700;
-  color: var(--color-text-primary);
+  color: var(--color-aged-ivory);
   line-height: 1.1;
   margin-bottom: 20px;
 }
 
 .cs-hero h1 em {
-  font-family: var(--font-editorial);
+  font-family: var(--font-serif);
   font-style: italic;
-  color: var(--color-accent-light);
+  color: var(--color-warm-amber);
 }
 
 .cs-outcome {
   font-size: 18px;
-  color: var(--color-text-secondary);
+  color: var(--color-muted-gray);
   line-height: 1.7;
   max-width: 800px;
 }
@@ -2123,7 +2120,7 @@ body.shelby-archive {
   font-size: 22px;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: var(--color-accent-light);
+  color: var(--color-warm-amber);
   margin-bottom: 20px;
 }
 
@@ -2142,7 +2139,7 @@ body.shelby-archive {
   height: 64px;
   background: var(--color-surface-elevated);
   border: 1px solid var(--color-border);
-  color: var(--color-accent);
+  color: var(--color-warm-amber);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2157,7 +2154,7 @@ body.shelby-archive {
 
 .cs-text-content {
   font-size: 15px;
-  color: var(--color-text-secondary);
+  color: var(--color-muted-gray);
   line-height: 1.75;
 }
 
@@ -2190,20 +2187,20 @@ body.shelby-archive {
 .cs-comp-card span {
   font-family: var(--font-mono);
   font-size: 11px;
-  color: var(--color-accent);
+  color: var(--color-warm-amber);
 }
 
 .cs-comp-card h4 {
   font-family: var(--font-display);
   font-size: 18px;
   font-weight: 700;
-  color: var(--color-text-primary);
+  color: var(--color-aged-ivory);
   margin: 6px 0 8px;
 }
 
 .cs-comp-card p {
   font-size: 13px;
-  color: var(--color-text-secondary);
+  color: var(--color-muted-gray);
 }
 
 .cs-flow-diagram {
@@ -2219,31 +2216,22 @@ body.shelby-archive {
 
 .cs-flow-node {
   background: var(--color-surface-elevated);
-  border: 1px solid var(--color-accent);
+  border: 1px solid var(--color-warm-amber);
   padding: 12px 18px;
   border-radius: 2px;
   text-align: center;
   font-family: var(--font-mono);
   font-size: 12px;
-  color: var(--color-text-primary);
+  color: var(--color-aged-ivory);
 }
 
 .cs-flow-line {
   flex: 1;
   height: 2px;
-  background: var(--color-accent);
+  background: var(--color-warm-amber);
 }
 
-.cs-takeaway {
-  background: var(--color-surface);
-  border-left: 3px solid var(--color-accent);
-  padding: 24px;
-  font-style: italic;
-  font-size: 16px;
-  color: var(--color-text-secondary);
-}
-
-/* TEAMMATES GRID */
+/* TEAMMATES */
 .teammates-header {
   text-align: center;
   margin-bottom: 56px;
@@ -2263,12 +2251,12 @@ body.shelby-archive {
   padding: 32px 24px;
   text-align: center;
   border-radius: 4px;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.25s ease, border-color 0.25s ease;
 }
 
 .teammate-card:hover {
   transform: translateY(-4px);
-  border-color: var(--color-accent);
+  border-color: var(--color-warm-amber);
 }
 
 .teammate-photo-wrap {
@@ -2277,7 +2265,7 @@ body.shelby-archive {
   border-radius: 50%;
   margin: 0 auto 20px;
   overflow: hidden;
-  border: 2px solid var(--color-accent);
+  border: 2px solid var(--color-warm-amber);
   padding: 4px;
   background: var(--color-surface-elevated);
 }
@@ -2293,45 +2281,23 @@ body.shelby-archive {
   font-family: var(--font-display);
   font-size: 20px;
   font-weight: 700;
-  color: var(--color-text-primary);
+  color: var(--color-aged-ivory);
   margin-bottom: 4px;
 }
 
 .teammate-role {
   font-family: var(--font-mono);
   font-size: 11px;
-  color: var(--color-accent);
+  color: var(--color-warm-amber);
 }
 
 /* =========================================================
-   RESPONSIVE LAYOUT & MOBILE PERFORMANCE (GEMINI.md RULES)
+   16. RESPONSIVE DESIGN & MOBILE PERFORMANCE (GEMINI.md)
    ========================================================= */
 
 @media (max-width: 1024px) {
-  .hero-inner {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .archive-stamp, .hero-disciplines, .hero-actions {
-    justify-content: center;
-  }
-
-  .hero-lead-text {
-    margin: 0 auto 32px;
-  }
-
-  .hero-metadata-grid {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .hero-portrait-frame {
-    order: -1;
-  }
-
-  .hero-sp-img {
-    max-width: 360px;
+  .poster-main-title {
+    font-size: 72px;
   }
 
   .about-grid {
@@ -2339,7 +2305,7 @@ body.shelby-archive {
   }
 
   .about-photo-wrapper {
-    max-width: 480px;
+    max-width: 460px;
     margin: 0 auto;
   }
 
@@ -2367,7 +2333,7 @@ body.shelby-archive {
   }
 
   .ambient-glow {
-    display: none; /* remove expensive filter: blur() on mobile */
+    display: none;
   }
 
   .nav-wrap {
@@ -2397,9 +2363,9 @@ body.shelby-archive {
     height: calc(100vh - 60px);
     background: #10100F;
     flex-direction: column;
-    padding: 40px 24px;
+    padding: 36px 24px;
     transform: translateX(100%);
-    transition: transform 0.35s var(--ease-cinematic);
+    transition: transform 0.3s var(--ease-cinematic);
     overflow-y: auto;
     border-top: 1px solid var(--color-border);
   }
@@ -2423,28 +2389,50 @@ body.shelby-archive {
   .nav-content nav {
     flex-direction: column;
     align-items: flex-start;
-    gap: 18px;
+    gap: 16px;
     width: 100%;
   }
 
   .nav-content nav a {
-    font-size: 16px;
+    font-size: 15px;
     width: 100%;
     padding: 8px 0;
-    border-bottom: 1px solid rgba(210, 193, 157, 0.08);
+    border-bottom: 1px solid rgba(196, 154, 99, 0.1);
   }
 
   .archive-main {
-    padding: 80px 16px 40px;
+    padding: 76px 16px 40px;
   }
 
   .archive-chapter {
-    padding: 40px 20px;
-    margin-bottom: 48px;
+    padding: 40px 18px;
+    margin-bottom: 44px;
   }
 
-  .hero-chapter {
-    padding: 40px 20px;
+  .poster-hero {
+    padding: 36px 16px;
+  }
+
+  .hero-poster-img {
+    max-width: 320px;
+  }
+
+  .poster-main-title {
+    font-size: 50px;
+  }
+
+  .poster-motto-text {
+    font-size: 20px;
+  }
+
+  .poster-billing-strip {
+    flex-direction: column;
+    gap: 8px;
+    padding: 14px;
+  }
+
+  .billing-sep {
+    display: none;
   }
 
   .archival-stats {
@@ -2468,32 +2456,33 @@ body.shelby-archive {
     text-align: center;
   }
 
-  /* DECK ON MOBILE: Responsive Horizontal Stack */
+  /* DECK ON MOBILE */
+  .deck-controls {
+    flex-direction: column;
+    gap: 14px;
+    text-align: center;
+  }
+
   .deck-stack {
-    height: auto;
-    min-height: 400px;
+    height: 400px;
   }
 
   .archive-deck-card {
-    width: 260px;
-    height: 360px;
+    width: 250px;
+    height: 350px;
   }
 }
 
 @media (max-width: 480px) {
-  .hero-name {
-    font-size: 40px;
+  .poster-main-title {
+    font-size: 42px;
   }
 
-  .motto-lead {
+  .poster-motto-text {
     font-size: 18px;
   }
 
-  .motto-sub {
-    font-size: 14px;
-  }
-
-  .hero-actions {
+  .poster-cta-row {
     flex-direction: column;
     width: 100%;
   }
@@ -2502,13 +2491,8 @@ body.shelby-archive {
     width: 100%;
   }
 
-  .hero-metadata-grid {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
   .gazette-wrapper {
-    padding: 24px 16px;
+    padding: 24px 14px;
   }
 
   .masthead-top, .masthead-bottom {
