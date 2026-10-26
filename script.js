@@ -633,7 +633,7 @@ if (canvas && window.matchMedia('(pointer:fine)').matches) {
     });
 
     const particles = [];
-    const colors = ['#00f0ff', '#a000ff', '#ff2bd6']; // Cyan, Purple, Pink
+    const colors = ['#00F5C8', '#00C99A', '#00FFD5']; // Vibrant neon turquoise, emerald turquoise, glow highlight
 
     document.addEventListener('mousemove', e => {
         // Spawn particles on mouse move
