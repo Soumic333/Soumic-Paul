@@ -1,624 +1,381 @@
 /* =========================================================
-   SOUMIC PORTFOLIO — INTERACTION ENGINE
+   PROJECT: SOUMIC PAUL — THE SHELBY CREATIVE ARCHIVE
+   INTERACTIVE ARCHIVE ENGINE
    ========================================================= */
 
+document.addEventListener('DOMContentLoaded', () => {
 
-/* =========================================================
-   0. SMOOTH SCROLL (LENIS)
-   ========================================================= */
-
-if (typeof Lenis !== 'undefined' && window.matchMedia('(pointer: fine)').matches) {
+  /* =========================================================
+     0. SMOOTH SCROLL (LENIS)
+     ========================================================= */
+  if (typeof Lenis !== 'undefined' && window.matchMedia('(pointer: fine)').matches) {
     const lenis = new Lenis({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        direction: 'vertical',
-        gestureDirection: 'vertical',
-        smooth: true,
-        mouseMultiplier: 1,
-        smoothTouch: false,
-        touchMultiplier: 2,
-        infinite: false,
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      direction: 'vertical',
+      gestureDirection: 'vertical',
+      smooth: true,
+      mouseMultiplier: 1,
+      smoothTouch: false,
+      touchMultiplier: 2,
+      infinite: false,
     });
 
     function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
+      lenis.raf(time);
+      requestAnimationFrame(raf);
     }
-
     requestAnimationFrame(raf);
-}
+  }
 
-/* =========================================================
-   1. MOBILE MENU TOGGLE
-   ========================================================= */
+  /* =========================================================
+     1. SCROLL PROGRESS BAR
+     ========================================================= */
+  const progressBar = document.getElementById('scroll-progress-bar');
+  let progressTicking = false;
 
-const mobileBtn = document.querySelector('.mobile-menu-btn');
-const navWrap = document.querySelector('.nav-wrap');
+  function updateProgress() {
+    if (!progressTicking) {
+      window.requestAnimationFrame(() => {
+        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const percentage = scrollHeight > 0 ? (window.scrollY / scrollHeight) * 100 : 0;
+        if (progressBar) {
+          progressBar.style.width = `${percentage}%`;
+        }
+        progressTicking = false;
+      });
+      progressTicking = true;
+    }
+  }
 
-if (mobileBtn && navWrap) {
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+
+  /* =========================================================
+     2. MOBILE NAVIGATION MENU
+     ========================================================= */
+  const mobileBtn = document.querySelector('.mobile-menu-btn');
+  const navWrap = document.querySelector('.nav-wrap');
+
+  if (mobileBtn && navWrap) {
     mobileBtn.addEventListener('click', () => {
-        navWrap.classList.toggle('menu-open');
+      navWrap.classList.toggle('menu-open');
     });
+
     const navLinks = navWrap.querySelectorAll('.nav-content a');
     navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            navWrap.classList.remove('menu-open');
-        });
+      link.addEventListener('click', () => {
+        navWrap.classList.remove('menu-open');
+      });
     });
-}
+  }
 
+  /* =========================================================
+     3. SMOOTH IN-PAGE ANCHOR NAVIGATION & ACTIVE LINK
+     ========================================================= */
+  const NAV_OFFSET = 70;
+  const navLinks = document.querySelectorAll('.nav-content nav a');
+  const chapters = document.querySelectorAll('.archive-chapter');
 
-/* =========================================================
-   0. IN-PAGE ANCHOR NAVIGATION
-   Explicit smooth-scroll (more reliable across browsers/
-   embedded previews than relying on default '#anchor' jump)
-   ========================================================= */
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', event => {
+      const targetId = link.getAttribute('href');
+      if (!targetId || targetId === '#') return;
 
-const NAV_OFFSET = 90;
+      const target = document.querySelector(targetId);
+      if (!target) return;
 
-document
-    .querySelectorAll('a[href^="#"]')
-    .forEach(link => {
+      event.preventDefault();
+      const top = target.getBoundingClientRect().top + window.pageYOffset - NAV_OFFSET;
+      window.scrollTo({
+        top,
+        behavior: 'smooth'
+      });
 
-        link.addEventListener(
-            'click',
-            event => {
+      if (history.pushState) {
+        history.pushState(null, '', targetId);
+      }
+    });
+  });
 
-                const targetId =
-                    link.getAttribute('href');
+  // Active link indicator
+  function updateActiveNav() {
+    let currentId = '';
+    const scrollPos = window.scrollY + window.innerHeight * 0.4;
 
-                if (
-                    !targetId ||
-                    targetId === '#'
-                ) {
-                    return;
-                }
+    chapters.forEach(chapter => {
+      const top = chapter.offsetTop;
+      const height = chapter.offsetHeight;
+      if (scrollPos >= top && scrollPos < top + height) {
+        currentId = chapter.getAttribute('id');
+      }
+    });
 
-                const target =
-                    document.querySelector(targetId);
+    if (currentId) {
+      navLinks.forEach(link => {
+        const href = link.getAttribute('href').replace('#', '');
+        if (href === currentId) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
+  }
 
-                if (!target) return;
+  window.addEventListener('scroll', updateActiveNav, { passive: true });
+  updateActiveNav();
 
-                event.preventDefault();
+  /* =========================================================
+     4. HERO TYPING EFFECT
+     ========================================================= */
+  const typingElement = document.getElementById('hero-typing-text');
+  if (typingElement) {
+    const textToType = typingElement.getAttribute('data-text') || typingElement.innerText;
+    typingElement.innerText = '';
+    let charIndex = 0;
 
-                const top =
-                    target.getBoundingClientRect().top +
-                    window.pageYOffset -
-                    NAV_OFFSET;
+    setTimeout(() => {
+      const typeInterval = setInterval(() => {
+        if (charIndex < textToType.length) {
+          typingElement.innerText += textToType.charAt(charIndex);
+          charIndex++;
+        } else {
+          clearInterval(typeInterval);
+        }
+      }, 18);
+    }, 200);
+  }
 
-                window.scrollTo({
-                    top,
-                    behavior: 'smooth'
-                });
+  /* =========================================================
+     5. STATS COUNT-UP ANIMATION
+     ========================================================= */
+  const counters = document.querySelectorAll('.count-up');
+  let hasCounted = false;
 
-                history.pushState(
-                    null,
-                    '',
-                    targetId
-                );
+  if (counters.length > 0) {
+    const statsObserver = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && !hasCounted) {
+        hasCounted = true;
+        counters.forEach(counter => {
+          const target = +counter.getAttribute('data-target');
+          const duration = 1800;
+          const increment = target / (duration / 16);
 
+          let current = 0;
+          const updateCounter = () => {
+            current += increment;
+            if (current < target) {
+              counter.innerText = Math.ceil(current);
+              requestAnimationFrame(updateCounter);
+            } else {
+              counter.innerText = target;
             }
-        );
+          };
+          updateCounter();
+        });
+      }
+    }, { threshold: 0.2 });
 
-    });
+    const statsContainer = document.getElementById('about-stats');
+    if (statsContainer) statsObserver.observe(statsContainer);
+  }
 
+  /* =========================================================
+     6. EDUCATION TIMELINE FILL ON SCROLL
+     ========================================================= */
+  const eduTimeline = document.getElementById('edu-timeline-container');
+  const eduFill = document.getElementById('edu-line-fill');
 
-/* =========================================================
-   1. SCROLL PROGRESS
-   ========================================================= */
-
-const progress =
-    document.querySelector('.progress span');
-
-let progressTicking = false;
-
-function updateProgress() {
-    if (!progressTicking) {
+  if (eduTimeline && eduFill) {
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
         window.requestAnimationFrame(() => {
-            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const percentage = scrollHeight > 0 ? (window.scrollY / scrollHeight) * 100 : 0;
-            if (progress) {
-                progress.style.width = `${percentage}%`;
-            }
-            progressTicking = false;
+          const rect = eduTimeline.getBoundingClientRect();
+          const start = window.innerHeight * 0.6;
+          if (rect.top > start) {
+            eduFill.style.height = '0%';
+          } else if (rect.bottom < start) {
+            eduFill.style.height = '100%';
+          } else {
+            const total = rect.height;
+            const passed = start - rect.top;
+            const percentage = Math.max(0, Math.min(100, (passed / total) * 100));
+            eduFill.style.height = `${percentage}%`;
+          }
+          ticking = false;
         });
-        progressTicking = true;
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
+  /* =========================================================
+     7. THE ACHIEVEMENT DECK: CARD SHUFFLE ENGINE
+     ========================================================= */
+  const deckContainer = document.getElementById('certificateDeck');
+  const shuffleBtn = document.getElementById('shuffleDeckBtn');
+  const deckCounter = document.getElementById('deckCounter');
+
+  if (deckContainer) {
+    let cards = Array.from(deckContainer.querySelectorAll('.archive-deck-card'));
+    const totalCards = cards.length;
+    let isShuffling = false;
+
+    // Apply visual stacking positions to each card in the deck
+    function renderDeckStack(fanned = false) {
+      const isMobile = window.innerWidth <= 768;
+      const count = cards.length;
+
+      cards.forEach((card, i) => {
+        // i = 0 is the top card, i = count - 1 is the back card
+        const depth = i;
+        const zIndex = count - i;
+
+        // Visual offsets
+        let xOffset = 0;
+        let yOffset = 0;
+        let rot = 0;
+        let scale = 1 - (depth * 0.022);
+
+        if (isMobile) {
+          // Horizontal staggered fan on mobile
+          const centerIndex = (count - 1) / 2;
+          xOffset = (i - centerIndex) * 22;
+          yOffset = Math.abs(i - centerIndex) * 6;
+          rot = (i - centerIndex) * 1.5;
+        } else {
+          // 3D archival deck stack on desktop
+          if (fanned) {
+            // Wide fan outward
+            const center = (count - 1) / 2;
+            xOffset = (i - center) * 60;
+            yOffset = Math.pow(Math.abs(i - center), 1.3) * 6;
+            rot = (i - center) * 3;
+          } else {
+            // Natural archival layered stack with subtle authentic rotations
+            const offsets = [
+              { x: 0, y: 0, r: 0 },
+              { x: 18, y: 10, r: 2.5 },
+              { x: -16, y: 18, r: -2 },
+              { x: 28, y: 24, r: 3.5 },
+              { x: -24, y: 30, r: -3 },
+              { x: 36, y: 36, r: 4 },
+              { x: -32, y: 42, r: -4 },
+              { x: 44, y: 48, r: 5 },
+              { x: -40, y: 54, r: -4.5 },
+              { x: 50, y: 60, r: 5.5 },
+              { x: -46, y: 64, r: -5 },
+              { x: 54, y: 68, r: 6 }
+            ];
+            const preset = offsets[i] || { x: (i % 2 === 0 ? 1 : -1) * i * 4, y: i * 6, r: (i % 2 === 0 ? 1 : -1) * i * 0.5 };
+            xOffset = preset.x;
+            yOffset = preset.y;
+            rot = preset.r;
+          }
+        }
+
+        card.style.zIndex = zIndex;
+        card.style.transform = `translate3d(${xOffset}px, ${yOffset}px, 0) rotate(${rot}deg) scale(${scale})`;
+        card.style.opacity = Math.max(0.4, 1 - depth * 0.05);
+      });
+
+      if (deckCounter && cards[0]) {
+        const topTitle = cards[0].querySelector('h4') ? cards[0].querySelector('h4').innerText : 'Archive';
+        deckCounter.innerText = `ACTIVE RECORD: ${topTitle.toUpperCase()}`;
+      }
     }
-}
 
-window.addEventListener(
-    'scroll',
-    updateProgress,
-    { passive: true }
-);
+    // Initial render
+    renderDeckStack(false);
 
-updateProgress();
+    // Shuffle execution
+    function performShuffle() {
+      if (isShuffling) return;
+      isShuffling = true;
 
+      if (shuffleBtn) {
+        shuffleBtn.disabled = true;
+        shuffleBtn.style.opacity = '0.7';
+      }
 
-/* =========================================================
-   2. STAGGERED BLUR REVEAL
-   ========================================================= */
+      // Step 1: Fan cards wide outward with animation
+      cards.forEach((card, idx) => {
+        const direction = idx % 2 === 0 ? 1 : -1;
+        const spreadX = direction * (window.innerWidth < 768 ? 90 : 180 + Math.random() * 80);
+        const spreadY = (Math.random() - 0.5) * 80;
+        const spreadRot = direction * (12 + Math.random() * 10);
 
-const revealObserver =
-    new IntersectionObserver(
+        card.style.transition = 'transform 0.45s cubic-bezier(0.16, 1, 0.3, 1)';
+        card.style.transform = `translate3d(${spreadX}px, ${spreadY}px, 0) rotate(${spreadRot}deg) scale(0.95)`;
+      });
 
-        entries => {
+      // Step 2: Swap the order of cards (cycle top cards to back and promote new cards)
+      setTimeout(() => {
+        // Move the top 3 cards to the back of the deck
+        const moved = cards.splice(0, 3);
+        cards = cards.concat(moved);
 
-            entries.forEach(entry => {
+        // Re-append in DOM so stacking order updates cleanly
+        cards.forEach(card => deckContainer.appendChild(card));
 
-                if (
-                    entry.isIntersecting
-                ) {
+        // Step 3: Re-stack into clean archival order
+        setTimeout(() => {
+          cards.forEach(card => {
+            card.style.transition = 'transform 0.65s cubic-bezier(0.16, 1, 0.3, 1)';
+          });
+          renderDeckStack(false);
 
-                    entry.target
-                        .classList
-                        .add('visible');
-
-                    revealObserver
-                        .unobserve(entry.target);
-
-                }
-
-            });
-
-        },
-
-        {
-            threshold: 0.12,
-
-            rootMargin:
-                '0px 0px -50px 0px'
-        }
-
-    );
-
-
-document
-    .querySelectorAll('.reveal')
-    .forEach(element => {
-
-        revealObserver.observe(element);
-
-    });
-
-
-/* =========================================================
-   3. SPOTLIGHT CARD HOVER
-   ========================================================= */
-
-const spotlightElements =
-    document.querySelectorAll(
-        '.project-card, .skill-group, .certificate, .activity-card, .education-card'
-    );
-
-
-if (
-    window.matchMedia(
-        '(pointer:fine)'
-    ).matches
-) {
-
-    spotlightElements.forEach(card => {
-
-        card.addEventListener(
-            'pointermove',
-            event => {
-
-                const rect =
-                    card.getBoundingClientRect();
-
-                const x =
-                    ((event.clientX - rect.left)
-                    / rect.width) * 100;
-
-                const y =
-                    ((event.clientY - rect.top)
-                    / rect.height) * 100;
-
-                card.style.setProperty(
-                    '--spot-x',
-                    `${x}%`
-                );
-
-                card.style.setProperty(
-                    '--spot-y',
-                    `${y}%`
-                );
-
+          setTimeout(() => {
+            isShuffling = false;
+            if (shuffleBtn) {
+              shuffleBtn.disabled = false;
+              shuffleBtn.style.opacity = '1';
             }
-        );
-
-
-        card.addEventListener(
-            'pointerleave',
-            () => {
-
-                card.style.setProperty(
-                    '--spot-x',
-                    '50%'
-                );
-
-                card.style.setProperty(
-                    '--spot-y',
-                    '50%'
-                );
-
-            }
-        );
-
-    });
-
-}
-
-
-/* =========================================================
-   4. MAGNETIC BUTTONS
-   ========================================================= */
-
-const magneticElements =
-    document.querySelectorAll(
-        '.hero-btn, .pill, .nav-cta, .big-email'
-    );
-
-
-if (
-    window.matchMedia(
-        '(pointer:fine)'
-    ).matches
-) {
-
-    magneticElements.forEach(element => {
-
-        element.addEventListener(
-            'pointermove',
-            event => {
-
-                const rect =
-                    element.getBoundingClientRect();
-
-                const x =
-                    event.clientX -
-                    (rect.left + rect.width / 2);
-
-                const y =
-                    event.clientY -
-                    (rect.top + rect.height / 2);
-
-                const strength = 0.12;
-
-                element.style.transform =
-                    `translate(
-                        ${x * strength}px,
-                        ${y * strength}px
-                    )`;
-
-            }
-        );
-
-
-        element.addEventListener(
-            'pointerleave',
-            () => {
-
-                element.style.transform =
-                    '';
-
-            }
-        );
-
-    });
-
-}
-
-
-/* =========================================================
-   5. HERO CIRCUIT CONSTELLATION & GLOW PARALLAX
-   Mouse-reactive high-performance vector field
-   ========================================================= */
-
-const hero = document.querySelector('.hero');
-const vector = document.querySelector('.space-vector');
-const glow1 = document.querySelector('.hero-glow-1');
-const glow2 = document.querySelector('.hero-glow-2');
-
-if (hero && window.matchMedia('(pointer:fine)').matches) {
-    let heroRect = hero.getBoundingClientRect();
-    let heroMouseX = 0, heroMouseY = 0;
-    let isHeroHovered = false;
-    let heroTicking = false;
-
-    // Cache rect on resize for accurate coords
-    window.addEventListener('resize', () => { heroRect = hero.getBoundingClientRect(); }, { passive: true });
-    // Removed expensive getBoundingClientRect() on scroll event to prevent layout thrashing
-
-    hero.addEventListener('pointerenter', () => {
-        isHeroHovered = true;
-        heroRect = hero.getBoundingClientRect();
-    });
-    
-    hero.addEventListener('pointerleave', () => {
-        isHeroHovered = false;
-        if (vector) vector.style.transform = 'translate3d(0,0,0)';
-        if (glow1) glow1.style.transform = 'translate3d(0,0,0)';
-        if (glow2) glow2.style.transform = 'translate3d(0,0,0)';
-    });
-
-    hero.addEventListener('pointermove', event => {
-        heroMouseX = event.clientX;
-        heroMouseY = event.clientY;
-
-        if (!heroTicking && isHeroHovered) {
-            window.requestAnimationFrame(() => {
-                const x = (heroMouseX - heroRect.left) / heroRect.width - 0.5;
-                const y = (heroMouseY - heroRect.top) / heroRect.height - 0.5;
-
-                if (vector) vector.style.transform = `translate3d(${x * 10}px, ${y * 10}px, 0)`;
-                if (glow1) glow1.style.transform = `translate3d(${x * -20}px, ${y * -20}px, 0)`;
-                if (glow2) glow2.style.transform = `translate3d(${x * 30}px, ${y * 30}px, 0)`;
-
-                heroTicking = false;
-            });
-            heroTicking = true;
-        }
-    });
-}
-
-
-/* =========================================================
-   6. HERO PORTRAIT PARALLAX
-   Very subtle
-   ========================================================= */
-
-const portrait =
-    document.querySelector(
-        '.hero-portrait'
-    );
-
-
-if (
-    hero &&
-    portrait &&
-    window.matchMedia(
-        '(pointer:fine)'
-    ).matches
-) {
-
-    hero.addEventListener(
-        'pointermove',
-        event => {
-
-            const rect =
-                hero.getBoundingClientRect();
-
-            const x =
-                (event.clientX -
-                rect.left) /
-                rect.width -
-                0.5;
-
-            const y =
-                (event.clientY -
-                rect.top) /
-                rect.height -
-                0.5;
-
-
-            portrait.style.setProperty(
-                '--tilt-x',
-                `${y * -2}deg`
-            );
-
-            portrait.style.setProperty(
-                '--tilt-y',
-                `${x * 2}deg`
-            );
-
-        }
-    );
-
-
-    hero.addEventListener(
-        'pointerleave',
-        () => {
-
-            portrait.style.setProperty(
-                '--tilt-x',
-                '0deg'
-            );
-
-            portrait.style.setProperty(
-                '--tilt-y',
-                '0deg'
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   7. PROJECT IMAGE MICRO PARALLAX
-   ========================================================= */
-
-const projectCard =
-    document.querySelector(
-        '.project-card'
-    );
-
-const projectImage =
-    document.querySelector(
-        '.project-photo'
-    );
-
-
-if (
-    projectCard &&
-    projectImage &&
-    window.matchMedia(
-        '(pointer:fine)'
-    ).matches
-) {
-
-    projectCard.addEventListener(
-        'pointermove',
-        event => {
-
-            const rect =
-                projectCard.getBoundingClientRect();
-
-            const x =
-                (event.clientX -
-                rect.left) /
-                rect.width -
-                0.5;
-
-            const y =
-                (event.clientY -
-                rect.top) /
-                rect.height -
-                0.5;
-
-
-            projectImage.style.transform =
-                `scale(1.035)
-                 translate(
-                    ${x * -5}px,
-                    ${y * -5}px
-                 )`;
-
-        }
-    );
-
-
-    projectCard.addEventListener(
-        'pointerleave',
-        () => {
-
-            projectImage.style.transform =
-                '';
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   8. PROJECT MODAL
-   ========================================================= */
-
-function openProject() {
-
-    const modal =
-        document.getElementById(
-            'projectModal'
-        );
-
-    if (!modal) return;
-
-    modal.classList.add('open');
-
-    modal.setAttribute(
-        'aria-hidden',
-        'false'
-    );
-
-    document.body.style.overflow =
-        'hidden';
-}
-
-
-function closeProject() {
-
-    const modal =
-        document.getElementById(
-            'projectModal'
-        );
-
-    if (!modal) return;
-
-    modal.classList.remove('open');
-
-    modal.setAttribute(
-        'aria-hidden',
-        'true'
-    );
-
-    document.body.style.overflow =
-        '';
-}
-
-
-function openCertificate(imgSrc, title, desc) {
-    const modal = document.getElementById('certModal');
-    const modalImg = document.getElementById('certModalImg');
-    const modalTitle = document.getElementById('certModalTitle');
-    const modalDesc = document.getElementById('certModalDesc');
-    
-    if (!modal || !modalImg) return;
-    
-    modalTitle.innerHTML = title;
-    modalDesc.innerHTML = desc;
-    
-    // Open modal immediately
-    modal.classList.add('open');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-
-    // Defer the heavy image loading to the next frame so it doesn't block the animation
-    window.requestAnimationFrame(() => {
-        if (modalImg.getAttribute('src') !== imgSrc) {
-            modalImg.src = imgSrc;
-        }
-    });
-}
-
-function closeCertificate() {
-    const modal = document.getElementById('certModal');
-    if (!modal) return;
-    
-    modal.classList.remove('open');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-}
-
-document.addEventListener('keydown', event => {
-    if (event.key === 'Escape') {
-        closeProject();
-        closeCertificate();
-        closeImage();
+          }, 650);
+        }, 120);
+      }, 450);
     }
-});
 
-function openImage(imgSrc) {
-    const modal = document.getElementById('imageModal');
-    const modalImg = document.getElementById('imageModalImg');
-    if (!modal || !modalImg) return;
-    
-    modalImg.src = imgSrc;
-    modal.classList.add('open');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-}
+    if (shuffleBtn) {
+      shuffleBtn.addEventListener('click', performShuffle);
+    }
 
-function closeImage() {
-    const modal = document.getElementById('imageModal');
-    if (!modal) return;
-    
-    modal.classList.remove('open');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-}
+    // Hover fanning on desktop
+    if (window.matchMedia('(pointer: fine)').matches) {
+      deckContainer.addEventListener('mouseenter', () => {
+        if (!isShuffling) renderDeckStack(true);
+      });
 
+      deckContainer.addEventListener('mouseleave', () => {
+        if (!isShuffling) renderDeckStack(false);
+      });
+    }
 
+    // Clicking any card brings it to the top or opens it
+    cards.forEach(card => {
+      card.addEventListener('click', (e) => {
+        // If it's already top card, openCertificate is handled by onclick attribute
+        if (cards.indexOf(card) !== 0 && !isShuffling) {
+          e.stopPropagation();
+          // Move clicked card to top
+          const index = cards.indexOf(card);
+          cards.splice(index, 1);
+          cards.unshift(card);
+          cards.forEach(c => deckContainer.appendChild(c));
+          renderDeckStack(false);
+        }
+      });
+    });
+  }
 
-/* =========================================================
-   10. STAR TRAIL CURSOR
-   ========================================================= */
-
-const canvas = document.getElementById('star-trail');
-if (canvas && window.matchMedia('(pointer:fine)').matches) {
+  /* =========================================================
+     8. AMBIENT SMOKE & ATMOSPHERIC FOG CANVAS
+     High performance, hardware-accelerated subtle particles
+     ========================================================= */
+  const canvas = document.getElementById('ambient-smoke');
+  if (canvas && window.innerWidth > 600) {
     const ctx = canvas.getContext('2d');
     let width = window.innerWidth;
     let height = window.innerHeight;
@@ -626,208 +383,119 @@ if (canvas && window.matchMedia('(pointer:fine)').matches) {
     canvas.height = height;
 
     window.addEventListener('resize', () => {
-        width = window.innerWidth;
-        height = window.innerHeight;
-        canvas.width = width;
-        canvas.height = height;
-    });
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    }, { passive: true });
 
     const particles = [];
-    const colors = ['#00F5C8', '#00C99A', '#00FFD5']; // Vibrant neon turquoise, emerald turquoise, glow highlight
+    const maxParticles = 24;
 
-    document.addEventListener('mousemove', e => {
-        // Spawn particles on mouse move
-        const particleCount = Math.random() > 0.5 ? 2 : 1;
-        for (let i = 0; i < particleCount; i++) {
-            particles.push({
-                x: e.clientX,
-                y: e.clientY,
-                size: Math.random() * 2.5 + 1,
-                color: colors[Math.floor(Math.random() * colors.length)],
-                velocityX: (Math.random() - 0.5) * 1.5,
-                velocityY: (Math.random() - 0.5) * 1.5 + 0.5, // Slight gravity effect
-                life: 1,
-                decay: Math.random() * 0.02 + 0.015
-            });
-        }
-    });
-
-    function animateStars() {
-        ctx.clearRect(0, 0, width, height);
-        
-        for (let i = 0; i < particles.length; i++) {
-            const p = particles[i];
-            p.x += p.velocityX;
-            p.y += p.velocityY;
-            p.life -= p.decay;
-            
-            if (p.size > 0.1) p.size -= 0.02;
-
-            if (p.life <= 0 || p.size <= 0) {
-                particles.splice(i, 1);
-                i--;
-                continue;
-            }
-
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-            ctx.fillStyle = p.color;
-            ctx.globalAlpha = p.life;
-            ctx.fill();
-        }
-        
-        ctx.globalAlpha = 1;
-        requestAnimationFrame(animateStars);
+    for (let i = 0; i < maxParticles; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        radius: Math.random() * 120 + 80,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: -Math.random() * 0.4 - 0.15,
+        alpha: Math.random() * 0.08 + 0.02,
+        maxAlpha: Math.random() * 0.07 + 0.03
+      });
     }
-    
-    animateStars();
-}
 
-/* =========================================================
-   11. NUMBER COUNTING ANIMATION (STATS)
-   ========================================================= */
+    function renderSmoke() {
+      ctx.clearRect(0, 0, width, height);
 
-const counters = document.querySelectorAll('.count-up');
-let hasCounted = false;
+      particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
 
-if (counters.length > 0) {
-    const statsObserver = new IntersectionObserver((entries) => {
-        if(entries[0].isIntersecting && !hasCounted) {
-            hasCounted = true;
-            counters.forEach(counter => {
-                const target = +counter.getAttribute('data-target');
-                const duration = 2000; 
-                const increment = target / (duration / 16); 
-                
-                let current = 0;
-                const updateCounter = () => {
-                    current += increment;
-                    if(current < target) {
-                        counter.innerText = Math.ceil(current);
-                        requestAnimationFrame(updateCounter);
-                    } else {
-                        counter.innerText = target;
-                    }
-                };
-                updateCounter();
-            });
+        if (p.y < -p.radius * 2) {
+          p.y = height + p.radius;
+          p.x = Math.random() * width;
         }
-    }, { threshold: 0.1 });
-    
-    const statsContainer = document.getElementById('about-stats');
-    if(statsContainer) statsObserver.observe(statsContainer);
-}
+        if (p.x < -p.radius) p.x = width + p.radius;
+        if (p.x > width + p.radius) p.x = -p.radius;
 
-/* =========================================================
-   12. HERO TYPING ANIMATION
-   ========================================================= */
-const typingElement = document.getElementById('hero-typing-text');
-if (typingElement) {
-    const textToType = typingElement.getAttribute('data-text');
-    typingElement.innerText = '';
-    let typeIndex = 0;
-    
-    setTimeout(() => {
-        const typeInterval = setInterval(() => {
-            if (typeIndex < textToType.length) {
-                typingElement.innerText += textToType.charAt(typeIndex);
-                typeIndex++;
-            } else {
-                clearInterval(typeInterval);
-            }
-        }, 20); 
-    }, 100);
-}
+        const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.radius);
+        // Warm amber-tinted smoke mist
+        grad.addColorStop(0, `rgba(180, 150, 105, ${p.alpha})`);
+        grad.addColorStop(0.6, `rgba(28, 26, 23, ${p.alpha * 0.4})`);
+        grad.addColorStop(1, 'transparent');
 
-/* =========================================================
-   EDUCATION TIMELINE SCROLL ANIMATION
-   ========================================================= */
-(function() {
-    const nodes = document.querySelectorAll('.edu-node');
-    const timeline = document.getElementById('edu-timeline-container');
-    const lineFill = document.getElementById('edu-line-fill');
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fill();
+      });
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.25 });
-
-    nodes.forEach(n => observer.observe(n));
-
-    // Dynamic scroll-based line fill
-    if (timeline && lineFill) {
-        let lineTicking = false;
-        window.addEventListener('scroll', () => {
-            if (!lineTicking) {
-                window.requestAnimationFrame(() => {
-                    const rect = timeline.getBoundingClientRect();
-                    const start = window.innerHeight / 2;
-                    
-                    if (rect.top > start) {
-                        lineFill.style.height = '0%';
-                    } else if (rect.bottom < start) {
-                        lineFill.style.height = '100%';
-                    } else {
-                        const total = rect.height;
-                        const passed = start - rect.top;
-                        const percentage = Math.max(0, Math.min(100, (passed / total) * 100));
-                        lineFill.style.height = `${percentage}%`;
-                    }
-                    lineTicking = false;
-                });
-                lineTicking = true;
-            }
-        }, { passive: true });
+      requestAnimationFrame(renderSmoke);
     }
-})();
+
+    renderSmoke();
+  }
+
+});
 
 /* =========================================================
-   ACTIVE NAV INDICATOR
+   9. GLOBAL MODAL CONTROLLERS (CERTIFICATES & BLUEPRINTS)
    ========================================================= */
-(function() {
-    const navLinks = document.querySelectorAll('.nav-wrap nav a');
-    const sections = document.querySelectorAll('section[id], main[id]');
-    
-    // Default to 'home' active on load
-    navLinks.forEach(link => {
-        if (link.getAttribute('href') === '#home') link.classList.add('active');
-    });
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const current = entry.target.id;
-                
-                navLinks.forEach(link => {
-                    const href = link.getAttribute('href').replace('#', '');
-                    if (href === current) {
-                        link.classList.add('active');
-                    } else {
-                        link.classList.remove('active');
-                    }
-                });
-            }
-        });
-    }, {
-        // Trigger when the section reaches the middle of the viewport
-        rootMargin: '-30% 0px -70% 0px' 
-    });
+function openCertificate(imgSrc, title, desc) {
+  const modal = document.getElementById('certModal');
+  const modalImg = document.getElementById('certModalImg');
+  const modalTitle = document.getElementById('certModalTitle');
+  const modalDesc = document.getElementById('certModalDesc');
 
-    sections.forEach(sec => {
-        if (sec.id !== 'top') {
-            observer.observe(sec);
-        }
-    });
+  if (!modal || !modalImg) return;
 
-    // Fallback: If scrolled to the absolute bottom, always activate the last section (Contact)
-    window.addEventListener('scroll', () => {
-        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
-            navLinks.forEach(link => link.classList.remove('active'));
-            const lastLink = navLinks[navLinks.length - 1];
-            if (lastLink) lastLink.classList.add('active');
-        }
-    }, { passive: true });
-})();
+  if (modalTitle) modalTitle.innerHTML = title;
+  if (modalDesc) modalDesc.innerHTML = desc;
+
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+
+  window.requestAnimationFrame(() => {
+    if (modalImg.getAttribute('src') !== imgSrc) {
+      modalImg.src = imgSrc;
+    }
+  });
+}
+
+function closeCertificate() {
+  const modal = document.getElementById('certModal');
+  if (!modal) return;
+
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+function openImage(imgSrc) {
+  const modal = document.getElementById('imageModal');
+  const modalImg = document.getElementById('imageModalImg');
+  if (!modal || !modalImg) return;
+
+  modalImg.src = imgSrc;
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeImage() {
+  const modal = document.getElementById('imageModal');
+  if (!modal) return;
+
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') {
+    closeCertificate();
+    closeImage();
+  }
+});

@@ -4,47 +4,33 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
-  <title>Case Study - Footstep Power Harvesting</title>
+  <title>Case Study - Footstep Power Harvesting — Soumic Paul</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Libre+Franklin:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Oswald:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 
-<body class="teammates-page">
-  <div class="noise"></div>
-  <canvas id="star-trail"></canvas>
-  <div class="space-vector" aria-hidden="true">
-    <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
-      <ellipse class="space-orbit orbit-a" cx="800" cy="450" rx="560" ry="260" />
-      <ellipse class="space-orbit orbit-b" cx="800" cy="450" rx="380" ry="170" />
-      <path class="space-path" d="M-100 650 C250 180 500 850 820 360 S1300 100 1750 520" />
-      <path class="space-path path-b" d="M-150 250 C220 620 520 80 860 550 S1320 800 1750 250" />
-      <circle class="space-dot" cx="250" cy="180" r="2" />
-      <circle class="space-dot" cx="450" cy="700" r="2" />
-      <circle class="space-dot" cx="1120" cy="220" r="2" />
-      <circle class="space-dot" cx="1370" cy="650" r="2" />
-    </svg>
-  </div>
-  <div class="hero-glow hero-glow-1"></div>
-  <div class="hero-glow hero-glow-2"></div>
+<body class="shelby-archive teammates-page">
+  <div class="film-grain" aria-hidden="true"></div>
+  <canvas id="ambient-smoke" class="ambient-smoke" aria-hidden="true"></canvas>
 
-  <div class="hero cs-page-wrapper">
+  <div class="cs-page-wrapper">
     <div class="cs-container">
       <div class="cs-nav">
-        <a href="index.html#work" class="cs-back-btn text-button"><span>←</span> BACK TO PROJECTS</a>
+        <a href="index.html#work" class="cs-back-btn"><span>←</span> RETURN TO ARCHIVE CASE FILES</a>
       </div>
       
       <div class="cs-content">
         <!-- 1. HERO HEADER -->
-        <header class="cs-hero reveal">
-          <p class="mono cs-subtitle">PROJECT 01 • PROJECT STORY</p>
+        <header class="cs-hero">
+          <p class="cs-subtitle">ARCHIVE FILE N° 01 • ENGINEERING DOSSIER</p>
           <h1>Footstep Power<br><em>Harvesting System</em></h1>
-          <p class="cs-outcome">The prototype demonstrated the feasibility of converting mechanical energy from human footsteps into electrical energy and storing the harvested energy for practical low-power applications.</p>
+          <p class="cs-outcome">A fully realized hardware prototype validating the conversion of mechanical energy from ambient human footsteps into stable, conditioned electrical energy for practical low-power applications.</p>
         </header>
 
         <!-- 2. THE PROBLEM -->
-        <section class="cs-section reveal">
+        <section class="cs-section">
           <h3 class="cs-section-title">01 // The Problem</h3>
           <div class="cs-visual-card">
             <div class="cs-icon-wrapper">
@@ -54,12 +40,12 @@
                 <line x1="12" y1="16" x2="12.01" y2="16"></line>
               </svg>
             </div>
-            <p class="cs-text-content">Footsteps generate mechanical energy that is normally wasted in our daily environments. The objective of this project was to capture this ambient mechanical energy and convert it into usable electrical energy using piezoelectric transducers.</p>
+            <p class="cs-text-content">Footsteps generate mechanical kinetic impulses that are dissipated into surrounding surfaces in daily environments. The objective of this project was to capture this ambient strain energy and rectify it into usable DC power using an array of piezoelectric transducers.</p>
           </div>
         </section>
 
-        <!-- 4. PHYSICAL PROTOTYPE -->
-        <section class="cs-section reveal">
+        <!-- 3. PHYSICAL PROTOTYPE -->
+        <section class="cs-section">
           <h3 class="cs-section-title">02 // Physical Prototype</h3>
           <div class="cs-visual-card">
             <div class="cs-icon-wrapper">
@@ -68,90 +54,62 @@
                 <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
               </svg>
             </div>
-            <p class="cs-text-content">The 40 piezoelectric discs were physically arranged beneath a stepping platform and connected to the power-conditioning and storage circuitry. This was a fully functional real hardware prototype, designed to validate the concept in a practical scenario.</p>
+            <p class="cs-text-content">An array of 40 piezoelectric discs was physically embedded beneath an engineered stepping platform and coupled to precision power-conditioning and storage circuitry. The prototype validated the operational viability of kinetic energy conversion under continuous load.</p>
           </div>
-          <div class="cs-image-frame">
+          <div class="cs-image-frame" style="margin-top: 20px;">
             <img src="assets/Footstep.jpeg" alt="Footstep Power Harvesting System Prototype" class="cs-prototype-img" />
-            <div class="cs-frame-corner top-left"></div>
-            <div class="cs-frame-corner top-right"></div>
-            <div class="cs-frame-corner bottom-left"></div>
-            <div class="cs-frame-corner bottom-right"></div>
           </div>
         </section>
 
-        <!-- 3. THE ENERGY HARVESTING SYSTEM (COMPONENTS) -->
-        <section class="cs-section reveal">
+        <!-- 4. SYSTEM COMPONENTS -->
+        <section class="cs-section">
           <h3 class="cs-section-title">03 // System Components</h3>
           <div class="cs-components-grid">
-            <div class="cs-comp-card"><span>01</span><p>40 Piezoelectric Discs</p></div>
-            <div class="cs-comp-card"><span>02</span><p>Bridge Rectifier Circuit</p></div>
-            <div class="cs-comp-card"><span>03</span><p>Smoothing Capacitors</p></div>
-            <div class="cs-comp-card"><span>04</span><p>DC-DC Boost Module</p></div>
-            <div class="cs-comp-card"><span>05</span><p>Rechargeable Battery Pack</p></div>
-            <div class="cs-comp-card"><span>06</span><p>Microcontroller Section</p></div>
-            <div class="cs-comp-card"><span>07</span><p>LED Electrical Load</p></div>
-            <div class="cs-comp-card"><span>08</span><p>Prototype Circuitry & Wiring</p></div>
+            <div class="cs-comp-card"><span>01</span><h4>Piezo Array</h4><p>40 Piezoelectric Disc Transducers</p></div>
+            <div class="cs-comp-card"><span>02</span><h4>Rectification</h4><p>Fast-Recovery Bridge Rectifier Circuit</p></div>
+            <div class="cs-comp-card"><span>03</span><h4>Filter Stage</h4><p>Electrolytic Smoothing Capacitors</p></div>
+            <div class="cs-comp-card"><span>04</span><h4>Regulation</h4><p>DC-DC Boost Voltage Converter Module</p></div>
+            <div class="cs-comp-card"><span>05</span><h4>Storage</h4><p>Rechargeable Chemical Battery Cell</p></div>
+            <div class="cs-comp-card"><span>06</span><h4>Microcontroller</h4><p>Monitoring &amp; Telemetry Section</p></div>
+            <div class="cs-comp-card"><span>07</span><h4>Load Stage</h4><p>Demonstration LED Electrical Array</p></div>
+            <div class="cs-comp-card"><span>08</span><h4>Architecture</h4><p>Low-Loss Interconnect Wiring Harness</p></div>
           </div>
         </section>
 
-        <!-- 5. HOW IT WORKS (ENERGY FLOW) -->
-        <section class="cs-section reveal">
-          <h3 class="cs-section-title">04 // Energy Flow</h3>
+        <!-- 5. ENERGY FLOW -->
+        <section class="cs-section">
+          <h3 class="cs-section-title">04 // Energy Flow Architecture</h3>
           <div class="cs-flow-diagram">
             <div class="cs-flow-node">Footstep<br>(Mechanical)</div>
-            <div class="cs-flow-line"><div class="cs-flow-pulse"></div></div>
-            <div class="cs-flow-node">Piezo Transducers<br>(AC Output)</div>
-            <div class="cs-flow-line"><div class="cs-flow-pulse delay-1"></div></div>
-            <div class="cs-flow-node">Rectification<br>& Smoothing</div>
-            <div class="cs-flow-line"><div class="cs-flow-pulse delay-2"></div></div>
-            <div class="cs-flow-node">Voltage<br>Conditioning</div>
-            <div class="cs-flow-line"><div class="cs-flow-pulse delay-3"></div></div>
-            <div class="cs-flow-node">Battery<br>Storage</div>
-            <div class="cs-flow-line"><div class="cs-flow-pulse delay-4"></div></div>
-            <div class="cs-flow-node">Electrical<br>Load</div>
+            <div class="cs-flow-line"></div>
+            <div class="cs-flow-node">Piezo Array<br>(AC Impulses)</div>
+            <div class="cs-flow-line"></div>
+            <div class="cs-flow-node">Rectifier<br>&amp; Smoothing</div>
+            <div class="cs-flow-line"></div>
+            <div class="cs-flow-node">Boost Module<br>(Conditioned DC)</div>
+            <div class="cs-flow-line"></div>
+            <div class="cs-flow-node">Battery Cell<br>(Energy Stored)</div>
+            <div class="cs-flow-line"></div>
+            <div class="cs-flow-node">Demonstration<br>Output Load</div>
           </div>
         </section>
 
-        <!-- 6. PROJECT DEMONSTRATION & ANIMATION -->
-        <section class="cs-section reveal">
-          <h3 class="cs-section-title">05 // Project Demonstration</h3>
-          <ul class="cs-demo-list">
-            <li>A person steps on the prototype platform.</li>
-            <li>Mechanical pressure is applied to the piezoelectric discs.</li>
-            <li>The piezoelectric elements generate an electrical output.</li>
-            <li>The generated output passes through the rectification and conditioning stages.</li>
-            <li>The conditioned energy is stored in the battery.</li>
-            <li>The stored energy is used to demonstrate an electrical load.</li>
-          </ul>
-          <div class="cs-demo-animation">
-            <div class="demo-box">FOOTSTEP</div>
-            <div class="demo-wire"><div class="demo-pulse"></div></div>
-            <div class="demo-box">GENERATED</div>
-            <div class="demo-wire"><div class="demo-pulse delay-1"></div></div>
-            <div class="demo-box">CONDITIONED</div>
-            <div class="demo-wire"><div class="demo-pulse delay-2"></div></div>
-            <div class="demo-box">STORED</div>
-            <div class="demo-wire"><div class="demo-pulse delay-3"></div></div>
-            <div class="demo-box">OUTPUT</div>
-          </div>
-        </section>
-
-        <!-- 7. ENGINEERING CHALLENGE -->
-        <section class="cs-section reveal">
-          <h3 class="cs-section-title">06 // Engineering Challenge</h3>
+        <!-- 6. ENGINEERING CHALLENGE -->
+        <section class="cs-section">
+          <h3 class="cs-section-title">05 // Engineering Challenge</h3>
           <div class="cs-visual-card">
             <div class="cs-icon-wrapper">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
               </svg>
             </div>
-            <p class="cs-text-content">Piezoelectric elements produce relatively small and variable electrical outputs. The primary engineering challenge was designing proper rectification, voltage conditioning, and efficient energy storage to stabilize this output before it could be practically demonstrated.</p>
+            <p class="cs-text-content">Piezoelectric discs generate high-voltage but micro-ampere electrical pulses with severe variability. The central engineering hurdle was minimizing diode forward-voltage drop in rectification, suppressing AC ripple, and stabilizing the energy into a low-impedance storage element.</p>
           </div>
         </section>
 
-        <!-- 8. MY CONTRIBUTION -->
-        <section class="cs-section reveal">
-          <h3 class="cs-section-title">07 // My Contribution</h3>
+        <!-- 7. MY CONTRIBUTION -->
+        <section class="cs-section">
+          <h3 class="cs-section-title">06 // Command &amp; Contribution</h3>
           <div class="cs-visual-card">
             <div class="cs-icon-wrapper">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -159,12 +117,15 @@
                 <circle cx="12" cy="7" r="4"></circle>
               </svg>
             </div>
-            <p class="cs-text-content">Led the development of the piezoelectric footstep power harvesting system, coordinating system design, component integration, circuit implementation, prototype assembly, testing and overall project execution.</p>
+            <p class="cs-text-content">Spearheaded the project from initial schematic design and mathematical modelling to physical assembly, breadboard testing, soldering, transducer calibration, and formal presentation to faculty evaluators.</p>
           </div>
         </section>
         
-        <div class="cs-footer reveal">
-          <a href="index.html#work" class="text-button cs-back-btn">Back to Portfolio <span>←</span></a>
+        <div class="cs-footer" style="text-align: center; margin-top: 48px;">
+          <a href="index.html#work" class="archive-btn primary-brass">
+            <span>RETURN TO ARCHIVE CASE FILES</span>
+            <span>←</span>
+          </a>
         </div>
       </div>
     </div>
