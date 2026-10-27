@@ -663,6 +663,15 @@ document.addEventListener('DOMContentLoaded', () => {
       ref: "OSC-LFR-2024"
     },
     {
+      title: "PRISM AI Creative Awards 2026",
+      issuer: "PRISM AI CREATIVE AWARDS & SPIKESTORY",
+      category: "AI CREATIVE & CINEMA FINALIST",
+      year: "2026",
+      desc: "Certificate of Recognition presented to Soumic Kundu Paul for achieving Finalist status in PRISM AI Creative Awards 2026 and successfully completing the AI Creative Bootcamp.",
+      img: "assets/Certificates/PRISM.jpeg",
+      ref: "PRISM-AI-2026"
+    },
+    {
       title: "RoboMania 2.0 Circuit Wizardry",
       issuer: "AUST EEE SOCIETY",
       category: "ELECTRICAL ENGINEERING",
@@ -736,6 +745,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const theatreYearText = document.getElementById('theatreYearText');
   const certDescText = document.getElementById('certDescText');
   const theatreCurrentNum = document.getElementById('theatreCurrentNum');
+  const theatreTotalNum = document.getElementById('theatreTotalNum');
   const countdownBar = document.getElementById('screeningCountdownBar');
   const theatrePlayPauseBtn = document.getElementById('theatrePlayPauseBtn');
   const theatrePlayPauseGlyph = document.getElementById('theatrePlayPauseGlyph');
@@ -777,6 +787,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isInitial) {
       if (screeningCounter) screeningCounter.innerText = `NOW SCREENING · RECORD ${paddedIndex} / ${paddedTotal}`;
       if (theatreCurrentNum) theatreCurrentNum.innerText = paddedIndex;
+      if (theatreTotalNum) theatreTotalNum.innerText = paddedTotal;
       if (theatreRefCode) theatreRefCode.innerText = nextCert.ref;
       if (certTitleText) certTitleText.innerText = nextCert.title;
       if (theatreIssuerText) theatreIssuerText.innerText = nextCert.issuer;
@@ -828,6 +839,7 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         if (screeningCounter) screeningCounter.innerText = `NOW SCREENING · RECORD ${paddedIndex} / ${paddedTotal}`;
         if (theatreCurrentNum) theatreCurrentNum.innerText = paddedIndex;
+        if (theatreTotalNum) theatreTotalNum.innerText = paddedTotal;
         if (theatreRefCode) theatreRefCode.innerText = nextCert.ref;
         if (certTitleText) certTitleText.innerText = nextCert.title;
         if (theatreIssuerText) theatreIssuerText.innerText = nextCert.issuer;
