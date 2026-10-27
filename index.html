@@ -1006,15 +1006,23 @@
             <div class="screen-corner-rosette corner-bl">✦</div>
             <div class="screen-corner-rosette corner-br">✦</div>
 
-            <!-- SCREEN SURFACE -->
+            <!-- SCREEN SURFACE WITH TWO OVERLAPPING CINEMATIC CROSSFADE LAYERS -->
             <div class="theatre-screen-canvas" id="projectorMatBoard" title="Click to enlarge and inspect official document" tabindex="0" role="button" aria-label="Inspect certificate document in high resolution">
-              <div class="theatre-spotlight-sweep"></div>
+              <div class="theatre-spotlight-sweep" id="theatreSpotlightSweep"></div>
               <div class="theatre-lens-flare"></div>
               
+              <!-- BASE / OUTGOING CERTIFICATE LAYER -->
               <img src="assets/Certificates/Deputy%20Executive.png" 
                    alt="Deputy Executive — Leadership & Management" 
-                   class="theatre-active-img" 
+                   class="theatre-active-img theatre-img-base" 
                    id="screeningActiveImg" />
+
+              <!-- INCOMING CERTIFICATE LAYER (DISSOLVES IN FROM SCALE 1.025 TO 1.0) -->
+              <img src="" 
+                   alt="" 
+                   class="theatre-active-img theatre-img-incoming" 
+                   id="screeningIncomingImg" 
+                   aria-hidden="true" />
               
               <div class="theatre-inspect-badge">
                 <span class="inspect-icon">✦</span> CLICK SCREEN TO INSPECT DOCUMENT
@@ -1032,24 +1040,26 @@
 
         <!-- PROJECTION INFORMATION AREA (LAYER C) -->
         <div class="theatre-screen-dossier" id="screeningDetailsBox">
-          <div class="theatre-now-screening-bar">
-            <span class="screening-live-dot"></span>
-            <span class="theatre-record-tag" id="screeningCounterPill">NOW SCREENING · RECORD 01 / 12</span>
-            <span class="theatre-dot-sep">•</span>
-            <span class="theatre-ref-code" id="theatreRefCode">ARC-DEP-2025</span>
+          <div class="theatre-meta-content-wrap" id="theatreMetaWrap">
+            <div class="theatre-now-screening-bar">
+              <span class="screening-live-dot"></span>
+              <span class="theatre-record-tag" id="screeningCounterPill">NOW SCREENING · RECORD 01 / 12</span>
+              <span class="theatre-dot-sep">•</span>
+              <span class="theatre-ref-code" id="theatreRefCode">ARC-DEP-2025</span>
+            </div>
+
+            <h3 class="theatre-cert-title" id="certTitleText">Deputy Executive</h3>
+
+            <div class="theatre-cert-meta-row">
+              <span class="theatre-issuer-pill" id="theatreIssuerText">AUST ROBOTICS CLUB</span>
+              <span class="theatre-cat-pill" id="certCatText">LEADERSHIP &amp; MANAGEMENT</span>
+              <span class="theatre-year-pill" id="theatreYearText">2024 - 2025</span>
+            </div>
+
+            <p class="theatre-cert-desc" id="certDescText">
+              AUST Robotics Club — Directing administrative governance, coordinating cross-disciplinary engineering teams, vendor procurement, and national robotics symposiums.
+            </p>
           </div>
-
-          <h3 class="theatre-cert-title" id="certTitleText">Deputy Executive</h3>
-
-          <div class="theatre-cert-meta-row">
-            <span class="theatre-issuer-pill" id="theatreIssuerText">AUST ROBOTICS CLUB</span>
-            <span class="theatre-cat-pill" id="certCatText">LEADERSHIP &amp; MANAGEMENT</span>
-            <span class="theatre-year-pill" id="theatreYearText">2024 - 2025</span>
-          </div>
-
-          <p class="theatre-cert-desc" id="certDescText">
-            AUST Robotics Club — Directing administrative governance, coordinating cross-disciplinary engineering teams, vendor procurement, and national robotics symposiums.
-          </p>
 
           <!-- SCREENING STATUS & PROGRESS TIMELINE (01 ━━━━━━━━━━━━━ 12) -->
           <div class="theatre-screening-timeline">

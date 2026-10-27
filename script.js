@@ -720,10 +720,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let currentCertIndex = 0;
   const totalCerts = CERTIFICATE_DATA.length;
-  const AUTOPLAY_CYCLE_MS = 1500; // 1.5 seconds screening duration per certificate
+  const AUTOPLAY_CYCLE_MS = 6000; // 6 seconds display duration per certificate
+  const TRANSITION_DURATION_MS = 900; // 900ms cinematic film dissolve
 
   const projectorMat = document.getElementById('projectorMatBoard');
   const screeningActiveImg = document.getElementById('screeningActiveImg');
+  const screeningIncomingImg = document.getElementById('screeningIncomingImg');
+  const theatreSpotlightSweep = document.getElementById('theatreSpotlightSweep');
+  const theatreMetaWrap = document.getElementById('theatreMetaWrap');
   const screeningCounter = document.getElementById('screeningCounterPill');
   const theatreRefCode = document.getElementById('theatreRefCode');
   const certTitleText = document.getElementById('certTitleText');
@@ -743,18 +747,24 @@ document.addEventListener('DOMContentLoaded', () => {
   let cycleStartTime = null;
   let isCertPaused = false;
   let isCertSectionVisible = false;
+  let isTransitioning = false;
 
-  // Preload next certificate image to ensure instantaneous, stutter-free playback
+  // Preload next certificate image to guarantee instantaneous, flicker-free presentation
   function preloadCertificateImage(index) {
     const nextIdx = (index + 1) % totalCerts;
     const preloader = new Image();
     preloader.src = CERTIFICATE_DATA[nextIdx].img;
   }
 
-  function displayCertificate(index, isManual = false) {
-    currentCertIndex = (index + totalCerts) % totalCerts;
-    const cert = CERTIFICATE_DATA[currentCertIndex];
-    if (!cert) return;
+  // CINEMATIC THEATRE SCREEN DISSOLVE SEQUENCE (900ms layered crossfade, 1.025 -> 1.0 scale, flicker, sweep)
+  function displayCertificate(targetIndex, isManual = false, isInitial = false) {
+    if (isTransitioning && !isInitial) return;
+
+    const nextIndex = (targetIndex + totalCerts) % totalCerts;
+    const nextCert = CERTIFICATE_DATA[nextIndex];
+    if (!nextCert) return;
+
+    currentCertIndex = nextIndex;
 
     // Reset progress line
     cycleStartTime = performance.now();
@@ -762,53 +772,121 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const paddedIndex = String(currentCertIndex + 1).padStart(2, '0');
     const paddedTotal = String(totalCerts).padStart(2, '0');
-    
-    if (screeningCounter) screeningCounter.innerText = `NOW SCREENING · RECORD ${paddedIndex} / ${paddedTotal}`;
-    if (theatreCurrentNum) theatreCurrentNum.innerText = paddedIndex;
-    if (theatreRefCode) theatreRefCode.innerText = cert.ref;
 
-    // Smooth cinematic dissolve + horizontal film-reel glide
-    if (screeningActiveImg) {
-      screeningActiveImg.style.transition = 'opacity 0.20s ease-out, transform 0.24s cubic-bezier(0.16, 1, 0.3, 1)';
-      screeningActiveImg.style.opacity = '0.35';
-      screeningActiveImg.style.transform = isManual ? 'translateX(8px) scale(0.99)' : 'translateX(5px) scale(0.995)';
+    // Instant clean paint on initial page load
+    if (isInitial) {
+      if (screeningCounter) screeningCounter.innerText = `NOW SCREENING · RECORD ${paddedIndex} / ${paddedTotal}`;
+      if (theatreCurrentNum) theatreCurrentNum.innerText = paddedIndex;
+      if (theatreRefCode) theatreRefCode.innerText = nextCert.ref;
+      if (certTitleText) certTitleText.innerText = nextCert.title;
+      if (theatreIssuerText) theatreIssuerText.innerText = nextCert.issuer;
+      if (certCatText) certCatText.innerText = nextCert.category;
+      if (theatreYearText) theatreYearText.innerText = nextCert.year;
+      if (certDescText) certDescText.innerText = nextCert.desc;
 
-      setTimeout(() => {
-        screeningActiveImg.src = cert.img;
-        screeningActiveImg.alt = `${cert.title} — ${cert.issuer} (${cert.category})`;
+      if (screeningActiveImg) {
+        screeningActiveImg.src = nextCert.img;
+        screeningActiveImg.alt = `${nextCert.title} — ${nextCert.issuer} (${nextCert.category})`;
         screeningActiveImg.style.opacity = '1';
-        screeningActiveImg.style.transform = 'translateX(0) scale(1)';
+        screeningActiveImg.style.transform = 'scale(1)';
+        screeningActiveImg.style.transition = 'none';
+      }
+      if (screeningIncomingImg) {
+        screeningIncomingImg.style.opacity = '0';
+        screeningIncomingImg.style.transition = 'none';
+      }
+      preloadCertificateImage(currentCertIndex);
+      isTransitioning = false;
+      return;
+    }
+
+    isTransitioning = true;
+
+    // 1. FILM PROJECTOR FLICKER (150-250ms subtle brightness variation)
+    if (projectorMat) {
+      projectorMat.classList.remove('film-flicker');
+      void projectorMat.offsetWidth;
+      projectorMat.classList.add('film-flicker');
+      setTimeout(() => {
+        projectorMat.classList.remove('film-flicker');
+      }, 230);
+    }
+
+    // 2. WARM GOLD LIGHT SWEEP ACROSS SCREEN (700-900ms)
+    if (theatreSpotlightSweep) {
+      theatreSpotlightSweep.classList.remove('sweep-active');
+      void theatreSpotlightSweep.offsetWidth;
+      theatreSpotlightSweep.classList.add('sweep-active');
+      setTimeout(() => {
+        theatreSpotlightSweep.classList.remove('sweep-active');
+      }, 880);
+    }
+
+    // 3. SYNCHRONIZED METADATA TRANSITION (Fade out, update content, enter with upward movement)
+    if (theatreMetaWrap) {
+      theatreMetaWrap.classList.add('meta-transitioning');
+      setTimeout(() => {
+        if (screeningCounter) screeningCounter.innerText = `NOW SCREENING · RECORD ${paddedIndex} / ${paddedTotal}`;
+        if (theatreCurrentNum) theatreCurrentNum.innerText = paddedIndex;
+        if (theatreRefCode) theatreRefCode.innerText = nextCert.ref;
+        if (certTitleText) certTitleText.innerText = nextCert.title;
+        if (theatreIssuerText) theatreIssuerText.innerText = nextCert.issuer;
+        if (certCatText) certCatText.innerText = nextCert.category;
+        if (theatreYearText) theatreYearText.innerText = nextCert.year;
+        if (certDescText) certDescText.innerText = nextCert.desc;
+
+        theatreMetaWrap.classList.remove('meta-transitioning');
+      }, 280);
+    }
+
+    // 4. TWO-LAYER CINEMATIC DISSOLVE & GENTLE SCALE (1.025 -> 1.0)
+    if (screeningActiveImg && screeningIncomingImg) {
+      const ease = 'cubic-bezier(0.22, 1, 0.36, 1)';
+      const duration = prefersReduced ? '120ms' : `${TRANSITION_DURATION_MS}ms`;
+
+      // Assign incoming image source
+      screeningIncomingImg.src = nextCert.img;
+      screeningIncomingImg.alt = `${nextCert.title} — ${nextCert.issuer} (${nextCert.category})`;
+
+      // Set initial states
+      screeningIncomingImg.style.transition = 'none';
+      screeningIncomingImg.style.opacity = '0';
+      screeningIncomingImg.style.transform = prefersReduced ? 'scale(1)' : 'scale(1.025)';
+      screeningIncomingImg.style.zIndex = '2';
+
+      screeningActiveImg.style.transition = 'none';
+      screeningActiveImg.style.opacity = '1';
+      screeningActiveImg.style.transform = 'scale(1)';
+      screeningActiveImg.style.zIndex = '1';
+
+      // Force reflow
+      void screeningIncomingImg.offsetWidth;
+
+      // Animate crossfade: Outgoing fades out, incoming scales down to 1.0 and fades in
+      screeningIncomingImg.style.transition = `opacity ${duration} ${ease}, transform ${duration} ${ease}`;
+      screeningActiveImg.style.transition = `opacity ${duration} ${ease}`;
+
+      screeningIncomingImg.style.opacity = '1';
+      screeningIncomingImg.style.transform = 'scale(1)';
+      screeningActiveImg.style.opacity = '0';
+
+      setTimeout(() => {
+        // Finalize: Commit incoming image to base layer and reset incoming layer
+        screeningActiveImg.src = nextCert.img;
+        screeningActiveImg.alt = screeningIncomingImg.alt;
+        screeningActiveImg.style.transition = 'none';
+        screeningActiveImg.style.opacity = '1';
+        screeningActiveImg.style.transform = 'scale(1)';
+
+        screeningIncomingImg.style.transition = 'none';
+        screeningIncomingImg.style.opacity = '0';
+        screeningIncomingImg.style.transform = prefersReduced ? 'scale(1)' : 'scale(1.025)';
+
+        isTransitioning = false;
         preloadCertificateImage(currentCertIndex);
-      }, 100);
-    }
-
-    // Trigger subtle spotlight sweep
-    const sweep = document.querySelector('.theatre-spotlight-sweep');
-    if (sweep) {
-      sweep.style.animation = 'none';
-      void sweep.offsetWidth;
-      sweep.style.animation = 'spotlightSweep 0.9s ease-out';
-    }
-
-    // Update Editorial Metadata with quick, smooth crossfade
-    if (certTitleText) {
-      certTitleText.style.opacity = '0.45';
-      setTimeout(() => {
-        certTitleText.innerText = cert.title;
-        certTitleText.style.opacity = '1';
-      }, 90);
-    }
-
-    if (theatreIssuerText) theatreIssuerText.innerText = cert.issuer;
-    if (certCatText) certCatText.innerText = cert.category;
-    if (theatreYearText) theatreYearText.innerText = cert.year;
-
-    if (certDescText) {
-      certDescText.style.opacity = '0.45';
-      setTimeout(() => {
-        certDescText.innerText = cert.desc;
-        certDescText.style.opacity = '1';
-      }, 90);
+      }, prefersReduced ? 130 : 920);
+    } else {
+      isTransitioning = false;
     }
   }
 
@@ -827,7 +905,7 @@ document.addEventListener('DOMContentLoaded', () => {
         countdownBar.style.width = `${progress}%`;
       }
 
-      if (elapsed >= AUTOPLAY_CYCLE_MS) {
+      if (elapsed >= AUTOPLAY_CYCLE_MS && !isTransitioning) {
         displayCertificate(currentCertIndex + 1);
         cycleStartTime = timestamp;
       }
@@ -947,7 +1025,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Launch initial display & continuous infinite auto-screening
-  displayCertificate(0);
+  displayCertificate(0, false, true);
   requestAnimationFrame(runCertificateAutoplay);
 
   /* =========================================================
