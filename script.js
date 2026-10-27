@@ -1,25 +1,41 @@
 /* =========================================================
-   PROJECT: SOUMIC PAUL — THE SHELBY CREATIVE ARCHIVE
-   HIGH-PERFORMANCE INTERACTION ENGINE
+   PROJECT: SP — THE CINEMATIC CREATIVE ARCHIVE
+   Complete Portfolio Redesign & Motion Graphics Experience
+   Direction: Peaky Blinders × British Industrial Revolution × Vintage Cinema
    ========================================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
 
   /* =========================================================
-     1. NATURAL, RESPONSIVE SCROLLING & PROGRESS
-     Zero-latency native scrolling without heavy library locks
+     1. NATURAL, RESPONSIVE SCROLLING & RAILWAY PROGRESS TRACK
+     Steel rails + sleepers with miniature brass locomotive
      ========================================================= */
 
-  const progressBar = document.getElementById('scroll-progress-bar');
+  const railwayLoco = document.getElementById('railwayLocomotiveGlyph');
+  const railwayChapter = document.getElementById('railwayCurrentChapter');
   let progressTicking = false;
 
-  function updateProgress() {
+  const chapterNames = {
+    'home': 'CHAPTER 01 // THE ARRIVAL',
+    'about': 'CHAPTER 02 // THE DOSSIER',
+    'work': 'CHAPTER 03 // CASE FILES',
+    'reels': 'CHAPTER 04 // THE NEXT REEL',
+    'gazette': 'CHAPTER 05 // THE GAZETTE',
+    'experience': 'CHAPTER 06 // THE GUILD',
+    'education': 'CHAPTER 07 // ACADEMIC RECORD',
+    'skills': 'CHAPTER 08 // THE ARSENAL',
+    'certificates': 'CHAPTER 09 // THE DECORATIONS',
+    'contact': 'CHAPTER 10 // THE TRANSMISSION'
+  };
+
+  function updateRailwayProgress() {
     if (!progressTicking) {
       window.requestAnimationFrame(() => {
         const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const percentage = scrollHeight > 0 ? (window.scrollY / scrollHeight) * 100 : 0;
-        if (progressBar) {
-          progressBar.style.width = `${percentage}%`;
+        const percentage = scrollHeight > 0 ? Math.min(100, Math.max(0, (window.scrollY / scrollHeight) * 100)) : 0;
+
+        if (railwayLoco) {
+          railwayLoco.style.left = `${percentage}%`;
         }
         progressTicking = false;
       });
@@ -27,14 +43,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  window.addEventListener('scroll', updateProgress, { passive: true });
-  updateProgress();
+  window.addEventListener('scroll', updateRailwayProgress, { passive: true });
+  updateRailwayProgress();
 
   /* =========================================================
      2. ANCHOR NAVIGATION — NATIVE SMOOTH JUMPS
+     Zero-latency browser scrolling with navigation offset
      ========================================================= */
 
-  const NAV_OFFSET = 72;
+  const NAV_OFFSET = 76;
 
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', event => {
@@ -46,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       event.preventDefault();
 
-      // Calculate destination taking header offset into account
       const top = target.getBoundingClientRect().top + window.pageYOffset - NAV_OFFSET;
       
       window.scrollTo({
@@ -61,18 +77,20 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* =========================================================
-     3. ZERO-REFLOW ACTIVE NAV INDICATOR
+     3. ZERO-REFLOW ACTIVE NAV & CHAPTER INDICATOR
      Uses IntersectionObserver to avoid layout thrashing on scroll
      ========================================================= */
 
   const navLinks = document.querySelectorAll('.nav-content nav a');
   const chapters = document.querySelectorAll('.archive-chapter');
 
-  if (chapters.length > 0 && navLinks.length > 0) {
+  if (chapters.length > 0) {
     const navObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const currentId = entry.target.getAttribute('id');
+          
+          // Update navigation active states
           navLinks.forEach(link => {
             const href = link.getAttribute('href').replace('#', '');
             if (href === currentId) {
@@ -81,10 +99,15 @@ document.addEventListener('DOMContentLoaded', () => {
               link.classList.remove('active');
             }
           });
+
+          // Update railway station progress readout
+          if (railwayChapter && chapterNames[currentId]) {
+            railwayChapter.innerText = chapterNames[currentId];
+          }
         }
       });
     }, {
-      rootMargin: '-20% 0px -65% 0px',
+      rootMargin: '-20% 0px -60% 0px',
       threshold: 0
     });
 
@@ -112,7 +135,91 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* =========================================================
-     5. STATS COUNT-UP ANIMATION
+     5. BRITISH STEAM LOCOMOTIVE OPENING SEQUENCE (SCENE A)
+     Atmospheric arrival, reveals hero, skippable, session-cached
+     ========================================================= */
+
+  const trainScene = document.getElementById('trainOpeningScene');
+  const enterBtn = document.getElementById('enterArchiveBtn');
+
+  function completeTrainSequence() {
+    if (!trainScene || trainScene.classList.contains('train-finished')) return;
+    trainScene.classList.add('train-finished');
+    sessionStorage.setItem('sp_train_arrival_seen', 'true');
+    setTimeout(() => {
+      trainScene.style.display = 'none';
+    }, 850);
+  }
+
+  if (trainScene) {
+    // If previously seen or prefers reduced motion, skip automatically
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (sessionStorage.getItem('sp_train_arrival_seen') === 'true' || prefersReducedMotion) {
+      trainScene.classList.add('train-finished');
+      trainScene.style.display = 'none';
+    } else {
+      // Auto-dissolve into hero scene after 3.8s
+      const autoTimer = setTimeout(completeTrainSequence, 4000);
+
+      if (enterBtn) {
+        enterBtn.addEventListener('click', () => {
+          clearTimeout(autoTimer);
+          completeTrainSequence();
+        });
+      }
+
+      // Allow Escape key or user scrolling to bypass intro
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          clearTimeout(autoTimer);
+          completeTrainSequence();
+        }
+      });
+
+      window.addEventListener('wheel', () => {
+        if (window.scrollY > 40) {
+          clearTimeout(autoTimer);
+          completeTrainSequence();
+        }
+      }, { passive: true });
+    }
+  }
+
+  /* =========================================================
+     6. DESKTOP CINEMATIC FOCUS CURSOR
+     Precision brass focus crosshair with smooth tracking
+     ========================================================= */
+
+  const cursor = document.getElementById('cinematicCursor');
+  if (cursor && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let currentX = mouseX;
+    let currentY = mouseY;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    }, { passive: true });
+
+    function renderCursor() {
+      currentX += (mouseX - currentX) * 0.22;
+      currentY += (mouseY - currentY) * 0.22;
+      cursor.style.left = `${currentX}px`;
+      cursor.style.top = `${currentY}px`;
+      requestAnimationFrame(renderCursor);
+    }
+    renderCursor();
+
+    const hoverables = document.querySelectorAll('a, button, .archive-deck-card, .news-clipping, .lens-tab, .arsenal-card');
+    hoverables.forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+    });
+  }
+
+  /* =========================================================
+     7. STATS COUNT-UP ANIMATION
      ========================================================= */
 
   const counters = document.querySelectorAll('.count-up');
@@ -148,50 +255,210 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* =========================================================
-     6. CACHED EDUCATION TIMELINE FILL
-     Cached dimensions avoid synchronous layout reflows
+     8. GAZETTE BROADSHEET 3D UNFOLDING ENGINE
+     Triggers perspective unfolding when entering viewport
      ========================================================= */
 
-  const eduTimeline = document.getElementById('edu-timeline-container');
-  const eduFill = document.getElementById('edu-line-fill');
+  const gazetteWrapper = document.getElementById('gazetteWrapper');
+  if (gazetteWrapper) {
+    const gazetteObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          gazetteWrapper.classList.add('newspaper-unfolded');
+          gazetteObserver.unobserve(gazetteWrapper);
+        }
+      });
+    }, { threshold: 0.15 });
 
-  if (eduTimeline && eduFill) {
-    let timelineTop = 0;
-    let timelineHeight = 0;
-
-    function cacheTimelineMetrics() {
-      const rect = eduTimeline.getBoundingClientRect();
-      timelineTop = rect.top + window.pageYOffset;
-      timelineHeight = rect.height;
-    }
-
-    cacheTimelineMetrics();
-    window.addEventListener('resize', cacheTimelineMetrics, { passive: true });
-
-    let eduTicking = false;
-    window.addEventListener('scroll', () => {
-      if (!eduTicking) {
-        window.requestAnimationFrame(() => {
-          const viewportMid = window.pageYOffset + (window.innerHeight * 0.55);
-          if (viewportMid <= timelineTop) {
-            eduFill.style.height = '0%';
-          } else if (viewportMid >= timelineTop + timelineHeight) {
-            eduFill.style.height = '100%';
-          } else {
-            const passed = viewportMid - timelineTop;
-            const pct = Math.max(0, Math.min(100, (passed / timelineHeight) * 100));
-            eduFill.style.height = `${pct}%`;
-          }
-          eduTicking = false;
-        });
-        eduTicking = true;
-      }
-    }, { passive: true });
+    gazetteObserver.observe(gazetteWrapper);
   }
 
   /* =========================================================
-     7. THE ACHIEVEMENT DECK: CARD SHUFFLE ENGINE
-     Controlled staggered sequence, physical fanning, and riffle shuffle
+     9. CHAPTER 06: THE GUILD — THE CINEMATIC LENS ENGINE
+     Viewfinder optics, aperture adjustments & verified case logs
+     ========================================================= */
+
+  const leadershipRecords = [
+    {
+      org: "AUST ROBOTICS CLUB",
+      role: "Assistant Director – Administration",
+      tenure: "JAN 2025 – PRESENT",
+      spec: { shutter: "1/1000s", aperture: "f/1.4", focal: "50mm PRIME" },
+      img: "assets/AUST_RC.png",
+      imgAlt: "AUST Robotics Club Official Insignia",
+      index: "REC // 01",
+      seal: "OFFICIAL DISPATCH RECORD",
+      narrative: "Oversee high-stakes administrative operations, coordinate cross-team engineering workflows, govern schedules, and drive large-scale organizational initiatives across the university.",
+      points: [
+        "Led end-to-end planning and flawless execution of 2 major national robotics events.",
+        "Coordinated 200+ event participants and 70+ operational volunteers on the ground.",
+        "Managed vendor negotiations, equipment procurement, and comprehensive event logistics.",
+        "Engineered cross-functional frameworks for prompt conflict resolution and execution."
+      ],
+      citation: "REF: ARC-ADM-2025-SP"
+    },
+    {
+      org: "TICKIFY",
+      role: "Student Ambassador",
+      tenure: "SEPT 2026 – PRESENT",
+      spec: { shutter: "1/500s", aperture: "f/2.0", focal: "35mm WIDE" },
+      img: "assets/Tickify.jpg",
+      imgAlt: "Tickify Insignia",
+      index: "REC // 02",
+      seal: "CAMPUS LIAISON DOSSIER",
+      narrative: "Representing Tickify within the university ecosystem — driving strategic awareness, successfully onboarding student creators, and channeling vital user feedback directly back to the engineering team.",
+      points: [
+        "Spearheading campus-wide outreach to onboard engineering & tech creator cohorts.",
+        "Formulating viral promotional blueprints for university events and student festivals.",
+        "Synthesizing bi-weekly user friction telemetry for core product leads."
+      ],
+      citation: "REF: TCK-AMB-2026-SP"
+    },
+    {
+      org: "HSBC BUSINESS CASE COMPETITION",
+      role: "National Round Qualifier",
+      tenure: "2025 // NATIONAL STAGE",
+      spec: { shutter: "1/1000s", aperture: "f/2.8", focal: "85mm TELE" },
+      img: "assets/HSBC_Logo.svg",
+      imgAlt: "HSBC Business Case Emblem",
+      index: "REC // 03",
+      seal: "STRATEGIC COMPETITION RECORD",
+      narrative: "Competed in Bangladesh's foremost undergraduate business strategy arena, formulating high-impact turnaround blueprints under strict time-lock constraints.",
+      points: [
+        "Synthesized multi-tiered financial models and corporate risk mitigation frameworks under 6-hour pressure windows.",
+        "Architected boardroom-grade pitch decks delivered before senior banking executives and management consultants.",
+        "Advanced through rigorous university preliminaries to represent AUST on the national qualifying stage."
+      ],
+      citation: "REF: HSBC-BC-2025-NAT"
+    },
+    {
+      org: "PRISM AI CREATIVE AWARDS",
+      role: "Worldwide Top 15 Finalist",
+      tenure: "2026 // GLOBAL STAGE",
+      spec: { shutter: "1/250s", aperture: "f/1.2", focal: "24mm CINE" },
+      img: "assets/Prism_Logo.png",
+      imgAlt: "PRISM AI Creative Awards Emblem",
+      index: "REC // 04",
+      seal: "CREATIVE TECH COMMENDATION",
+      narrative: "Selected into the Top 15 Finalist cohort out of more than 4,000+ international participants in the flagship AI Advertisement discipline. Developed a cinematic narrative utilizing leading generative video synthesis.",
+      points: [
+        "Recognized worldwide among top 15 entries for pioneering cinematic generative direction and narrative coherence.",
+        "Integrated cutting-edge AI diffusion models with high-precision post-production color grading and sound design.",
+        "Demonstrated the fusion of engineering discipline with instinctual cinematic worldbuilding."
+      ],
+      citation: "REF: PRM-TOP15-2026-GLB"
+    }
+  ];
+
+  const lensTabs = document.querySelectorAll('.lens-tab');
+  const lensSubjectImg = document.getElementById('lensSubjectImg');
+  const lensShutterSpec = document.getElementById('lensShutterSpec');
+  const lensApertureSpec = document.getElementById('lensApertureSpec');
+  const lensFocalSpec = document.getElementById('lensFocalSpec');
+  const activeDossierCard = document.getElementById('lensActiveDossier');
+
+  function renderInvestigationRecord(recIndex) {
+    const data = leadershipRecords[recIndex];
+    if (!data) return;
+
+    // Optical blur & refocus transition
+    if (lensSubjectImg) {
+      lensSubjectImg.classList.add('defocus');
+      setTimeout(() => {
+        lensSubjectImg.src = data.img;
+        lensSubjectImg.alt = data.imgAlt;
+        lensSubjectImg.classList.remove('defocus');
+      }, 220);
+    }
+
+    // Update camera calibration readouts
+    if (lensShutterSpec) lensShutterSpec.innerText = `SHUTTER: ${data.spec.shutter}`;
+    if (lensApertureSpec) lensApertureSpec.innerText = `APERTURE: ${data.spec.aperture}`;
+    if (lensFocalSpec) lensFocalSpec.innerText = `FOCUS: ${data.spec.focal}`;
+
+    // Update dossier card content with smooth opacity transition
+    if (activeDossierCard) {
+      activeDossierCard.style.opacity = '0.35';
+      activeDossierCard.style.transform = 'translateY(4px)';
+
+      setTimeout(() => {
+        activeDossierCard.innerHTML = `
+          <div class="dossier-card-masthead">
+            <span class="dossier-index-mark">${data.index}</span>
+            <span class="dossier-stamp-seal">${data.seal}</span>
+          </div>
+          <div class="dossier-lead-row">
+            <div>
+              <p class="dossier-org-name">${data.org}</p>
+              <h3 class="dossier-position-title">${data.role}</h3>
+            </div>
+            <span class="dossier-tenure-badge">${data.tenure}</span>
+          </div>
+          <p class="dossier-body-narrative">${data.narrative}</p>
+          <ul class="dossier-verified-points">
+            ${data.points.map(pt => `<li>${pt}</li>`).join('')}
+          </ul>
+          <div class="dossier-action-bar">
+            <span class="dossier-citation-code">${data.citation}</span>
+          </div>
+        `;
+        activeDossierCard.style.opacity = '1';
+        activeDossierCard.style.transform = 'translateY(0)';
+      }, 180);
+    }
+  }
+
+  if (lensTabs.length > 0) {
+    lensTabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => {
+        lensTabs.forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        renderInvestigationRecord(index);
+      });
+
+      // Keyboard arrow navigation
+      tab.addEventListener('keydown', (e) => {
+        let targetIndex = -1;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+          targetIndex = (index + 1) % lensTabs.length;
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+          targetIndex = (index - 1 + lensTabs.length) % lensTabs.length;
+        }
+
+        if (targetIndex !== -1) {
+          e.preventDefault();
+          lensTabs[targetIndex].focus();
+          lensTabs[targetIndex].click();
+        }
+      });
+    });
+  }
+
+  /* =========================================================
+     10. THE ROLLING PARCHMENT: EDUCATION TIMELINE UNROLL
+     ========================================================= */
+
+  const parchmentSheet = document.getElementById('parchmentSheet');
+  if (parchmentSheet) {
+    const parchmentObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          parchmentSheet.classList.add('parchment-unrolled');
+          parchmentObserver.unobserve(parchmentSheet);
+        }
+      });
+    }, { threshold: 0.18 });
+
+    parchmentObserver.observe(parchmentSheet);
+  }
+
+  /* =========================================================
+     11. THE ACHIEVEMENT DECK: CARD SHUFFLE ENGINE
+     Physical fanning, riffle shuffle, and modal credential inspection
      ========================================================= */
 
   const deckStage = document.getElementById('achievementDeckStage');
@@ -201,13 +468,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (deckContainer) {
     let cards = Array.from(deckContainer.querySelectorAll('.archive-deck-card'));
-    const totalCards = cards.length;
     let isShuffling = false;
     let hasEntered = false;
 
-    // Fanned resting arrangement coordinates (desktop and tablet)
+    // Fanned resting coordinates for desktop & tablet
     const fannedCoordinates = [
-      { x: 0, y: 0, r: 0 },          // Top card: center, straight
+      { x: 0, y: 0, r: 0 },
       { x: 42, y: 12, r: 2.5 },
       { x: -38, y: 18, r: -2.2 },
       { x: 78, y: 26, r: 4 },
@@ -221,12 +487,11 @@ document.addEventListener('DOMContentLoaded', () => {
       { x: 188, y: 76, r: 8.5 }
     ];
 
-    // Mobile horizontal staggered offset
     function getCardOffset(index, isMobile) {
       if (isMobile) {
         const center = (cards.length - 1) / 2;
-        const x = (index - center) * 18;
-        const y = Math.min(24, Math.abs(index - center) * 4);
+        const x = (index - center) * 16;
+        const y = Math.min(22, Math.abs(index - center) * 4);
         const r = (index - center) * 1.2;
         return { x, y, r };
       }
@@ -237,7 +502,6 @@ document.addEventListener('DOMContentLoaded', () => {
       };
     }
 
-    // Render cards into physical archival stack
     function updateDeckArrangement() {
       const isMobile = window.innerWidth <= 768;
       const count = cards.length;
@@ -253,7 +517,6 @@ document.addEventListener('DOMContentLoaded', () => {
         card.style.transform = `translate3d(${offset.x}px, ${offset.y}px, 0) rotate(${offset.r}deg) scale(${scale})`;
       });
 
-      // Update counter text with the top active record
       if (deckCounter && cards[0]) {
         const titleEl = cards[0].querySelector('h4');
         const activeTitle = titleEl ? titleEl.innerText : 'Archive Credential';
@@ -261,17 +524,15 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Initial staggered entrance on scroll into view
     if (deckStage) {
       const deckObserver = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && !hasEntered) {
           hasEntered = true;
           deckObserver.unobserve(deckStage);
 
-          // Stagger cards into place
           cards.forEach((card, i) => {
             card.style.opacity = '0';
-            card.style.transform = `translate3d(0, 60px, 0) scale(0.9)`;
+            card.style.transform = `translate3d(0, 50px, 0) scale(0.92)`;
 
             setTimeout(() => {
               card.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease';
@@ -282,11 +543,10 @@ document.addEventListener('DOMContentLoaded', () => {
               card.style.opacity = Math.max(0.45, 1 - (i * 0.04));
               card.style.transform = `translate3d(${offset.x}px, ${offset.y}px, 0) rotate(${offset.r}deg) scale(${scale})`;
 
-              // Clean inline transitions after entrance so CSS hover transitions take over
               setTimeout(() => {
                 card.style.transition = '';
               }, 650);
-            }, i * 45);
+            }, i * 40);
           });
         }
       }, { threshold: 0.2 });
@@ -296,7 +556,6 @@ document.addEventListener('DOMContentLoaded', () => {
       updateDeckArrangement();
     }
 
-    // Physical card shuffle execution
     function shuffleArchiveDeck() {
       if (isShuffling) return;
       isShuffling = true;
@@ -306,30 +565,29 @@ document.addEventListener('DOMContentLoaded', () => {
         shuffleBtn.style.opacity = '0.7';
       }
 
-      // Step 1: Smoothly split and fan cards into two physical packets (left & right)
+      // Step 1: Physical riffle split
       cards.forEach((card, idx) => {
         const direction = idx % 2 === 0 ? 1 : -1;
-        const spreadX = direction * (window.innerWidth < 768 ? 80 : 160 + (idx * 6));
-        const spreadY = (idx % 3 - 1) * 20;
-        const spreadRot = direction * (10 + (idx * 0.8));
+        const spreadX = direction * (window.innerWidth < 768 ? 70 : 150 + (idx * 5));
+        const spreadY = (idx % 3 - 1) * 16;
+        const spreadRot = direction * (8 + (idx * 0.7));
 
-        card.style.transition = 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+        card.style.transition = 'transform 0.38s cubic-bezier(0.16, 1, 0.3, 1)';
         card.style.transform = `translate3d(${spreadX}px, ${spreadY}px, 0) rotate(${spreadRot}deg) scale(0.96)`;
       });
 
-      // Step 2: Cycle cards in array (promote new documents to top)
+      // Step 2: Cycle cards
       setTimeout(() => {
         const cycleCount = Math.floor(cards.length / 3) || 3;
         const moved = cards.splice(0, cycleCount);
         cards = cards.concat(moved);
 
-        // Re-append in DOM for clean stacking hierarchy
         cards.forEach(card => deckContainer.appendChild(card));
 
-        // Step 3: Slide back together smoothly into resting archival fan
+        // Step 3: Re-combine smoothly
         setTimeout(() => {
           cards.forEach(card => {
-            card.style.transition = 'transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease';
+            card.style.transition = 'transform 0.52s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease';
           });
 
           updateDeckArrangement();
@@ -343,16 +601,15 @@ document.addEventListener('DOMContentLoaded', () => {
               shuffleBtn.disabled = false;
               shuffleBtn.style.opacity = '1';
             }
-          }, 600);
+          }, 550);
         }, 100);
-      }, 420);
+      }, 400);
     }
 
     if (shuffleBtn) {
       shuffleBtn.addEventListener('click', shuffleArchiveDeck);
     }
 
-    // Keyboard accessibility for cards
     cards.forEach(card => {
       card.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
@@ -362,7 +619,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // Handle window resize cleanly
     window.addEventListener('resize', () => {
       if (!isShuffling && hasEntered) {
         updateDeckArrangement();
@@ -371,8 +627,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* =========================================================
-     8. HIGH-PERFORMANCE AMBIENT SMOKE CANVAS
-     Throttled particles that automatically sleep when inactive
+     12. HIGH-PERFORMANCE AMBIENT SMOKE CANVAS
+     Hardware-accelerated, auto-sleeping on hidden tabs
      ========================================================= */
 
   const smokeCanvas = document.getElementById('ambient-smoke');
@@ -391,16 +647,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
 
     const particles = [];
-    const maxParticles = 14;
+    const maxParticles = 12;
 
     for (let i = 0; i < maxParticles; i++) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
         radius: Math.random() * 110 + 70,
-        vx: (Math.random() - 0.5) * 0.25,
-        vy: -Math.random() * 0.35 - 0.1,
-        alpha: Math.random() * 0.06 + 0.02
+        vx: (Math.random() - 0.5) * 0.22,
+        vy: -Math.random() * 0.3 - 0.08,
+        alpha: Math.random() * 0.05 + 0.015
       });
     }
 
@@ -426,8 +682,8 @@ document.addEventListener('DOMContentLoaded', () => {
           if (p.x > width + p.radius) p.x = -p.radius;
 
           const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.radius);
-          grad.addColorStop(0, `rgba(196, 154, 99, ${p.alpha})`);
-          grad.addColorStop(0.65, `rgba(26, 25, 23, ${p.alpha * 0.35})`);
+          grad.addColorStop(0, `rgba(166, 124, 69, ${p.alpha})`);
+          grad.addColorStop(0.65, `rgba(20, 37, 30, ${p.alpha * 0.35})`);
           grad.addColorStop(1, 'transparent');
 
           ctx.fillStyle = grad;
@@ -446,7 +702,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* =========================================================
-   9. GLOBAL MODAL CONTROLLERS (CERTIFICATES & BLUEPRINTS)
+   13. GLOBAL MODAL CONTROLLERS (CERTIFICATES & BLUEPRINTS)
    ========================================================= */
 
 function openCertificate(imgSrc, title, desc) {

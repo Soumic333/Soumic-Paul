@@ -5,13 +5,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
   <meta name="description"
-    content="Soumic Kundu Paul – The Shelby Creative Archive. Electrical & Electronic Engineering undergraduate, AI filmmaker, and creative technologist." />
-  <title>Soumic Paul — The Shelby Creative Archive</title>
+    content="Soumic Kundu Paul — The Cinematic Creative Archive. Electrical & Electronic Engineering undergraduate, AI filmmaker, and creative technologist." />
+  <title>Soumic Paul — The Cinematic Creative Archive</title>
   
-  <!-- GOOGLE FONTS: Oswald (Display Poster Headline), Cormorant Garamond & Playfair Display (Editorial Serif), Libre Franklin (Interface), DM Mono (Metadata) -->
+  <!-- GOOGLE FONTS: Oswald & Bebas Neue (Condensed Display Headline), Cormorant Garamond & Playfair Display (Editorial Serif), Libre Franklin (Interface), DM Mono (Metadata) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Libre+Franklin:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Oswald:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Libre+Franklin:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Oswald:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -20,13 +20,126 @@
   <!-- ATMOSPHERIC BACKGROUND EFFECTS -->
   <div class="film-grain" aria-hidden="true"></div>
   <canvas id="ambient-smoke" class="ambient-smoke" aria-hidden="true"></canvas>
+  <div class="cinema-vignette" aria-hidden="true"></div>
   <div class="ambient-glow amber-top-left" aria-hidden="true"></div>
   <div class="ambient-glow amber-bottom-right" aria-hidden="true"></div>
   
-  <!-- SCROLL PROGRESS BAR -->
-  <div class="progress"><span id="scroll-progress-bar"></span></div>
+  <!-- DESKTOP CINEMATIC INSPECTION CURSOR -->
+  <div class="cinematic-cursor" id="cinematicCursor" aria-hidden="true">
+    <div class="cursor-crosshair"></div>
+    <div class="cursor-ring"></div>
+  </div>
 
-  <!-- NAVIGATION — THE ARCHIVE INDEX -->
+  <!-- BRITISH STEAM LOCOMOTIVE OPENING SEQUENCE (SCENE A) -->
+  <div class="train-opening-scene" id="trainOpeningScene" aria-label="Introductory British steam locomotive sequence">
+    <div class="train-skyline-fog"></div>
+    
+    <div class="train-locomotive-wrap">
+      <!-- 1920s British 4-6-0 Steam Locomotive Silhouette with Brass Details -->
+      <svg class="locomotive-svg" viewBox="0 0 840 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="locoBodyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#242621" />
+            <stop offset="60%" stop-color="#141512" />
+            <stop offset="100%" stop-color="#0B0C0A" />
+          </linearGradient>
+          <linearGradient id="brassLoco" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#66513A" />
+            <stop offset="50%" stop-color="#D9C7A5" />
+            <stop offset="100%" stop-color="#A67C45" />
+          </linearGradient>
+        </defs>
+
+        <!-- TENDER & CABIN -->
+        <rect x="20" y="110" width="180" height="120" rx="4" fill="url(#locoBodyGrad)" stroke="#34372A" stroke-width="2" />
+        <rect x="200" y="80" width="150" height="150" rx="3" fill="url(#locoBodyGrad)" stroke="#34372A" stroke-width="2" />
+        <!-- CAB WINDOW ARCH -->
+        <path d="M220 110 Q240 95 260 110 V145 H220 Z" fill="#D9C7A5" fill-opacity="0.25" stroke="url(#brassLoco)" stroke-width="2" />
+        <path d="M275 110 Q295 95 315 110 V145 H275 Z" fill="#D9C7A5" fill-opacity="0.25" stroke="url(#brassLoco)" stroke-width="2" />
+
+        <!-- BOILER & SMOKEBOX -->
+        <rect x="350" y="100" width="360" height="130" rx="10" fill="url(#locoBodyGrad)" stroke="#34372A" stroke-width="2" />
+        <path d="M710 100 Q740 100 740 165 Q740 230 710 230 Z" fill="#141512" stroke="#34372A" stroke-width="2" />
+
+        <!-- BRASS BOILER BANDS -->
+        <line x1="420" y1="100" x2="420" y2="230" stroke="url(#brassLoco)" stroke-width="3" />
+        <line x1="510" y1="100" x2="510" y2="230" stroke="url(#brassLoco)" stroke-width="3" />
+        <line x1="600" y1="100" x2="600" y2="230" stroke="url(#brassLoco)" stroke-width="3" />
+        <line x1="690" y1="100" x2="690" y2="230" stroke="url(#brassLoco)" stroke-width="3" />
+
+        <!-- STEAM DOMES & SAFETY VALVES -->
+        <path d="M455 100 Q470 65 485 100 Z" fill="url(#brassLoco)" />
+        <path d="M570 100 Q585 75 600 100 Z" fill="url(#brassLoco)" />
+
+        <!-- CHIMNEY & BILLOWING PUFFS -->
+        <path d="M660 100 L655 45 H685 L680 100 Z" fill="#141512" stroke="#34372A" stroke-width="2" />
+        <ellipse cx="670" cy="40" rx="14" ry="4" fill="url(#brassLoco)" />
+
+        <!-- FRONT LANTERN / HEADLAMP -->
+        <rect x="740" y="145" width="26" height="36" rx="2" fill="#1A1917" stroke="url(#brassLoco)" stroke-width="2" />
+        <circle cx="758" cy="163" r="10" fill="#FFE28A" />
+
+        <!-- RUNNING BOARD & CYLINDER -->
+        <rect x="180" y="225" width="570" height="12" fill="#3E3024" />
+        <rect x="630" y="210" width="90" height="40" rx="3" fill="#1A1917" stroke="#34372A" stroke-width="2" />
+
+        <!-- DRIVING WHEELS (LARGE SPOKED) -->
+        <circle cx="390" cy="245" r="45" fill="#121310" stroke="url(#brassLoco)" stroke-width="4" />
+        <circle cx="390" cy="245" r="12" fill="url(#brassLoco)" />
+        <circle cx="490" cy="245" r="45" fill="#121310" stroke="url(#brassLoco)" stroke-width="4" />
+        <circle cx="490" cy="245" r="12" fill="url(#brassLoco)" />
+        <circle cx="590" cy="245" r="45" fill="#121310" stroke="url(#brassLoco)" stroke-width="4" />
+        <circle cx="590" cy="245" r="12" fill="url(#brassLoco)" />
+
+        <!-- CONNECTING ROD -->
+        <line x1="390" y1="250" x2="680" y2="230" stroke="url(#brassLoco)" stroke-width="5" stroke-linecap="round" />
+
+        <!-- FRONT BOGIE WHEELS (SMALL) -->
+        <circle cx="700" cy="265" r="24" fill="#121310" stroke="#34372A" stroke-width="3" />
+        <circle cx="755" cy="265" r="24" fill="#121310" stroke="#34372A" stroke-width="3" />
+
+        <!-- TENDER WHEELS -->
+        <circle cx="60" cy="260" r="28" fill="#121310" stroke="#34372A" stroke-width="3" />
+        <circle cx="120" cy="260" r="28" fill="#121310" stroke="#34372A" stroke-width="3" />
+        <circle cx="170" cy="260" r="28" fill="#121310" stroke="#34372A" stroke-width="3" />
+
+        <!-- TRACK RAILS -->
+        <line x1="0" y1="290" x2="840" y2="290" stroke="#66513A" stroke-width="4" />
+        <line x1="0" y1="298" x2="840" y2="298" stroke="#34372A" stroke-width="2" />
+      </svg>
+      <div class="train-volumetric-beam"></div>
+    </div>
+
+    <div class="train-steam-billow layer-1"></div>
+    <div class="train-steam-billow layer-2"></div>
+
+    <div class="train-arrival-dossier">
+      <span class="arrival-dispatch-code">TELEGRAM // DISPATCH REF: SP-1924</span>
+      <h2 class="arrival-heading">THE SHELBY CREATIVE ARCHIVE</h2>
+      <p class="arrival-sub">Entering Birmingham 1924 • The Cinematic Dossier of Soumic Paul</p>
+      <button type="button" class="enter-archive-btn" id="enterArchiveBtn" aria-label="Enter the archive now">
+        <span>ENTER THE ARCHIVE</span>
+        <span class="kbd-hint">[ESC]</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- RAILWAY TRACK SCROLL PROGRESS INDICATOR (SCENE D) -->
+  <div class="railway-progress-track" id="railwayProgressTrack" aria-hidden="true">
+    <div class="railway-track-line">
+      <div class="track-sleeper-ties"></div>
+      <div class="track-steel-rails"></div>
+      <div class="railway-locomotive-glyph" id="railwayLocomotiveGlyph">
+        <span class="loco-icon">🚂</span>
+      </div>
+    </div>
+    <div class="railway-station-indicator" id="railwayStationIndicator">
+      <span class="station-pulse"></span>
+      <span class="station-text" id="railwayCurrentChapter">CHAPTER 01 // THE ARRIVAL</span>
+    </div>
+  </div>
+
+  <!-- NAVIGATION — THE ARCHIVE INDEX (10 CHAPTERS) -->
   <header class="nav-wrap">
     <div class="nav-container">
       <a class="brand" href="#home" aria-label="Soumic Paul Dossier">
@@ -42,15 +155,16 @@
       
       <div class="nav-content">
         <nav>
-          <a href="#home"><span class="nav-dot"></span>01. SCENE</a>
+          <a href="#home"><span class="nav-dot"></span>01. ARRIVAL</a>
           <a href="#about"><span class="nav-dot"></span>02. DOSSIER</a>
           <a href="#work"><span class="nav-dot"></span>03. CASE FILES</a>
-          <a href="#gazette"><span class="nav-dot"></span>04. GAZETTE</a>
-          <a href="#experience"><span class="nav-dot"></span>05. GUILD</a>
-          <a href="#education"><span class="nav-dot"></span>06. RECORD</a>
-          <a href="#skills"><span class="nav-dot"></span>07. ARSENAL</a>
-          <a href="#certificates"><span class="nav-dot"></span>08. DECORATIONS</a>
-          <a href="#contact"><span class="nav-dot"></span>09. TRANSMISSION</a>
+          <a href="#reels"><span class="nav-dot"></span>04. NEXT REEL</a>
+          <a href="#gazette"><span class="nav-dot"></span>05. GAZETTE</a>
+          <a href="#experience"><span class="nav-dot"></span>06. GUILD</a>
+          <a href="#education"><span class="nav-dot"></span>07. RECORD</a>
+          <a href="#skills"><span class="nav-dot"></span>08. ARSENAL</a>
+          <a href="#certificates"><span class="nav-dot"></span>09. DECORATIONS</a>
+          <a href="#contact"><span class="nav-dot"></span>10. TRANSMISSION</a>
         </nav>
         <a class="nav-cta mobile-cta" href="assets/Soumic_Kundu_Paul_CV.pdf" target="_blank" rel="noreferrer">
           <span class="brass-seal">✦</span> INSPECT CV <span>→</span>
@@ -66,13 +180,12 @@
   <main id="top" class="archive-main">
 
     <!-- =========================================================
-         CHAPTER 01: THE OPENING SCENE — PEAKY BLINDERS CINEMATIC POSTER HERO
-         CENTERED SP_HERO PORTRAIT & POSTER TYPOGRAPHY
+         CHAPTER 01: THE ARRIVAL — CINEMATIC POSTER HERO
+         CENTERED SP_HERO PORTRAIT & EDITORIAL DISPLAY TYPOGRAPHY
          ========================================================= -->
     <section class="archive-chapter hero-chapter poster-hero" id="home">
-      <!-- INDUSTRIAL SKYLINE & AMBIENT LANTERNS -->
+      <!-- ATMOSPHERIC SKYLINE & GASLIGHT LANTERNS -->
       <div class="hero-backdrop" aria-hidden="true">
-        <div class="industrial-skyline"></div>
         <div class="gaslight-lantern lamp-left"></div>
         <div class="gaslight-lantern lamp-right"></div>
       </div>
@@ -120,7 +233,7 @@
         <!-- POSTER FOOTER / LEAD COPY & ACTIONS -->
         <div class="poster-lead-block">
           <p class="poster-synopsis">
-            Electrical &amp; Electronic Engineering undergraduate blending technology, business thinking and leadership.
+            Electrical &amp; Electronic Engineering undergraduate blending technology, business thinking, and leadership.
           </p>
 
           <div class="poster-cta-row">
@@ -159,7 +272,7 @@
       </div>
     </section>
 
-    <!-- ARCHIVAL MARQUEE TICKER -->
+    <!-- ARCHIVAL MARQUEE TICKER TAPE -->
     <div class="vintage-ticker" aria-label="Field of practice">
       <div class="ticker-track">
         <div class="ticker-content">
@@ -186,10 +299,11 @@
     </div>
 
     <!-- =========================================================
-         CHAPTER 02: ABOUT — THE MAN BEHIND THE WORK
+         CHAPTER 02: THE DOSSIER — THE MAN BEHIND THE WORK
+         SP_ABOUT PORTRAIT WITH ARCHIVAL CORNER BRACKETS
          ========================================================= -->
     <section class="archive-chapter about-chapter" id="about">
-      <div class="chapter-badge">CHAPTER 02 // DOSSIER: THE MAN BEHIND THE WORK</div>
+      <div class="chapter-badge">CHAPTER 02 // DOSSIER: PERSONAL MEMORANDUM</div>
       
       <div class="about-grid">
         <!-- ABOUT VISUAL (SP_ABOUT) -->
@@ -199,7 +313,7 @@
             <div class="archival-corner corner-tr"></div>
             <div class="archival-corner corner-bl"></div>
             <div class="archival-corner corner-br"></div>
-            <img src="assets/SP_ABOUT.png" alt="Soumic Paul standing in an atmospheric vintage Birmingham street" class="about-sp-img" />
+            <img src="assets/SP_ABOUT.png" alt="Soumic Paul standing in an atmospheric vintage street" class="about-sp-img" />
             <div class="photo-plate">
               <span class="plate-num">ARCHIVE PLATE N° 44</span>
               <span class="plate-loc">INDUSTRIAL DISTRICT // STREET SCENE</span>
@@ -252,7 +366,7 @@
     </section>
 
     <!-- =========================================================
-         CHAPTER 03: PROJECTS — THE CASE FILES
+         CHAPTER 03: CASE FILES — CREATIVE & TECHNICAL WORKS
          ========================================================= -->
     <section class="archive-chapter work-chapter" id="work">
       <div class="chapter-badge">CHAPTER 03 // CASE FILES: CREATIVE &amp; TECHNICAL WORKS</div>
@@ -364,11 +478,104 @@
       </article>
     </section>
 
+    <!-- RAILWAY STATION TRANSITION 1 (SCENE B & C) -->
+    <div class="railway-station-transition" aria-hidden="true">
+      <div class="station-ironwork">
+        <div class="station-clock">
+          <div class="clock-face">
+            <div class="clock-hour-hand"></div>
+            <div class="clock-minute-hand"></div>
+            <div class="clock-center-pin"></div>
+          </div>
+        </div>
+        <div class="station-board">
+          <span class="station-board-tag">PLATFORM 01 // INTER-CHAPTER TRANSIT</span>
+          <h3 class="station-board-dest">NEXT STOP: THE NEXT REEL &amp; THE BIRMINGHAM GAZETTE</h3>
+          <span class="station-board-sub">BIRMINGHAM SNOW HILL • CURZON STREET ARCHIVE</span>
+        </div>
+      </div>
+    </div>
+
     <!-- =========================================================
-         CHAPTER 04: "SOUMIC'S LIFELESS UPDATES" — THE BIRMINGHAM GAZETTE
+         CHAPTER 04: THE NEXT REEL — AI FILMMAKING EXHIBITION
+         35MM FILM CELL, TUNGSTEN BEAM, FLOATING DUST PARTICLES
+         ========================================================= -->
+    <section class="archive-chapter reels-chapter" id="reels">
+      <div class="chapter-badge">CHAPTER 04 // THE NEXT REEL: AI FILMMAKING &amp; CREATIVE WORK</div>
+
+      <div class="section-heading-centered">
+        <p class="section-kicker">CINEMATIC EXPERIMENTS IN PRODUCTION</p>
+        <h2 class="section-title">The Next <em>Reel</em></h2>
+        <p class="section-subtitle">New experiments in AI filmmaking, visual storytelling, and creative technology are in development.</p>
+        <div class="brass-rule"></div>
+      </div>
+
+      <div class="reels-vault-stage">
+        <!-- 35MM FILM CELL CONTAINER -->
+        <div class="vintage-film-cell">
+          <div class="film-sprockets top-sprockets">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+
+          <div class="film-aperture-screen">
+            <div class="projector-light-cone"></div>
+            <div class="floating-dust-motes">
+              <span class="mote m1"></span>
+              <span class="mote m2"></span>
+              <span class="mote m3"></span>
+              <span class="mote m4"></span>
+              <span class="mote m5"></span>
+            </div>
+
+            <div class="film-slate-content">
+              <div class="slate-meta-row">
+                <span class="slate-tag">PRODUCTION REF: SPEC-REEL-2026</span>
+                <span class="slate-tag">FORMAT: 2.39:1 CINEMASCOPE</span>
+                <span class="slate-tag">FRAME: 24 FPS</span>
+              </div>
+              <h3 class="slate-production-title">CINEMATIC AI COMMERCIALS &amp; SPEC FILMS</h3>
+              <p class="slate-synopsis">
+                Currently engineering new commercial narratives harnessing high-fidelity diffusion pipelines, character continuity lattices, synthetic voice design, and period color timing.
+              </p>
+              <div class="slate-status-strip">
+                <div class="status-indicator">
+                  <span class="reel-spinner"></span>
+                  <span class="status-label">IN ACTIVE POST-PRODUCTION &amp; SOUND DESIGN</span>
+                </div>
+                <span class="slate-premier">ANTICIPATED PREMIERE // LATE 2026</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="film-sprockets bottom-sprockets">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+
+        <!-- SUPPORTING EXPANDABLE REEL TILES -->
+        <div class="upcoming-reels-grid">
+          <div class="upcoming-reel-card">
+            <div class="reel-card-badge">SPEC 01 // GENERATIVE ADVERTISING</div>
+            <h4>Atmospheric Brand Narrative</h4>
+            <p>Photorealistic worldbuilding, physical camera movements, and vintage texture grading.</p>
+            <span class="reel-filing-status">STATUS: RENDER IN PROGRESS</span>
+          </div>
+          <div class="upcoming-reel-card">
+            <div class="reel-card-badge">SPEC 02 // VISUAL POETRY</div>
+            <h4>Industrial Revolution Retrospective</h4>
+            <p>Combining archival historical plates with generative neural motion synthesis.</p>
+            <span class="reel-filing-status">STATUS: ARCHIVAL RESEARCH</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         CHAPTER 05: THE GAZETTE — SOUMIC'S LIFELESS UPDATES
+         3D UNFOLDING PHYSICAL BROADSHEET NEWSPAPER
          ========================================================= -->
     <section class="archive-chapter gazette-chapter" id="gazette">
-      <div class="chapter-badge">CHAPTER 04 // THE ARCHIVAL PRESS &amp; GAZETTE</div>
+      <div class="chapter-badge">CHAPTER 05 // THE GAZETTE: SOUMIC'S LIFELESS UPDATES</div>
 
       <div class="section-heading-centered">
         <p class="section-kicker">PRINTED DISPATCHES &amp; PERIODICALS</p>
@@ -377,196 +584,217 @@
       </div>
 
       <!-- THE BIRMINGHAM GAZETTE BROADSHEET INTERFACE -->
-      <div class="gazette-wrapper">
-        <div class="newspaper-masthead">
-          <div class="masthead-top">
-            <span>THE ARCHIVAL CHRONICLE</span>
-            <span>BIRMINGHAM TO DHAKA EDITION</span>
-            <span>PRICE: ONE PENNY</span>
+      <div class="gazette-wrapper" id="gazetteWrapper">
+        <div class="newspaper-broadsheet-container" id="newspaperBroadsheet">
+          <div class="broadsheet-top-fold" id="broadsheetTopFold">
+            <div class="newspaper-masthead">
+              <div class="masthead-top">
+                <span>THE ARCHIVAL CHRONICLE</span>
+                <span>BIRMINGHAM TO DHAKA EDITION</span>
+                <span>PRICE: ONE PENNY</span>
+              </div>
+              <h3 class="gazette-paper-title">THE BIRMINGHAM GAZETTE</h3>
+              <div class="masthead-bottom">
+                <span>ESTABLISHED 1920 • ARCHIVE REF: N° 2026</span>
+                <span>VOL. IV — NO. 44</span>
+                <span>LATE NIGHT EDITION</span>
+              </div>
+            </div>
           </div>
-          <h3 class="gazette-paper-title">THE BIRMINGHAM GAZETTE</h3>
-          <div class="masthead-bottom">
-            <span>ESTABLISHED 1920 • ARCHIVE REF: N° 2026</span>
-            <span>VOL. IV — NO. 44</span>
-            <span>LATE NIGHT EDITION</span>
+
+          <div class="newspaper-deck" id="newspaper-deck">
+            <!-- CLIPPING 1: PRISM AWARDS -->
+            <article class="news-clipping rot-left-1 highlight-clip" tabindex="0">
+              <div class="clip-pin"></div>
+              <div class="clip-category">ACHIEVEMENT // LATE TELEGRAM</div>
+              <h4 class="clip-headline">Finalist at PRISM AI Creative Awards 2026</h4>
+              <div class="clip-rule"></div>
+              <p class="clip-copy">
+                Dispatches confirm Soumic Paul has been named among the Top 15 finalists out of 4,000+ competitors globally for visionary direction in AI Advertisement.
+              </p>
+              <div class="clip-date">DISPATCH DATE: JAN 2026</div>
+            </article>
+
+            <!-- CLIPPING 2: TICKIFY AMBASSADOR -->
+            <article class="news-clipping rot-right-1 highlight-clip" tabindex="0">
+              <div class="clip-pin"></div>
+              <div class="clip-category">MILESTONE // APPOINTMENT</div>
+              <h4 class="clip-headline">Tickify Ambassador Confirmed</h4>
+              <div class="clip-rule"></div>
+              <p class="clip-copy">
+                Officially appointed as Student Ambassador at Tickify, bridging campus tech talent with dynamic product distribution.
+              </p>
+              <div class="clip-date">DISPATCH DATE: SEPT 2026</div>
+            </article>
+
+            <!-- CLIPPING 3: CREW WANTED -->
+            <article class="news-clipping rot-left-2 wanted-clip" tabindex="0">
+              <div class="clip-pin"></div>
+              <div class="clip-category">WANTED // RECRUITMENT CALL</div>
+              <h4 class="clip-headline">Reliable Crew Needed</h4>
+              <div class="clip-rule"></div>
+              <p class="clip-copy">
+                Searching with urgency for an exceptional Videographer and Cinematographer capable of gritty lighting and vintage tailoring optics.
+              </p>
+              <div class="clip-date">INQUIRY NOTICE: URGENT</div>
+            </article>
+
+            <!-- CLIPPING 4: ULAB EXPERIENCE -->
+            <article class="news-clipping rot-right-2 tragedy-clip" tabindex="0">
+              <div class="clip-pin"></div>
+              <div class="clip-category">TRAGEDY // WAR CORRESPONDENCE</div>
+              <h4 class="clip-headline">ULAB Experience</h4>
+              <div class="clip-rule"></div>
+              <p class="clip-copy">
+                Field reports confirm: got fucked at ULAB. Casualties minimal, pride severely tested. Moving forward by order of the Peaky Blinders.
+              </p>
+              <div class="clip-date">CASUALTY REPORT: VERIFIED</div>
+            </article>
+
+            <!-- CLIPPING 5: DESIGN HELL -->
+            <article class="news-clipping rot-left-1 struggle-clip" tabindex="0">
+              <div class="clip-pin"></div>
+              <div class="clip-category">STRUGGLE // INDUSTRIAL TRIBULATION</div>
+              <h4 class="clip-headline">Design Hell</h4>
+              <div class="clip-rule"></div>
+              <p class="clip-copy">
+                Constant slide designing pressure killing me. 50+ decks deep into business case finals with no sleep in sight.
+              </p>
+              <div class="clip-date">LOG: CONTINUOUS STRAIN</div>
+            </article>
+
+            <!-- CLIPPING 6: ACADEMIC REALITY -->
+            <article class="news-clipping rot-right-1 reality-clip" tabindex="0">
+              <div class="clip-pin"></div>
+              <div class="clip-category">REALITY // INSTITUTIONAL VERDICT</div>
+              <h4 class="clip-headline">Academic Status</h4>
+              <div class="clip-rule"></div>
+              <p class="clip-copy">
+                AUST is a HELL. Relentless labs, theoretical electrodynamics, and midterms tested the mental fortitude of every engineer.
+              </p>
+              <div class="clip-date">CAMPUS SURVIVAL REPORT</div>
+            </article>
+
+            <!-- CLIPPING 7: LIFESAVER -->
+            <article class="news-clipping rot-left-2 saved-clip" tabindex="0">
+              <div class="clip-pin"></div>
+              <div class="clip-category">SAVED // SALVATION NOTICE</div>
+              <h4 class="clip-headline">The Lifesaver</h4>
+              <div class="clip-rule"></div>
+              <p class="clip-copy">
+                If there was no AI, I could have died. Generative toolchains keep the machine running when human endurance runs dry.
+              </p>
+              <div class="clip-date">DIVINE INTERVENTION // 2026</div>
+            </article>
           </div>
-        </div>
-
-        <div class="newspaper-deck" id="newspaper-deck">
-          <!-- CLIPPING 1: PRISM AWARDS -->
-          <article class="news-clipping rot-left-1 highlight-clip" tabindex="0">
-            <div class="clip-pin"></div>
-            <div class="clip-category">ACHIEVEMENT // LATE TELEGRAM</div>
-            <h4 class="clip-headline">Finalist at PRISM AI Creative Awards 2026</h4>
-            <div class="clip-rule"></div>
-            <p class="clip-copy">
-              Dispatches confirm Soumic Paul has been named among the Top 15 finalists out of 4,000+ competitors globally for visionary direction in AI Advertisement.
-            </p>
-            <div class="clip-date">DISPATCH DATE: JAN 2026</div>
-          </article>
-
-          <!-- CLIPPING 2: TICKIFY AMBASSADOR -->
-          <article class="news-clipping rot-right-1 highlight-clip" tabindex="0">
-            <div class="clip-pin"></div>
-            <div class="clip-category">MILESTONE // APPOINTMENT</div>
-            <h4 class="clip-headline">Tickify Ambassador Confirmed</h4>
-            <div class="clip-rule"></div>
-            <p class="clip-copy">
-              Officially appointed as Student Ambassador at Tickify, bridging campus tech talent with dynamic product distribution.
-            </p>
-            <div class="clip-date">DISPATCH DATE: SEPT 2026</div>
-          </article>
-
-          <!-- CLIPPING 3: CREW WANTED -->
-          <article class="news-clipping rot-left-2 wanted-clip" tabindex="0">
-            <div class="clip-pin"></div>
-            <div class="clip-category">WANTED // RECRUITMENT CALL</div>
-            <h4 class="clip-headline">Reliable Crew Needed</h4>
-            <div class="clip-rule"></div>
-            <p class="clip-copy">
-              Searching with urgency for an exceptional Videographer and Cinematographer capable of gritty lighting and vintage tailoring optics.
-            </p>
-            <div class="clip-date">INQUIRY NOTICE: URGENT</div>
-          </article>
-
-          <!-- CLIPPING 4: ULAB EXPERIENCE -->
-          <article class="news-clipping rot-right-2 tragedy-clip" tabindex="0">
-            <div class="clip-pin"></div>
-            <div class="clip-category">TRAGEDY // WAR CORRESPONDENCE</div>
-            <h4 class="clip-headline">ULAB Experience</h4>
-            <div class="clip-rule"></div>
-            <p class="clip-copy">
-              Field reports confirm: got fucked at ULAB. Casualties minimal, pride severely tested. Moving forward by order of the Peaky Blinders.
-            </p>
-            <div class="clip-date">CASUALTY REPORT: VERIFIED</div>
-          </article>
-
-          <!-- CLIPPING 5: DESIGN HELL -->
-          <article class="news-clipping rot-left-1 struggle-clip" tabindex="0">
-            <div class="clip-pin"></div>
-            <div class="clip-category">STRUGGLE // INDUSTRIAL TRIBULATION</div>
-            <h4 class="clip-headline">Design Hell</h4>
-            <div class="clip-rule"></div>
-            <p class="clip-copy">
-              Constant slide designing pressure killing me. 50+ decks deep into business case finals with no sleep in sight.
-            </p>
-            <div class="clip-date">LOG: CONTINUOUS STRAIN</div>
-          </article>
-
-          <!-- CLIPPING 6: ACADEMIC REALITY -->
-          <article class="news-clipping rot-right-1 reality-clip" tabindex="0">
-            <div class="clip-pin"></div>
-            <div class="clip-category">REALITY // INSTITUTIONAL VERDICT</div>
-            <h4 class="clip-headline">Academic Status</h4>
-            <div class="clip-rule"></div>
-            <p class="clip-copy">
-              AUST is a HELL. Relentless labs, theoretical electrodynamics, and midterms tested the mental fortitude of every engineer.
-            </p>
-            <div class="clip-date">CAMPUS SURVIVAL REPORT</div>
-          </article>
-
-          <!-- CLIPPING 7: LIFESAVER -->
-          <article class="news-clipping rot-left-2 saved-clip" tabindex="0">
-            <div class="clip-pin"></div>
-            <div class="clip-category">SAVED // SALVATION NOTICE</div>
-            <h4 class="clip-headline">The Lifesaver</h4>
-            <div class="clip-rule"></div>
-            <p class="clip-copy">
-              If there was no AI, I could have died. Generative toolchains keep the machine running when human endurance runs dry.
-            </p>
-            <div class="clip-date">DIVINE INTERVENTION // 2026</div>
-          </article>
         </div>
       </div>
     </section>
 
+    <!-- RAILWAY STATION TRANSITION 2 (SCENE B & C) -->
+    <div class="railway-station-transition" aria-hidden="true">
+      <div class="station-ironwork">
+        <div class="station-clock">
+          <div class="clock-face">
+            <div class="clock-hour-hand"></div>
+            <div class="clock-minute-hand"></div>
+            <div class="clock-center-pin"></div>
+          </div>
+        </div>
+        <div class="station-board">
+          <span class="station-board-tag">PLATFORM 02 // INTER-CHAPTER TRANSIT</span>
+          <h3 class="station-board-dest">DESTINATION: THE GUILD &amp; ACADEMIC ARCHIVES</h3>
+          <span class="station-board-sub">BIRMINGHAM CURZON • SPEED 60 MPH</span>
+        </div>
+      </div>
+    </div>
+
     <!-- =========================================================
-         CHAPTER 05: EXPERIENCE & ACHIEVEMENTS — THE GUILD DOSSIER
+         CHAPTER 06: THE GUILD — THE CINEMATIC LENS
+         INTERACTIVE CAMERA LENS VIEWING AREA & DOSSIER LOGS
          ========================================================= -->
     <section class="archive-chapter experience-chapter" id="experience">
-      <div class="chapter-badge">CHAPTER 05 // GUILD ORDERS &amp; EXTRACURRICULAR COMMISSIONS</div>
+      <div class="chapter-badge">CHAPTER 06 // THE GUILD: LEADERSHIP &amp; STRATEGIC OPERATIONS</div>
 
       <div class="section-heading-centered">
-        <p class="section-kicker">LEADERSHIP &amp; OPERATIONS</p>
-        <h2 class="section-title">Command, organization &amp; <em>strategic delivery.</em></h2>
+        <p class="section-kicker">OPERATIONAL COMMAND &amp; CASE STRATEGY</p>
+        <h2 class="section-title">Investigating leadership through a <em>cinematic lens.</em></h2>
         <div class="brass-rule"></div>
       </div>
 
-      <div class="guild-container">
-        <!-- ROLE 1: AUST ROBOTICS CLUB -->
-        <article class="guild-card">
-          <div class="guild-card-header">
-            <div class="guild-logo-box">
-              <img src="assets/AUST_RC.png" alt="AUST Robotics Club" class="guild-logo-img" />
+      <div class="lens-investigation-layout">
+        <!-- THE CAMERA LENS VIEWING APERTURE -->
+        <div class="lens-viewfinder-column">
+          <div class="cine-lens-barrel" id="cineLensBarrel">
+            <div class="lens-outer-bezel">
+              <span class="bezel-mark mark-top">50mm F/1.4</span>
+              <span class="bezel-mark mark-right">COATED OPTICS</span>
+              <span class="bezel-mark mark-bottom">N° 1926-SP</span>
+              <span class="bezel-mark mark-left">ANAMORPHIC</span>
             </div>
-            <div class="guild-title-box">
-              <div class="guild-org">AUST ROBOTICS CLUB</div>
-              <h3 class="guild-position">Assistant Director – Administration</h3>
-              <span class="guild-dates">JAN 2025 – PRESENT // ACTIVE DISPATCH</span>
+
+            <div class="lens-sight-glass">
+              <div class="glass-glare"></div>
+              <div class="viewfinder-grid-lines">
+                <span class="v-crosshair"></span>
+              </div>
+              <img src="assets/AUST_RC.png" alt="AUST Robotics Club" class="lens-subject-img" id="lensSubjectImg" />
+            </div>
+
+            <div class="lens-readouts-bar">
+              <span id="lensShutterSpec">SHUTTER: 1/1000s</span>
+              <span id="lensApertureSpec">APERTURE: f/1.4</span>
+              <span id="lensFocalSpec">FOCUS: 50mm PRIME</span>
             </div>
           </div>
-          <div class="guild-body">
-            <p class="guild-desc">
+        </div>
+
+        <!-- DOSSIER & RECORD SELECTION COLUMN -->
+        <div class="lens-dossier-column">
+          <!-- SELECTOR TABS -->
+          <div class="lens-record-tabs" role="tablist" aria-label="Select leadership case file">
+            <button class="lens-tab active" role="tab" aria-selected="true" data-index="0">
+              <span class="tab-code">REC // 01</span>
+              <span class="tab-label">AUST ROBOTICS CLUB</span>
+            </button>
+            <button class="lens-tab" role="tab" aria-selected="false" data-index="1">
+              <span class="tab-code">REC // 02</span>
+              <span class="tab-label">TICKIFY AMBASSADOR</span>
+            </button>
+            <button class="lens-tab" role="tab" aria-selected="false" data-index="2">
+              <span class="tab-code">REC // 03</span>
+              <span class="tab-label">HSBC BUSINESS CASE</span>
+            </button>
+            <button class="lens-tab" role="tab" aria-selected="false" data-index="3">
+              <span class="tab-code">REC // 04</span>
+              <span class="tab-label">PRISM AI CREATIVE</span>
+            </button>
+          </div>
+
+          <!-- ACTIVE DOSSIER RECORD DISPLAY -->
+          <div class="lens-active-dossier" id="lensActiveDossier">
+            <div class="dossier-card-masthead">
+              <span class="dossier-index-mark">REC // 01</span>
+              <span class="dossier-stamp-seal">OFFICIAL DISPATCH RECORD</span>
+            </div>
+            <div class="dossier-lead-row">
+              <div>
+                <p class="dossier-org-name">AUST ROBOTICS CLUB</p>
+                <h3 class="dossier-position-title">Assistant Director – Administration</h3>
+              </div>
+              <span class="dossier-tenure-badge">JAN 2025 – PRESENT</span>
+            </div>
+            <p class="dossier-body-narrative">
               Oversee high-stakes administrative operations, coordinate cross-team engineering workflows, govern schedules, and drive large-scale organizational initiatives across the university.
             </p>
-            <ul class="guild-duties">
+            <ul class="dossier-verified-points">
               <li>Led end-to-end planning and flawless execution of 2 major national robotics events.</li>
               <li>Coordinated 200+ event participants and 70+ operational volunteers on the ground.</li>
               <li>Managed vendor negotiations, equipment procurement, and comprehensive event logistics.</li>
               <li>Engineered cross-functional frameworks for prompt conflict resolution and execution.</li>
             </ul>
-          </div>
-        </article>
-
-        <!-- ROLE 2: TICKIFY -->
-        <article class="guild-card">
-          <div class="guild-card-header">
-            <div class="guild-logo-box">
-              <img src="assets/Tickify.jpg" alt="Tickify Logo" class="guild-logo-img" />
-            </div>
-            <div class="guild-title-box">
-              <div class="guild-org">TICKIFY</div>
-              <h3 class="guild-position">Student Ambassador</h3>
-              <span class="guild-dates">SEPT 2026 – PRESENT // CAMPUS LIAISON</span>
-            </div>
-          </div>
-          <div class="guild-body">
-            <p class="guild-desc">
-              Representing Tickify within the university ecosystem — driving strategic awareness, successfully onboarding student creators, and channeling vital user feedback directly back to the engineering team.
-            </p>
-          </div>
-        </article>
-
-        <!-- NATIONAL ACHIEVEMENTS PANELS -->
-        <div class="achievements-section-wrap">
-          <div class="achievements-banner">
-            <span class="archival-stamp-small">OFFICIAL COMMENDATIONS</span>
-            <h3>National Case Strategy &amp; AI Laurels</h3>
-          </div>
-
-          <div class="achievements-pair">
-            <!-- HSBC -->
-            <div class="achievement-plaque">
-              <div class="plaque-icon">
-                <img src="assets/HSBC_Logo.svg" alt="HSBC Logo" />
-              </div>
-              <div class="plaque-info">
-                <span class="plaque-badge">NATIONAL QUALIFIER • 2025</span>
-                <h4 class="plaque-title">HSBC Business Case Competition</h4>
-                <p class="plaque-text">National Round Qualifier in Corporate Strategy, Financial Modeling &amp; Case Problem Solving.</p>
-              </div>
-            </div>
-
-            <!-- PRISM -->
-            <div class="achievement-plaque">
-              <div class="plaque-icon">
-                <img src="assets/Prism_Logo.png" alt="PRISM AI Creative Awards" />
-              </div>
-              <div class="plaque-info">
-                <span class="plaque-badge prism-gold">TOP 15 FINALIST • 4,000+ ENTRANTS</span>
-                <h4 class="plaque-title">PRISM AI Creative Awards 2026</h4>
-                <p class="plaque-text">Worldwide Finalist in AI Advertisement, evaluated on cinematic storytelling and generative mastery.</p>
-              </div>
+            <div class="dossier-action-bar">
+              <span class="dossier-citation-code">REF: ARC-ADM-2025-SP</span>
             </div>
           </div>
         </div>
@@ -574,80 +802,109 @@
     </section>
 
     <!-- =========================================================
-         CHAPTER 06: EDUCATION — THE ACADEMIC RECORD
+         CHAPTER 07: EDUCATION — THE ROLLING ACADEMIC ARCHIVE
+         UNROLLING VINTAGE PARCHMENT SCROLL WITH OFFICIAL STAMP
          ========================================================= -->
     <section class="archive-chapter education-chapter" id="education">
-      <div class="chapter-badge">CHAPTER 06 // ACADEMIC RECORD: PEDIGREE &amp; SCHOLARSHIP</div>
+      <div class="chapter-badge">CHAPTER 07 // ACADEMIC ARCHIVES: PEDIGREE &amp; SCHOLARSHIP</div>
 
       <div class="section-heading-centered">
         <p class="section-kicker">INSTITUTIONAL FOUNDATIONS</p>
-        <h2 class="section-title">The schools that <em>sharpened the mind.</em></h2>
+        <h2 class="section-title">The parchment records that <em>sharpened the mind.</em></h2>
         <div class="brass-rule"></div>
       </div>
 
-      <div class="archival-timeline" id="edu-timeline-container">
-        <div class="timeline-spine">
-          <div class="timeline-fill" id="edu-line-fill"></div>
+      <div class="parchment-scroll-stage" id="parchmentScrollStage">
+        <!-- TOP ROLLER BAR -->
+        <div class="parchment-roller-bar roller-top">
+          <div class="roller-finial finial-left"></div>
+          <div class="roller-core"></div>
+          <div class="roller-finial finial-right"></div>
         </div>
 
-        <!-- 1. UNIVERSITY -->
-        <div class="timeline-entry">
-          <div class="timeline-node">✦</div>
-          <div class="timeline-card">
-            <div class="timeline-logo">
-              <img src="assets/AUST_LOGO.svg" alt="AUST Logo" />
+        <!-- UNROLLING PARCHMENT SHEET -->
+        <div class="parchment-sheet" id="parchmentSheet">
+          <div class="parchment-header-crest">
+            <span class="crest-code">ACADEMIA • CURRICULUM • EST. 2020</span>
+            <h3 class="parchment-main-title">OFFICIAL REGISTRY OF SCHOLARSHIP</h3>
+            <p class="parchment-subtitle">Authentic academic qualifications and foundational training</p>
+            <div class="parchment-flourish">❦</div>
+          </div>
+
+          <div class="parchment-entries-list">
+            <!-- 1. AUST -->
+            <div class="parchment-entry">
+              <div class="entry-seal">✦</div>
+              <div class="entry-body">
+                <div class="entry-meta">
+                  <span class="entry-years">2023 – PRESENT</span>
+                  <span class="entry-tag">BACHELOR OF SCIENCE</span>
+                </div>
+                <h4 class="entry-degree">B.Sc. in Electrical &amp; Electronic Engineering</h4>
+                <p class="entry-school">Ahsanullah University of Science &amp; Technology (AUST)</p>
+                <p class="entry-details">Rigorous curriculum in circuits, power electronics, signals &amp; systems, computational modeling, and strategic project execution.</p>
+              </div>
             </div>
-            <div class="timeline-details">
-              <span class="timeline-period">2023 – PRESENT</span>
-              <h3 class="timeline-degree">B.Sc. in Electrical &amp; Electronic Engineering</h3>
-              <p class="timeline-inst">Ahsanullah University of Science &amp; Technology (AUST)</p>
-              <p class="timeline-note">Focusing on power circuits, control systems, computational engineering, and strategic leadership.</p>
+
+            <!-- 2. AKMCC -->
+            <div class="parchment-entry">
+              <div class="entry-seal">✦</div>
+              <div class="entry-body">
+                <div class="entry-meta">
+                  <span class="entry-years">2020 – 2022</span>
+                  <span class="entry-tag">HIGHER SECONDARY CERTIFICATE</span>
+                </div>
+                <h4 class="entry-degree">Higher Secondary Certificate (HSC) — Science</h4>
+                <p class="entry-school">Abdul Kadir Mollah City College (AKMCC)</p>
+                <p class="entry-details">Advanced analytical focus in Higher Mathematics, Applied Physics, and Chemical Sciences.</p>
+              </div>
+            </div>
+
+            <!-- 3. GSCA -->
+            <div class="parchment-entry">
+              <div class="entry-seal">✦</div>
+              <div class="entry-body">
+                <div class="entry-meta">
+                  <span class="entry-years">UNTIL 2020</span>
+                  <span class="entry-tag">SECONDARY SCHOOL CERTIFICATE</span>
+                </div>
+                <h4 class="entry-degree">Secondary School Certificate (SSC) — Science</h4>
+                <p class="entry-school">Gazipur Shaheen Cadet Academy (GSCA)</p>
+                <p class="entry-details">Foundational science, cadency discipline, organizational structure, and analytical problem-solving.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="parchment-footer-stamp">
+            <div class="wax-seal-emblem">
+              <span>VERIFIED</span>
+              <strong>AUST EEE</strong>
+            </div>
+            <div class="stamp-citation">
+              <span>ARCHIVAL CERTIFICATE // REF: EDU-SP-2026</span>
+              <span>AUTHENTICATED BY ORDER OF THE ARCHIVIST</span>
             </div>
           </div>
         </div>
 
-        <!-- 2. COLLEGE -->
-        <div class="timeline-entry">
-          <div class="timeline-node">✦</div>
-          <div class="timeline-card">
-            <div class="timeline-logo">
-              <img src="assets/AKMCC-Logo.png" alt="AKMCC Logo" onerror="this.style.display='none'" />
-            </div>
-            <div class="timeline-details">
-              <span class="timeline-period">2020 – 2022</span>
-              <h3 class="timeline-degree">Higher Secondary Certificate (HSC)</h3>
-              <p class="timeline-inst">Abdul Kadir Mollah City College (AKMCC)</p>
-              <p class="timeline-note">Discipline: Science • Rigorous focus in Mathematics, Physics &amp; Analytical Chemistry.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- 3. SCHOOL -->
-        <div class="timeline-entry">
-          <div class="timeline-node">✦</div>
-          <div class="timeline-card">
-            <div class="timeline-logo">
-              <img src="assets/GSCA logo.png" alt="GSCA Logo" onerror="this.style.display='none'" />
-            </div>
-            <div class="timeline-details">
-              <span class="timeline-period">UNTIL 2020</span>
-              <h3 class="timeline-degree">Secondary School Certificate (SSC)</h3>
-              <p class="timeline-inst">Gazipur Shaheen Cadet Academy (GSCA)</p>
-              <p class="timeline-note">Discipline: Science • Foundational cadency, discipline, and scientific inquiry.</p>
-            </div>
-          </div>
+        <!-- BOTTOM ROLLER BAR -->
+        <div class="parchment-roller-bar roller-bottom">
+          <div class="roller-finial finial-left"></div>
+          <div class="roller-core"></div>
+          <div class="roller-finial finial-right"></div>
         </div>
       </div>
     </section>
 
     <!-- =========================================================
-         CHAPTER 07: SKILLS — THE TECHNICAL ARSENAL
+         CHAPTER 08: THE ARSENAL — ENGINEER'S WORKSHOP
+         BLUEPRINT LINEWORK, BRASS GAUGES & CATEGORIZED INSTRUMENTS
          ========================================================= -->
     <section class="archive-chapter skills-chapter" id="skills">
-      <div class="chapter-badge">CHAPTER 07 // ARSENAL: TOOLS &amp; INSTRUMENTS</div>
+      <div class="chapter-badge">CHAPTER 08 // THE ARSENAL: TOOLS, HARDWARE &amp; ENGINES</div>
 
       <div class="section-heading-centered">
-        <p class="section-kicker">CROSS-FUNCTIONAL CAPABILITIES</p>
+        <p class="section-kicker">ENGINEERING WORKSHOP SCHEMATICS</p>
         <h2 class="section-title">Instruments utilized to <em>manifest visions.</em></h2>
         <div class="brass-rule"></div>
       </div>
@@ -655,9 +912,12 @@
       <div class="arsenal-bento">
         <!-- 01: ENGINEERING & TECH -->
         <div class="arsenal-card tech-card">
-          <div class="card-num">01</div>
+          <div class="card-header-bar">
+            <span class="workshop-code">SCHEMATIC REF // 01</span>
+            <span class="workshop-gauge">⚙ HARDWARE &amp; SIMULATION</span>
+          </div>
           <h3 class="card-title">Engineering &amp; Hardware</h3>
-          <p class="card-desc">Low-level computation, simulation, algorithmic modeling, and circuit hardware.</p>
+          <p class="card-desc">Low-level computation, simulation, algorithmic modeling, transducer circuits, and physical prototyping.</p>
           <div class="arsenal-pills">
             <span>C++</span>
             <span>Python</span>
@@ -674,9 +934,12 @@
 
         <!-- 02: DESIGN & FILMMAKING -->
         <div class="arsenal-card design-card">
-          <div class="card-num">02</div>
+          <div class="card-header-bar">
+            <span class="workshop-code">SCHEMATIC REF // 02</span>
+            <span class="workshop-gauge">🎬 CINEMATIC &amp; AI DIRECTION</span>
+          </div>
           <h3 class="card-title">Cinematic &amp; Creative Direction</h3>
-          <p class="card-desc">Generative AI direction, visual styling, video editing, poster art, and branding.</p>
+          <p class="card-desc">Generative AI direction, visual styling, video editing, poster art, character consistency, and color timing.</p>
           <div class="arsenal-pills">
             <span>Premiere Pro</span>
             <span>Photoshop</span>
@@ -693,9 +956,12 @@
 
         <!-- 03: BUSINESS STRATEGY -->
         <div class="arsenal-card business-card">
-          <div class="card-num">03</div>
+          <div class="card-header-bar">
+            <span class="workshop-code">SCHEMATIC REF // 03</span>
+            <span class="workshop-gauge">📊 STRATEGY &amp; OPERATIONS</span>
+          </div>
           <h3 class="card-title">Business &amp; Operations</h3>
-          <p class="card-desc">Case competition analytics, financial presentation, team orchestration, and execution.</p>
+          <p class="card-desc">Case competition analytics, financial presentation, team orchestration, negotiations, and execution.</p>
           <div class="arsenal-pills">
             <span>Problem Solving</span>
             <span>Strategy</span>
@@ -714,10 +980,11 @@
     </section>
 
     <!-- =========================================================
-         CHAPTER 08: CERTIFICATES — THE ACHIEVEMENT DECK
+         CHAPTER 09: THE DECORATIONS — THE EXHIBITION DECK
+         STABLE PHYSICAL CARD SHUFFLING WITH RESTING COORDINATES
          ========================================================= -->
     <section class="archive-chapter certificates-chapter" id="certificates">
-      <div class="chapter-badge">CHAPTER 08 // THE ACHIEVEMENT DECK: CERTIFICATES &amp; SEALS</div>
+      <div class="chapter-badge">CHAPTER 09 // THE DECORATIONS ROOM: AUTHENTICATED CREDENTIALS</div>
 
       <div class="section-heading-centered">
         <p class="section-kicker">VERIFIED ARCHIVAL DOCUMENTS</p>
@@ -936,15 +1203,15 @@
     </section>
 
     <!-- =========================================================
-         CHAPTER 09: CONTACT & FOOTER — THE FINAL FRAME
+         CHAPTER 10: CONTACT — THE TRANSMISSION (THE FINAL FRAME)
          ========================================================= -->
     <section class="archive-chapter contact-chapter" id="contact">
-      <div class="chapter-badge">CHAPTER 09 // TRANSMISSION: THE FINAL FRAME</div>
+      <div class="chapter-badge">CHAPTER 10 // TRANSMISSION: THE FINAL FRAME</div>
 
       <div class="contact-dossier-inner">
         <div class="closing-slate">
           <p class="slate-label">TRANSMIT AN INQUIRY // DIRECT WIRE</p>
-          <h2 class="slate-heading">By order of the audacious.</h2>
+          <h2 class="slate-heading">EVERY STORY BEGINS WITH A CONVERSATION.</h2>
           <p class="slate-sub">Open to AI film productions, creative technology inquiries, and engineering collaborations.</p>
         </div>
 
@@ -976,7 +1243,6 @@
         </div>
 
         <div class="film-closing-credits">
-          <div class="credits-rule"></div>
           <div class="credits-row">
             <div class="credits-left">
               <span>© 2026 SOUMIC KUNDU PAUL • ALL RIGHTS RESERVED</span>
