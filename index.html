@@ -27,20 +27,7 @@
   <!-- CINEMATIC FIREWORK PARTICLES & SPARKS CANVAS -->
   <canvas id="cinematicSparksCanvas" class="cinematic-sparks-canvas" aria-hidden="true"></canvas>
 
-  <!-- RAILWAY TRACK SCROLL PROGRESS INDICATOR -->
-  <div class="railway-progress-track" id="railwayProgressTrack" aria-hidden="true">
-    <div class="railway-track-line">
-      <div class="track-sleeper-ties"></div>
-      <div class="track-steel-rails"></div>
-      <div class="railway-locomotive-glyph" id="railwayLocomotiveGlyph">
-        <span class="loco-icon">🚂</span>
-      </div>
-    </div>
-    <div class="railway-station-indicator" id="railwayStationIndicator">
-      <span class="station-pulse"></span>
-      <span class="station-text" id="railwayCurrentChapter">HOME</span>
-    </div>
-  </div>
+
 
   <!-- NAVIGATION — CLEAN, CLEAR, CONVENTIONAL (8 SECTIONS) -->
   <header class="nav-wrap">
@@ -106,69 +93,93 @@
       <div class="poster-hero-container">
         <!-- TOP DOCKET TAG -->
         <div class="poster-archival-header">
-          <span class="docket-tag">SOUMIC PAUL // CREATIVE PORTFOLIO</span>
+          <span class="docket-tag">PROD // SOUMIC PAUL CREATIVE ARCHIVE</span>
           <span class="docket-sep">•</span>
           <span class="docket-tag">DIRECT WIRE REF: SP-2026</span>
           <span class="docket-sep">•</span>
           <span class="docket-tag">BIRMINGHAM TO DHAKA</span>
         </div>
 
-        <!-- CENTERED CINEMATIC FOREGROUND PORTRAIT (SP_HERO) STANDING ON PLATFORM -->
+        <!-- CENTERED CINEMATIC FOREGROUND PORTRAIT (SP_HERO) WITH NATURAL GRADIENT DISSOLVE -->
         <div class="hero-center-portrait-wrap">
           <div class="portrait-halo-light" aria-hidden="true"></div>
           <div class="portrait-stage">
             <img src="assets/SP_HERO.png" alt="Soumic Paul in dark vintage tailored suit with sunglasses" class="hero-poster-img" />
           </div>
-          <div class="portrait-platform-shadow" aria-hidden="true"></div>
-          <div class="portrait-archival-tag">
-            <span class="tag-fig">FIGURE 01</span>
-            <span class="tag-title">SOUMIC PAUL // THE CREATIVE ARCHIVIST</span>
-            <span class="tag-year">EST. 2026</span>
-          </div>
         </div>
 
-        <!-- POSTER FOOTER / LEAD COPY & ACTIONS -->
-        <div class="poster-lead-block">
-          <div class="poster-motto">
-            <h2 class="poster-motto-text">An Engineer by Discipline. A Creator by Instinct.</h2>
+        <!-- FILMOGRAPHY STYLE PRODUCTION SLATE & THEATRICAL BILLING (REQUIREMENT: FILMOGRAPHY STYLE) -->
+        <div class="filmography-block">
+          <!-- PRODUCTION SLATE MASTHEAD -->
+          <div class="filmography-slate-header">
+            <div class="slate-meta-left">
+              <span class="clapper-icon">🎬</span>
+              <span class="slate-meta-item">PROD // <strong>SP-ARCHIVE</strong></span>
+              <span class="slate-sep">•</span>
+              <span class="slate-meta-item">SCENE // <strong>01</strong></span>
+              <span class="slate-sep">•</span>
+              <span class="slate-meta-item">ROLL // <strong>01</strong></span>
+            </div>
+            <div class="slate-meta-right">
+              <span class="slate-format-pill">35MM CINEMASCOPE 2.39:1</span>
+              <span class="slate-fps-pill">24 FPS</span>
+            </div>
           </div>
 
-          <p class="poster-synopsis">
-            Electrical &amp; Electronic Engineering undergraduate blending hands-on technology, strategic business thinking, and AI-directed cinematic storytelling.
-          </p>
+          <!-- FILM LOGLINE & SYNOPSIS -->
+          <div class="film-logline-box">
+            <h2 class="film-logline-quote">“An Engineer by Discipline. A Creator by Instinct.”</h2>
+            <p class="film-synopsis-text">
+              Electrical &amp; Electronic Engineering undergraduate blending hands-on circuit engineering, business strategy, and AI-directed cinematic storytelling.
+            </p>
+          </div>
 
-          <div class="poster-cta-row">
-            <a href="#projects" class="archive-btn primary-brass">
-              <span>EXPLORE MY WORK</span>
-              <span class="btn-arrow">→</span>
+          <!-- CINEMATIC ACTIONS (FILM REEL STYLE) -->
+          <div class="filmography-actions">
+            <a href="#projects" class="film-cta-primary">
+              <span class="film-play-icon">▶</span>
+              <span class="film-cta-text">SCREEN PRODUCTIONS</span>
+              <span class="film-sprocket-dots">••••</span>
             </a>
-            <a href="assets/Soumic_Kundu_Paul_CV.pdf" target="_blank" rel="noreferrer" class="archive-btn secondary-charcoal">
-              <span>VIEW MY PROFILE (CV)</span>
-              <span>↗</span>
+            <a href="assets/Soumic_Kundu_Paul_CV.pdf" target="_blank" rel="noreferrer" class="film-cta-secondary">
+              <span class="film-archive-icon">✦</span>
+              <span class="film-cta-text">DIRECTOR'S DOSSIER (CV)</span>
+              <span class="film-ext-arrow">↗</span>
             </a>
           </div>
 
-          <!-- CINEMATIC BILLING BLOCK -->
-          <div class="poster-billing-strip">
-            <div class="billing-col">
-              <span class="bill-label">LOCATION:</span>
-              <strong class="bill-val">DHAKA, BANGLADESH</strong>
-            </div>
-            <div class="billing-sep">|</div>
-            <div class="billing-col">
-              <span class="bill-label">ACADEMIC GUILD:</span>
-              <strong class="bill-val">AUST (EEE UNDERGRADUATE)</strong>
-            </div>
-            <div class="billing-sep">|</div>
-            <div class="billing-col">
-              <span class="bill-label">DISCIPLINES:</span>
-              <strong class="bill-val">ENGINEERING + AI CINEMA + LEADERSHIP</strong>
+          <!-- THEATRICAL MOVIE BILLING BLOCK -->
+          <div class="theatrical-billing-block">
+            <div class="billing-grid">
+              <div class="billing-item">
+                <span class="billing-role">DIRECTED &amp; PRODUCED BY</span>
+                <strong class="billing-name">SOUMIC KUNDU PAUL</strong>
+              </div>
+              <div class="billing-divider">/</div>
+              <div class="billing-item">
+                <span class="billing-role">INSTITUTIONAL GUILD</span>
+                <strong class="billing-name">AUST EEE UNDERGRADUATE</strong>
+              </div>
+              <div class="billing-divider">/</div>
+              <div class="billing-item">
+                <span class="billing-role">BASE OF OPERATIONS</span>
+                <strong class="billing-name">DHAKA, BANGLADESH</strong>
+              </div>
+              <div class="billing-divider">/</div>
+              <div class="billing-item">
+                <span class="billing-role">PRODUCTION DISCIPLINES</span>
+                <strong class="billing-name">AI FILM • HARDWARE • STRATEGY</strong>
+              </div>
             </div>
           </div>
 
-          <div class="scroll-invite-clean">
-            <span class="invite-label">SCROLL TO INSPECT ARCHIVES</span>
-            <span class="invite-caret">↓</span>
+          <!-- FILMIC TIMECODE PROMPT -->
+          <div class="film-timecode-prompt">
+            <span class="timecode-rec-dot"></span>
+            <span class="timecode-digits">TC 00:00:01:00</span>
+            <span class="timecode-sep">|</span>
+            <span class="timecode-instruction">ROLL TO ADVANCE REEL</span>
+            <span class="timecode-arrow">↓</span>
           </div>
         </div>
       </div>
