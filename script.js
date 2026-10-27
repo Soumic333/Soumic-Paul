@@ -720,7 +720,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let currentCertIndex = 0;
   const totalCerts = CERTIFICATE_DATA.length;
-  const AUTOPLAY_CYCLE_MS = 5500; // 5.5 seconds display duration
+  const AUTOPLAY_CYCLE_MS = 1500; // 1.5 seconds screening duration per certificate
 
   const projectorMat = document.getElementById('projectorMatBoard');
   const screeningActiveImg = document.getElementById('screeningActiveImg');
@@ -767,11 +767,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (theatreCurrentNum) theatreCurrentNum.innerText = paddedIndex;
     if (theatreRefCode) theatreRefCode.innerText = cert.ref;
 
-    // Smooth cinematic dissolve + horizontal film-reel transition
+    // Smooth cinematic dissolve + horizontal film-reel glide
     if (screeningActiveImg) {
-      screeningActiveImg.style.transition = 'opacity 0.28s ease, transform 0.32s cubic-bezier(0.16, 1, 0.3, 1)';
+      screeningActiveImg.style.transition = 'opacity 0.20s ease-out, transform 0.24s cubic-bezier(0.16, 1, 0.3, 1)';
       screeningActiveImg.style.opacity = '0.35';
-      screeningActiveImg.style.transform = isManual ? 'translateX(10px) scale(0.99)' : 'translateX(6px) scale(0.995)';
+      screeningActiveImg.style.transform = isManual ? 'translateX(8px) scale(0.99)' : 'translateX(5px) scale(0.995)';
 
       setTimeout(() => {
         screeningActiveImg.src = cert.img;
@@ -779,7 +779,7 @@ document.addEventListener('DOMContentLoaded', () => {
         screeningActiveImg.style.opacity = '1';
         screeningActiveImg.style.transform = 'translateX(0) scale(1)';
         preloadCertificateImage(currentCertIndex);
-      }, 180);
+      }, 100);
     }
 
     // Trigger subtle spotlight sweep
@@ -787,16 +787,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (sweep) {
       sweep.style.animation = 'none';
       void sweep.offsetWidth;
-      sweep.style.animation = 'spotlightSweep 1.4s ease-out';
+      sweep.style.animation = 'spotlightSweep 0.9s ease-out';
     }
 
-    // Update Editorial Metadata with smooth fade
+    // Update Editorial Metadata with quick, smooth crossfade
     if (certTitleText) {
-      certTitleText.style.opacity = '0.4';
+      certTitleText.style.opacity = '0.45';
       setTimeout(() => {
         certTitleText.innerText = cert.title;
         certTitleText.style.opacity = '1';
-      }, 160);
+      }, 90);
     }
 
     if (theatreIssuerText) theatreIssuerText.innerText = cert.issuer;
@@ -804,11 +804,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (theatreYearText) theatreYearText.innerText = cert.year;
 
     if (certDescText) {
-      certDescText.style.opacity = '0.4';
+      certDescText.style.opacity = '0.45';
       setTimeout(() => {
         certDescText.innerText = cert.desc;
         certDescText.style.opacity = '1';
-      }, 160);
+      }, 90);
     }
   }
 

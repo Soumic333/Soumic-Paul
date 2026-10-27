@@ -2162,7 +2162,7 @@ body.shelby-archive {
   position: relative;
   z-index: 1;
   padding: 10px;
-  transition: opacity 0.45s ease, transform 0.5s var(--ease-cinematic);
+  transition: opacity 0.22s ease, transform 0.28s var(--ease-cinematic);
   will-change: transform, opacity;
   filter: contrast(1.04) brightness(0.98);
 }
@@ -2363,7 +2363,7 @@ body.shelby-archive {
   height: 100%;
   background: linear-gradient(90deg, #8E6837 0%, #B88A4A 60%, #E8D9BA 100%);
   box-shadow: 0 0 8px rgba(184, 138, 74, 0.7);
-  transition: width 0.08s linear;
+  transition: width 0.04s linear;
 }
 
 .theatre-discreet-controls {
