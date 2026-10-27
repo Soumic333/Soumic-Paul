@@ -1896,282 +1896,508 @@ body.shelby-archive {
 }
 
 /* =========================================================
-   13. CERTIFICATES — AUTOMATIC INFINITE TAB DISPLAY
-   Cinematic presentation with active tab header, progress timer,
-   crossfade & slide transitions, and indefinite looping
+   13. THE ARCHIVE THEATRE — LUXURIOUS CINEMA PROJECTION SCREEN
+   (Private screening room in 1920s Birmingham, automatic infinite reel)
    ========================================================= */
 
-.screening-room-layout {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 40px;
-  align-items: start;
-}
-
-/* PROJECTION SCREEN VIEWING FRAME */
-.screening-projector-frame {
-  background: var(--color-surface-elevated);
-  border: 2px solid var(--color-antique-gold);
-  padding: 20px;
-  border-radius: 4px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75), 0 0 24px rgba(184, 138, 74, 0.22);
+/* PROSCENIUM MARQUEE HEADER */
+.theatre-proscenium-header {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 36px;
   position: relative;
 }
 
-/* ACTIVE CERTIFICATE TAB-LIKE HEADER (REQUIREMENT 11) */
-.screening-active-tab-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  background: var(--color-charcoal);
-  border: 1px solid var(--color-border);
-  border-bottom: 2px solid var(--color-antique-gold);
-  padding: 10px 18px;
-  margin-bottom: 16px;
-  border-radius: 2px;
-}
-
-.active-tab-badge {
-  display: flex;
+.theatre-archival-callout {
+  display: inline-flex;
   align-items: center;
   gap: 10px;
+  background: rgba(22, 19, 15, 0.9);
+  border: 1px solid var(--color-border);
+  padding: 6px 18px;
+  border-radius: 20px;
+  margin-bottom: 14px;
   font-family: var(--font-mono);
   font-size: 11px;
-  letter-spacing: 0.16em;
-  color: var(--color-vintage-ivory);
-  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-muted-ash);
 }
 
-.tab-pulse-dot {
-  width: 7px;
-  height: 7px;
-  background: var(--color-antique-gold);
-  border-radius: 50%;
-  box-shadow: 0 0 8px var(--color-antique-gold);
-  animation: tabDotPulse 1.8s infinite;
+.theatre-light-bulb {
+  color: var(--color-antique-gold);
+  font-size: 8px;
+  animation: bulbFlicker 3s infinite alternate;
 }
 
-@keyframes tabDotPulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.35; transform: scale(0.7); }
+@keyframes bulbFlicker {
+  0%, 100% { opacity: 1; filter: drop-shadow(0 0 6px var(--color-antique-gold)); }
+  45% { opacity: 0.8; filter: drop-shadow(0 0 3px var(--color-antique-gold)); }
+  50% { opacity: 0.4; filter: none; }
+  55% { opacity: 0.95; filter: drop-shadow(0 0 6px var(--color-antique-gold)); }
 }
 
-.tab-code {
+.theatre-docket {
   color: var(--color-antique-gold);
   font-weight: 600;
 }
 
-.tab-divider {
+.theatre-sep {
   color: var(--color-warm-brass);
+  opacity: 0.6;
 }
 
-.tab-live-title {
-  font-family: var(--font-sans);
-  font-weight: 600;
-  font-size: 13px;
+.theatre-marquee-title {
+  font-family: var(--font-display);
+  font-size: clamp(34px, 4.4vw, 54px);
   color: var(--color-vintage-ivory);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 320px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  line-height: 1.1;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.8);
 }
 
-/* COUNTDOWN PROGRESS BAR INDICATOR */
-.screening-countdown-bar-wrap {
-  width: 140px;
-  height: 4px;
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid var(--color-border);
-  border-radius: 2px;
-  overflow: hidden;
-  flex-shrink: 0;
+.theatre-marquee-title em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-antique-gold);
+  text-transform: none;
 }
 
-.screening-countdown-bar {
-  width: 0%;
-  height: 100%;
-  background: linear-gradient(90deg, var(--color-warm-brass), var(--color-antique-gold));
-  box-shadow: 0 0 6px var(--color-antique-gold);
-  transition: width 0.1s linear;
+.theatre-marquee-subtitle {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(16px, 1.4vw, 19px);
+  color: var(--color-muted-ash);
+  max-width: 620px;
+  margin: 0 auto 16px;
 }
 
-.projector-mat-board {
+.theatre-velvet-line {
+  width: 90px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-antique-gold), transparent);
+  margin: 0 auto;
+}
+
+/* =========================================================
+   LAYER A — THEATRE ENVIRONMENT
+   Deep charcoal surroundings, volumetric projector light beam, subtle dust particles
+   ========================================================= */
+
+.cinema-theatre-environment {
   position: relative;
+  background: radial-gradient(ellipse at 50% 35%, #181512 0%, #11110F 65%, #0B0A08 100%);
+  border: 1px solid rgba(184, 138, 74, 0.28);
+  border-radius: 6px;
+  padding: 44px 32px 36px;
+  box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.95), 0 20px 60px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* VOLUMETRIC PROJECTOR BEAM CUTTING THROUGH THE ROOM */
+.theatre-projector-beam {
+  position: absolute;
+  top: -10%;
+  right: -5%;
+  width: 80%;
+  height: 85%;
+  background: linear-gradient(220deg, rgba(212, 163, 89, 0.14) 0%, rgba(184, 138, 74, 0.05) 40%, transparent 72%);
+  clip-path: polygon(100% 0%, 0% 100%, 75% 100%, 100% 40%);
+  pointer-events: none;
+  z-index: 1;
+  animation: projectorBeamBreathe 6s infinite alternate ease-in-out;
+  transform-origin: top right;
+}
+
+@keyframes projectorBeamBreathe {
+  0% { opacity: 0.65; transform: scale(0.98) rotate(0deg); }
+  50% { opacity: 0.95; transform: scale(1.02) rotate(-0.5deg); }
+  100% { opacity: 0.75; transform: scale(1.00) rotate(0.5deg); }
+}
+
+/* SUBTLE FLOATING PROJECTOR DUST MOTES */
+.theatre-dust-motes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.dust-mote {
+  position: absolute;
+  background: rgba(232, 217, 186, 0.7);
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(184, 138, 74, 0.9);
+  pointer-events: none;
+  animation: floatDustMote 12s infinite linear;
+}
+
+.mote-1 { width: 3px; height: 3px; top: 15%; right: 25%; animation-duration: 14s; animation-delay: 0s; }
+.mote-2 { width: 2px; height: 2px; top: 35%; right: 40%; animation-duration: 18s; animation-delay: -3s; }
+.mote-3 { width: 4px; height: 4px; top: 20%; right: 15%; animation-duration: 11s; animation-delay: -7s; }
+.mote-4 { width: 2.5px; height: 2.5px; top: 50%; right: 30%; animation-duration: 16s; animation-delay: -5s; }
+.mote-5 { width: 3px; height: 3px; top: 25%; right: 55%; animation-duration: 13s; animation-delay: -10s; }
+.mote-6 { width: 2px; height: 2px; top: 45%; right: 20%; animation-duration: 20s; animation-delay: -2s; }
+
+@keyframes floatDustMote {
+  0% { transform: translate(0, 0) scale(0.8); opacity: 0; }
+  20% { opacity: 0.85; }
+  80% { opacity: 0.65; }
+  100% { transform: translate(-60px, 80px) scale(1.2); opacity: 0; }
+}
+
+/* =========================================================
+   LAYER B — MAIN PROJECTION SCREEN (THE CENTRAL HERO)
+   Occupies ~72% of width on desktop, generous space, elegant vintage frame
+   ========================================================= */
+
+.theatre-projection-screen-wrap {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 32px;
+}
+
+.theatre-screen-frame {
+  position: relative;
+  background: #14120E;
+  border: 3px solid var(--color-antique-gold);
+  border-radius: 6px;
+  padding: 14px 18px;
+  box-shadow: 
+    0 24px 60px rgba(0, 0, 0, 0.92),
+    0 0 35px rgba(184, 138, 74, 0.22),
+    inset 0 0 20px rgba(0, 0, 0, 0.85);
+}
+
+/* 35MM FILM SPROCKET HOLE RAILS */
+.screen-sprocket-rail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 6px;
+}
+
+.screen-sprocket-rail.top-rail {
+  margin-bottom: 8px;
+  border-bottom: 1px solid rgba(184, 138, 74, 0.25);
+}
+
+.screen-sprocket-rail.bottom-rail {
+  margin-top: 8px;
+  border-top: 1px solid rgba(184, 138, 74, 0.25);
+}
+
+.sprocket-hole {
+  width: 9px;
+  height: 6px;
   background: #080706;
-  border: 1px solid var(--color-border);
-  min-height: 440px;
+  border: 1px solid rgba(184, 138, 74, 0.35);
+  border-radius: 1px;
+}
+
+/* CORNER ORNAMENTS */
+.screen-corner-rosette {
+  position: absolute;
+  color: var(--color-antique-gold);
+  font-size: 13px;
+  line-height: 1;
+  text-shadow: 0 0 6px var(--color-antique-gold);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.corner-tl { top: 6px; left: 8px; }
+.corner-tr { top: 6px; right: 8px; }
+.corner-bl { bottom: 6px; left: 8px; }
+.corner-br { bottom: 6px; right: 8px; }
+
+/* SCREEN SURFACE CANVAS */
+.theatre-screen-canvas {
+  position: relative;
+  background: #060605;
+  border: 2px solid rgba(184, 138, 74, 0.45);
+  border-radius: 3px;
+  height: clamp(340px, 48vh, 540px);
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   cursor: pointer;
-  border-radius: 2px;
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.95);
 }
 
-.screening-spotlight-sweep {
+.theatre-spotlight-sweep {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(232, 217, 186, 0.15) 0%, transparent 45%, rgba(184, 138, 74, 0.12) 80%, transparent 100%);
+  background: radial-gradient(circle at 60% 40%, rgba(255, 238, 204, 0.12) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 2;
+  mix-blend-mode: screen;
+}
+
+.theatre-lens-flare {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 45%;
+  background: linear-gradient(180deg, rgba(184, 138, 74, 0.08) 0%, transparent 100%);
   pointer-events: none;
   z-index: 2;
 }
 
-.screening-active-img {
+/* ACTIVE CERTIFICATE IMAGE (STRICT CONTAIN, 0 CROPPING, SMOOTH TRANSITION) */
+.theatre-active-img {
   width: 100%;
-  height: 440px;
+  height: 100%;
   object-fit: contain;
   display: block;
   position: relative;
   z-index: 1;
-  transition: opacity 0.38s ease, transform 0.42s var(--ease-cinematic);
+  padding: 10px;
+  transition: opacity 0.45s ease, transform 0.5s var(--ease-cinematic);
   will-change: transform, opacity;
+  filter: contrast(1.04) brightness(0.98);
 }
 
-.inspect-badge-overlay {
+.theatre-screen-canvas:hover .theatre-active-img {
+  transform: scale(1.015);
+}
+
+.theatre-inspect-badge {
   position: absolute;
   bottom: 14px;
   right: 14px;
-  background: rgba(17, 17, 15, 0.92);
+  background: rgba(14, 12, 10, 0.92);
   border: 1px solid var(--color-antique-gold);
   color: var(--color-vintage-ivory);
   font-family: var(--font-mono);
   font-size: 10.5px;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.18em;
   padding: 6px 14px;
-  z-index: 3;
+  border-radius: 2px;
+  z-index: 4;
   pointer-events: none;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.7);
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-/* SCREENING CONTROLS & METADATA COLUMN */
-.screening-dossier-column {
-  display: flex;
-  flex-direction: column;
-}
-
-.screening-status-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid var(--color-border);
-  padding-bottom: 14px;
-  margin-bottom: 20px;
-}
-
-.screening-counter-pill {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.18em;
-  color: var(--color-antique-gold);
-  font-weight: 600;
-  background: var(--color-surface);
-  padding: 6px 14px;
-  border: 1px solid var(--color-border);
-  border-radius: 2px;
-}
-
-.screening-nav-arrows {
-  display: flex;
-  gap: 10px;
-}
-
-.screen-arrow-btn {
-  width: 38px;
-  height: 38px;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  color: var(--color-vintage-ivory);
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  border-radius: 2px;
-}
-
-.screen-arrow-btn:hover {
-  border-color: var(--color-antique-gold);
+.theatre-screen-canvas:hover .theatre-inspect-badge {
   background: var(--color-antique-gold);
-  color: #11110F;
+  color: #0b0a08;
+  font-weight: 700;
 }
 
-.screening-details-box {
-  background: var(--color-surface-elevated);
-  border: 1px solid var(--color-border);
-  padding: 24px;
-  border-radius: 4px;
-  margin-bottom: 20px;
-  border-left: 3px solid var(--color-antique-gold);
-}
-
-.screening-details-box .meta-cat {
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.18em;
+.theatre-inspect-badge .inspect-icon {
   color: var(--color-antique-gold);
-  margin-bottom: 6px;
+  margin-right: 4px;
+}
+
+.theatre-screen-canvas:hover .inspect-icon {
+  color: #0b0a08;
+}
+
+/* =========================================================
+   LAYER C — PROJECTION INFORMATION & SCREENING DOSSIER
+   Directly below the screen, clear editorial typography, no clutter
+   ========================================================= */
+
+.theatre-screen-dossier {
+  position: relative;
+  z-index: 4;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 10px;
+}
+
+.theatre-now-screening-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.2em;
+  color: var(--color-antique-gold);
+  margin-bottom: 12px;
+}
+
+.screening-live-dot {
+  width: 7px;
+  height: 7px;
+  background: #e53935;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(229, 57, 53, 0.9);
+  animation: liveDotPulse 1.6s infinite ease-in-out;
+}
+
+@keyframes liveDotPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.75); }
+}
+
+.theatre-record-tag {
+  font-weight: 600;
   text-transform: uppercase;
 }
 
-.screening-details-box h3 {
-  font-family: var(--font-display);
-  font-size: 26px;
-  color: var(--color-vintage-ivory);
-  margin-bottom: 8px;
-  letter-spacing: 0.04em;
+.theatre-dot-sep {
+  color: var(--color-warm-brass);
+  opacity: 0.6;
 }
 
-.screening-details-box p {
-  font-size: 14.5px;
+.theatre-ref-code {
   color: var(--color-muted-ash);
-  line-height: 1.6;
 }
 
-/* THUMBNAIL REEL TABS (12 CERTIFICATES) */
-.screening-reel-tabs {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+.theatre-cert-title {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3.2vw, 38px);
+  color: var(--color-vintage-ivory);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  line-height: 1.2;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
+  transition: opacity 0.3s ease;
+}
+
+.theatre-cert-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 10px;
-  max-height: 230px;
-  overflow-y: auto;
-  padding-right: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
 }
 
-.screening-tab {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  padding: 10px;
+.theatre-issuer-pill {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--color-vintage-ivory);
+  background: rgba(184, 138, 74, 0.16);
+  border: 1px solid rgba(184, 138, 74, 0.4);
+  padding: 4px 12px;
   border-radius: 2px;
+}
+
+.theatre-cat-pill {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--color-antique-gold);
+  background: rgba(22, 19, 15, 0.75);
+  border: 1px solid var(--color-border);
+  padding: 4px 10px;
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+
+.theatre-year-pill {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: var(--color-muted-ash);
+  padding: 4px 8px;
+}
+
+.theatre-cert-desc {
+  font-family: var(--font-sans);
+  font-size: clamp(14px, 1.1vw, 15.5px);
+  color: var(--color-muted-ash);
+  line-height: 1.65;
+  max-width: 740px;
+  margin: 0 auto 28px;
+  transition: opacity 0.3s ease;
+}
+
+/* =========================================================
+   CINEMATIC SCREENING STATUS & PROGRESS TIMELINE
+   01 ━━━━━━━━━━━━━━━━━━━━━━━━━ 12 with filling line & discreet controls
+   ========================================================= */
+
+.theatre-screening-timeline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  max-width: 680px;
+  margin: 0 auto;
+  padding-top: 14px;
+  border-top: 1px solid rgba(184, 138, 74, 0.18);
+}
+
+.timeline-bound-num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--color-antique-gold);
+}
+
+.timeline-bound-num.total-num {
+  color: var(--color-muted-ash);
+}
+
+.theatre-timeline-bar-wrap {
+  flex: 1;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(184, 138, 74, 0.25);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.theatre-timeline-bar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #8E6837 0%, #B88A4A 60%, #E8D9BA 100%);
+  box-shadow: 0 0 8px rgba(184, 138, 74, 0.7);
+  transition: width 0.08s linear;
+}
+
+.theatre-discreet-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 8px;
+}
+
+.theatre-control-btn {
+  width: 32px;
+  height: 32px;
+  background: rgba(22, 19, 15, 0.85);
+  border: 1px solid rgba(184, 138, 74, 0.35);
+  color: var(--color-vintage-ivory);
+  border-radius: 3px;
   cursor: pointer;
-  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
   transition: all 0.2s ease;
 }
 
-.screening-tab:hover,
-.screening-tab.active {
+.theatre-control-btn:hover {
+  background: var(--color-antique-gold);
   border-color: var(--color-antique-gold);
-  background: rgba(184, 138, 74, 0.16);
-  box-shadow: inset 0 0 10px rgba(184, 138, 74, 0.12);
+  color: #0b0a08;
+  transform: translateY(-1px);
 }
 
-.tab-num {
-  font-family: var(--font-mono);
-  font-size: 9.5px;
-  color: var(--color-antique-gold);
-  display: block;
-}
-
-.tab-name {
-  font-family: var(--font-sans);
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--color-vintage-ivory);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: block;
+.theatre-control-btn:focus-visible {
+  outline: 2px solid var(--color-antique-gold);
+  outline-offset: 2px;
 }
 
 /* UPCOMING AI PRODUCTIONS MODULE IN PROJECTS */
@@ -3100,9 +3326,6 @@ body.shelby-archive {
     grid-template-columns: 1fr;
   }
 
-  .screening-room-layout {
-    grid-template-columns: 1fr;
-  }
 
   .about-grid {
     grid-template-columns: 1fr;
@@ -3273,20 +3496,25 @@ body.shelby-archive {
     text-align: center;
   }
 
-  .screening-reel-tabs {
-    grid-template-columns: repeat(2, 1fr);
+  .theatre-projection-screen-wrap {
+    width: 100%;
+    margin-bottom: 24px;
+  }
+
+  .theatre-screen-canvas {
+    height: 380px;
+  }
+
+  .cinema-theatre-environment {
+    padding: 28px 16px 24px;
+  }
+
+  .theatre-projector-beam {
+    display: none; /* Disable diagonal beam on mobile per GEMINI.md */
   }
 
   .upcoming-reel-grid {
     grid-template-columns: 1fr;
-  }
-
-  .tab-live-title {
-    max-width: 180px;
-  }
-
-  .screening-countdown-bar-wrap {
-    width: 80px;
   }
 
   .credits-row {
@@ -3347,9 +3575,36 @@ body.shelby-archive {
     height: 180px;
   }
 
-  .projector-mat-board,
-  .screening-active-img {
-    height: 320px;
+  .theatre-screen-canvas {
+    height: 270px;
+  }
+
+  .theatre-screen-frame {
+    padding: 8px 10px;
+  }
+
+  .theatre-cert-title {
+    font-size: 22px;
+  }
+
+  .theatre-cert-meta-row {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .theatre-screening-timeline {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .theatre-timeline-bar-wrap {
+    width: 100%;
+    order: 3;
+    flex-basis: 100%;
+  }
+
+  .theatre-discreet-controls {
+    margin-left: auto;
   }
 }
 

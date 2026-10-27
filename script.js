@@ -604,90 +604,114 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* =========================================================
-     12. CHAPTER 07: CERTIFICATES — AUTOMATIC INFINITE TAB DISPLAY
-     (REQUIREMENT 11: Continuous cinematic auto-advancing presentation)
+     12. CHAPTER 07: THE ARCHIVE THEATRE — AUTOMATIC INFINITE SCREENING
+     (Luxurious 1920s cinema screen, continuous infinite loop, progress timeline)
      ========================================================= */
   const CERTIFICATE_DATA = [
     {
       title: "Deputy Executive",
+      issuer: "AUST ROBOTICS CLUB",
       category: "LEADERSHIP & MANAGEMENT",
+      year: "2024 - 2025",
       desc: "AUST Robotics Club — Directing administrative governance, coordinating cross-disciplinary engineering teams, vendor procurement, and national robotics symposiums.",
       img: "assets/Certificates/Deputy Executive.png",
       ref: "ARC-DEP-2025"
     },
     {
       title: "Sub Executive",
+      issuer: "AUST ROBOTICS CLUB",
       category: "OPERATIONAL COMMENDATION",
+      year: "2023 - 2024",
       desc: "AUST Robotics Club — Foundational operational management, workshop scheduling, and student robotics event logistics.",
       img: "assets/Certificates/Sub_Executive.jpg",
       ref: "ARC-SUB-2024"
     },
     {
       title: "HSBC Business Case Competition 2025",
+      issuer: "HSBC BANGLADESH & IBA",
       category: "STRATEGIC COMPETITION",
+      year: "2025",
       desc: "National Round Qualifier in Bangladesh's premier undergraduate business strategy arena, formulating commercial turnaround blueprints under 6-hour pressure windows.",
       img: "assets/Certificates/HSBC_25.jpg",
       ref: "HSBC-BCC-2025"
     },
     {
       title: "BUP Capitalizer 2025",
+      issuer: "BUP CAREER CLUB",
       category: "FINANCE & STRATEGY",
+      year: "2025",
       desc: "Competitive achievement in the flagship national financial modeling and investment portfolio analysis arena hosted by BUP Career Club.",
       img: "assets/Certificates/BUP Capitalizer'25.jpg",
       ref: "BUP-CAP-2025"
     },
     {
       title: "Casemotion 1.0",
+      issuer: "AUST BUSINESS & CASE CLUB",
       category: "BUSINESS CASE ANALYSIS",
+      year: "2024",
       desc: "Intra-AUST business case competition finalist solving operational hurdles, market penetration strategies, and branding solutions.",
       img: "assets/Certificates/Casemotion.jpg",
       ref: "AUST-CASE-2024"
     },
     {
       title: "OSCILLON 1.0 — Line Follower Robot",
+      issuer: "IEEE AUST STUDENT BRANCH",
       category: "ROBOTICS & AUTONOMY",
+      year: "2024",
       desc: "National robotics competition merit for designing, programming, and racing high-speed autonomous PID-controlled Line Follower Robots.",
       img: "assets/Certificates/OSCILLON.png",
       ref: "OSC-LFR-2024"
     },
     {
       title: "RoboMania 2.0 Circuit Wizardry",
+      issuer: "AUST EEE SOCIETY",
       category: "ELECTRICAL ENGINEERING",
+      year: "2024",
       desc: "Awarded for rapid analog and digital circuit troubleshooting, schematic analysis, and oscilloscope diagnostic mastery under strict time limits.",
       img: "assets/Certificates/RoboMania 2.0 Circuit Wizardry.png",
       ref: "RM-CIRC-2024"
     },
     {
       title: "RoboMania 2.0 Organizer",
+      issuer: "AUST EEE SOCIETY",
       category: "ORGANIZATIONAL LEADERSHIP",
+      year: "2024",
       desc: "Core organizer commendation for leading event logistics, university team registrations, and technical coordination for RoboMania 2.0.",
       img: "assets/Certificates/Robomania 2.0 Organizer.png",
       ref: "RM-ORG-2024"
     },
     {
       title: "ARC 2.0 Organizer",
+      issuer: "AUST ROBOTICS CLUB",
       category: "NATIONAL EVENT DIRECTION",
+      year: "2024",
       desc: "Executive organizing committee commendation for managing national engineering teams, venue infrastructure, and evaluation panels.",
       img: "assets/Certificates/ARC 2.0_organizer.jpg",
       ref: "ARC-ORG-2024"
     },
     {
       title: "Thesis Thrust 1.0",
+      issuer: "AUST RESEARCH GUILD",
       category: "RESEARCH & PRESENTATION",
+      year: "2024",
       desc: "Commended for academic defense and technical research presentation in electrical engineering innovations.",
       img: "assets/Certificates/Thesis Thrust 1.0.jpeg",
       ref: "TT-RES-2024"
     },
     {
       title: "GitHub Foundations",
+      issuer: "GITHUB & MICROSOFT",
       category: "DEV & VERSION CONTROL",
+      year: "2024",
       desc: "Verified credentials in Git architecture, distributed version control, GitHub Actions, repository governance, and collaborative engineering workflows.",
       img: "assets/Certificates/GIthub.jpg",
       ref: "GH-FND-2024"
     },
     {
       title: "EEE 3100 — Electrical Services Design",
+      issuer: "DEPARTMENT OF EEE, AUST",
       category: "ACADEMIC DISTINCTION",
+      year: "2024",
       desc: "Official academic commendation for excellence in Electrical Services Design and high-voltage power distribution modeling at AUST.",
       img: "assets/Certificates/EEE 3100.png",
       ref: "AUST-EEE-3100"
@@ -696,87 +720,106 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let currentCertIndex = 0;
   const totalCerts = CERTIFICATE_DATA.length;
-  const AUTOPLAY_CYCLE_MS = 4600; // 4.6 seconds per certificate
+  const AUTOPLAY_CYCLE_MS = 5500; // 5.5 seconds display duration
 
   const projectorMat = document.getElementById('projectorMatBoard');
   const screeningActiveImg = document.getElementById('screeningActiveImg');
   const screeningCounter = document.getElementById('screeningCounterPill');
-  const activeTabCode = document.getElementById('screeningActiveTabCode');
-  const activeTabTitle = document.getElementById('screeningActiveTabTitle');
-  const countdownBar = document.getElementById('screeningCountdownBar');
-  const certCatText = document.getElementById('certCatText');
+  const theatreRefCode = document.getElementById('theatreRefCode');
   const certTitleText = document.getElementById('certTitleText');
+  const theatreIssuerText = document.getElementById('theatreIssuerText');
+  const certCatText = document.getElementById('certCatText');
+  const theatreYearText = document.getElementById('theatreYearText');
   const certDescText = document.getElementById('certDescText');
-  const screeningTabs = document.querySelectorAll('.screening-tab');
+  const theatreCurrentNum = document.getElementById('theatreCurrentNum');
+  const countdownBar = document.getElementById('screeningCountdownBar');
+  const theatrePlayPauseBtn = document.getElementById('theatrePlayPauseBtn');
+  const theatrePlayPauseGlyph = document.getElementById('theatrePlayPauseGlyph');
   const prevCertBtn = document.getElementById('prevCertBtn');
   const nextCertBtn = document.getElementById('nextCertBtn');
+  const theatreEnv = document.getElementById('theatreEnvironment');
+  const certSection = document.getElementById('certificates');
 
   let cycleStartTime = null;
   let isCertPaused = false;
   let isCertSectionVisible = false;
+
+  // Preload next certificate image to ensure instantaneous, stutter-free playback
+  function preloadCertificateImage(index) {
+    const nextIdx = (index + 1) % totalCerts;
+    const preloader = new Image();
+    preloader.src = CERTIFICATE_DATA[nextIdx].img;
+  }
 
   function displayCertificate(index, isManual = false) {
     currentCertIndex = (index + totalCerts) % totalCerts;
     const cert = CERTIFICATE_DATA[currentCertIndex];
     if (!cert) return;
 
-    // Reset cycle timer on advance
+    // Reset progress line
     cycleStartTime = performance.now();
     if (countdownBar) countdownBar.style.width = '0%';
 
-    // Update active tab header (Requirement 11)
     const paddedIndex = String(currentCertIndex + 1).padStart(2, '0');
     const paddedTotal = String(totalCerts).padStart(2, '0');
     
-    if (activeTabCode) activeTabCode.innerText = `REC // ${paddedIndex}`;
-    if (activeTabTitle) activeTabTitle.innerText = cert.title;
-    if (screeningCounter) screeningCounter.innerText = `RECORD ${paddedIndex} OF ${paddedTotal}`;
+    if (screeningCounter) screeningCounter.innerText = `NOW SCREENING · RECORD ${paddedIndex} / ${paddedTotal}`;
+    if (theatreCurrentNum) theatreCurrentNum.innerText = paddedIndex;
+    if (theatreRefCode) theatreRefCode.innerText = cert.ref;
 
-    // Smooth horizontal slide & crossfade transition
+    // Smooth cinematic dissolve + horizontal film-reel transition
     if (screeningActiveImg) {
-      screeningActiveImg.style.transition = 'opacity 0.22s ease, transform 0.26s cubic-bezier(0.16, 1, 0.3, 1)';
+      screeningActiveImg.style.transition = 'opacity 0.28s ease, transform 0.32s cubic-bezier(0.16, 1, 0.3, 1)';
       screeningActiveImg.style.opacity = '0.35';
-      screeningActiveImg.style.transform = isManual ? 'translateX(12px) scale(0.98)' : 'translateX(8px) scale(0.99)';
+      screeningActiveImg.style.transform = isManual ? 'translateX(10px) scale(0.99)' : 'translateX(6px) scale(0.995)';
 
       setTimeout(() => {
         screeningActiveImg.src = cert.img;
-        screeningActiveImg.alt = `${cert.title} — ${cert.category}`;
+        screeningActiveImg.alt = `${cert.title} — ${cert.issuer} (${cert.category})`;
         screeningActiveImg.style.opacity = '1';
         screeningActiveImg.style.transform = 'translateX(0) scale(1)';
+        preloadCertificateImage(currentCertIndex);
       }, 180);
     }
 
     // Trigger subtle spotlight sweep
-    const sweep = document.querySelector('.screening-spotlight-sweep');
+    const sweep = document.querySelector('.theatre-spotlight-sweep');
     if (sweep) {
       sweep.style.animation = 'none';
       void sweep.offsetWidth;
-      sweep.style.animation = 'spotlightSweep 1.2s ease-out';
+      sweep.style.animation = 'spotlightSweep 1.4s ease-out';
     }
 
-    // Update Metadata Text
-    if (certCatText) certCatText.innerText = cert.category;
-    if (certTitleText) certTitleText.innerText = cert.title;
-    if (certDescText) certDescText.innerText = cert.desc;
+    // Update Editorial Metadata with smooth fade
+    if (certTitleText) {
+      certTitleText.style.opacity = '0.4';
+      setTimeout(() => {
+        certTitleText.innerText = cert.title;
+        certTitleText.style.opacity = '1';
+      }, 160);
+    }
 
-    // Update Thumbnail Tabs & Scroll active into view
-    screeningTabs.forEach((tab, i) => {
-      if (i === currentCertIndex) {
-        tab.classList.add('active');
-        tab.setAttribute('aria-selected', 'true');
-        tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-      } else {
-        tab.classList.remove('active');
-        tab.setAttribute('aria-selected', 'false');
-      }
-    });
+    if (theatreIssuerText) theatreIssuerText.innerText = cert.issuer;
+    if (certCatText) certCatText.innerText = cert.category;
+    if (theatreYearText) theatreYearText.innerText = cert.year;
+
+    if (certDescText) {
+      certDescText.style.opacity = '0.4';
+      setTimeout(() => {
+        certDescText.innerText = cert.desc;
+        certDescText.style.opacity = '1';
+      }, 160);
+    }
   }
 
-  // Automatic infinite cycling loop with countdown bar
+  // Automatic infinite screening loop
   function runCertificateAutoplay(timestamp) {
     if (!cycleStartTime) cycleStartTime = timestamp;
 
-    if (!isCertPaused && isCertSectionVisible && !document.hidden && !prefersReduced) {
+    const modal = document.getElementById('certModal');
+    const isModalOpen = modal && modal.classList.contains('open');
+
+    if (!isCertPaused && isCertSectionVisible && !document.hidden && !prefersReduced && !isModalOpen) {
       const elapsed = timestamp - cycleStartTime;
       const progress = Math.min(100, (elapsed / AUTOPLAY_CYCLE_MS) * 100);
 
@@ -789,50 +832,55 @@ document.addEventListener('DOMContentLoaded', () => {
         cycleStartTime = timestamp;
       }
     } else {
-      // Advance cycle start time when paused so countdown does not jump
+      // Sync cycle start time when paused so progress line remains steady
       cycleStartTime = timestamp;
     }
 
     requestAnimationFrame(runCertificateAutoplay);
   }
 
-  // Viewport Observer for Certificates Section (pauses auto-cycle when out of view)
-  const certSection = document.getElementById('certificates');
+  // Viewport Observer (only runs animation when certificates section is visible)
   if (certSection) {
     const certObserver = new IntersectionObserver((entries) => {
       isCertSectionVisible = entries[0].isIntersecting;
       if (isCertSectionVisible) {
         cycleStartTime = performance.now();
       }
-    }, { threshold: 0.15 });
+    }, { threshold: 0.12 });
 
     certObserver.observe(certSection);
   }
 
-  // Pause on hover over presentation area
-  const certFrame = document.querySelector('.screening-projector-frame');
-  const certDossier = document.querySelector('.screening-dossier-column');
-  [certFrame, certDossier].forEach(el => {
-    if (el) {
-      el.addEventListener('mouseenter', () => { isCertPaused = true; });
-      el.addEventListener('mouseleave', () => { 
+  // Pause on hover over theatre environment
+  if (theatreEnv) {
+    theatreEnv.addEventListener('mouseenter', () => { isCertPaused = true; });
+    theatreEnv.addEventListener('mouseleave', () => { 
+      // Only resume if user didn't manually toggle pause
+      if (!theatrePlayPauseBtn || !theatrePlayPauseBtn.classList.contains('manual-paused')) {
         isCertPaused = false; 
         cycleStartTime = performance.now();
-      });
-    }
-  });
+      }
+    });
+  }
 
-  // Pause on browser tab blur / hide
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      isCertPaused = true;
-    } else {
-      isCertPaused = false;
-      cycleStartTime = performance.now();
-    }
-  });
+  // Manual Play/Pause Button
+  if (theatrePlayPauseBtn) {
+    theatrePlayPauseBtn.addEventListener('click', () => {
+      isCertPaused = !isCertPaused;
+      if (isCertPaused) {
+        theatrePlayPauseBtn.classList.add('manual-paused');
+        if (theatrePlayPauseGlyph) theatrePlayPauseGlyph.innerText = '▶';
+        theatrePlayPauseBtn.setAttribute('aria-label', 'Resume automatic screening');
+      } else {
+        theatrePlayPauseBtn.classList.remove('manual-paused');
+        if (theatrePlayPauseGlyph) theatrePlayPauseGlyph.innerText = '⏸';
+        theatrePlayPauseBtn.setAttribute('aria-label', 'Pause automatic screening');
+        cycleStartTime = performance.now();
+      }
+    });
+  }
 
-  // Prev / Next button manual clicks
+  // Previous & Next controls
   if (prevCertBtn) {
     prevCertBtn.addEventListener('click', () => {
       displayCertificate(currentCertIndex - 1, true);
@@ -845,21 +893,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Thumbnail Tab clicks & keyboard navigation
-  screeningTabs.forEach((tab, index) => {
-    tab.addEventListener('click', () => {
-      displayCertificate(index, true);
-    });
-
-    tab.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-        e.preventDefault();
-        displayCertificate(currentCertIndex + 1, true);
-      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-        e.preventDefault();
-        displayCertificate(currentCertIndex - 1, true);
+  // Pause on tab visibility change
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      isCertPaused = true;
+    } else {
+      if (!theatrePlayPauseBtn || !theatrePlayPauseBtn.classList.contains('manual-paused')) {
+        isCertPaused = false;
+        cycleStartTime = performance.now();
       }
-    });
+    }
   });
 
   // Clicking projector screen enlarges certificate
@@ -886,18 +929,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (certSection) {
       const rect = certSection.getBoundingClientRect();
-      const isInView = rect.top < window.innerHeight * 0.7 && rect.bottom > window.innerHeight * 0.2;
+      const isInView = rect.top < window.innerHeight * 0.75 && rect.bottom > window.innerHeight * 0.2;
       if (isInView) {
         if (e.key === 'ArrowLeft') {
+          e.preventDefault();
           displayCertificate(currentCertIndex - 1, true);
         } else if (e.key === 'ArrowRight') {
+          e.preventDefault();
           displayCertificate(currentCertIndex + 1, true);
+        } else if (e.key === ' ' && document.activeElement !== projectorMat) {
+          // Space toggles pause when looking at theatre
+          e.preventDefault();
+          if (theatrePlayPauseBtn) theatrePlayPauseBtn.click();
         }
       }
     }
   });
 
-  // Initial display setup & launch continuous presentation
+  // Launch initial display & continuous infinite auto-screening
   displayCertificate(0);
   requestAnimationFrame(runCertificateAutoplay);
 

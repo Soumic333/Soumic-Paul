@@ -961,110 +961,120 @@
       </div>
     </section>
 
-<section class="archive-chapter certificates-chapter" id="certificates">
-      <div class="chapter-badge">CERTIFICATES // THE ARCHIVE SCREENING ROOM</div>
+<section class="archive-chapter certificates-chapter theatre-chapter" id="certificates">
+      <div class="chapter-badge">CHAPTER 07 // THE ARCHIVE THEATRE</div>
 
-      <div class="section-heading-centered">
-        <p class="section-kicker">AUTHENTICATED CREDENTIALS</p>
-        <h2 class="section-title">The Archive <em>Screening Room</em></h2>
-        <p class="section-subtitle">Examine verified leadership honors, academic merits, and national competition recognitions.</p>
-        <div class="brass-rule"></div>
+      <!-- THEATRE PROSCENIUM HEADER -->
+      <div class="theatre-proscenium-header">
+        <div class="theatre-archival-callout">
+          <span class="theatre-light-bulb">●</span>
+          <span class="theatre-docket">PRIVATE ARCHIVE CINEMA</span>
+          <span class="theatre-sep">•</span>
+          <span class="theatre-meta">OFFICIAL RECORDS · PRIVATE SCREENING</span>
+        </div>
+        <h2 class="theatre-marquee-title">The Archive <em>Theatre</em></h2>
+        <p class="theatre-marquee-subtitle">Recognizing the milestones that shaped the journey.</p>
+        <div class="theatre-velvet-line"></div>
       </div>
 
-      <div class="screening-room-layout">
-        
-        <!-- PROJECTION SCREEN VIEWING FRAME -->
-        <div class="screening-projector-frame">
-          <!-- ACTIVE CERTIFICATE TAB-LIKE HEADER (REQUIREMENT 11) -->
-          <div class="screening-active-tab-header">
-            <div class="active-tab-badge">
-              <span class="tab-pulse-dot"></span>
-              <span class="tab-code" id="screeningActiveTabCode">REC // 01</span>
-              <span class="tab-divider">•</span>
-              <span class="tab-live-title" id="screeningActiveTabTitle">Deputy Executive</span>
-            </div>
-            <div class="screening-countdown-bar-wrap" title="Auto-advancing presentation">
-              <div class="screening-countdown-bar" id="screeningCountdownBar"></div>
-            </div>
-          </div>
-
-          <div class="projector-mat-board" id="projectorMatBoard" title="Click to enlarge and inspect document" tabindex="0" role="button" aria-label="Enlarge active certificate">
-            <div class="screening-spotlight-sweep"></div>
-            <img src="assets/Certificates/Deputy%20Executive.png" alt="Active Certificate Screen" class="screening-active-img" id="screeningActiveImg" />
-            <div class="inspect-badge-overlay">✦ CLICK TO ENLARGE</div>
-          </div>
-        </div>
+      <!-- THEATRE ENVIRONMENT (LAYER A) -->
+      <div class="cinema-theatre-environment" id="theatreEnvironment">
+        <!-- WARM PROJECTOR LIGHT BEAM CUTTING THROUGH DUST & SMOKE -->
+        <div class="theatre-projector-beam" aria-hidden="true"></div>
+        <div class="theatre-dust-motes" aria-hidden="true">
+          <span class="dust-mote mote-1"></span>
+          <span class="dust-mote mote-2"></span>
+          <span class="dust-mote mote-3"></span>
+          <span class="dust-mote mote-4"></span>
+          <span class="dust-mote mote-5"></span>
+          <span class="dust-mote mote-6"></span>
         </div>
 
-        <!-- CONTROLS & METADATA COLUMN -->
-        <div class="screening-dossier-column">
-          <div class="screening-status-header">
-            <span class="screening-counter-pill" id="screeningCounterPill">RECORD 01 OF 12</span>
-            <div class="screening-nav-arrows">
-              <button class="screen-arrow-btn" id="prevCertBtn" aria-label="Previous certificate">←</button>
-              <button class="screen-arrow-btn" id="nextCertBtn" aria-label="Next certificate">→</button>
+        <!-- MAIN PROJECTION SCREEN (LAYER B) -->
+        <div class="theatre-projection-screen-wrap">
+          <!-- VINTAGE ARCHITECTURAL CASING WITH FILM SPROCKETS & GOLD ACCENTS -->
+          <div class="theatre-screen-frame">
+            <div class="screen-sprocket-rail top-rail" aria-hidden="true">
+              <span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span>
+              <span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span>
+              <span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span>
+              <span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span>
             </div>
-          </div>
+            
+            <div class="screen-corner-rosette corner-tl">✦</div>
+            <div class="screen-corner-rosette corner-tr">✦</div>
+            <div class="screen-corner-rosette corner-bl">✦</div>
+            <div class="screen-corner-rosette corner-br">✦</div>
 
-          <div class="screening-details-box" id="screeningDetailsBox">
-            <div class="meta-cat" id="certCatText">LEADERSHIP &amp; MANAGEMENT</div>
-            <h3 id="certTitleText">Deputy Executive</h3>
-            <p id="certDescText">AUST Robotics Club — Directing administrative governance and engineering team logistics.</p>
-          </div>
+            <!-- SCREEN SURFACE -->
+            <div class="theatre-screen-canvas" id="projectorMatBoard" title="Click to enlarge and inspect official document" tabindex="0" role="button" aria-label="Inspect certificate document in high resolution">
+              <div class="theatre-spotlight-sweep"></div>
+              <div class="theatre-lens-flare"></div>
+              
+              <img src="assets/Certificates/Deputy%20Executive.png" 
+                   alt="Deputy Executive — Leadership & Management" 
+                   class="theatre-active-img" 
+                   id="screeningActiveImg" />
+              
+              <div class="theatre-inspect-badge">
+                <span class="inspect-icon">✦</span> CLICK SCREEN TO INSPECT DOCUMENT
+              </div>
+            </div>
 
-          <!-- THUMBNAIL REEL TABS (12 CERTIFICATES) -->
-          <div class="screening-reel-tabs" id="screeningReelTabs" role="tablist" aria-label="Certificate archives tabs">
-            <button class="screening-tab active" data-index="0" role="tab" aria-selected="true">
-              <span class="tab-num">01</span>
-              <span class="tab-name">Deputy Executive</span>
-            </button>
-            <button class="screening-tab" data-index="1" role="tab" aria-selected="false">
-              <span class="tab-num">02</span>
-              <span class="tab-name">Sub Executive</span>
-            </button>
-            <button class="screening-tab" data-index="2" role="tab" aria-selected="false">
-              <span class="tab-num">03</span>
-              <span class="tab-name">HSBC 2025</span>
-            </button>
-            <button class="screening-tab" data-index="3" role="tab" aria-selected="false">
-              <span class="tab-num">04</span>
-              <span class="tab-name">BUP Capitalizer</span>
-            </button>
-            <button class="screening-tab" data-index="4" role="tab" aria-selected="false">
-              <span class="tab-num">05</span>
-              <span class="tab-name">Casemotion</span>
-            </button>
-            <button class="screening-tab" data-index="5" role="tab" aria-selected="false">
-              <span class="tab-num">06</span>
-              <span class="tab-name">OSCILLON 1.0</span>
-            </button>
-            <button class="screening-tab" data-index="6" role="tab" aria-selected="false">
-              <span class="tab-num">07</span>
-              <span class="tab-name">Circuit Wizardry</span>
-            </button>
-            <button class="screening-tab" data-index="7" role="tab" aria-selected="false">
-              <span class="tab-num">08</span>
-              <span class="tab-name">RoboMania 2.0</span>
-            </button>
-            <button class="screening-tab" data-index="8" role="tab" aria-selected="false">
-              <span class="tab-num">09</span>
-              <span class="tab-name">ARC 2.0 Organizer</span>
-            </button>
-            <button class="screening-tab" data-index="9" role="tab" aria-selected="false">
-              <span class="tab-num">10</span>
-              <span class="tab-name">Thesis Thrust</span>
-            </button>
-            <button class="screening-tab" data-index="10" role="tab" aria-selected="false">
-              <span class="tab-num">11</span>
-              <span class="tab-name">GitHub Foundations</span>
-            </button>
-            <button class="screening-tab" data-index="11" role="tab" aria-selected="false">
-              <span class="tab-num">12</span>
-              <span class="tab-name">EEE 3100</span>
-            </button>
+            <div class="screen-sprocket-rail bottom-rail" aria-hidden="true">
+              <span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span>
+              <span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span>
+              <span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span>
+              <span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span>
+            </div>
           </div>
         </div>
 
+        <!-- PROJECTION INFORMATION AREA (LAYER C) -->
+        <div class="theatre-screen-dossier" id="screeningDetailsBox">
+          <div class="theatre-now-screening-bar">
+            <span class="screening-live-dot"></span>
+            <span class="theatre-record-tag" id="screeningCounterPill">NOW SCREENING · RECORD 01 / 12</span>
+            <span class="theatre-dot-sep">•</span>
+            <span class="theatre-ref-code" id="theatreRefCode">ARC-DEP-2025</span>
+          </div>
+
+          <h3 class="theatre-cert-title" id="certTitleText">Deputy Executive</h3>
+
+          <div class="theatre-cert-meta-row">
+            <span class="theatre-issuer-pill" id="theatreIssuerText">AUST ROBOTICS CLUB</span>
+            <span class="theatre-cat-pill" id="certCatText">LEADERSHIP &amp; MANAGEMENT</span>
+            <span class="theatre-year-pill" id="theatreYearText">2024 - 2025</span>
+          </div>
+
+          <p class="theatre-cert-desc" id="certDescText">
+            AUST Robotics Club — Directing administrative governance, coordinating cross-disciplinary engineering teams, vendor procurement, and national robotics symposiums.
+          </p>
+
+          <!-- SCREENING STATUS & PROGRESS TIMELINE (01 ━━━━━━━━━━━━━ 12) -->
+          <div class="theatre-screening-timeline">
+            <span class="timeline-bound-num" id="theatreCurrentNum">01</span>
+            
+            <div class="theatre-timeline-bar-wrap" title="Auto-screening presentation progress">
+              <div class="theatre-timeline-bar" id="screeningCountdownBar"></div>
+            </div>
+            
+            <span class="timeline-bound-num total-num">12</span>
+
+            <!-- DISCREET SECONDARY CONTROLS (ACCESSIBILITY & MANUAL OVERRIDE) -->
+            <div class="theatre-discreet-controls">
+              <button class="theatre-control-btn" id="theatrePlayPauseBtn" aria-label="Pause automatic screening" title="Pause / Resume screening">
+                <span class="control-glyph" id="theatrePlayPauseGlyph">⏸</span>
+              </button>
+              <button class="theatre-control-btn" id="prevCertBtn" aria-label="Previous certificate" title="Previous certificate">
+                <span class="control-glyph">←</span>
+              </button>
+              <button class="theatre-control-btn" id="nextCertBtn" aria-label="Next certificate" title="Next certificate">
+                <span class="control-glyph">→</span>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
