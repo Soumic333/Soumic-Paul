@@ -1,38 +1,35 @@
 /* =========================================================
-   PROJECT: SP — THE CINEMATIC CREATIVE ARCHIVE
-   Complete Portfolio Redesign & Motion Graphics Experience
-   Direction: Peaky Blinders × British Industrial Revolution × Vintage Cinema
+   PROJECT: SOUMIC PAUL — CINEMATIC PORTFOLIO REFINEMENT
+   Design Direction: Peaky Blinders-Inspired Cinematic Experience
    ========================================================= */
 
 :root {
   /* =========================================================
-     1. THE CONTROLLED CINEMATIC PALETTE (EXACT SPECIFICATION)
+     1. THE CINEMATIC DESIGN SYSTEM (EXACT SPECIFICATION)
      ========================================================= */
-  --color-near-black: #10110F;
-  --color-charcoal: #191A17;
-  --color-racing-green: #14251E;
-  --color-aged-olive: #34372A;
-  --color-antique-brass: #A67C45;
-  --color-warm-champagne: #D9C7A5;
-  --color-parchment: #D8C29B;
-  --color-fog-grey: #929087;
-  --color-oxidized-bronze: #66513A;
+  --color-coal-black: #0B0A08;
+  --color-charcoal: #171511;
+  --color-antique-gold: #B88A4A;
+  --color-warm-brass: #8E6837;
+  --color-vintage-ivory: #E8DCC2;
+  --color-muted-ash: #A49A8A;
 
   /* FUNCTIONAL MAPPINGS */
-  --color-coal: var(--color-near-black);
-  --color-surface: #181916;
-  --color-surface-elevated: #20221E;
-  --color-surface-card: #151614;
-  --color-vintage-brown: #3E3024;
-  --color-warm-amber: var(--color-antique-brass);
-  --color-aged-ivory: var(--color-warm-champagne);
-  --color-muted-gray: var(--color-fog-grey);
+  --color-bg-primary: var(--color-coal-black);
+  --color-bg-secondary: var(--color-charcoal);
+  --color-surface: #13120E;
+  --color-surface-elevated: #1C1914;
+  --color-surface-card: #161410;
 
-  --color-border: rgba(166, 124, 69, 0.22);
-  --color-border-bright: rgba(166, 124, 69, 0.55);
-  --color-glow: rgba(166, 124, 69, 0.16);
-  --color-paper: var(--color-parchment);
-  --color-paper-ink: #1B1A17;
+  --color-accent-gold: var(--color-antique-gold);
+  --color-accent-brass: var(--color-warm-brass);
+  --color-text-primary: var(--color-vintage-ivory);
+  --color-text-secondary: var(--color-muted-ash);
+
+  --color-border: rgba(184, 138, 74, 0.22);
+  --color-border-bright: rgba(184, 138, 74, 0.55);
+  --color-glow-gold: rgba(184, 138, 74, 0.16);
+  --color-ember: rgba(224, 163, 78, 0.9);
 
   /* TYPOGRAPHY */
   --font-display: 'Oswald', 'Bebas Neue', sans-serif;
@@ -47,7 +44,7 @@
 
 /* =========================================================
    2. BASE RESET & PURE NATURAL BROWSER SCROLLING
-   No scroll-locking, no competing wheel handlers, no sticky traps
+   No scroll-locking, no body transforms, normal 100% zoom scaling
    ========================================================= */
 
 *, *::before, *::after {
@@ -57,32 +54,33 @@
 }
 
 html {
-  background-color: var(--color-near-black);
-  color: var(--color-aged-ivory);
+  background-color: var(--color-coal-black);
+  color: var(--color-vintage-ivory);
   font-family: var(--font-sans);
   font-size: 16px;
   line-height: 1.6;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  scroll-behavior: auto; /* Instant, zero-latency native mousewheel & touch */
+  scroll-behavior: auto; /* Zero-latency native browser scrolling */
 }
 
 body.shelby-archive {
-  background-color: var(--color-near-black);
-  color: var(--color-aged-ivory);
+  background-color: var(--color-coal-black);
+  color: var(--color-vintage-ivory);
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
+  width: 100%;
 }
 
 ::selection {
-  background: var(--color-antique-brass);
-  color: #0E0D0B;
+  background: var(--color-antique-gold);
+  color: #0B0A08;
 }
 
 /* =========================================================
-   3. GLOBAL ATMOSPHERIC ENVIRONMENT
-   Film grain, smoke canvas, volumetric light, lantern flicker
+   3. ATMOSPHERIC ENVIRONMENT & SELECTIVE FIRE VFX
+   Film grain, ambient smoke, subtle floating embers
    ========================================================= */
 
 /* FILM GRAIN TEXTURE */
@@ -93,8 +91,8 @@ body.shelby-archive {
   width: 100vw;
   height: 100vh;
   pointer-events: none !important;
-  z-index: 999;
-  opacity: 0.034;
+  z-index: 998;
+  opacity: 0.035;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
@@ -107,7 +105,7 @@ body.shelby-archive {
   height: 100vh;
   pointer-events: none !important;
   z-index: 1;
-  opacity: 0.6;
+  opacity: 0.55;
 }
 
 /* VINTAGE VIGNETTE */
@@ -119,7 +117,7 @@ body.shelby-archive {
   height: 100vh;
   pointer-events: none !important;
   z-index: 2;
-  background: radial-gradient(ellipse at center, transparent 55%, rgba(16, 17, 15, 0.72) 100%);
+  background: radial-gradient(ellipse at center, transparent 52%, rgba(11, 10, 8, 0.75) 100%);
 }
 
 /* WARM AMBIENT GASLIGHT GLOWS */
@@ -128,16 +126,16 @@ body.shelby-archive {
   pointer-events: none !important;
   z-index: 0;
   border-radius: 50%;
-  filter: blur(130px);
+  filter: blur(140px);
   opacity: 0.14;
 }
 
 .amber-top-left {
   top: -10vw;
   left: -10vw;
-  width: 50vw;
-  height: 50vw;
-  background: radial-gradient(circle, var(--color-antique-brass) 0%, transparent 70%);
+  width: 55vw;
+  height: 55vw;
+  background: radial-gradient(circle, var(--color-antique-gold) 0%, transparent 70%);
 }
 
 .amber-bottom-right {
@@ -145,320 +143,23 @@ body.shelby-archive {
   right: -10vw;
   width: 60vw;
   height: 60vw;
-  background: radial-gradient(circle, var(--color-racing-green) 0%, var(--color-oxidized-bronze) 50%, transparent 75%);
+  background: radial-gradient(circle, var(--color-warm-brass) 0%, transparent 70%);
 }
 
-/* =========================================================
-   4. DESKTOP CINEMATIC INSPECTION CURSOR
-   Focus ring / brass crosshair. Auto-disabled on mobile.
-   ========================================================= */
-
-.cinematic-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 32px;
-  height: 32px;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  display: none;
-  transition: width 0.22s var(--ease-cinematic), height 0.22s var(--ease-cinematic), opacity 0.2s ease;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .cinematic-cursor {
-    display: block;
-  }
-}
-
-.cursor-crosshair {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 4px;
-  height: 4px;
-  background: var(--color-antique-brass);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  box-shadow: 0 0 6px var(--color-antique-brass);
-}
-
-.cursor-ring {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 1px solid rgba(166, 124, 69, 0.55);
-  border-radius: 50%;
-  transition: transform 0.16s var(--ease-cinematic), border-color 0.16s ease, background 0.16s ease;
-}
-
-.cinematic-cursor.hovering .cursor-ring {
-  transform: scale(1.6);
-  border-color: var(--color-warm-champagne);
-  background: rgba(166, 124, 69, 0.1);
-}
-
-/* =========================================================
-   5. BRITISH STEAM TRAIN OPENING SEQUENCE (SCENE A)
-   1920s Steam locomotive arrives through fog, reveals hero, skippable
-   ========================================================= */
-
-.train-opening-scene {
+/* CINEMATIC SPARKS CANVAS (CURSOR PARTICLES & FLOATING EMBERS) */
+.cinematic-sparks-canvas {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 2000;
-  background: #0C0D0B;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  transition: opacity 0.8s var(--ease-cinematic), visibility 0.8s;
-}
-
-.train-opening-scene.train-finished {
-  opacity: 0;
-  visibility: hidden;
   pointer-events: none !important;
-}
-
-.train-skyline-fog {
-  position: absolute;
-  inset: 0;
-  background: 
-    radial-gradient(ellipse at 50% 60%, rgba(20, 37, 30, 0.4) 0%, transparent 60%),
-    radial-gradient(circle at 50% 40%, rgba(166, 124, 69, 0.15) 0%, transparent 50%),
-    #0C0D0B;
-}
-
-.train-locomotive-wrap {
-  position: relative;
-  z-index: 3;
-  width: min(90vw, 840px);
-  animation: locomotiveAdvance 3.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-  will-change: transform;
-}
-
-.locomotive-svg {
-  width: 100%;
-  height: auto;
-  filter: drop-shadow(0 14px 30px rgba(0, 0, 0, 0.9));
-}
-
-.train-volumetric-beam {
-  position: absolute;
-  top: 48%;
-  left: 14%;
-  width: 320px;
-  height: 140px;
-  background: radial-gradient(ellipse at left, rgba(255, 221, 128, 0.8) 0%, rgba(217, 168, 78, 0.2) 45%, transparent 75%);
-  transform: rotate(-12deg);
-  pointer-events: none;
-  animation: headlampFlicker 3s infinite alternate;
-}
-
-.train-steam-billow {
-  position: absolute;
-  bottom: 0;
-  left: -20%;
-  width: 140%;
-  height: 60%;
-  background: radial-gradient(ellipse at 50% 100%, rgba(146, 144, 135, 0.25) 0%, rgba(26, 25, 23, 0.15) 45%, transparent 70%);
-  filter: blur(28px);
-  pointer-events: none;
-  z-index: 4;
-}
-
-.train-steam-billow.layer-2 {
-  bottom: -10%;
-  height: 50%;
-  animation: steamDrift 6s ease-in-out infinite alternate;
-}
-
-.train-arrival-dossier {
-  position: relative;
-  z-index: 5;
-  text-align: center;
-  margin-top: 24px;
-  padding: 0 20px;
-}
-
-.arrival-dispatch-code {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.25em;
-  color: var(--color-antique-brass);
-  display: block;
-  margin-bottom: 8px;
-}
-
-.arrival-heading {
-  font-family: var(--font-display);
-  font-size: clamp(28px, 4.5vw, 48px);
-  letter-spacing: 0.14em;
-  color: var(--color-warm-champagne);
-  margin-bottom: 6px;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8);
-}
-
-.arrival-sub {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: clamp(14px, 1.8vw, 18px);
-  color: var(--color-fog-grey);
-  margin-bottom: 22px;
-}
-
-.enter-archive-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 24px;
-  background: var(--color-surface-elevated);
-  border: 1px solid var(--color-antique-brass);
-  color: var(--color-warm-champagne);
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  cursor: pointer;
-  transition: all 0.25s var(--ease-cinematic);
-}
-
-.enter-archive-btn:hover {
-  background: var(--color-antique-brass);
-  color: #0C0D0B;
-  box-shadow: 0 0 20px rgba(166, 124, 69, 0.4);
-}
-
-.enter-archive-btn .kbd-hint {
-  font-size: 9px;
-  opacity: 0.7;
-}
-
-@keyframes locomotiveAdvance {
-  0% {
-    transform: scale(0.85) translateX(30px);
-    opacity: 0;
-  }
-  20% {
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1.02) translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes headlampFlicker {
-  0%, 100% { opacity: 0.85; transform: rotate(-12deg) scale(1); }
-  50% { opacity: 0.95; transform: rotate(-12deg) scale(1.04); }
-}
-
-@keyframes steamDrift {
-  0% { transform: translateX(-2%) scaleY(1); }
-  100% { transform: translateX(2%) scaleY(1.08); }
+  z-index: 9999;
 }
 
 /* =========================================================
-   6. RAILWAY TRACK SCROLL PROGRESS INDICATOR (SCENE D)
-   Steel rails + sleepers with miniature brass locomotive
-   ========================================================= */
-
-.railway-progress-track {
-  position: fixed;
-  top: 58px;
-  left: 0;
-  width: 100%;
-  height: 18px;
-  z-index: 1001;
-  pointer-events: none;
-  background: rgba(16, 17, 15, 0.85);
-  border-bottom: 1px solid rgba(166, 124, 69, 0.16);
-  display: flex;
-  align-items: center;
-  padding: 0 32px;
-}
-
-.railway-track-line {
-  position: relative;
-  flex: 1;
-  height: 6px;
-  margin-right: 24px;
-}
-
-.track-steel-rails {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-top: 1px solid rgba(166, 124, 69, 0.45);
-  border-bottom: 1px solid rgba(166, 124, 69, 0.45);
-}
-
-.track-sleeper-ties {
-  position: absolute;
-  top: 1px;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background-image: repeating-linear-gradient(
-    90deg,
-    rgba(62, 48, 36, 0.85) 0px,
-    rgba(62, 48, 36, 0.85) 3px,
-    transparent 3px,
-    transparent 12px
-  );
-}
-
-.railway-locomotive-glyph {
-  position: absolute;
-  top: -6px;
-  left: 0%;
-  transition: left 0.08s ease-out;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-}
-
-.loco-icon {
-  font-size: 13px;
-  filter: drop-shadow(0 0 4px var(--color-antique-brass));
-}
-
-.railway-station-indicator {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-mono);
-  font-size: 9.5px;
-  letter-spacing: 0.16em;
-  color: var(--color-warm-champagne);
-  white-space: nowrap;
-}
-
-.station-pulse {
-  width: 5px;
-  height: 5px;
-  background: var(--color-antique-brass);
-  border-radius: 50%;
-  box-shadow: 0 0 6px var(--color-antique-brass);
-  animation: stationPulse 2s infinite;
-}
-
-@keyframes stationPulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.8); }
-}
-
-/* =========================================================
-   7. NAVIGATION — THE ARCHIVE INDEX (10 CHAPTERS)
+   4. NAVIGATION — CLEAN, CLEAR, CONVENTIONAL (8 SECTIONS)
+   Home • About • Projects • Leadership • Skills • Education • Certificates • Contact
    ========================================================= */
 
 .nav-wrap {
@@ -466,8 +167,8 @@ body.shelby-archive {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1002;
-  background: rgba(16, 17, 15, 0.94);
+  z-index: 1000;
+  background: rgba(11, 10, 8, 0.94);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-border);
@@ -475,13 +176,13 @@ body.shelby-archive {
 }
 
 .nav-container {
-  max-width: 1540px;
+  max-width: 1600px;
   margin: 0 auto;
-  padding: 12px 32px;
+  padding: 14px 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 20px;
 }
 
 .brand {
@@ -489,7 +190,7 @@ body.shelby-archive {
   align-items: center;
   gap: 12px;
   text-decoration: none;
-  color: var(--color-aged-ivory);
+  color: var(--color-vintage-ivory);
 }
 
 .brand-crest {
@@ -498,20 +199,21 @@ body.shelby-archive {
   justify-content: center;
   width: 32px;
   height: 32px;
-  border: 1px solid var(--color-antique-brass);
+  border: 1px solid var(--color-antique-gold);
   background: var(--color-surface);
-  color: var(--color-warm-champagne);
+  color: var(--color-antique-gold);
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 16px;
   letter-spacing: 0.05em;
+  box-shadow: 0 0 10px rgba(184, 138, 74, 0.2);
 }
 
 .brand-title {
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 15px;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   display: flex;
   flex-direction: column;
 }
@@ -519,7 +221,7 @@ body.shelby-archive {
 .brand-sub {
   font-family: var(--font-mono);
   font-size: 9px;
-  color: var(--color-antique-brass);
+  color: var(--color-antique-gold);
   letter-spacing: 0.18em;
   font-weight: 400;
 }
@@ -527,26 +229,26 @@ body.shelby-archive {
 .nav-content {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 32px;
 }
 
 .nav-content nav {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 22px;
 }
 
 .nav-content nav a {
   font-family: var(--font-sans);
-  font-size: 11.5px;
+  font-size: 13px;
   font-weight: 500;
-  letter-spacing: 0.07em;
-  color: var(--color-muted-gray);
+  letter-spacing: 0.08em;
+  color: var(--color-muted-ash);
   text-decoration: none;
   display: flex;
   align-items: center;
-  gap: 5px;
-  padding: 4px 0;
+  gap: 6px;
+  padding: 6px 0;
   position: relative;
   transition: color 0.2s ease;
   white-space: nowrap;
@@ -556,50 +258,52 @@ body.shelby-archive {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: var(--color-vintage-brown);
+  background: var(--color-warm-brass);
   transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .nav-content nav a:hover,
 .nav-content nav a.active {
-  color: var(--color-aged-ivory);
+  color: var(--color-vintage-ivory);
 }
 
 .nav-content nav a:hover .nav-dot,
 .nav-content nav a.active .nav-dot {
-  background: var(--color-antique-brass);
-  transform: scale(1.4);
+  background: var(--color-antique-gold);
+  transform: scale(1.5);
+  box-shadow: 0 0 6px var(--color-antique-gold);
 }
 
 .nav-cta {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 7px 16px;
+  padding: 8px 18px;
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.12em;
   text-decoration: none;
-  color: var(--color-warm-champagne);
-  border: 1px solid var(--color-antique-brass);
-  background: rgba(166, 124, 69, 0.08);
-  transition: all 0.2s ease;
+  color: var(--color-vintage-ivory);
+  border: 1px solid var(--color-antique-gold);
+  background: rgba(184, 138, 74, 0.08);
+  transition: all 0.25s var(--ease-cinematic);
   white-space: nowrap;
 }
 
 .nav-cta:hover {
-  background: var(--color-antique-brass);
-  color: #0E0D0B;
+  background: var(--color-antique-gold);
+  color: #0B0A08;
+  box-shadow: 0 0 16px rgba(184, 138, 74, 0.4);
 }
 
 .brass-seal {
-  color: var(--color-antique-brass);
+  color: var(--color-antique-gold);
   font-size: 12px;
 }
 
 .nav-cta:hover .brass-seal {
-  color: #0E0D0B;
+  color: #0B0A08;
 }
 
 .mobile-menu-btn {
@@ -620,7 +324,7 @@ body.shelby-archive {
   display: block;
   height: 2px;
   width: 100%;
-  background: var(--color-aged-ivory);
+  background: var(--color-vintage-ivory);
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
@@ -629,21 +333,114 @@ body.shelby-archive {
 }
 
 /* =========================================================
-   8. MAIN LAYOUT & CHAPTER CONTAINERS
+   5. RAILWAY TRACK SCROLL PROGRESS INDICATOR
+   ========================================================= */
+
+.railway-progress-track {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  height: 18px;
+  z-index: 999;
+  pointer-events: none;
+  background: rgba(11, 10, 8, 0.9);
+  border-bottom: 1px solid rgba(184, 138, 74, 0.15);
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+}
+
+.railway-track-line {
+  position: relative;
+  flex: 1;
+  height: 6px;
+  margin-right: 28px;
+}
+
+.track-steel-rails {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-top: 1px solid rgba(184, 138, 74, 0.45);
+  border-bottom: 1px solid rgba(184, 138, 74, 0.45);
+}
+
+.track-sleeper-ties {
+  position: absolute;
+  top: 1px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(142, 104, 55, 0.8) 0px,
+    rgba(142, 104, 55, 0.8) 3px,
+    transparent 3px,
+    transparent 12px
+  );
+}
+
+.railway-locomotive-glyph {
+  position: absolute;
+  top: -6px;
+  left: 0%;
+  transition: left 0.08s ease-out;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+}
+
+.loco-icon {
+  font-size: 13px;
+  filter: drop-shadow(0 0 5px var(--color-antique-gold));
+}
+
+.railway-station-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--color-vintage-ivory);
+  white-space: nowrap;
+}
+
+.station-pulse {
+  width: 5px;
+  height: 5px;
+  background: var(--color-antique-gold);
+  border-radius: 50%;
+  box-shadow: 0 0 6px var(--color-antique-gold);
+  animation: stationPulse 2s infinite;
+}
+
+@keyframes stationPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+/* =========================================================
+   6. MAIN LAYOUT & FLUID RESPONSIVE CONTAINER
+   No artificial miniature scaling; natural 100% zoom proportion
    ========================================================= */
 
 .archive-main {
   position: relative;
   z-index: 3;
-  padding: 100px 32px 60px;
-  max-width: 1440px;
+  width: 100%;
+  max-width: 1600px;
   margin: 0 auto;
+  padding: 0 40px 80px;
 }
 
 .archive-chapter {
   position: relative;
-  margin-bottom: 72px;
-  padding: 56px 40px;
+  margin-bottom: 96px;
+  padding: 64px 48px;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 4px;
@@ -654,34 +451,34 @@ body.shelby-archive {
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.18em;
-  color: var(--color-antique-brass);
+  color: var(--color-antique-gold);
   border: 1px solid var(--color-border);
-  padding: 5px 14px;
+  padding: 6px 16px;
   margin-bottom: 32px;
   background: var(--color-surface-elevated);
 }
 
 .section-heading-centered {
   text-align: center;
-  max-width: 780px;
-  margin: 0 auto 48px;
+  max-width: 840px;
+  margin: 0 auto 52px;
 }
 
 .section-kicker {
   font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  color: var(--color-antique-brass);
+  font-size: 11.5px;
+  letter-spacing: 0.22em;
+  color: var(--color-antique-gold);
   margin-bottom: 12px;
   text-transform: uppercase;
 }
 
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(34px, 4vw, 54px);
+  font-size: clamp(36px, 4.2vw, 56px);
   font-weight: 700;
-  letter-spacing: 0.04em;
-  color: var(--color-aged-ivory);
+  letter-spacing: 0.05em;
+  color: var(--color-vintage-ivory);
   line-height: 1.15;
   margin-bottom: 16px;
 }
@@ -690,20 +487,20 @@ body.shelby-archive {
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 400;
-  color: var(--color-warm-champagne);
+  color: var(--color-antique-gold);
 }
 
 .section-subtitle {
-  font-size: 16px;
-  color: var(--color-muted-gray);
-  line-height: 1.6;
+  font-size: 16.5px;
+  color: var(--color-muted-ash);
+  line-height: 1.65;
 }
 
 .brass-rule {
-  width: 80px;
+  width: 90px;
   height: 2px;
-  background: linear-gradient(90deg, transparent, var(--color-antique-brass), transparent);
-  margin: 20px auto 0;
+  background: linear-gradient(90deg, transparent, var(--color-antique-gold), transparent);
+  margin: 22px auto 0;
 }
 
 /* BUTTONS */
@@ -712,7 +509,7 @@ body.shelby-archive {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 12px 28px;
+  padding: 13px 30px;
   font-family: var(--font-mono);
   font-size: 12px;
   font-weight: 500;
@@ -724,43 +521,48 @@ body.shelby-archive {
 }
 
 .archive-btn.primary-brass {
-  background: var(--color-antique-brass);
-  color: #0E0D0B;
-  border: 1px solid var(--color-antique-brass);
+  background: var(--color-antique-gold);
+  color: #0B0A08;
+  border: 1px solid var(--color-antique-gold);
   font-weight: 600;
 }
 
 .archive-btn.primary-brass:hover {
-  background: var(--color-warm-champagne);
-  border-color: var(--color-warm-champagne);
-  box-shadow: 0 0 18px rgba(166, 124, 69, 0.4);
+  background: var(--color-vintage-ivory);
+  border-color: var(--color-vintage-ivory);
+  box-shadow: 0 0 22px rgba(184, 138, 74, 0.45);
+  transform: translateY(-2px);
 }
 
 .archive-btn.secondary-charcoal {
   background: var(--color-surface-elevated);
-  color: var(--color-aged-ivory);
+  color: var(--color-vintage-ivory);
   border: 1px solid var(--color-border);
 }
 
 .archive-btn.secondary-charcoal:hover {
-  border-color: var(--color-antique-brass);
-  color: var(--color-warm-champagne);
+  border-color: var(--color-antique-gold);
+  color: var(--color-antique-gold);
+  transform: translateY(-2px);
 }
 
 /* =========================================================
-   9. CHAPTER 01: HERO — THE ARRIVAL (CENTERED SP_HERO)
+   7. HERO SECTION — CINEMATIC FULL VIEWPORT (100% PROPORTION)
+   Centered prominent SP_HERO portrait, large display headlines
    ========================================================= */
 
 .poster-hero {
-  min-height: 86vh;
+  min-height: calc(100vh - 78px);
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
   overflow: hidden;
-  padding: 60px 40px 48px;
-  background: radial-gradient(circle at 50% 45%, rgba(20, 37, 30, 0.45) 0%, rgba(16, 17, 15, 0.98) 85%);
+  padding: 80px 48px 60px;
+  background: radial-gradient(circle at 50% 48%, rgba(28, 25, 20, 0.75) 0%, rgba(11, 10, 8, 0.98) 85%);
   text-align: center;
+  border-radius: 4px;
 }
 
 .hero-backdrop {
@@ -773,16 +575,16 @@ body.shelby-archive {
 .gaslight-lantern {
   position: absolute;
   top: 15%;
-  width: 140px;
-  height: 140px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
-  filter: blur(50px);
-  background: radial-gradient(circle, rgba(166, 124, 69, 0.35) 0%, transparent 70%);
+  filter: blur(60px);
+  background: radial-gradient(circle, rgba(184, 138, 74, 0.35) 0%, transparent 70%);
   animation: gaslampFlicker 4s infinite alternate ease-in-out;
 }
 
-.lamp-left { left: 10%; }
-.lamp-right { right: 10%; }
+.lamp-left { left: 8%; }
+.lamp-right { right: 8%; }
 
 @keyframes gaslampFlicker {
   0%, 100% { opacity: 0.7; transform: scale(1); }
@@ -792,7 +594,8 @@ body.shelby-archive {
 .poster-hero-container {
   position: relative;
   z-index: 2;
-  max-width: 1080px;
+  max-width: 1240px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -800,38 +603,38 @@ body.shelby-archive {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 14px;
   font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  color: var(--color-antique-brass);
-  margin-bottom: 20px;
+  font-size: 11.5px;
+  letter-spacing: 0.24em;
+  color: var(--color-antique-gold);
+  margin-bottom: 22px;
 }
 
 .docket-sep {
-  color: var(--color-vintage-brown);
+  color: var(--color-warm-brass);
 }
 
 .poster-main-title {
   font-family: var(--font-display);
-  font-size: clamp(56px, 8vw, 110px);
+  font-size: clamp(64px, 9vw, 130px);
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: var(--color-aged-ivory);
-  line-height: 0.95;
-  margin-bottom: 12px;
+  color: var(--color-vintage-ivory);
+  line-height: 0.92;
+  margin-bottom: 14px;
   text-transform: uppercase;
 }
 
 .poster-motto {
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
 .poster-motto-text {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(19px, 2.3vw, 28px);
-  color: var(--color-warm-champagne);
+  font-size: clamp(20px, 2.6vw, 32px);
+  color: var(--color-antique-gold);
 }
 
 .poster-disciplines-bar {
@@ -839,23 +642,23 @@ body.shelby-archive {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 16px;
   font-family: var(--font-mono);
-  font-size: 11.5px;
-  letter-spacing: 0.16em;
-  color: var(--color-muted-gray);
-  margin-bottom: 28px;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: var(--color-muted-ash);
+  margin-bottom: 36px;
 }
 
 .poster-disciplines-bar .bullet {
-  color: var(--color-antique-brass);
+  color: var(--color-antique-gold);
   font-size: 9px;
 }
 
-/* CENTERED CINEMATIC PORTRAIT (SP_HERO) */
+/* CENTERED CINEMATIC FOREGROUND PORTRAIT (SP_HERO) */
 .hero-center-portrait-wrap {
   position: relative;
-  margin: 0 auto 32px;
+  margin: 0 auto 36px;
   display: inline-block;
 }
 
@@ -864,87 +667,88 @@ body.shelby-archive {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 380px;
-  height: 380px;
+  width: 440px;
+  height: 440px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(166, 124, 69, 0.24) 0%, rgba(20, 37, 30, 0.18) 50%, transparent 75%);
-  filter: blur(40px);
+  background: radial-gradient(circle, rgba(184, 138, 74, 0.28) 0%, rgba(142, 104, 55, 0.15) 50%, transparent 75%);
+  filter: blur(50px);
   z-index: 1;
 }
 
 .portrait-stage {
   position: relative;
   z-index: 2;
-  border-bottom: 2px solid var(--color-antique-brass);
+  border-bottom: 2px solid var(--color-antique-gold);
 }
 
 .hero-poster-img {
   display: block;
-  max-width: 420px;
+  max-width: 480px;
   width: 100%;
-  height: auto;
-  filter: drop-shadow(0 18px 36px rgba(0, 0, 0, 0.85)) contrast(1.05);
+  height: clamp(360px, 46vh, 560px);
+  object-fit: contain;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.9)) contrast(1.05);
   transition: transform 0.5s var(--ease-cinematic);
 }
 
 .hero-center-portrait-wrap:hover .hero-poster-img {
-  transform: scale(1.02);
+  transform: scale(1.025);
 }
 
 .portrait-archival-tag {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  margin-top: 10px;
+  gap: 14px;
+  margin-top: 12px;
   font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  color: var(--color-antique-brass);
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  color: var(--color-antique-gold);
 }
 
 .poster-synopsis {
-  font-size: 17px;
-  color: var(--color-muted-gray);
-  max-width: 680px;
-  margin: 0 auto 28px;
-  line-height: 1.65;
+  font-size: 18px;
+  color: var(--color-muted-ash);
+  max-width: 760px;
+  margin: 0 auto 32px;
+  line-height: 1.7;
 }
 
 .poster-cta-row {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  margin-bottom: 36px;
+  gap: 18px;
+  margin-bottom: 40px;
 }
 
 .poster-billing-strip {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
-  padding: 14px 24px;
+  gap: 24px;
+  padding: 16px 28px;
   background: var(--color-surface-elevated);
   border: 1px solid var(--color-border);
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 11.5px;
   letter-spacing: 0.14em;
-  max-width: 840px;
-  margin: 0 auto 24px;
+  max-width: 960px;
+  margin: 0 auto 28px;
 }
 
 .bill-label {
-  color: var(--color-antique-brass);
+  color: var(--color-antique-gold);
 }
 
 .bill-val {
-  color: var(--color-aged-ivory);
+  color: var(--color-vintage-ivory);
   font-weight: 500;
 }
 
 .billing-sep {
-  color: var(--color-vintage-brown);
+  color: var(--color-warm-brass);
 }
 
 .scroll-invite-clean {
@@ -953,13 +757,13 @@ body.shelby-archive {
   justify-content: center;
   gap: 8px;
   font-family: var(--font-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.18em;
-  color: var(--color-muted-gray);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--color-muted-ash);
 }
 
 .invite-caret {
-  color: var(--color-antique-brass);
+  color: var(--color-antique-gold);
   animation: bounceCaret 1.8s infinite ease-in-out;
 }
 
@@ -969,16 +773,16 @@ body.shelby-archive {
 }
 
 /* =========================================================
-   10. VINTAGE TICKER STRIP
+   8. VINTAGE TICKER TAPE
    ========================================================= */
 
 .vintage-ticker {
   background: var(--color-surface);
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
-  padding: 14px 0;
+  padding: 16px 0;
   overflow: hidden;
-  margin-bottom: 64px;
+  margin-bottom: 72px;
   position: relative;
   z-index: 2;
 }
@@ -986,7 +790,7 @@ body.shelby-archive {
 .ticker-track {
   display: flex;
   width: max-content;
-  animation: tickerScroll 36s linear infinite;
+  animation: tickerScroll 38s linear infinite;
   transform: translateZ(0);
   will-change: transform;
 }
@@ -994,17 +798,17 @@ body.shelby-archive {
 .ticker-content {
   display: flex;
   align-items: center;
-  gap: 28px;
-  padding-right: 28px;
+  gap: 32px;
+  padding-right: 32px;
   font-family: var(--font-display);
-  font-size: 15px;
+  font-size: 16px;
   letter-spacing: 0.18em;
-  color: var(--color-aged-ivory);
+  color: var(--color-vintage-ivory);
 }
 
 .ticker-content i {
   font-style: normal;
-  color: var(--color-antique-brass);
+  color: var(--color-antique-gold);
   font-size: 11px;
 }
 
@@ -1014,20 +818,20 @@ body.shelby-archive {
 }
 
 /* =========================================================
-   11. CHAPTER 02: ABOUT — THE DOSSIER (SP_ABOUT)
+   9. ABOUT SECTION — THE DOSSIER
    ========================================================= */
 
 .about-grid {
   display: grid;
-  grid-template-columns: 420px 1fr;
-  gap: 52px;
+  grid-template-columns: 460px 1fr;
+  gap: 60px;
   align-items: start;
 }
 
 .about-photo-wrapper {
   position: relative;
   border: 1px solid var(--color-border);
-  padding: 12px;
+  padding: 14px;
   background: var(--color-surface-elevated);
 }
 
@@ -1035,7 +839,7 @@ body.shelby-archive {
   position: absolute;
   width: 14px;
   height: 14px;
-  border-color: var(--color-antique-brass);
+  border-color: var(--color-antique-gold);
   border-style: solid;
   pointer-events: none;
 }
@@ -1053,66 +857,66 @@ body.shelby-archive {
 }
 
 .photo-plate {
-  margin-top: 12px;
-  padding-top: 10px;
+  margin-top: 14px;
+  padding-top: 12px;
   border-top: 1px solid var(--color-border);
   display: flex;
   justify-content: space-between;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 10.5px;
   letter-spacing: 0.16em;
 }
 
 .plate-num {
-  color: var(--color-antique-brass);
+  color: var(--color-antique-gold);
 }
 
 .plate-loc {
-  color: var(--color-muted-gray);
+  color: var(--color-muted-ash);
 }
 
 .editorial-header {
-  margin-bottom: 24px;
+  margin-bottom: 26px;
 }
 
 .editorial-title {
   font-family: var(--font-serif);
-  font-size: clamp(28px, 3.2vw, 42px);
+  font-size: clamp(30px, 3.4vw, 46px);
   font-weight: 600;
-  color: var(--color-aged-ivory);
+  color: var(--color-vintage-ivory);
   line-height: 1.25;
 }
 
 .editorial-title em {
-  color: var(--color-warm-champagne);
+  color: var(--color-antique-gold);
   font-style: italic;
 }
 
 .about-body-text {
-  font-size: 15.5px;
-  color: var(--color-muted-gray);
+  font-size: 16px;
+  color: var(--color-muted-ash);
   line-height: 1.8;
-  margin-bottom: 36px;
+  margin-bottom: 40px;
 }
 
 .about-body-text p {
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
 .lead-paragraph {
-  color: var(--color-aged-ivory);
-  font-size: 17px;
+  color: var(--color-vintage-ivory);
+  font-size: 18px;
   font-weight: 400;
 }
 
 .archival-stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  padding: 24px;
+  gap: 24px;
+  padding: 28px;
   background: var(--color-surface-elevated);
   border: 1px solid var(--color-border);
-  margin-bottom: 32px;
+  margin-bottom: 36px;
 }
 
 .stat-card {
@@ -1121,29 +925,29 @@ body.shelby-archive {
 
 .stat-number {
   font-family: var(--font-display);
-  font-size: 38px;
+  font-size: 42px;
   font-weight: 700;
-  color: var(--color-antique-brass);
+  color: var(--color-antique-gold);
   line-height: 1;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .stat-number .plus {
-  color: var(--color-warm-champagne);
+  color: var(--color-vintage-ivory);
 }
 
 .stat-label {
   font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--color-muted-gray);
-  line-height: 1.4;
+  font-size: 11.5px;
+  color: var(--color-muted-ash);
+  line-height: 1.45;
 }
 
 .about-footer-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 24px;
-  padding-top: 20px;
+  gap: 28px;
+  padding-top: 24px;
   border-top: 1px solid var(--color-border);
 }
 
@@ -1151,55 +955,55 @@ body.shelby-archive {
   display: block;
   font-family: var(--font-mono);
   font-size: 10px;
-  letter-spacing: 0.16em;
-  color: var(--color-antique-brass);
-  margin-bottom: 2px;
+  letter-spacing: 0.18em;
+  color: var(--color-antique-gold);
+  margin-bottom: 3px;
 }
 
 .meta-tag strong {
-  font-size: 13px;
-  color: var(--color-aged-ivory);
+  font-size: 14px;
+  color: var(--color-vintage-ivory);
 }
 
 /* =========================================================
-   12. CHAPTER 03: PROJECTS — THE CASE FILES
+   10. PROJECTS SECTION — THE CASE FILES & THE NEXT REEL
    ========================================================= */
 
 .case-file-dossier {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 4px;
-  margin-bottom: 36px;
+  margin-bottom: 44px;
   overflow: hidden;
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
 }
 
 .case-header-strip {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 24px;
+  padding: 14px 28px;
   background: var(--color-surface-elevated);
   border-bottom: 1px solid var(--color-border);
   font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.12em;
+  font-size: 11.5px;
+  letter-spacing: 0.14em;
 }
 
 .case-index {
-  color: var(--color-antique-brass);
+  color: var(--color-antique-gold);
   font-weight: 500;
 }
 
 .case-classification {
-  color: var(--color-muted-gray);
+  color: var(--color-muted-ash);
 }
 
 .case-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  padding: 36px;
+  gap: 48px;
+  padding: 40px;
   align-items: center;
 }
 
@@ -1213,68 +1017,68 @@ body.shelby-archive {
 
 .case-main-photo {
   width: 100%;
-  height: 340px;
+  height: 380px;
   object-fit: cover;
   display: block;
-  transition: transform 0.4s var(--ease-cinematic);
+  transition: transform 0.45s var(--ease-cinematic);
 }
 
 .case-media-frame:hover .case-main-photo {
-  transform: scale(1.04);
+  transform: scale(1.035);
 }
 
 .case-photo-overlay {
   position: absolute;
-  bottom: 12px;
-  left: 12px;
+  bottom: 14px;
+  left: 14px;
 }
 
 .overlay-badge {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 10.5px;
   letter-spacing: 0.14em;
-  color: var(--color-aged-ivory);
-  background: rgba(16, 17, 15, 0.85);
-  padding: 4px 10px;
-  border: 1px solid var(--color-antique-brass);
+  color: var(--color-vintage-ivory);
+  background: rgba(11, 10, 8, 0.88);
+  padding: 5px 12px;
+  border: 1px solid var(--color-antique-gold);
 }
 
 .case-category-label {
   font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  color: var(--color-antique-brass);
+  font-size: 11.5px;
+  letter-spacing: 0.18em;
+  color: var(--color-antique-gold);
   margin-bottom: 8px;
 }
 
 .case-heading {
   font-family: var(--font-display);
-  font-size: 32px;
+  font-size: 34px;
   font-weight: 700;
-  color: var(--color-aged-ivory);
-  margin-bottom: 14px;
+  color: var(--color-vintage-ivory);
+  margin-bottom: 16px;
   line-height: 1.2;
 }
 
 .case-summary {
-  font-size: 15px;
-  color: var(--color-muted-gray);
-  line-height: 1.7;
-  margin-bottom: 22px;
+  font-size: 15.5px;
+  color: var(--color-muted-ash);
+  line-height: 1.75;
+  margin-bottom: 24px;
 }
 
 .case-spec-list {
   background: var(--color-surface-elevated);
   border: 1px solid var(--color-border);
-  padding: 16px 20px;
-  margin-bottom: 22px;
+  padding: 18px 22px;
+  margin-bottom: 24px;
 }
 
 .spec-row {
   display: flex;
-  gap: 12px;
-  font-size: 13px;
-  margin-bottom: 6px;
+  gap: 14px;
+  font-size: 13.5px;
+  margin-bottom: 8px;
 }
 
 .spec-row:last-child {
@@ -1284,54 +1088,54 @@ body.shelby-archive {
 .spec-title {
   font-family: var(--font-mono);
   font-size: 11px;
-  color: var(--color-antique-brass);
-  min-width: 160px;
+  color: var(--color-antique-gold);
+  min-width: 170px;
 }
 
 .spec-desc {
-  color: var(--color-aged-ivory);
+  color: var(--color-vintage-ivory);
 }
 
 .case-evidence-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 24px;
+  gap: 12px;
+  margin-bottom: 28px;
 }
 
 .evidence-pill {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 14px;
+  padding: 7px 16px;
   background: var(--color-surface-elevated);
   border: 1px solid var(--color-border);
   font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--color-aged-ivory);
+  font-size: 11.5px;
+  color: var(--color-vintage-ivory);
   text-decoration: none;
   transition: all 0.2s ease;
 }
 
 .evidence-pill:hover,
 .evidence-pill.active-pill {
-  border-color: var(--color-antique-brass);
-  color: var(--color-warm-champagne);
-  background: rgba(166, 124, 69, 0.12);
+  border-color: var(--color-antique-gold);
+  color: var(--color-antique-gold);
+  background: rgba(184, 138, 74, 0.12);
 }
 
 .case-cta-wrap {
   display: flex;
-  gap: 12px;
+  gap: 14px;
 }
 
-/* SECONDARY CASE: PRISM AI FINALIST */
+/* PRISM AI HONORS CARD */
 .ai-honors-file .case-media-frame {
-  height: 340px;
+  height: 380px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle, rgba(20, 37, 30, 0.7) 0%, #0C0D0B 80%);
+  background: radial-gradient(circle, #221F18 0%, #0B0A08 80%);
 }
 
 .prism-award-visual {
@@ -1339,153 +1143,37 @@ body.shelby-archive {
 }
 
 .prism-dossier-logo {
-  max-width: 140px;
+  max-width: 160px;
   height: auto;
-  margin-bottom: 18px;
-  filter: drop-shadow(0 0 20px rgba(166, 124, 69, 0.5));
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 24px rgba(184, 138, 74, 0.5));
 }
 
 .award-seal {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 11.5px;
   letter-spacing: 0.18em;
-  color: var(--color-warm-champagne);
-  border: 1px solid var(--color-antique-brass);
-  padding: 6px 16px;
-  background: rgba(166, 124, 69, 0.15);
+  color: var(--color-vintage-ivory);
+  border: 1px solid var(--color-antique-gold);
+  padding: 7px 18px;
+  background: rgba(184, 138, 74, 0.15);
 }
 
-/* =========================================================
-   13. RAILWAY STATION ARCHIVE TRANSITIONS (SCENE B & C)
-   Victorian ironwork, station clock, brass destination boards
-   ========================================================= */
-
-.railway-station-transition {
-  margin: 64px 0;
-  position: relative;
-  z-index: 2;
-  border: 1px solid var(--color-border);
-  background: linear-gradient(180deg, #181916 0%, #121310 100%);
-  padding: 28px 36px;
-  border-radius: 4px;
-  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.6);
-}
-
-.station-ironwork {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 32px;
-}
-
-.station-board {
-  flex: 1;
-}
-
-.station-board-tag {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  color: var(--color-antique-brass);
-  display: block;
-  margin-bottom: 6px;
-}
-
-.station-board-dest {
-  font-family: var(--font-display);
-  font-size: clamp(20px, 2.5vw, 28px);
-  letter-spacing: 0.1em;
-  color: var(--color-warm-champagne);
-  margin-bottom: 4px;
-}
-
-.station-board-sub {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 14px;
-  color: var(--color-fog-grey);
-}
-
-/* VICTORIAN STATION CLOCK */
-.station-clock {
-  width: 68px;
-  height: 68px;
-  border: 2px solid var(--color-antique-brass);
-  border-radius: 50%;
-  background: var(--color-parchment);
-  position: relative;
-  box-shadow: 0 0 16px rgba(166, 124, 69, 0.35);
-  flex-shrink: 0;
-}
-
-.clock-face {
-  position: absolute;
-  inset: 4px;
-  border-radius: 50%;
-  border: 1px solid rgba(27, 26, 23, 0.3);
-}
-
-.clock-center-pin {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 4px;
-  height: 4px;
-  background: #1B1A17;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.clock-hour-hand {
-  position: absolute;
-  bottom: 50%;
-  left: calc(50% - 1px);
-  width: 2px;
-  height: 16px;
-  background: #1B1A17;
-  transform-origin: bottom center;
-  transform: rotate(45deg);
-}
-
-.clock-minute-hand {
-  position: absolute;
-  bottom: 50%;
-  left: calc(50% - 0.75px);
-  width: 1.5px;
-  height: 22px;
-  background: #1B1A17;
-  transform-origin: bottom center;
-  animation: clockTick 12s linear infinite;
-}
-
-@keyframes clockTick {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-/* =========================================================
-   14. CHAPTER 04: THE NEXT REEL — AI FILMMAKING EXHIBITION
-   35mm film frame, sweeping tungsten beam, dust particles
-   ========================================================= */
-
-.reels-chapter {
-  background: radial-gradient(circle at 50% 30%, rgba(20, 37, 30, 0.35) 0%, var(--color-surface) 80%);
-}
-
+/* THE NEXT REEL CONTAINER */
 .reels-vault-stage {
-  max-width: 960px;
-  margin: 0 auto;
+  max-width: 1100px;
+  margin: 48px auto 0;
 }
 
 .vintage-film-cell {
-  background: #0A0B09;
+  background: #0B0A08;
   border: 1px solid var(--color-border-bright);
   border-radius: 4px;
-  padding: 16px 20px;
+  padding: 18px 24px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
-  margin-bottom: 32px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.65);
+  margin-bottom: 36px;
 }
 
 .film-sprockets {
@@ -1495,19 +1183,19 @@ body.shelby-archive {
 }
 
 .film-sprockets span {
-  width: 14px;
+  width: 16px;
   height: 10px;
-  background: #191A17;
-  border: 1px solid rgba(166, 124, 69, 0.25);
+  background: #1C1914;
+  border: 1px solid rgba(184, 138, 74, 0.3);
   border-radius: 1px;
 }
 
 .film-aperture-screen {
   position: relative;
   min-height: 280px;
-  background: radial-gradient(ellipse at center, rgba(32, 34, 30, 0.95) 0%, #0D0E0C 100%);
+  background: radial-gradient(ellipse at center, rgba(32, 28, 22, 0.95) 0%, #0C0B09 100%);
   border: 1px solid var(--color-border);
-  padding: 40px 32px;
+  padding: 44px 36px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1520,49 +1208,16 @@ body.shelby-archive {
   left: 20%;
   width: 60%;
   height: 200%;
-  background: radial-gradient(ellipse at top, rgba(217, 199, 165, 0.12) 0%, transparent 65%);
+  background: radial-gradient(ellipse at top, rgba(232, 220, 194, 0.12) 0%, transparent 65%);
   transform: rotate(-15deg);
   pointer-events: none;
-  animation: projectorBeamFlicker 5s infinite alternate;
-}
-
-@keyframes projectorBeamFlicker {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 0.9; }
-}
-
-.floating-dust-motes {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.mote {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background: var(--color-warm-champagne);
-  border-radius: 50%;
-  opacity: 0.4;
-  animation: floatMote 6s infinite ease-in-out;
-}
-
-.m1 { top: 25%; left: 35%; animation-delay: 0s; }
-.m2 { top: 60%; left: 48%; animation-delay: 1.5s; }
-.m3 { top: 40%; left: 62%; animation-delay: 3s; }
-.m4 { top: 75%; left: 30%; animation-delay: 4.2s; }
-.m5 { top: 30%; left: 75%; animation-delay: 2.2s; }
-
-@keyframes floatMote {
-  0%, 100% { transform: translateY(0) translateX(0); opacity: 0.2; }
-  50% { transform: translateY(-16px) translateX(10px); opacity: 0.7; }
 }
 
 .film-slate-content {
   position: relative;
   z-index: 2;
   text-align: center;
-  max-width: 640px;
+  max-width: 720px;
 }
 
 .slate-meta-row {
@@ -1571,25 +1226,25 @@ body.shelby-archive {
   justify-content: center;
   gap: 16px;
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: 11px;
   letter-spacing: 0.16em;
-  color: var(--color-antique-brass);
-  margin-bottom: 16px;
+  color: var(--color-antique-gold);
+  margin-bottom: 18px;
 }
 
 .slate-production-title {
   font-family: var(--font-display);
-  font-size: clamp(24px, 3.5vw, 36px);
-  color: var(--color-aged-ivory);
+  font-size: clamp(26px, 3.6vw, 40px);
+  color: var(--color-vintage-ivory);
   letter-spacing: 0.08em;
   margin-bottom: 14px;
 }
 
 .slate-synopsis {
-  font-size: 15px;
-  color: var(--color-fog-grey);
+  font-size: 16px;
+  color: var(--color-muted-ash);
   line-height: 1.7;
-  margin-bottom: 24px;
+  margin-bottom: 26px;
 }
 
 .slate-status-strip {
@@ -1601,20 +1256,20 @@ body.shelby-archive {
   padding-top: 18px;
   border-top: 1px solid var(--color-border);
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 11.5px;
 }
 
 .status-indicator {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: var(--color-antique-brass);
+  color: var(--color-antique-gold);
 }
 
 .reel-spinner {
   width: 14px;
   height: 14px;
-  border: 2px solid var(--color-antique-brass);
+  border: 2px solid var(--color-antique-gold);
   border-top-color: transparent;
   border-radius: 50%;
   animation: reelSpin 1.6s linear infinite;
@@ -1626,214 +1281,19 @@ body.shelby-archive {
 }
 
 .slate-premier {
-  color: var(--color-warm-champagne);
+  color: var(--color-vintage-ivory);
   letter-spacing: 0.14em;
 }
 
-.upcoming-reels-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-
-.upcoming-reel-card {
-  background: var(--color-surface-elevated);
-  border: 1px solid var(--color-border);
-  padding: 24px;
-  border-radius: 2px;
-  transition: border-color 0.25s ease, transform 0.25s ease;
-}
-
-.upcoming-reel-card:hover {
-  border-color: var(--color-antique-brass);
-  transform: translateY(-3px);
-}
-
-.reel-card-badge {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  color: var(--color-antique-brass);
-  margin-bottom: 8px;
-}
-
-.upcoming-reel-card h4 {
-  font-family: var(--font-display);
-  font-size: 18px;
-  color: var(--color-aged-ivory);
-  margin-bottom: 6px;
-}
-
-.upcoming-reel-card p {
-  font-size: 13.5px;
-  color: var(--color-fog-grey);
-  line-height: 1.6;
-  margin-bottom: 14px;
-}
-
-.reel-filing-status {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--color-warm-champagne);
-  letter-spacing: 0.12em;
-}
-
 /* =========================================================
-   15. CHAPTER 05: THE GAZETTE — SOUMIC'S LIFELESS UPDATES
-   3D Unfolding physical broadsheet newspaper
-   ========================================================= */
-
-.gazette-chapter {
-  background: var(--color-surface);
-}
-
-.gazette-wrapper {
-  background: var(--color-charcoal);
-  border: 1px solid var(--color-border);
-  padding: 40px;
-  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.7);
-  perspective: 1200px;
-}
-
-.newspaper-broadsheet-container {
-  background: var(--color-parchment);
-  color: var(--color-paper-ink);
-  padding: 36px 40px;
-  border: 1px solid rgba(102, 81, 58, 0.4);
-  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.65);
-  transform-origin: center top;
-  transition: transform 0.8s var(--ease-cinematic);
-}
-
-.broadsheet-top-fold {
-  transform-origin: center top;
-  transition: transform 0.9s var(--ease-cinematic);
-}
-
-/* 3D UNFOLDING TRANSITION */
-.newspaper-unfolded .broadsheet-top-fold {
-  transform: rotateX(0deg);
-}
-
-.newspaper-masthead {
-  border-bottom: 3px double var(--color-paper-ink);
-  padding-bottom: 14px;
-  margin-bottom: 24px;
-  text-align: center;
-}
-
-.masthead-top, .masthead-bottom {
-  display: flex;
-  justify-content: space-between;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #3E3B35;
-  padding: 4px 0;
-  border-bottom: 1px solid rgba(28, 26, 23, 0.3);
-}
-
-.masthead-bottom {
-  border-bottom: none;
-  border-top: 1px solid rgba(28, 26, 23, 0.3);
-  margin-top: 6px;
-}
-
-.gazette-paper-title {
-  font-family: var(--font-display);
-  font-size: clamp(34px, 5.5vw, 68px);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  line-height: 1;
-  margin: 10px 0;
-  color: var(--color-paper-ink);
-}
-
-.newspaper-deck {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 24px;
-}
-
-.news-clipping {
-  background: rgba(255, 255, 255, 0.45);
-  border: 1px solid rgba(62, 48, 36, 0.25);
-  padding: 20px;
-  position: relative;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  cursor: default;
-}
-
-.news-clipping:hover {
-  transform: translateY(-4px) scale(1.01);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
-}
-
-.clip-pin {
-  width: 8px;
-  height: 8px;
-  background: var(--color-antique-brass);
-  border-radius: 50%;
-  margin: 0 auto 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-}
-
-.clip-category {
-  font-family: var(--font-mono);
-  font-size: 9.5px;
-  letter-spacing: 0.16em;
-  color: #6A5538;
-  margin-bottom: 6px;
-}
-
-.clip-headline {
-  font-family: var(--font-display);
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--color-paper-ink);
-  line-height: 1.25;
-  margin-bottom: 10px;
-}
-
-.clip-rule {
-  width: 40px;
-  height: 1px;
-  background: rgba(28, 26, 23, 0.35);
-  margin-bottom: 10px;
-}
-
-.clip-copy {
-  font-family: var(--font-serif);
-  font-size: 14.5px;
-  line-height: 1.6;
-  color: #2F2C27;
-  margin-bottom: 14px;
-}
-
-.clip-date {
-  font-family: var(--font-mono);
-  font-size: 9px;
-  letter-spacing: 0.12em;
-  color: #6A5538;
-  border-top: 1px solid rgba(28, 26, 23, 0.15);
-  padding-top: 6px;
-}
-
-/* SPECIAL CLIPPING ACCENTS */
-.wanted-clip { border-left: 3px solid #73221C; }
-.tragedy-clip { border-left: 3px solid #3E3024; }
-.highlight-clip { border-left: 3px solid var(--color-antique-brass); }
-
-/* =========================================================
-   16. CHAPTER 06: THE GUILD — THE CINEMATIC LENS
-   Interactive brass camera lens viewfinder + mission dossiers
+   11. LEADERSHIP SECTION — THE CINEMATIC CAMERA LENS
+   Rotating outer rings, stationary high-contrast sharp logo, focus pulses
    ========================================================= */
 
 .lens-investigation-layout {
   display: grid;
-  grid-template-columns: 400px 1fr;
-  gap: 48px;
+  grid-template-columns: 440px 1fr;
+  gap: 56px;
   align-items: center;
 }
 
@@ -1843,30 +1303,37 @@ body.shelby-archive {
 }
 
 .cine-lens-barrel {
-  width: 320px;
-  height: 320px;
+  width: 360px;
+  height: 360px;
   border-radius: 50%;
-  border: 4px solid var(--color-antique-brass);
-  background: radial-gradient(circle, #1F221D 0%, #0F100E 80%);
+  border: 4px solid var(--color-antique-gold);
+  background: radial-gradient(circle, #25211B 0%, #100F0C 85%);
   position: relative;
-  box-shadow: 0 0 36px rgba(0, 0, 0, 0.8), inset 0 0 24px rgba(166, 124, 69, 0.3);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.85), inset 0 0 28px rgba(184, 138, 74, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+/* ROTATING DECORATIVE OUTER BEZEL */
 .lens-outer-bezel {
   position: absolute;
   inset: 6px;
   border-radius: 50%;
-  border: 1px dashed rgba(166, 124, 69, 0.4);
+  border: 1px dashed rgba(184, 138, 74, 0.45);
+  animation: lensRingRotate 45s linear infinite;
+}
+
+@keyframes lensRingRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .bezel-mark {
   position: absolute;
   font-family: var(--font-mono);
   font-size: 8.5px;
-  color: var(--color-antique-brass);
+  color: var(--color-antique-gold);
   letter-spacing: 0.14em;
 }
 
@@ -1875,17 +1342,19 @@ body.shelby-archive {
 .mark-left { left: 8px; top: 50%; transform: translateY(-50%) rotate(-90deg); }
 .mark-right { right: 6px; top: 50%; transform: translateY(-50%) rotate(90deg); }
 
+/* OPTICAL VIEWING DISC: CLEAR, CRISP, HIGH-CONTRAST */
 .lens-sight-glass {
-  width: 200px;
-  height: 200px;
+  width: 220px;
+  height: 220px;
   border-radius: 50%;
-  border: 2px solid rgba(166, 124, 69, 0.6);
-  background: #000;
+  border: 2px solid rgba(184, 138, 74, 0.7);
+  background: radial-gradient(circle, #26231C 0%, #13110E 90%);
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.85), 0 0 20px rgba(184, 138, 74, 0.2);
 }
 
 .glass-glare {
@@ -1894,7 +1363,7 @@ body.shelby-archive {
   left: -40%;
   width: 180%;
   height: 180%;
-  background: linear-gradient(135deg, rgba(217, 199, 165, 0.25) 0%, transparent 40%, rgba(20, 37, 30, 0.2) 60%, transparent 100%);
+  background: linear-gradient(135deg, rgba(232, 220, 194, 0.22) 0%, transparent 40%, rgba(184, 138, 74, 0.15) 60%, transparent 100%);
   pointer-events: none;
   z-index: 3;
 }
@@ -1904,26 +1373,30 @@ body.shelby-archive {
   inset: 0;
   pointer-events: none;
   z-index: 2;
-  border: 1px solid rgba(166, 124, 69, 0.15);
+  border: 1px solid rgba(184, 138, 74, 0.18);
 }
 
 .v-crosshair {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   transform: translate(-50%, -50%);
-  border-left: 1px solid var(--color-antique-brass);
-  border-top: 1px solid var(--color-antique-brass);
+  border-left: 1px solid var(--color-antique-gold);
+  border-top: 1px solid var(--color-antique-gold);
   opacity: 0.6;
 }
 
+/* SHARP STATIONARY CENTRAL LOGO */
 .lens-subject-img {
-  max-width: 120px;
-  max-height: 120px;
+  max-width: 140px;
+  max-height: 140px;
   object-fit: contain;
-  transition: filter 0.35s ease, transform 0.35s var(--ease-cinematic);
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 0 10px rgba(184, 138, 74, 0.3));
+  transition: filter 0.3s ease, transform 0.3s var(--ease-cinematic);
 }
 
 .lens-subject-img.defocus {
@@ -1933,31 +1406,31 @@ body.shelby-archive {
 
 .lens-readouts-bar {
   position: absolute;
-  bottom: -36px;
+  bottom: -40px;
   display: flex;
-  gap: 16px;
+  gap: 18px;
   font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--color-antique-brass);
+  font-size: 10.5px;
+  color: var(--color-antique-gold);
   letter-spacing: 0.14em;
   white-space: nowrap;
 }
 
-/* LENS DOSSIER CONTROLS */
+/* RECORD TABS & CASE LOG */
 .lens-record-tabs {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 24px;
+  gap: 12px;
+  margin-bottom: 28px;
 }
 
 .lens-tab {
   display: flex;
   flex-direction: column;
-  padding: 10px 18px;
+  padding: 12px 20px;
   background: var(--color-surface-elevated);
   border: 1px solid var(--color-border);
-  color: var(--color-muted-gray);
+  color: var(--color-muted-ash);
   cursor: pointer;
   text-align: left;
   transition: all 0.2s ease;
@@ -1966,28 +1439,28 @@ body.shelby-archive {
 
 .lens-tab .tab-code {
   font-family: var(--font-mono);
-  font-size: 9.5px;
-  color: var(--color-antique-brass);
-  margin-bottom: 2px;
+  font-size: 10px;
+  color: var(--color-antique-gold);
+  margin-bottom: 3px;
 }
 
 .lens-tab .tab-label {
   font-family: var(--font-display);
-  font-size: 14px;
+  font-size: 15px;
   letter-spacing: 0.06em;
 }
 
 .lens-tab:hover,
 .lens-tab.active {
-  border-color: var(--color-antique-brass);
-  background: rgba(166, 124, 69, 0.14);
-  color: var(--color-warm-champagne);
+  border-color: var(--color-antique-gold);
+  background: rgba(184, 138, 74, 0.14);
+  color: var(--color-vintage-ivory);
 }
 
 .lens-active-dossier {
   background: var(--color-surface-elevated);
   border: 1px solid var(--color-border);
-  padding: 32px;
+  padding: 36px;
   border-radius: 4px;
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
@@ -1995,17 +1468,17 @@ body.shelby-archive {
 .dossier-card-masthead {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 11.5px;
 }
 
 .dossier-index-mark {
-  color: var(--color-antique-brass);
+  color: var(--color-antique-gold);
 }
 
 .dossier-stamp-seal {
-  color: var(--color-warm-champagne);
+  color: var(--color-vintage-ivory);
   letter-spacing: 0.14em;
 }
 
@@ -2013,54 +1486,54 @@ body.shelby-archive {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
 .dossier-org-name {
   font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--color-antique-brass);
+  font-size: 11.5px;
+  color: var(--color-antique-gold);
 }
 
 .dossier-position-title {
   font-family: var(--font-display);
-  font-size: 24px;
-  color: var(--color-aged-ivory);
+  font-size: 26px;
+  color: var(--color-vintage-ivory);
 }
 
 .dossier-tenure-badge {
   font-family: var(--font-mono);
   font-size: 11px;
-  color: var(--color-fog-grey);
+  color: var(--color-muted-ash);
 }
 
 .dossier-body-narrative {
-  font-size: 15px;
-  color: var(--color-fog-grey);
-  line-height: 1.7;
-  margin-bottom: 18px;
+  font-size: 15.5px;
+  color: var(--color-muted-ash);
+  line-height: 1.75;
+  margin-bottom: 20px;
 }
 
 .dossier-verified-points {
   list-style: none;
-  margin-bottom: 24px;
+  margin-bottom: 26px;
 }
 
 .dossier-verified-points li {
   position: relative;
-  padding-left: 20px;
-  font-size: 14px;
-  color: var(--color-aged-ivory);
-  margin-bottom: 8px;
-  line-height: 1.5;
+  padding-left: 22px;
+  font-size: 14.5px;
+  color: var(--color-vintage-ivory);
+  margin-bottom: 10px;
+  line-height: 1.55;
 }
 
 .dossier-verified-points li::before {
   content: '✦';
   position: absolute;
   left: 0;
-  color: var(--color-antique-brass);
-  font-size: 10px;
+  color: var(--color-antique-gold);
+  font-size: 11px;
   top: 2px;
 }
 
@@ -2068,118 +1541,435 @@ body.shelby-archive {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 18px;
+  padding-top: 20px;
   border-top: 1px solid var(--color-border);
 }
 
 .dossier-citation-code {
   font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--color-antique-brass);
+  font-size: 10.5px;
+  color: var(--color-antique-gold);
   letter-spacing: 0.16em;
 }
 
 /* =========================================================
-   17. CHAPTER 07: EDUCATION — THE ROLLING ACADEMIC ARCHIVE
-   Vintage parchment scroll on dark oak desk
+   12. SKILLS SECTION — THE CREATIVE ENGINEERING WORKSHOP
+   3 Interactive instrument panels with schematic lines & authentic SVG software logos
    ========================================================= */
 
-.education-chapter {
-  background: var(--color-surface);
+.workshop-panels-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
 }
 
+.workshop-panel {
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 36px 30px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s var(--ease-cinematic);
+  display: flex;
+  flex-direction: column;
+}
+
+.workshop-panel:hover {
+  border-color: var(--color-antique-gold);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(184, 138, 74, 0.15);
+  transform: translateY(-4px);
+}
+
+.panel-schematic-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 140px;
+  height: 140px;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.panel-header-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 10px;
+}
+
+.panel-ref {
+  color: var(--color-antique-gold);
+}
+
+.panel-gauge {
+  color: var(--color-vintage-ivory);
+}
+
+.panel-title {
+  font-family: var(--font-display);
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--color-vintage-ivory);
+  margin-bottom: 12px;
+}
+
+.panel-desc {
+  font-size: 14px;
+  color: var(--color-muted-ash);
+  line-height: 1.65;
+  margin-bottom: 24px;
+  min-height: 70px;
+}
+
+/* INTERACTIVE SKILL CHIPS WITH ACCURATE SVG ICONS */
+.skill-chips-deck {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.skill-chip {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 14px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  transition: all 0.22s ease;
+}
+
+.skill-chip:hover {
+  border-color: var(--color-antique-gold);
+  background: rgba(184, 138, 74, 0.12);
+  transform: translateX(4px);
+}
+
+.skill-icon-svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skill-icon-svg svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+.skill-name {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-vintage-ivory);
+  flex: 1;
+}
+
+.skill-tier {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--color-antique-gold);
+}
+
+/* =========================================================
+   13. CERTIFICATES — THE ARCHIVE SCREENING ROOM
+   Large elegant framed screen, soft spotlight sweep, 12 thumbnail tabs
+   ========================================================= */
+
+.screening-room-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 48px;
+  align-items: start;
+}
+
+/* PROJECTION SCREEN VIEWING FRAME */
+.screening-projector-frame {
+  background: var(--color-surface-elevated);
+  border: 2px solid var(--color-antique-gold);
+  padding: 24px;
+  border-radius: 4px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 24px rgba(184, 138, 74, 0.2);
+  position: relative;
+}
+
+.projector-mat-board {
+  position: relative;
+  background: #000;
+  border: 1px solid var(--color-border);
+  min-height: 440px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.screening-spotlight-sweep {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(232, 220, 194, 0.15) 0%, transparent 45%, rgba(184, 138, 74, 0.12) 80%, transparent 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.screening-active-img {
+  width: 100%;
+  height: 440px;
+  object-fit: contain;
+  display: block;
+  position: relative;
+  z-index: 1;
+  transition: opacity 0.35s ease, transform 0.35s var(--ease-cinematic);
+}
+
+.screening-active-img.screen-fade {
+  opacity: 0.3;
+  transform: scale(0.97);
+}
+
+.inspect-badge-overlay {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  background: rgba(11, 10, 8, 0.88);
+  border: 1px solid var(--color-antique-gold);
+  color: var(--color-vintage-ivory);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  padding: 6px 14px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* SCREENING CONTROLS & METADATA COLUMN */
+.screening-dossier-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.screening-status-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+}
+
+.screening-counter-pill {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: var(--color-antique-gold);
+  font-weight: 600;
+}
+
+.screening-nav-arrows {
+  display: flex;
+  gap: 10px;
+}
+
+.screen-arrow-btn {
+  width: 38px;
+  height: 38px;
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border);
+  color: var(--color-vintage-ivory);
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 2px;
+}
+
+.screen-arrow-btn:hover {
+  border-color: var(--color-antique-gold);
+  background: var(--color-antique-gold);
+  color: #0B0A08;
+}
+
+.screening-details-box {
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border);
+  padding: 24px;
+  border-radius: 4px;
+  margin-bottom: 24px;
+}
+
+.screening-details-box .meta-cat {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  color: var(--color-antique-gold);
+  margin-bottom: 6px;
+}
+
+.screening-details-box h3 {
+  font-family: var(--font-display);
+  font-size: 26px;
+  color: var(--color-vintage-ivory);
+  margin-bottom: 8px;
+}
+
+.screening-details-box p {
+  font-size: 14.5px;
+  color: var(--color-muted-ash);
+  line-height: 1.6;
+}
+
+/* THUMBNAIL REEL TABS */
+.screening-reel-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  max-height: 240px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.screening-tab {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 10px;
+  border-radius: 2px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.screening-tab:hover,
+.screening-tab.active {
+  border-color: var(--color-antique-gold);
+  background: rgba(184, 138, 74, 0.14);
+}
+
+.tab-num {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  color: var(--color-antique-gold);
+  display: block;
+}
+
+.tab-name {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-vintage-ivory);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+/* =========================================================
+   14. EDUCATION SECTION — THE ROLLING PARCHMENT
+   ========================================================= */
+
 .parchment-scroll-stage {
-  max-width: 880px;
+  max-width: 960px;
   margin: 0 auto;
   position: relative;
 }
 
 .parchment-roller-bar {
-  height: 20px;
-  background: linear-gradient(180deg, #5A4430 0%, #2E2319 100%);
-  border: 1px solid var(--color-antique-brass);
+  height: 22px;
+  background: linear-gradient(180deg, #5A4430 0%, #2A1F16 100%);
+  border: 1px solid var(--color-antique-gold);
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
   z-index: 2;
 }
 
 .roller-finial {
-  width: 24px;
-  height: 24px;
-  background: var(--color-antique-brass);
+  width: 26px;
+  height: 26px;
+  background: var(--color-antique-gold);
   border-radius: 50%;
-  border: 1px solid #1B1A17;
-  box-shadow: 0 0 8px rgba(166, 124, 69, 0.5);
+  border: 1px solid #13120E;
+  box-shadow: 0 0 10px rgba(184, 138, 74, 0.5);
 }
 
 .finial-left { transform: translateX(-8px); }
 .finial-right { transform: translateX(8px); }
 
 .parchment-sheet {
-  background: var(--color-parchment);
-  color: var(--color-paper-ink);
-  padding: 48px 56px;
+  background: #D8C29B;
+  color: #171511;
+  padding: 52px 64px;
   position: relative;
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
-  border-left: 2px solid #9A8767;
-  border-right: 2px solid #9A8767;
-  transform-origin: top center;
-  transition: transform 0.8s var(--ease-cinematic);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+  border-left: 2px solid #8E6837;
+  border-right: 2px solid #8E6837;
 }
 
 .parchment-header-crest {
   text-align: center;
-  border-bottom: 2px solid rgba(27, 26, 23, 0.35);
-  padding-bottom: 18px;
-  margin-bottom: 32px;
+  border-bottom: 2px solid rgba(23, 21, 17, 0.35);
+  padding-bottom: 20px;
+  margin-bottom: 36px;
 }
 
 .crest-code {
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: 11px;
   letter-spacing: 0.22em;
   color: #6A5538;
 }
 
 .parchment-main-title {
   font-family: var(--font-display);
-  font-size: 32px;
+  font-size: 34px;
   letter-spacing: 0.1em;
-  color: var(--color-paper-ink);
+  color: #171511;
   margin: 6px 0 4px;
 }
 
 .parchment-subtitle {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 16px;
+  font-size: 17px;
   color: #4A453C;
 }
 
 .parchment-flourish {
-  font-size: 16px;
-  color: var(--color-antique-brass);
+  font-size: 18px;
+  color: var(--color-antique-gold);
   margin-top: 6px;
 }
 
 .parchment-entries-list {
   display: flex;
   flex-direction: column;
-  gap: 28px;
-  margin-bottom: 36px;
+  gap: 32px;
+  margin-bottom: 40px;
 }
 
 .parchment-entry {
   display: flex;
-  gap: 20px;
+  gap: 22px;
 }
 
 .entry-seal {
-  font-size: 18px;
-  color: var(--color-antique-brass);
+  font-size: 20px;
+  color: var(--color-antique-gold);
   line-height: 1;
 }
 
@@ -2187,7 +1977,7 @@ body.shelby-archive {
   display: flex;
   gap: 16px;
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: 11px;
   letter-spacing: 0.14em;
   margin-bottom: 4px;
 }
@@ -2203,317 +1993,231 @@ body.shelby-archive {
 
 .entry-degree {
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
-  color: var(--color-paper-ink);
+  color: #171511;
   margin-bottom: 2px;
 }
 
 .entry-school {
   font-family: var(--font-serif);
   font-weight: 600;
-  font-size: 16px;
+  font-size: 17px;
   color: #38342D;
   margin-bottom: 6px;
 }
 
 .entry-details {
-  font-size: 14px;
+  font-size: 14.5px;
   color: #4A453C;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 .parchment-footer-stamp {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid rgba(27, 26, 23, 0.25);
-  padding-top: 20px;
+  border-top: 1px solid rgba(23, 21, 17, 0.25);
+  padding-top: 22px;
 }
 
 .wax-seal-emblem {
-  width: 72px;
-  height: 72px;
+  width: 76px;
+  height: 76px;
   border-radius: 50%;
   background: radial-gradient(circle, #8C241B 0%, #56140E 100%);
-  color: var(--color-warm-champagne);
+  color: var(--color-vintage-ivory);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-family: var(--font-display);
   font-size: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
 }
 
 .stamp-citation {
   display: flex;
   flex-direction: column;
   font-family: var(--font-mono);
-  font-size: 9.5px;
+  font-size: 10px;
   letter-spacing: 0.16em;
   color: #6A5538;
   text-align: right;
 }
 
 /* =========================================================
-   18. CHAPTER 08: THE ARSENAL — ENGINEER'S WORKSHOP
-   Blueprint linework, brass gauges, technical instruments
+   15. GAZETTE SECTION — SOUMIC'S LIFELESS UPDATES
    ========================================================= */
 
-.arsenal-bento {
+.gazette-wrapper {
+  background: var(--color-charcoal);
+  border: 1px solid var(--color-border);
+  padding: 44px;
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.7);
+  margin-top: 48px;
+}
+
+.newspaper-broadsheet-container {
+  background: #D8C29B;
+  color: #171511;
+  padding: 40px 44px;
+  border: 1px solid rgba(142, 104, 55, 0.4);
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.65);
+}
+
+.newspaper-masthead {
+  border-bottom: 3px double #171511;
+  padding-bottom: 16px;
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.masthead-top, .masthead-bottom {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #3E3B35;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(23, 21, 17, 0.3);
+}
+
+.masthead-bottom {
+  border-bottom: none;
+  border-top: 1px solid rgba(23, 21, 17, 0.3);
+  margin-top: 6px;
+}
+
+.gazette-paper-title {
+  font-family: var(--font-display);
+  font-size: clamp(38px, 6vw, 74px);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  margin: 12px 0;
+  color: #171511;
+}
+
+.newspaper-deck {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
   gap: 24px;
 }
 
-.arsenal-card {
-  background: var(--color-surface-elevated);
-  border: 1px solid var(--color-border);
-  padding: 32px 28px;
+.news-clipping {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(142, 104, 55, 0.25);
+  padding: 22px;
   position: relative;
-  overflow: hidden;
-  border-radius: 2px;
-  transition: border-color 0.25s ease, transform 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: default;
 }
 
-.arsenal-card:hover {
-  border-color: var(--color-antique-brass);
+.news-clipping:hover {
   transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
 }
 
-.card-header-bar {
-  display: flex;
-  justify-content: space-between;
+.clip-pin {
+  width: 8px;
+  height: 8px;
+  background: var(--color-antique-gold);
+  border-radius: 50%;
+  margin: 0 auto 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.clip-category {
   font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  margin-bottom: 14px;
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  color: #6A5538;
+  margin-bottom: 6px;
 }
 
-.workshop-code {
-  color: var(--color-antique-brass);
-}
-
-.workshop-gauge {
-  color: var(--color-warm-champagne);
-}
-
-.card-title {
+.clip-headline {
   font-family: var(--font-display);
-  font-size: 22px;
+  font-size: 19px;
   font-weight: 700;
-  color: var(--color-aged-ivory);
+  color: #171511;
+  line-height: 1.25;
   margin-bottom: 10px;
 }
 
-.card-desc {
-  font-size: 14px;
-  color: var(--color-fog-grey);
+.clip-rule {
+  width: 44px;
+  height: 1px;
+  background: rgba(23, 21, 17, 0.35);
+  margin-bottom: 10px;
+}
+
+.clip-copy {
+  font-family: var(--font-serif);
+  font-size: 15px;
   line-height: 1.6;
-  margin-bottom: 20px;
-  min-height: 66px;
+  color: #2F2C27;
+  margin-bottom: 14px;
 }
 
-.arsenal-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 24px;
-}
-
-.arsenal-pills span {
+.clip-date {
   font-family: var(--font-mono);
-  font-size: 11px;
-  padding: 4px 10px;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  color: var(--color-aged-ivory);
-  border-radius: 2px;
-}
-
-.arsenal-brand-row {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding-top: 16px;
-  border-top: 1px solid var(--color-border);
-}
-
-.arsenal-icon {
-  height: 28px;
-  width: auto;
-  opacity: 0.8;
-  filter: grayscale(20%);
-  transition: opacity 0.2s ease, filter 0.2s ease;
-}
-
-.arsenal-card:hover .arsenal-icon {
-  opacity: 1;
-  filter: none;
+  font-size: 9.5px;
+  letter-spacing: 0.12em;
+  color: #6A5538;
+  border-top: 1px solid rgba(23, 21, 17, 0.15);
+  padding-top: 6px;
 }
 
 /* =========================================================
-   19. CHAPTER 09: THE DECORATIONS — THE EXHIBITION DECK
-   Physical card stack fanning & controlled riffle shuffle
-   ========================================================= */
-
-.certificates-chapter {
-  background: var(--color-surface);
-}
-
-.deck-controls {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 36px;
-  padding-bottom: 18px;
-  border-bottom: 1px solid var(--color-border);
-}
-
-.shuffle-btn {
-  gap: 8px;
-}
-
-.deck-counter {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  color: var(--color-antique-brass);
-}
-
-.achievement-deck-stage {
-  position: relative;
-  min-height: 480px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  perspective: 1000px;
-}
-
-.deck-stack {
-  position: relative;
-  width: 320px;
-  height: 420px;
-}
-
-.archive-deck-card {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--color-surface-elevated);
-  border: 1px solid var(--color-border);
-  padding: 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
-  will-change: transform, opacity;
-}
-
-.archive-deck-card:hover {
-  border-color: var(--color-antique-brass);
-  box-shadow: 0 16px 36px rgba(166, 124, 69, 0.25);
-}
-
-.card-header-tag {
-  font-family: var(--font-mono);
-  font-size: 9.5px;
-  letter-spacing: 0.16em;
-  color: var(--color-antique-brass);
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-
-.card-preview-thumb {
-  width: 100%;
-  height: 180px;
-  background: #000;
-  border: 1px solid var(--color-border);
-  overflow: hidden;
-  margin-bottom: 16px;
-}
-
-.card-preview-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.card-caption-block h4 {
-  font-family: var(--font-display);
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--color-aged-ivory);
-  margin-bottom: 4px;
-}
-
-.card-caption-block p {
-  font-size: 12px;
-  color: var(--color-fog-grey);
-}
-
-.card-seal-mark {
-  margin-top: 14px;
-  padding-top: 10px;
-  border-top: 1px solid var(--color-border);
-  font-family: var(--font-mono);
-  font-size: 9.5px;
-  color: var(--color-antique-brass);
-  letter-spacing: 0.14em;
-  text-align: right;
-}
-
-/* =========================================================
-   20. CHAPTER 10: CONTACT — THE TRANSMISSION (THE FINAL FRAME)
+   16. CONTACT SECTION — THE FINAL TRANSMISSION
    ========================================================= */
 
 .contact-chapter {
-  background: radial-gradient(circle at 50% 60%, rgba(20, 37, 30, 0.45) 0%, var(--color-surface) 80%);
+  background: radial-gradient(circle at 50% 60%, rgba(28, 25, 20, 0.6) 0%, var(--color-surface) 85%);
   text-align: center;
-  padding: 72px 40px 48px;
+  padding: 80px 48px 56px;
 }
 
 .contact-dossier-inner {
-  max-width: 820px;
+  max-width: 880px;
   margin: 0 auto;
 }
 
 .slate-label {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 11.5px;
   letter-spacing: 0.24em;
-  color: var(--color-antique-brass);
-  margin-bottom: 16px;
+  color: var(--color-antique-gold);
+  margin-bottom: 18px;
 }
 
 .slate-heading {
   font-family: var(--font-display);
-  font-size: clamp(36px, 5.5vw, 64px);
-  color: var(--color-aged-ivory);
+  font-size: clamp(38px, 5.5vw, 68px);
+  color: var(--color-vintage-ivory);
   letter-spacing: 0.06em;
   line-height: 1.1;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .slate-sub {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 18px;
-  color: var(--color-fog-grey);
-  margin-bottom: 40px;
+  font-size: 19px;
+  color: var(--color-muted-ash);
+  margin-bottom: 44px;
 }
 
 .big-telegram-btn {
   display: inline-flex;
   align-items: center;
   gap: 16px;
-  padding: 16px 36px;
-  background: var(--color-antique-brass);
-  color: #0C0D0B;
+  padding: 18px 42px;
+  background: var(--color-antique-gold);
+  color: #0B0A08;
   font-family: var(--font-mono);
   font-size: 16px;
   font-weight: 600;
@@ -2521,12 +2225,12 @@ body.shelby-archive {
   text-decoration: none;
   border-radius: 2px;
   transition: all 0.25s var(--ease-cinematic);
-  margin-bottom: 44px;
+  margin-bottom: 48px;
 }
 
 .big-telegram-btn:hover {
-  background: var(--color-warm-champagne);
-  box-shadow: 0 0 24px rgba(166, 124, 69, 0.5);
+  background: var(--color-vintage-ivory);
+  box-shadow: 0 0 28px rgba(184, 138, 74, 0.5);
   transform: translateY(-2px);
 }
 
@@ -2534,32 +2238,32 @@ body.shelby-archive {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 14px;
-  margin-bottom: 60px;
+  gap: 16px;
+  margin-bottom: 64px;
 }
 
 .social-pill {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 11.5px;
   letter-spacing: 0.14em;
-  padding: 8px 18px;
+  padding: 9px 20px;
   background: var(--color-surface-elevated);
   border: 1px solid var(--color-border);
-  color: var(--color-aged-ivory);
+  color: var(--color-vintage-ivory);
   text-decoration: none;
   transition: all 0.2s ease;
 }
 
 .social-pill:hover,
 .social-pill.highlight-pill {
-  border-color: var(--color-antique-brass);
-  color: var(--color-warm-champagne);
-  background: rgba(166, 124, 69, 0.14);
+  border-color: var(--color-antique-gold);
+  color: var(--color-antique-gold);
+  background: rgba(184, 138, 74, 0.14);
 }
 
 .film-closing-credits {
   border-top: 1px solid var(--color-border);
-  padding-top: 28px;
+  padding-top: 32px;
 }
 
 .credits-row {
@@ -2567,8 +2271,8 @@ body.shelby-archive {
   justify-content: space-between;
   align-items: center;
   font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--color-fog-grey);
+  font-size: 11.5px;
+  color: var(--color-muted-ash);
 }
 
 .credits-left span {
@@ -2579,26 +2283,26 @@ body.shelby-archive {
 .credits-irony {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 13.5px;
-  color: var(--color-warm-champagne);
+  font-size: 14px;
+  color: var(--color-antique-gold);
 }
 
 .return-top-btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: var(--color-antique-brass);
+  color: var(--color-antique-gold);
   text-decoration: none;
   letter-spacing: 0.14em;
   transition: color 0.2s ease;
 }
 
 .return-top-btn:hover {
-  color: var(--color-warm-champagne);
+  color: var(--color-vintage-ivory);
 }
 
 /* =========================================================
-   21. MODAL DIALOGS
+   17. MODAL DIALOGS
    ========================================================= */
 
 .modal {
@@ -2621,7 +2325,7 @@ body.shelby-archive {
 .modal-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(12, 13, 11, 0.88);
+  background: rgba(11, 10, 8, 0.9);
   backdrop-filter: blur(8px);
 }
 
@@ -2629,12 +2333,12 @@ body.shelby-archive {
   position: relative;
   z-index: 2;
   background: var(--color-surface-elevated);
-  border: 1px solid var(--color-antique-brass);
+  border: 1px solid var(--color-antique-gold);
   border-radius: 4px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
-  max-width: 800px;
-  width: 90vw;
-  padding: 32px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.95);
+  max-width: 860px;
+  width: 92vw;
+  padding: 36px;
 }
 
 .modal-close {
@@ -2643,9 +2347,9 @@ body.shelby-archive {
   right: 16px;
   background: transparent;
   border: 1px solid var(--color-border);
-  color: var(--color-aged-ivory);
-  width: 32px;
-  height: 32px;
+  color: var(--color-vintage-ivory);
+  width: 34px;
+  height: 34px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2654,31 +2358,31 @@ body.shelby-archive {
 }
 
 .modal-close:hover {
-  background: var(--color-antique-brass);
-  color: #000;
+  background: var(--color-antique-gold);
+  color: #0B0A08;
 }
 
 .modal-dossier-header {
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
 .modal-dossier-header .mono {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 10.5px;
   letter-spacing: 0.18em;
-  color: var(--color-antique-brass);
+  color: var(--color-antique-gold);
 }
 
 .modal-dossier-header h2 {
   font-family: var(--font-display);
-  font-size: 26px;
-  color: var(--color-aged-ivory);
+  font-size: 28px;
+  color: var(--color-vintage-ivory);
   margin: 4px 0 6px;
 }
 
 .modal-dossier-header p {
-  font-size: 14px;
-  color: var(--color-fog-grey);
+  font-size: 14.5px;
+  color: var(--color-muted-ash);
 }
 
 .modal-image-wrap {
@@ -2690,14 +2394,14 @@ body.shelby-archive {
 
 .modal-project-img {
   max-width: 100%;
-  max-height: 60vh;
+  max-height: 65vh;
   object-fit: contain;
   display: block;
 }
 
 .image-modal-card {
-  max-width: 92vw;
-  padding: 16px;
+  max-width: 94vw;
+  padding: 18px;
 }
 
 .fullscreen-img {
@@ -2707,17 +2411,17 @@ body.shelby-archive {
 }
 
 /* =========================================================
-   22. CASE STUDY & TEAMMATES SECONDARY PAGES
+   18. CASE STUDY & TEAMMATES COMPANION PAGES
    ========================================================= */
 
 .teammates-page {
-  background-color: var(--color-near-black);
-  color: var(--color-aged-ivory);
+  background-color: var(--color-coal-black);
+  color: var(--color-vintage-ivory);
 }
 
 .cs-page-wrapper {
-  padding: 110px 32px 60px;
-  max-width: 1100px;
+  padding: 120px 40px 70px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -2725,86 +2429,86 @@ body.shelby-archive {
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.12em;
-  color: var(--color-antique-brass);
+  color: var(--color-antique-gold);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 16px;
+  padding: 9px 18px;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  margin-bottom: 36px;
+  margin-bottom: 40px;
   transition: all 0.2s ease;
 }
 
 .cs-back-btn:hover {
-  background: var(--color-antique-brass);
-  color: #0E0D0B;
+  background: var(--color-antique-gold);
+  color: #0B0A08;
 }
 
 .cs-hero {
-  margin-bottom: 48px;
+  margin-bottom: 52px;
 }
 
 .cs-subtitle {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 11.5px;
   letter-spacing: 0.16em;
-  color: var(--color-antique-brass);
+  color: var(--color-antique-gold);
   margin-bottom: 12px;
 }
 
 .cs-hero h1 {
   font-family: var(--font-display);
-  font-size: clamp(36px, 5vw, 60px);
+  font-size: clamp(38px, 5.5vw, 64px);
   font-weight: 700;
-  color: var(--color-aged-ivory);
+  color: var(--color-vintage-ivory);
   line-height: 1.1;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
 .cs-hero h1 em {
   font-family: var(--font-serif);
   font-style: italic;
-  color: var(--color-warm-champagne);
+  color: var(--color-antique-gold);
 }
 
 .cs-outcome {
-  font-size: 18px;
-  color: var(--color-muted-gray);
-  line-height: 1.7;
-  max-width: 800px;
+  font-size: 18.5px;
+  color: var(--color-muted-ash);
+  line-height: 1.75;
+  max-width: 840px;
 }
 
 .cs-section {
-  margin-bottom: 48px;
+  margin-bottom: 52px;
 }
 
 .cs-section-title {
   font-family: var(--font-display);
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: var(--color-antique-brass);
-  margin-bottom: 20px;
+  color: var(--color-antique-gold);
+  margin-bottom: 22px;
 }
 
 .cs-visual-card {
   display: flex;
-  gap: 24px;
+  gap: 26px;
   align-items: center;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  padding: 32px;
+  padding: 34px;
   border-radius: 4px;
 }
 
 .cs-icon-wrapper {
-  width: 64px;
-  height: 64px;
+  width: 68px;
+  height: 68px;
   background: var(--color-surface-elevated);
   border: 1px solid var(--color-border);
-  color: var(--color-antique-brass);
+  color: var(--color-antique-gold);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2813,20 +2517,20 @@ body.shelby-archive {
 }
 
 .cs-icon-wrapper svg {
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
 }
 
 .cs-text-content {
-  font-size: 15px;
-  color: var(--color-muted-gray);
-  line-height: 1.75;
+  font-size: 15.5px;
+  color: var(--color-muted-ash);
+  line-height: 1.8;
 }
 
 .cs-image-frame {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  padding: 16px;
+  padding: 18px;
   border-radius: 4px;
 }
 
@@ -2839,73 +2543,73 @@ body.shelby-archive {
 .cs-components-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 22px;
 }
 
 .cs-comp-card {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  padding: 24px;
+  padding: 26px;
   border-radius: 4px;
 }
 
 .cs-comp-card span {
   font-family: var(--font-mono);
   font-size: 11px;
-  color: var(--color-antique-brass);
+  color: var(--color-antique-gold);
 }
 
 .cs-comp-card h4 {
   font-family: var(--font-display);
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 700;
-  color: var(--color-aged-ivory);
+  color: var(--color-vintage-ivory);
   margin: 6px 0 8px;
 }
 
 .cs-comp-card p {
-  font-size: 13px;
-  color: var(--color-muted-gray);
+  font-size: 13.5px;
+  color: var(--color-muted-ash);
 }
 
 .cs-flow-diagram {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 14px;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  padding: 32px;
+  padding: 34px;
   border-radius: 4px;
 }
 
 .cs-flow-node {
   background: var(--color-surface-elevated);
-  border: 1px solid var(--color-antique-brass);
-  padding: 12px 18px;
+  border: 1px solid var(--color-antique-gold);
+  padding: 14px 20px;
   border-radius: 2px;
   text-align: center;
   font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--color-aged-ivory);
+  font-size: 12.5px;
+  color: var(--color-vintage-ivory);
 }
 
 .cs-flow-line {
   flex: 1;
   height: 2px;
-  background: var(--color-antique-brass);
+  background: var(--color-antique-gold);
 }
 
 /* TEAMMATES */
 .teammates-header {
   text-align: center;
-  margin-bottom: 56px;
+  margin-bottom: 60px;
 }
 
 .teammates-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -2913,7 +2617,7 @@ body.shelby-archive {
 .teammate-card {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  padding: 32px 24px;
+  padding: 36px 26px;
   text-align: center;
   border-radius: 4px;
   transition: transform 0.25s ease, border-color 0.25s ease;
@@ -2921,16 +2625,16 @@ body.shelby-archive {
 
 .teammate-card:hover {
   transform: translateY(-4px);
-  border-color: var(--color-antique-brass);
+  border-color: var(--color-antique-gold);
 }
 
 .teammate-photo-wrap {
-  width: 130px;
-  height: 130px;
+  width: 136px;
+  height: 136px;
   border-radius: 50%;
-  margin: 0 auto 20px;
+  margin: 0 auto 22px;
   overflow: hidden;
-  border: 2px solid var(--color-antique-brass);
+  border: 2px solid var(--color-antique-gold);
   padding: 4px;
   background: var(--color-surface-elevated);
 }
@@ -2944,32 +2648,37 @@ body.shelby-archive {
 
 .teammate-name {
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: 21px;
   font-weight: 700;
-  color: var(--color-aged-ivory);
+  color: var(--color-vintage-ivory);
   margin-bottom: 4px;
 }
 
 .teammate-role {
   font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--color-antique-brass);
+  font-size: 11.5px;
+  color: var(--color-antique-gold);
 }
 
 /* =========================================================
-   23. RESPONSIVE DESIGN & MOBILE PERFORMANCE (GEMINI.md RULES)
-   - Disable/simplify heavy blur, backdrop-filter, box-shadow on < 900px
-   - Transform: translateZ(0) and will-change on scroll animations
-   - Scale SP_HERO properly on mobile
+   19. RESPONSIVE DESIGN & MOBILE PERFORMANCE (GEMINI.md)
    ========================================================= */
 
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
+  .workshop-panels-container {
+    grid-template-columns: 1fr;
+  }
+
+  .screening-room-layout {
+    grid-template-columns: 1fr;
+  }
+
   .about-grid {
     grid-template-columns: 1fr;
   }
 
   .about-photo-wrapper {
-    max-width: 440px;
+    max-width: 460px;
     margin: 0 auto;
   }
 
@@ -2979,19 +2688,7 @@ body.shelby-archive {
 
   .lens-investigation-layout {
     grid-template-columns: 1fr;
-    gap: 36px;
-  }
-
-  .arsenal-bento {
-    grid-template-columns: 1fr;
-  }
-
-  .upcoming-reels-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .cs-components-grid {
-    grid-template-columns: 1fr;
+    gap: 40px;
   }
 }
 
@@ -3008,7 +2705,7 @@ body.shelby-archive {
   .nav-wrap {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
-    background: #10110F;
+    background: #0B0A08;
   }
 
   .pc-cta {
@@ -3026,11 +2723,11 @@ body.shelby-archive {
 
   .nav-content {
     position: fixed;
-    top: 58px;
+    top: 60px;
     left: 0;
     width: 100vw;
-    height: calc(100vh - 58px);
-    background: #10110F;
+    height: calc(100vh - 60px);
+    background: #0B0A08;
     flex-direction: column;
     padding: 36px 24px;
     transform: translateX(100%);
@@ -3058,58 +2755,52 @@ body.shelby-archive {
   .nav-content nav {
     flex-direction: column;
     align-items: flex-start;
-    gap: 14px;
+    gap: 16px;
     width: 100%;
   }
 
   .nav-content nav a {
-    font-size: 14.5px;
+    font-size: 15px;
     width: 100%;
     padding: 8px 0;
-    border-bottom: 1px solid rgba(166, 124, 69, 0.1);
+    border-bottom: 1px solid rgba(184, 138, 74, 0.1);
   }
 
   .archive-main {
-    padding: 84px 16px 40px;
+    padding: 88px 18px 40px;
   }
 
   .archive-chapter {
-    padding: 36px 18px;
-    margin-bottom: 44px;
+    padding: 40px 20px;
+    margin-bottom: 48px;
   }
 
   .poster-hero {
-    padding: 36px 16px;
+    padding: 40px 18px;
     min-height: auto;
   }
 
-  /* Center SP_HERO without blocking text */
   .hero-poster-img {
-    max-width: 290px;
+    max-width: 320px;
+    height: auto;
   }
 
   .poster-main-title {
-    font-size: clamp(40px, 8vw, 54px);
+    font-size: clamp(44px, 8.5vw, 60px);
   }
 
   .poster-motto-text {
-    font-size: 18px;
+    font-size: 19px;
   }
 
   .poster-billing-strip {
     flex-direction: column;
-    gap: 8px;
-    padding: 12px;
+    gap: 10px;
+    padding: 14px;
   }
 
   .billing-sep {
     display: none;
-  }
-
-  .station-ironwork {
-    flex-direction: column;
-    text-align: center;
-    gap: 18px;
   }
 
   .archival-stats {
@@ -3118,17 +2809,17 @@ body.shelby-archive {
   }
 
   .parchment-sheet {
-    padding: 28px 20px;
+    padding: 32px 22px;
   }
 
   .parchment-entry {
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
   }
 
   .parchment-footer-stamp {
     flex-direction: column;
-    gap: 16px;
+    gap: 18px;
     text-align: center;
   }
 
@@ -3136,19 +2827,8 @@ body.shelby-archive {
     text-align: center;
   }
 
-  .deck-controls {
-    flex-direction: column;
-    gap: 14px;
-    text-align: center;
-  }
-
-  .deck-stack {
-    height: 400px;
-  }
-
-  .archive-deck-card {
-    width: 250px;
-    height: 350px;
+  .screening-reel-tabs {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .credits-row {
@@ -3182,18 +2862,23 @@ body.shelby-archive {
   }
 
   .cine-lens-barrel {
-    width: 260px;
-    height: 260px;
+    width: 280px;
+    height: 280px;
   }
 
   .lens-sight-glass {
-    width: 160px;
-    height: 160px;
+    width: 180px;
+    height: 180px;
+  }
+
+  .projector-mat-board,
+  .screening-active-img {
+    height: 320px;
   }
 }
 
 /* =========================================================
-   24. PREFERS-REDUCED-MOTION SUPPORT
+   20. PREFERS-REDUCED-MOTION SUPPORT
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
@@ -3203,11 +2888,11 @@ body.shelby-archive {
     transition-duration: 0.01ms !important;
   }
 
-  .train-opening-scene {
-    display: none !important;
-  }
-
   .ticker-track {
     animation: none !important;
+  }
+
+  .cinematic-sparks-canvas {
+    display: none !important;
   }
 }

@@ -1,45 +1,49 @@
 /* =========================================================
-   PROJECT: SP — THE CINEMATIC CREATIVE ARCHIVE
-   Complete Portfolio Redesign & Motion Graphics Experience
-   Direction: Peaky Blinders × British Industrial Revolution × Vintage Cinema
+   PROJECT: SOUMIC PAUL — CINEMATIC PORTFOLIO
+   Design Direction: Peaky Blinders-inspired Cinematic Archive
    ========================================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
 
   /* =========================================================
-     1. NATURAL, RESPONSIVE SCROLLING & RAILWAY PROGRESS TRACK
-     Steel rails + sleepers with miniature brass locomotive
+     1. GLOBAL CONSTANTS & SECTION DEFINITIONS (8 CONVENTIONAL)
      ========================================================= */
+  const NAV_OFFSET = 78;
 
-  const railwayLoco = document.getElementById('railwayLocomotiveGlyph');
-  const railwayChapter = document.getElementById('railwayCurrentChapter');
-  let progressTicking = false;
-
-  const chapterNames = {
-    'home': 'CHAPTER 01 // THE ARRIVAL',
-    'about': 'CHAPTER 02 // THE DOSSIER',
-    'work': 'CHAPTER 03 // CASE FILES',
-    'reels': 'CHAPTER 04 // THE NEXT REEL',
-    'gazette': 'CHAPTER 05 // THE GAZETTE',
-    'experience': 'CHAPTER 06 // THE GUILD',
-    'education': 'CHAPTER 07 // ACADEMIC RECORD',
-    'skills': 'CHAPTER 08 // THE ARSENAL',
-    'certificates': 'CHAPTER 09 // THE DECORATIONS',
-    'contact': 'CHAPTER 10 // THE TRANSMISSION'
+  const SECTION_REGISTRY = {
+    'home': 'CHAPTER 01 // ARCHIVE ADMISSION',
+    'about': 'CHAPTER 02 // DOSSIER & GAZETTE',
+    'projects': 'CHAPTER 03 // CLASSIFIED PROJECTS',
+    'leadership': 'CHAPTER 04 // LEADERSHIP & GUILD',
+    'skills': 'CHAPTER 05 // WORKSHOP ARSENAL',
+    'education': 'CHAPTER 06 // ACADEMIC RECORD',
+    'certificates': 'CHAPTER 07 // THE SCREENING ROOM',
+    'contact': 'CHAPTER 08 // SECURE TRANSMISSION'
   };
 
+  /* =========================================================
+     2. RAILWAY TRACK PROGRESS ENGINE
+     Synchronizes scroll position with railway locomotive track
+     ========================================================= */
+  const railwayLoco = document.getElementById('railwayLocomotiveGlyph');
+  const railwayChapter = document.getElementById('railwayCurrentChapter');
+  let tickingScroll = false;
+
   function updateRailwayProgress() {
-    if (!progressTicking) {
+    if (!tickingScroll) {
       window.requestAnimationFrame(() => {
-        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const percentage = scrollHeight > 0 ? Math.min(100, Math.max(0, (window.scrollY / scrollHeight) * 100)) : 0;
+        const docElem = document.documentElement;
+        const scrollHeight = docElem.scrollHeight - window.innerHeight;
+        const percentage = scrollHeight > 0 
+          ? Math.min(100, Math.max(0, (window.scrollY / scrollHeight) * 100)) 
+          : 0;
 
         if (railwayLoco) {
           railwayLoco.style.left = `${percentage}%`;
         }
-        progressTicking = false;
+        tickingScroll = false;
       });
-      progressTicking = true;
+      tickingScroll = true;
     }
   }
 
@@ -47,12 +51,9 @@ document.addEventListener('DOMContentLoaded', () => {
   updateRailwayProgress();
 
   /* =========================================================
-     2. ANCHOR NAVIGATION — NATIVE SMOOTH JUMPS
-     Zero-latency browser scrolling with navigation offset
+     3. CLEAN ANCHOR NAVIGATION WITH OFFSET
+     Zero-lag smooth native scrolling to target sections
      ========================================================= */
-
-  const NAV_OFFSET = 76;
-
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', event => {
       const targetId = link.getAttribute('href');
@@ -62,11 +63,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!target) return;
 
       event.preventDefault();
+      const topPos = target.getBoundingClientRect().top + window.pageYOffset - NAV_OFFSET;
 
-      const top = target.getBoundingClientRect().top + window.pageYOffset - NAV_OFFSET;
-      
       window.scrollTo({
-        top,
+        top: topPos,
         behavior: 'smooth'
       });
 
@@ -77,10 +77,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* =========================================================
-     3. ZERO-REFLOW ACTIVE NAV & CHAPTER INDICATOR
-     Uses IntersectionObserver to avoid layout thrashing on scroll
+     4. SCROLL SPY: ACTIVE NAV LINK & CHAPTER READOUT
+     Uses IntersectionObserver for 60fps performance
      ========================================================= */
-
   const navLinks = document.querySelectorAll('.nav-content nav a');
   const chapters = document.querySelectorAll('.archive-chapter');
 
@@ -89,8 +88,8 @@ document.addEventListener('DOMContentLoaded', () => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const currentId = entry.target.getAttribute('id');
-          
-          // Update navigation active states
+
+          // Highlight current navigation link
           navLinks.forEach(link => {
             const href = link.getAttribute('href').replace('#', '');
             if (href === currentId) {
@@ -100,14 +99,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
           });
 
-          // Update railway station progress readout
-          if (railwayChapter && chapterNames[currentId]) {
-            railwayChapter.innerText = chapterNames[currentId];
+          // Update railway station progress text
+          if (railwayChapter && SECTION_REGISTRY[currentId]) {
+            railwayChapter.innerText = SECTION_REGISTRY[currentId];
           }
         }
       });
     }, {
-      rootMargin: '-20% 0px -60% 0px',
+      rootMargin: '-20% 0px -55% 0px',
       threshold: 0
     });
 
@@ -115,150 +114,218 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* =========================================================
-     4. MOBILE MENU ACCESSIBILITY
+     5. MOBILE MENU ACCESSIBILITY & DRAWER
      ========================================================= */
-
   const mobileBtn = document.querySelector('.mobile-menu-btn');
   const navWrap = document.querySelector('.nav-wrap');
 
   if (mobileBtn && navWrap) {
     mobileBtn.addEventListener('click', () => {
-      navWrap.classList.toggle('menu-open');
+      const isOpen = navWrap.classList.toggle('menu-open');
+      mobileBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
 
-    const navItems = navWrap.querySelectorAll('.nav-content a');
-    navItems.forEach(link => {
+    const mobileLinks = navWrap.querySelectorAll('.nav-content a');
+    mobileLinks.forEach(link => {
       link.addEventListener('click', () => {
         navWrap.classList.remove('menu-open');
+        mobileBtn.setAttribute('aria-expanded', 'false');
       });
     });
   }
 
   /* =========================================================
-     5. BRITISH STEAM LOCOMOTIVE OPENING SEQUENCE (SCENE A)
-     Atmospheric arrival, reveals hero, skippable, session-cached
+     6. CINEMATIC FIREWORK PARTICLES & SPARKS ENGINE
+     Industrial furnace sparks, cursor trails & radial bursts
      ========================================================= */
+  const sparksCanvas = document.getElementById('cinematicSparksCanvas');
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-  const trainScene = document.getElementById('trainOpeningScene');
-  const enterBtn = document.getElementById('enterArchiveBtn');
+  if (sparksCanvas && !prefersReduced) {
+    const ctx = sparksCanvas.getContext('2d');
+    let width = (sparksCanvas.width = window.innerWidth);
+    let height = (sparksCanvas.height = window.innerHeight);
 
-  function completeTrainSequence() {
-    if (!trainScene || trainScene.classList.contains('train-finished')) return;
-    trainScene.classList.add('train-finished');
-    sessionStorage.setItem('sp_train_arrival_seen', 'true');
-    setTimeout(() => {
-      trainScene.style.display = 'none';
-    }, 850);
-  }
-
-  if (trainScene) {
-    // If previously seen or prefers reduced motion, skip automatically
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (sessionStorage.getItem('sp_train_arrival_seen') === 'true' || prefersReducedMotion) {
-      trainScene.classList.add('train-finished');
-      trainScene.style.display = 'none';
-    } else {
-      // Auto-dissolve into hero scene after 3.8s
-      const autoTimer = setTimeout(completeTrainSequence, 4000);
-
-      if (enterBtn) {
-        enterBtn.addEventListener('click', () => {
-          clearTimeout(autoTimer);
-          completeTrainSequence();
-        });
-      }
-
-      // Allow Escape key or user scrolling to bypass intro
-      window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          clearTimeout(autoTimer);
-          completeTrainSequence();
-        }
-      });
-
-      window.addEventListener('wheel', () => {
-        if (window.scrollY > 40) {
-          clearTimeout(autoTimer);
-          completeTrainSequence();
-        }
-      }, { passive: true });
-    }
-  }
-
-  /* =========================================================
-     6. DESKTOP CINEMATIC FOCUS CURSOR
-     Precision brass focus crosshair with smooth tracking
-     ========================================================= */
-
-  const cursor = document.getElementById('cinematicCursor');
-  if (cursor && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
-    let currentX = mouseX;
-    let currentY = mouseY;
-
-    window.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
+    window.addEventListener('resize', () => {
+      width = sparksCanvas.width = window.innerWidth;
+      height = sparksCanvas.height = window.innerHeight;
     }, { passive: true });
 
-    function renderCursor() {
-      currentX += (mouseX - currentX) * 0.22;
-      currentY += (mouseY - currentY) * 0.22;
-      cursor.style.left = `${currentX}px`;
-      cursor.style.top = `${currentY}px`;
-      requestAnimationFrame(renderCursor);
-    }
-    renderCursor();
+    // Spark particle pool
+    const particles = [];
+    const maxParticles = isFinePointer ? 85 : 30;
 
-    const hoverables = document.querySelectorAll('a, button, .archive-deck-card, .news-clipping, .lens-tab, .arsenal-card');
-    hoverables.forEach(el => {
-      el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
-      el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
-    });
-  }
+    // Palette: warm gold, amber, brass, bright ivory
+    const sparkPalette = [
+      'rgba(232, 220, 194,',  // Ivory #E8DCC2
+      'rgba(212, 163, 89,',   // Gold #D4A359
+      'rgba(184, 138, 74,',   // Antique Gold #B88A4A
+      'rgba(255, 170, 70,',   // Warm Furnace Amber
+      'rgba(255, 215, 120,'   // Golden incandescent
+    ];
 
-  /* =========================================================
-     7. STATS COUNT-UP ANIMATION
-     ========================================================= */
-
-  const counters = document.querySelectorAll('.count-up');
-  let hasCounted = false;
-
-  if (counters.length > 0) {
-    const statsObserver = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting && !hasCounted) {
-        hasCounted = true;
-        counters.forEach(counter => {
-          const target = +counter.getAttribute('data-target');
-          const duration = 1600;
-          const increment = target / (duration / 16);
-
-          let current = 0;
-          const updateCounter = () => {
-            current += increment;
-            if (current < target) {
-              counter.innerText = Math.ceil(current);
-              requestAnimationFrame(updateCounter);
-            } else {
-              counter.innerText = target;
-            }
-          };
-          updateCounter();
-        });
-        statsObserver.unobserve(entries[0].target);
+    class Spark {
+      constructor(x, y, vx, vy, size, life, colorPrefix) {
+        this.x = x;
+        this.y = y;
+        this.vx = vx;
+        this.vy = vy;
+        this.size = size;
+        this.initialLife = life;
+        this.life = life;
+        this.colorPrefix = colorPrefix;
+        this.gravity = 0.045;
+        this.friction = 0.985;
       }
-    }, { threshold: 0.25 });
 
-    const statsContainer = document.getElementById('about-stats');
-    if (statsContainer) statsObserver.observe(statsContainer);
+      update() {
+        this.vx *= this.friction;
+        this.vy *= this.friction;
+        this.vy += this.gravity;
+        this.x += this.vx;
+        this.y += this.vy;
+        this.life -= 1;
+      }
+
+      draw(c) {
+        const progress = this.life / this.initialLife;
+        const alpha = Math.max(0, Math.min(1, progress * 0.9));
+        c.fillStyle = `${this.colorPrefix} ${alpha})`;
+        c.beginPath();
+        c.arc(this.x, this.y, Math.max(0.6, this.size * progress), 0, Math.PI * 2);
+        c.fill();
+      }
+    }
+
+    // Ambient floating embers in background
+    const ambientEmbers = [];
+    const maxEmbers = 22;
+    for (let i = 0; i < maxEmbers; i++) {
+      ambientEmbers.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: -Math.random() * 0.5 - 0.15,
+        size: Math.random() * 1.8 + 0.8,
+        alpha: Math.random() * 0.55 + 0.2,
+        oscillation: Math.random() * Math.PI * 2
+      });
+    }
+
+    function createSparkTrail(x, y, count = 2) {
+      if (particles.length >= maxParticles) return;
+      for (let i = 0; i < count; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 1.6 + 0.3;
+        const vx = Math.cos(angle) * speed;
+        const vy = Math.sin(angle) * speed - 0.3;
+        const size = Math.random() * 2.2 + 0.8;
+        const life = Math.floor(Math.random() * 26 + 18);
+        const col = sparkPalette[Math.floor(Math.random() * sparkPalette.length)];
+        particles.push(new Spark(x, y, vx, vy, size, life, col));
+      }
+    }
+
+    function triggerSparkBurst(x, y, count = 14) {
+      const actualCount = Math.min(count, maxParticles - particles.length + 10);
+      for (let i = 0; i < actualCount; i++) {
+        const angle = (Math.PI * 2 * i) / actualCount + (Math.random() - 0.5) * 0.4;
+        const speed = Math.random() * 3.8 + 1.2;
+        const vx = Math.cos(angle) * speed;
+        const vy = Math.sin(angle) * speed - 0.6;
+        const size = Math.random() * 2.8 + 1.1;
+        const life = Math.floor(Math.random() * 38 + 24);
+        const col = sparkPalette[Math.floor(Math.random() * sparkPalette.length)];
+        particles.push(new Spark(x, y, vx, vy, size, life, col));
+      }
+    }
+
+    // Expose trigger globally for interactive elements
+    window.triggerCinematicSpark = (x, y, count = 12) => {
+      triggerSparkBurst(x, y, count);
+    };
+
+    // Mouse movement listener (throttled)
+    let lastMoveTime = 0;
+    window.addEventListener('mousemove', (e) => {
+      const now = performance.now();
+      if (now - lastMoveTime > 32) {
+        lastMoveTime = now;
+        createSparkTrail(e.clientX, e.clientY, 2);
+
+        // Occasional mini radial spark (1 in 40 moves)
+        if (Math.random() < 0.025) {
+          triggerSparkBurst(e.clientX, e.clientY, 6);
+        }
+      }
+    }, { passive: true });
+
+    // Click burst on document
+    window.addEventListener('click', (e) => {
+      triggerSparkBurst(e.clientX, e.clientY, 16);
+    }, { passive: true });
+
+    // Interactive elements trigger controlled spark burst
+    const interactiveElements = document.querySelectorAll(
+      'button, a, .screening-tab, .lens-tab, .case-file-dossier, .workshop-panel'
+    );
+    interactiveElements.forEach(el => {
+      el.addEventListener('mouseenter', (e) => {
+        const rect = el.getBoundingClientRect();
+        triggerSparkBurst(rect.left + rect.width / 2, rect.top + rect.height / 2, 7);
+      }, { passive: true });
+    });
+
+    // Main animation loop
+    let isVisible = true;
+    document.addEventListener('visibilitychange', () => {
+      isVisible = !document.hidden;
+    });
+
+    function renderSparkSystem() {
+      if (isVisible) {
+        ctx.clearRect(0, 0, width, height);
+
+        // 1. Draw ambient floating embers (Hero & Footer atmosphere)
+        for (let i = 0; i < ambientEmbers.length; i++) {
+          const emb = ambientEmbers[i];
+          emb.oscillation += 0.02;
+          emb.x += emb.vx + Math.sin(emb.oscillation) * 0.25;
+          emb.y += emb.vy;
+
+          if (emb.y < -10) {
+            emb.y = height + 10;
+            emb.x = Math.random() * width;
+          }
+          if (emb.x < -10) emb.x = width + 10;
+          if (emb.x > width + 10) emb.x = -10;
+
+          ctx.fillStyle = `rgba(212, 163, 89, ${emb.alpha * 0.55})`;
+          ctx.beginPath();
+          ctx.arc(emb.x, emb.y, emb.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // 2. Draw and update dynamic spark particles
+        for (let i = particles.length - 1; i >= 0; i--) {
+          const p = particles[i];
+          p.update();
+          p.draw(ctx);
+          if (p.life <= 0) {
+            particles.splice(i, 1);
+          }
+        }
+      }
+      requestAnimationFrame(renderSparkSystem);
+    }
+
+    renderSparkSystem();
   }
 
   /* =========================================================
-     8. GAZETTE BROADSHEET 3D UNFOLDING ENGINE
-     Triggers perspective unfolding when entering viewport
+     7. GAZETTE BROADSHEET 3D UNFOLDING
      ========================================================= */
-
   const gazetteWrapper = document.getElementById('gazetteWrapper');
   if (gazetteWrapper) {
     const gazetteObserver = new IntersectionObserver((entries) => {
@@ -268,23 +335,60 @@ document.addEventListener('DOMContentLoaded', () => {
           gazetteObserver.unobserve(gazetteWrapper);
         }
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.12 });
 
     gazetteObserver.observe(gazetteWrapper);
   }
 
   /* =========================================================
-     9. CHAPTER 06: THE GUILD — THE CINEMATIC LENS ENGINE
-     Viewfinder optics, aperture adjustments & verified case logs
+     8. STATS COUNT-UP ANIMATION
      ========================================================= */
+  const statNumbers = document.querySelectorAll('.stat-num');
+  let statsTriggered = false;
 
+  if (statNumbers.length > 0) {
+    const statsContainer = document.getElementById('about-stats');
+    const statsObserver = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && !statsTriggered) {
+        statsTriggered = true;
+        statNumbers.forEach(stat => {
+          const rawText = stat.innerText.trim();
+          const target = parseInt(rawText, 10);
+          const suffix = rawText.replace(/[0-9]/g, '');
+          if (isNaN(target)) return;
+
+          let current = 0;
+          const duration = 1500;
+          const step = Math.max(1, Math.ceil(target / (duration / 20)));
+
+          const timer = setInterval(() => {
+            current += step;
+            if (current >= target) {
+              stat.innerText = target + suffix;
+              clearInterval(timer);
+            } else {
+              stat.innerText = current + suffix;
+            }
+          }, 20);
+        });
+        statsObserver.unobserve(entries[0].target);
+      }
+    }, { threshold: 0.3 });
+
+    if (statsContainer) statsObserver.observe(statsContainer);
+  }
+
+  /* =========================================================
+     9. CHAPTER 04: LEADERSHIP — THE CINEMATIC CAMERA LENS ENGINE
+     Transparent high-contrast logo, rotating rings & verified records
+     ========================================================= */
   const leadershipRecords = [
     {
       org: "AUST ROBOTICS CLUB",
       role: "Assistant Director – Administration",
       tenure: "JAN 2025 – PRESENT",
       spec: { shutter: "1/1000s", aperture: "f/1.4", focal: "50mm PRIME" },
-      img: "assets/AUST_RC.png",
+      img: "assets/AUST_RC_clean.png",
       imgAlt: "AUST Robotics Club Official Insignia",
       index: "REC // 01",
       seal: "OFFICIAL DISPATCH RECORD",
@@ -302,8 +406,8 @@ document.addEventListener('DOMContentLoaded', () => {
       role: "Student Ambassador",
       tenure: "SEPT 2026 – PRESENT",
       spec: { shutter: "1/500s", aperture: "f/2.0", focal: "35mm WIDE" },
-      img: "assets/Tickify.jpg",
-      imgAlt: "Tickify Insignia",
+      img: "assets/Tickify_clean.png",
+      imgAlt: "Tickify Ambassador Emblem",
       index: "REC // 02",
       seal: "CAMPUS LIAISON DOSSIER",
       narrative: "Representing Tickify within the university ecosystem — driving strategic awareness, successfully onboarding student creators, and channeling vital user feedback directly back to the engineering team.",
@@ -357,29 +461,34 @@ document.addEventListener('DOMContentLoaded', () => {
   const lensFocalSpec = document.getElementById('lensFocalSpec');
   const activeDossierCard = document.getElementById('lensActiveDossier');
 
-  function renderInvestigationRecord(recIndex) {
+  function renderLeadershipRecord(recIndex) {
     const data = leadershipRecords[recIndex];
     if (!data) return;
 
-    // Optical blur & refocus transition
+    // Optical focus pulse animation
     if (lensSubjectImg) {
-      lensSubjectImg.classList.add('defocus');
+      lensSubjectImg.style.transition = 'opacity 0.22s ease, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1)';
+      lensSubjectImg.style.opacity = '0.25';
+      lensSubjectImg.style.transform = 'scale(0.88)';
+
       setTimeout(() => {
         lensSubjectImg.src = data.img;
         lensSubjectImg.alt = data.imgAlt;
-        lensSubjectImg.classList.remove('defocus');
-      }, 220);
+        lensSubjectImg.style.opacity = '1';
+        lensSubjectImg.style.transform = 'scale(1)';
+      }, 200);
     }
 
-    // Update camera calibration readouts
+    // Update technical optical readouts
     if (lensShutterSpec) lensShutterSpec.innerText = `SHUTTER: ${data.spec.shutter}`;
     if (lensApertureSpec) lensApertureSpec.innerText = `APERTURE: ${data.spec.aperture}`;
     if (lensFocalSpec) lensFocalSpec.innerText = `FOCUS: ${data.spec.focal}`;
 
-    // Update dossier card content with smooth opacity transition
+    // Update dossier text with smooth reveal
     if (activeDossierCard) {
+      activeDossierCard.style.transition = 'opacity 0.22s ease, transform 0.22s ease';
       activeDossierCard.style.opacity = '0.35';
-      activeDossierCard.style.transform = 'translateY(4px)';
+      activeDossierCard.style.transform = 'translateY(6px)';
 
       setTimeout(() => {
         activeDossierCard.innerHTML = `
@@ -404,7 +513,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         activeDossierCard.style.opacity = '1';
         activeDossierCard.style.transform = 'translateY(0)';
-      }, 180);
+      }, 190);
     }
   }
 
@@ -417,7 +526,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         tab.classList.add('active');
         tab.setAttribute('aria-selected', 'true');
-        renderInvestigationRecord(index);
+        renderLeadershipRecord(index);
       });
 
       // Keyboard arrow navigation
@@ -439,9 +548,28 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* =========================================================
-     10. THE ROLLING PARCHMENT: EDUCATION TIMELINE UNROLL
+     10. CHAPTER 05: SKILLS WORKSHOP TELEMETRY & AMBIENT GLOW
      ========================================================= */
+  const workshopPanels = document.querySelectorAll('.workshop-panel');
+  if (workshopPanels.length > 0) {
+    const workshopObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.15 });
 
+    workshopPanels.forEach((panel, i) => {
+      panel.style.transition = `opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1) ${i * 0.14}s, transform 0.65s cubic-bezier(0.16, 1, 0.3, 1) ${i * 0.14}s`;
+      workshopObserver.observe(panel);
+    });
+  }
+
+  /* =========================================================
+     11. CHAPTER 06: THE ROLLING PARCHMENT (EDUCATION)
+     ========================================================= */
   const parchmentSheet = document.getElementById('parchmentSheet');
   if (parchmentSheet) {
     const parchmentObserver = new IntersectionObserver((entries) => {
@@ -451,239 +579,294 @@ document.addEventListener('DOMContentLoaded', () => {
           parchmentObserver.unobserve(parchmentSheet);
         }
       });
-    }, { threshold: 0.18 });
+    }, { threshold: 0.16 });
 
     parchmentObserver.observe(parchmentSheet);
   }
 
   /* =========================================================
-     11. THE ACHIEVEMENT DECK: CARD SHUFFLE ENGINE
-     Physical fanning, riffle shuffle, and modal credential inspection
+     12. CHAPTER 07: THE ARCHIVE SCREENING ROOM (CERTIFICATES)
+     Framed projection display, aspect ratio preservation,
+     light-sweep reveal, counter, prev/next & thumbnail tabs
      ========================================================= */
-
-  const deckStage = document.getElementById('achievementDeckStage');
-  const deckContainer = document.getElementById('certificateDeck');
-  const shuffleBtn = document.getElementById('shuffleDeckBtn');
-  const deckCounter = document.getElementById('deckCounter');
-
-  if (deckContainer) {
-    let cards = Array.from(deckContainer.querySelectorAll('.archive-deck-card'));
-    let isShuffling = false;
-    let hasEntered = false;
-
-    // Fanned resting coordinates for desktop & tablet
-    const fannedCoordinates = [
-      { x: 0, y: 0, r: 0 },
-      { x: 42, y: 12, r: 2.5 },
-      { x: -38, y: 18, r: -2.2 },
-      { x: 78, y: 26, r: 4 },
-      { x: -74, y: 32, r: -3.8 },
-      { x: 112, y: 40, r: 5.5 },
-      { x: -108, y: 46, r: -5 },
-      { x: 142, y: 52, r: 6.8 },
-      { x: -138, y: 58, r: -6.2 },
-      { x: 168, y: 64, r: 7.8 },
-      { x: -164, y: 70, r: -7.2 },
-      { x: 188, y: 76, r: 8.5 }
-    ];
-
-    function getCardOffset(index, isMobile) {
-      if (isMobile) {
-        const center = (cards.length - 1) / 2;
-        const x = (index - center) * 16;
-        const y = Math.min(22, Math.abs(index - center) * 4);
-        const r = (index - center) * 1.2;
-        return { x, y, r };
-      }
-      return fannedCoordinates[index] || {
-        x: (index % 2 === 0 ? 1 : -1) * (index * 16),
-        y: index * 6,
-        r: (index % 2 === 0 ? 1 : -1) * (index * 0.7)
-      };
+  const CERTIFICATE_DATA = [
+    {
+      title: "Deputy Executive",
+      category: "LEADERSHIP & MANAGEMENT",
+      desc: "AUST Robotics Club — Directing administrative governance, coordinating cross-disciplinary engineering teams, vendor procurement, and national robotics symposiums.",
+      img: "assets/Certificates/Deputy Executive.png",
+      ref: "ARC-DEP-2025"
+    },
+    {
+      title: "Sub Executive",
+      category: "OPERATIONAL COMMENDATION",
+      desc: "AUST Robotics Club — Foundational operational management, workshop scheduling, and student robotics event logistics.",
+      img: "assets/Certificates/Sub_Executive.jpg",
+      ref: "ARC-SUB-2024"
+    },
+    {
+      title: "HSBC Business Case Competition 2025",
+      category: "STRATEGIC COMPETITION",
+      desc: "National Round Qualifier in Bangladesh's premier undergraduate business strategy arena, formulating commercial turnaround blueprints under 6-hour pressure windows.",
+      img: "assets/Certificates/HSBC_25.jpg",
+      ref: "HSBC-BCC-2025"
+    },
+    {
+      title: "BUP Capitalizer 2025",
+      category: "FINANCE & STRATEGY",
+      desc: "Competitive achievement in the flagship national financial modeling and investment portfolio analysis arena hosted by BUP Career Club.",
+      img: "assets/Certificates/BUP Capitalizer'25.jpg",
+      ref: "BUP-CAP-2025"
+    },
+    {
+      title: "Casemotion 1.0",
+      category: "BUSINESS CASE ANALYSIS",
+      desc: "Intra-AUST business case competition finalist solving operational hurdles, market penetration strategies, and branding solutions.",
+      img: "assets/Certificates/Casemotion.jpg",
+      ref: "AUST-CASE-2024"
+    },
+    {
+      title: "OSCILLON 1.0 — Line Follower Robot",
+      category: "ROBOTICS & AUTONOMY",
+      desc: "National robotics competition merit for designing, programming, and racing high-speed autonomous PID-controlled Line Follower Robots.",
+      img: "assets/Certificates/OSCILLON.png",
+      ref: "OSC-LFR-2024"
+    },
+    {
+      title: "RoboMania 2.0 Circuit Wizardry",
+      category: "ELECTRICAL ENGINEERING",
+      desc: "Awarded for rapid analog and digital circuit troubleshooting, schematic analysis, and oscilloscope diagnostic mastery under strict time limits.",
+      img: "assets/Certificates/RoboMania 2.0 Circuit Wizardry.png",
+      ref: "RM-CIRC-2024"
+    },
+    {
+      title: "RoboMania 2.0 Organizer",
+      category: "ORGANIZATIONAL LEADERSHIP",
+      desc: "Core organizer commendation for leading event logistics, university team registrations, and technical coordination for RoboMania 2.0.",
+      img: "assets/Certificates/Robomania 2.0 Organizer.png",
+      ref: "RM-ORG-2024"
+    },
+    {
+      title: "ARC 2.0 Organizer",
+      category: "NATIONAL EVENT DIRECTION",
+      desc: "Executive organizing committee commendation for managing national engineering teams, venue infrastructure, and evaluation panels.",
+      img: "assets/Certificates/ARC 2.0_organizer.jpg",
+      ref: "ARC-ORG-2024"
+    },
+    {
+      title: "Thesis Thrust 1.0",
+      category: "RESEARCH & PRESENTATION",
+      desc: "Commended for academic defense and technical research presentation in electrical engineering innovations.",
+      img: "assets/Certificates/Thesis Thrust 1.0.jpeg",
+      ref: "TT-RES-2024"
+    },
+    {
+      title: "GitHub Foundations",
+      category: "DEV & VERSION CONTROL",
+      desc: "Verified credentials in Git architecture, distributed version control, GitHub Actions, repository governance, and collaborative engineering workflows.",
+      img: "assets/Certificates/GIthub.jpg",
+      ref: "GH-FND-2024"
+    },
+    {
+      title: "EEE 3100 — Electrical Services Design",
+      category: "ACADEMIC DISTINCTION",
+      desc: "Official academic commendation for excellence in Electrical Services Design and high-voltage power distribution modeling at AUST.",
+      img: "assets/Certificates/EEE 3100.png",
+      ref: "AUST-EEE-3100"
     }
+  ];
 
-    function updateDeckArrangement() {
-      const isMobile = window.innerWidth <= 768;
-      const count = cards.length;
+  let currentCertIndex = 0;
+  const totalCerts = CERTIFICATE_DATA.length;
 
-      cards.forEach((card, index) => {
-        const offset = getCardOffset(index, isMobile);
-        const zIndex = count - index;
-        const scale = isMobile ? 1 - (index * 0.015) : 1 - (index * 0.018);
-        const opacity = Math.max(0.45, 1 - (index * 0.04));
+  const projectorMat = document.getElementById('projectorMatBoard');
+  const screeningActiveImg = document.getElementById('screeningActiveImg');
+  const screeningCounter = document.getElementById('screeningCounterPill');
+  const certCatText = document.getElementById('certCatText');
+  const certTitleText = document.getElementById('certTitleText');
+  const certDescText = document.getElementById('certDescText');
+  const screeningTabs = document.querySelectorAll('.screening-tab');
+  const prevCertBtn = document.getElementById('prevCertBtn');
+  const nextCertBtn = document.getElementById('nextCertBtn');
 
-        card.style.zIndex = zIndex;
-        card.style.opacity = opacity;
-        card.style.transform = `translate3d(${offset.x}px, ${offset.y}px, 0) rotate(${offset.r}deg) scale(${scale})`;
-      });
+  function displayCertificate(index) {
+    if (index < 0) index = totalCerts - 1;
+    if (index >= totalCerts) index = 0;
+    currentCertIndex = index;
 
-      if (deckCounter && cards[0]) {
-        const titleEl = cards[0].querySelector('h4');
-        const activeTitle = titleEl ? titleEl.innerText : 'Archive Credential';
-        deckCounter.innerText = `ACTIVE RECORD: ${activeTitle.toUpperCase()} (N° 1 OF ${count})`;
-      }
-    }
+    const cert = CERTIFICATE_DATA[currentCertIndex];
+    if (!cert) return;
 
-    if (deckStage) {
-      const deckObserver = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting && !hasEntered) {
-          hasEntered = true;
-          deckObserver.unobserve(deckStage);
+    // Projection screen reveal with light-sweep
+    if (screeningActiveImg) {
+      screeningActiveImg.style.transition = 'opacity 0.22s ease, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1)';
+      screeningActiveImg.style.opacity = '0.35';
+      screeningActiveImg.style.transform = 'scale(0.97)';
 
-          cards.forEach((card, i) => {
-            card.style.opacity = '0';
-            card.style.transform = `translate3d(0, 50px, 0) scale(0.92)`;
-
-            setTimeout(() => {
-              card.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease';
-              const offset = getCardOffset(i, window.innerWidth <= 768);
-              const zIndex = cards.length - i;
-              const scale = 1 - (i * 0.018);
-              card.style.zIndex = zIndex;
-              card.style.opacity = Math.max(0.45, 1 - (i * 0.04));
-              card.style.transform = `translate3d(${offset.x}px, ${offset.y}px, 0) rotate(${offset.r}deg) scale(${scale})`;
-
-              setTimeout(() => {
-                card.style.transition = '';
-              }, 650);
-            }, i * 40);
-          });
-        }
-      }, { threshold: 0.2 });
-
-      deckObserver.observe(deckStage);
-    } else {
-      updateDeckArrangement();
-    }
-
-    function shuffleArchiveDeck() {
-      if (isShuffling) return;
-      isShuffling = true;
-
-      if (shuffleBtn) {
-        shuffleBtn.disabled = true;
-        shuffleBtn.style.opacity = '0.7';
-      }
-
-      // Step 1: Physical riffle split
-      cards.forEach((card, idx) => {
-        const direction = idx % 2 === 0 ? 1 : -1;
-        const spreadX = direction * (window.innerWidth < 768 ? 70 : 150 + (idx * 5));
-        const spreadY = (idx % 3 - 1) * 16;
-        const spreadRot = direction * (8 + (idx * 0.7));
-
-        card.style.transition = 'transform 0.38s cubic-bezier(0.16, 1, 0.3, 1)';
-        card.style.transform = `translate3d(${spreadX}px, ${spreadY}px, 0) rotate(${spreadRot}deg) scale(0.96)`;
-      });
-
-      // Step 2: Cycle cards
       setTimeout(() => {
-        const cycleCount = Math.floor(cards.length / 3) || 3;
-        const moved = cards.splice(0, cycleCount);
-        cards = cards.concat(moved);
-
-        cards.forEach(card => deckContainer.appendChild(card));
-
-        // Step 3: Re-combine smoothly
-        setTimeout(() => {
-          cards.forEach(card => {
-            card.style.transition = 'transform 0.52s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease';
-          });
-
-          updateDeckArrangement();
-
-          setTimeout(() => {
-            cards.forEach(card => {
-              card.style.transition = '';
-            });
-            isShuffling = false;
-            if (shuffleBtn) {
-              shuffleBtn.disabled = false;
-              shuffleBtn.style.opacity = '1';
-            }
-          }, 550);
-        }, 100);
-      }, 400);
+        screeningActiveImg.src = cert.img;
+        screeningActiveImg.alt = `${cert.title} — ${cert.category}`;
+        screeningActiveImg.style.opacity = '1';
+        screeningActiveImg.style.transform = 'scale(1)';
+      }, 180);
     }
 
-    if (shuffleBtn) {
-      shuffleBtn.addEventListener('click', shuffleArchiveDeck);
+    // Trigger subtle spotlight sweep
+    const sweep = document.querySelector('.screening-spotlight-sweep');
+    if (sweep) {
+      sweep.style.animation = 'none';
+      // Force reflow
+      void sweep.offsetWidth;
+      sweep.style.animation = 'spotlightSweep 1.2s ease-out';
     }
 
-    cards.forEach(card => {
-      card.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          card.click();
-        }
-      });
-    });
+    // Update Counter & Metadata
+    const paddedIndex = String(currentCertIndex + 1).padStart(2, '0');
+    const paddedTotal = String(totalCerts).padStart(2, '0');
+    if (screeningCounter) {
+      screeningCounter.innerText = `RECORD ${paddedIndex} OF ${paddedTotal}`;
+    }
 
-    window.addEventListener('resize', () => {
-      if (!isShuffling && hasEntered) {
-        updateDeckArrangement();
+    if (certCatText) certCatText.innerText = cert.category;
+    if (certTitleText) certTitleText.innerText = cert.title;
+    if (certDescText) certDescText.innerText = cert.desc;
+
+    // Update Thumbnail Tabs & Scroll into view
+    screeningTabs.forEach((tab, i) => {
+      if (i === currentCertIndex) {
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      } else {
+        tab.classList.remove('active');
+        tab.setAttribute('aria-selected', 'false');
       }
-    }, { passive: true });
+    });
   }
 
-  /* =========================================================
-     12. HIGH-PERFORMANCE AMBIENT SMOKE CANVAS
-     Hardware-accelerated, auto-sleeping on hidden tabs
-     ========================================================= */
+  // Prev / Next button clicks
+  if (prevCertBtn) {
+    prevCertBtn.addEventListener('click', () => {
+      displayCertificate(currentCertIndex - 1);
+    });
+  }
 
+  if (nextCertBtn) {
+    nextCertBtn.addEventListener('click', () => {
+      displayCertificate(currentCertIndex + 1);
+    });
+  }
+
+  // Thumbnail Tab clicks & keyboard navigation
+  screeningTabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => {
+      displayCertificate(index);
+    });
+
+    tab.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        e.preventDefault();
+        displayCertificate(currentCertIndex + 1);
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        displayCertificate(currentCertIndex - 1);
+      }
+    });
+  });
+
+  // Clicking projector screen enlarges certificate
+  if (projectorMat) {
+    projectorMat.addEventListener('click', () => {
+      const activeCert = CERTIFICATE_DATA[currentCertIndex];
+      if (activeCert) {
+        openCertificate(activeCert.img, activeCert.title, activeCert.desc);
+      }
+    });
+
+    projectorMat.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        projectorMat.click();
+      }
+    });
+  }
+
+  // Keyboard navigation when user is in certificates section
+  window.addEventListener('keydown', (e) => {
+    // Only intercept if modal is NOT open
+    const modal = document.getElementById('certModal');
+    if (modal && modal.classList.contains('open')) return;
+
+    const certSection = document.getElementById('certificates');
+    if (certSection) {
+      const rect = certSection.getBoundingClientRect();
+      const isInView = rect.top < window.innerHeight * 0.7 && rect.bottom > window.innerHeight * 0.2;
+      if (isInView) {
+        if (e.key === 'ArrowLeft') {
+          displayCertificate(currentCertIndex - 1);
+        } else if (e.key === 'ArrowRight') {
+          displayCertificate(currentCertIndex + 1);
+        }
+      }
+    }
+  });
+
+  // Initial display setup
+  displayCertificate(0);
+
+  /* =========================================================
+     13. HIGH-PERFORMANCE AMBIENT SMOKE CANVAS
+     Subtle atmospheric mist, pause on hidden tab
+     ========================================================= */
   const smokeCanvas = document.getElementById('ambient-smoke');
-  if (smokeCanvas && window.innerWidth > 600) {
+  if (smokeCanvas && window.innerWidth > 600 && !prefersReduced) {
     const ctx = smokeCanvas.getContext('2d');
-    let width = window.innerWidth;
-    let height = window.innerHeight;
-    smokeCanvas.width = width;
-    smokeCanvas.height = height;
+    let sWidth = (smokeCanvas.width = window.innerWidth);
+    let sHeight = (smokeCanvas.height = window.innerHeight);
 
     window.addEventListener('resize', () => {
-      width = window.innerWidth;
-      height = window.innerHeight;
-      smokeCanvas.width = width;
-      smokeCanvas.height = height;
+      sWidth = smokeCanvas.width = window.innerWidth;
+      sHeight = smokeCanvas.height = window.innerHeight;
     }, { passive: true });
 
-    const particles = [];
-    const maxParticles = 12;
+    const smokeParticles = [];
+    const maxSmoke = 10;
 
-    for (let i = 0; i < maxParticles; i++) {
-      particles.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        radius: Math.random() * 110 + 70,
-        vx: (Math.random() - 0.5) * 0.22,
-        vy: -Math.random() * 0.3 - 0.08,
-        alpha: Math.random() * 0.05 + 0.015
+    for (let i = 0; i < maxSmoke; i++) {
+      smokeParticles.push({
+        x: Math.random() * sWidth,
+        y: Math.random() * sHeight,
+        radius: Math.random() * 100 + 60,
+        vx: (Math.random() - 0.5) * 0.18,
+        vy: -Math.random() * 0.24 - 0.06,
+        alpha: Math.random() * 0.04 + 0.012
       });
     }
 
-    let isDocumentVisible = true;
+    let isTabActive = true;
     document.addEventListener('visibilitychange', () => {
-      isDocumentVisible = !document.hidden;
+      isTabActive = !document.hidden;
     });
 
     function renderSmoke() {
-      if (isDocumentVisible) {
-        ctx.clearRect(0, 0, width, height);
+      if (isTabActive) {
+        ctx.clearRect(0, 0, sWidth, sHeight);
 
-        for (let i = 0; i < particles.length; i++) {
-          const p = particles[i];
+        for (let i = 0; i < smokeParticles.length; i++) {
+          const p = smokeParticles[i];
           p.x += p.vx;
           p.y += p.vy;
 
           if (p.y < -p.radius * 2) {
-            p.y = height + p.radius;
-            p.x = Math.random() * width;
+            p.y = sHeight + p.radius;
+            p.x = Math.random() * sWidth;
           }
-          if (p.x < -p.radius) p.x = width + p.radius;
-          if (p.x > width + p.radius) p.x = -p.radius;
+          if (p.x < -p.radius) p.x = sWidth + p.radius;
+          if (p.x > sWidth + p.radius) p.x = -p.radius;
 
           const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.radius);
-          grad.addColorStop(0, `rgba(166, 124, 69, ${p.alpha})`);
-          grad.addColorStop(0.65, `rgba(20, 37, 30, ${p.alpha * 0.35})`);
+          grad.addColorStop(0, `rgba(184, 138, 74, ${p.alpha})`);
+          grad.addColorStop(0.65, `rgba(23, 21, 17, ${p.alpha * 0.3})`);
           grad.addColorStop(1, 'transparent');
 
           ctx.fillStyle = grad;
@@ -692,7 +875,6 @@ document.addEventListener('DOMContentLoaded', () => {
           ctx.fill();
         }
       }
-
       requestAnimationFrame(renderSmoke);
     }
 
@@ -702,7 +884,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* =========================================================
-   13. GLOBAL MODAL CONTROLLERS (CERTIFICATES & BLUEPRINTS)
+   14. GLOBAL MODAL CONTROLLERS (CERTIFICATES & BLUEPRINTS)
    ========================================================= */
 
 function openCertificate(imgSrc, title, desc) {
@@ -713,17 +895,16 @@ function openCertificate(imgSrc, title, desc) {
 
   if (!modal || !modalImg) return;
 
-  if (modalTitle) modalTitle.innerHTML = title;
-  if (modalDesc) modalDesc.innerHTML = desc;
+  if (modalTitle) modalTitle.innerText = title;
+  if (modalDesc) modalDesc.innerText = desc;
 
   modal.classList.add('open');
   modal.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
 
   window.requestAnimationFrame(() => {
-    if (modalImg.getAttribute('src') !== imgSrc) {
-      modalImg.src = imgSrc;
-    }
+    modalImg.src = imgSrc;
+    modalImg.alt = title;
   });
 }
 
