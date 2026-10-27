@@ -1,0 +1,275 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- ATMOSPHERIC GRADIENTS -->
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0B0A08" />
+      <stop offset="50%" stop-color="#14120E" />
+      <stop offset="85%" stop-color="#1C1813" />
+      <stop offset="100%" stop-color="#261E16" />
+    </linearGradient>
+
+    <radialGradient id="lampGlowLeft" cx="240" cy="460" r="320" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#D4A359" stop-opacity="0.32" />
+      <stop offset="40%" stop-color="#B88A4A" stop-opacity="0.14" />
+      <stop offset="80%" stop-color="#8E6837" stop-opacity="0.04" />
+      <stop offset="100%" stop-color="#11110F" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="lampGlowRight" cx="1680" cy="460" r="320" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#D4A359" stop-opacity="0.32" />
+      <stop offset="40%" stop-color="#B88A4A" stop-opacity="0.14" />
+      <stop offset="80%" stop-color="#8E6837" stop-opacity="0.04" />
+      <stop offset="100%" stop-color="#11110F" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="horizonGlow" cx="960" cy="680" r="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#B88A4A" stop-opacity="0.20" />
+      <stop offset="45%" stop-color="#59442B" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#11110F" stop-opacity="0" />
+    </radialGradient>
+
+    <linearGradient id="ironTruss" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#171511" />
+      <stop offset="50%" stop-color="#24201A" />
+      <stop offset="100%" stop-color="#171511" />
+    </linearGradient>
+
+    <linearGradient id="platformFloorGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1A1713" />
+      <stop offset="30%" stop-color="#14120E" />
+      <stop offset="100%" stop-color="#0B0A08" />
+    </linearGradient>
+
+    <linearGradient id="railSteel" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3A332A" />
+      <stop offset="50%" stop-color="#B88A4A" stop-opacity="0.45" />
+      <stop offset="100%" stop-color="#24201A" />
+    </linearGradient>
+  </defs>
+
+  <!-- LAYER 1: DEEP ATMOSPHERIC BACKDROP -->
+  <rect width="1920" height="1080" fill="url(#skyGrad)" />
+  <circle cx="960" cy="680" r="500" fill="url(#horizonGlow)" />
+
+  <!-- LAYER 2: DISTANT ARCHITECTURAL ARCADES (1920s BIRMINGHAM STATION TERMINUS) -->
+  <g opacity="0.25" stroke="#59442B" stroke-width="1.5" fill="none">
+    <!-- Center distant grand arched window / iron vault -->
+    <path d="M 760 680 A 200 200 0 0 1 1160 680 L 1160 740 L 760 740 Z" fill="#14120E" fill-opacity="0.6" />
+    <path d="M 800 680 A 160 160 0 0 1 1120 680" />
+    <path d="M 840 680 A 120 120 0 0 1 1080 680" />
+    <line x1="960" y1="480" x2="960" y2="740" />
+    <line x1="860" y1="540" x2="1060" y2="540" />
+    <line x1="810" y1="600" x2="1110" y2="600" />
+    <line x1="770" y1="650" x2="1150" y2="650" />
+  </g>
+
+  <!-- LAYER 3: CONVERGING DISTANT RAILWAY TRACKS (PERSPECTIVE TO HORIZON) -->
+  <g opacity="0.38">
+    <!-- Sleepers (ties) converging to horizon (960, 680) -->
+    <path d="M 945 684 L 975 684 M 940 690 L 980 690 M 932 698 L 988 698 M 922 708 L 998 708 M 910 720 L 1010 720 M 895 735 L 1025 735 M 876 754 L 1044 754 M 852 778 L 1068 778 M 822 808 L 1098 808 M 785 845 L 1135 845 M 740 890 L 1180 890" stroke="#3A332A" stroke-width="3" />
+    <!-- Center Tracks -->
+    <line x1="952" y1="680" x2="710" y2="920" stroke="url(#railSteel)" stroke-width="3.5" />
+    <line x1="968" y1="680" x2="1210" y2="920" stroke="url(#railSteel)" stroke-width="3.5" />
+    <!-- Secondary siding tracks -->
+    <line x1="940" y1="680" x2="480" y2="920" stroke="#3A332A" stroke-width="2" stroke-opacity="0.4" />
+    <line x1="980" y1="680" x2="1440" y2="920" stroke="#3A332A" stroke-width="2" stroke-opacity="0.4" />
+  </g>
+
+  <!-- LAYER 4: DISTANT STEAM LOCOMOTIVE SILHOUETTE (INCOMING TRAIN) -->
+  <g opacity="0.32" transform="translate(930, 630)">
+    <!-- Boiler & Cabin -->
+    <rect x="10" y="24" width="40" height="26" fill="#0B0A08" />
+    <path d="M 0 35 L 15 24 L 45 24 L 52 35 L 52 50 L 0 50 Z" fill="#11110F" />
+    <!-- Chimney stack -->
+    <rect x="8" y="12" width="7" height="15" fill="#0B0A08" />
+    <!-- Golden Headlamp beam -->
+    <polygon points="6,34 0,33 -180,10 -180,60" fill="#B88A4A" fill-opacity="0.08" />
+    <circle cx="6" cy="34" r="3.5" fill="#D4A359" fill-opacity="0.85" />
+    <!-- Billowing Steam Clouds -->
+    <path d="M 12 10 Q 5 -10 25 -25 Q 50 -40 20 -60 Q -10 -40 -5 -20 Z" fill="#E8D9BA" fill-opacity="0.07" />
+    <path d="M 16 8 Q 30 -15 60 -18 Q 90 -20 70 -45 Q 40 -40 30 -20 Z" fill="#E8D9BA" fill-opacity="0.05" />
+  </g>
+
+  <!-- LAYER 5: INDUSTRIAL IRON ROOF ARCHES & TRUSSES (STATION CANOPY) -->
+  <g fill="none" stroke="url(#ironTruss)" opacity="0.65">
+    <!-- Massive arching roof rib 1 -->
+    <path d="M -40 400 Q 960 -120 1960 400" stroke-width="12" />
+    <path d="M -40 440 Q 960 -80 1960 440" stroke-width="8" stroke="#11110F" />
+    
+    <!-- Arch rib 2 (deeper) -->
+    <path d="M 100 520 Q 960 140 1820 520" stroke-width="7" stroke="#24201A" opacity="0.6" />
+    <path d="M 220 580 Q 960 260 1700 580" stroke-width="5" stroke="#1A1713" opacity="0.45" />
+
+    <!-- Vertical truss hangers & cross-braces -->
+    <g stroke="#3A332A" stroke-width="2.5" opacity="0.5">
+      <line x1="300" y1="260" x2="300" y2="580" />
+      <line x1="450" y1="200" x2="450" y2="600" />
+      <line x1="600" y1="160" x2="600" y2="620" />
+      <line x1="750" y1="130" x2="750" y2="640" />
+      <line x1="960" y1="110" x2="960" y2="650" stroke-width="3" stroke="#B88A4A" stroke-opacity="0.4" />
+      <line x1="1170" y1="130" x2="1170" y2="640" />
+      <line x1="1320" y1="160" x2="1320" y2="620" />
+      <line x1="1470" y1="200" x2="1470" y2="600" />
+      <line x1="1620" y1="260" x2="1620" y2="580" />
+
+      <!-- Diagonal lattice braces -->
+      <line x1="300" y1="260" x2="450" y2="600" />
+      <line x1="450" y1="200" x2="300" y2="580" />
+      <line x1="600" y1="160" x2="750" y2="640" />
+      <line x1="750" y1="130" x2="600" y2="620" />
+      <line x1="1170" y1="130" x2="1320" y2="620" />
+      <line x1="1320" y1="160" x2="1170" y2="640" />
+      <line x1="1470" y1="200" x2="1620" y2="580" />
+      <line x1="1620" y1="260" x2="1470" y2="600" />
+    </g>
+  </g>
+
+  <!-- LAYER 6: LEFT & RIGHT HEAVY CAST-IRON COLUMNS -->
+  <g fill="#14120E" stroke="#24201A" stroke-width="2">
+    <!-- Left Column Assembly -->
+    <rect x="220" y="320" width="36" height="520" />
+    <rect x="210" y="310" width="56" height="18" fill="#1C1813" />
+    <rect x="206" y="810" width="64" height="30" fill="#171511" />
+    <!-- Rivet details -->
+    <circle cx="230" cy="360" r="2.5" fill="#59442B" />
+    <circle cx="246" cy="360" r="2.5" fill="#59442B" />
+    <circle cx="230" cy="420" r="2.5" fill="#59442B" />
+    <circle cx="246" cy="420" r="2.5" fill="#59442B" />
+    <circle cx="230" cy="480" r="2.5" fill="#59442B" />
+    <circle cx="246" cy="480" r="2.5" fill="#59442B" />
+    <circle cx="230" cy="540" r="2.5" fill="#59442B" />
+    <circle cx="246" cy="540" r="2.5" fill="#59442B" />
+
+    <!-- Right Column Assembly -->
+    <rect x="1664" y="320" width="36" height="520" />
+    <rect x="1654" y="310" width="56" height="18" fill="#1C1813" />
+    <rect x="1650" y="810" width="64" height="30" fill="#171511" />
+    <!-- Rivet details -->
+    <circle cx="1674" cy="360" r="2.5" fill="#59442B" />
+    <circle cx="1690" cy="360" r="2.5" fill="#59442B" />
+    <circle cx="1674" cy="420" r="2.5" fill="#59442B" />
+    <circle cx="1690" cy="420" r="2.5" fill="#59442B" />
+    <circle cx="1674" cy="480" r="2.5" fill="#59442B" />
+    <circle cx="1690" cy="480" r="2.5" fill="#59442B" />
+  </g>
+
+  <!-- LAYER 7: VINTAGE ORNATE RAILWAY GASLAMPS (CASTING AMBER HALO) -->
+  <!-- Left Lamp Glow & Fixture -->
+  <circle cx="240" cy="460" r="320" fill="url(#lampGlowLeft)" />
+  <g transform="translate(238, 430)">
+    <!-- Bracket -->
+    <path d="M 0 30 Q -40 20 -40 -10 Q -40 -30 -10 -40 L 0 -40" fill="none" stroke="#B88A4A" stroke-width="4" />
+    <!-- Lantern housing -->
+    <polygon points="-16,-20 16,-20 11,20 -11,20" fill="#171511" stroke="#B88A4A" stroke-width="2" />
+    <!-- Glass panes with warm flame -->
+    <polygon points="-12,-16 12,-16 8,16 -8,16" fill="#D4A359" fill-opacity="0.8" />
+    <ellipse cx="0" cy="2" rx="4" ry="7" fill="#FFF2CE" />
+    <polygon points="0,-32 -20,-20 20,-20" fill="#24201A" stroke="#B88A4A" stroke-width="1.5" />
+    <circle cx="0" cy="-34" r="3" fill="#D4A359" />
+  </g>
+
+  <!-- Right Lamp Glow & Fixture -->
+  <circle cx="1680" cy="460" r="320" fill="url(#lampGlowRight)" />
+  <g transform="translate(1682, 430)">
+    <!-- Bracket -->
+    <path d="M 0 30 Q 40 20 40 -10 Q 40 -30 10 -40 L 0 -40" fill="none" stroke="#B88A4A" stroke-width="4" />
+    <!-- Lantern housing -->
+    <polygon points="-16,-20 16,-20 11,20 -11,20" fill="#171511" stroke="#B88A4A" stroke-width="2" />
+    <!-- Glass panes with warm flame -->
+    <polygon points="-12,-16 12,-16 8,16 -8,16" fill="#D4A359" fill-opacity="0.8" />
+    <ellipse cx="0" cy="2" rx="4" ry="7" fill="#FFF2CE" />
+    <polygon points="0,-32 -20,-20 20,-20" fill="#24201A" stroke="#B88A4A" stroke-width="1.5" />
+    <circle cx="0" cy="-34" r="3" fill="#D4A359" />
+  </g>
+
+  <!-- LAYER 8: RAISED VICTORIAN RAILWAY PLATFORM (FOREGROUND STAGE) -->
+  <g>
+    <!-- Platform Coping Stone (Top Edge of Platform Stage) -->
+    <polygon points="0,830 1920,830 1920,845 0,845" fill="#24201A" stroke="#59442B" stroke-width="1" />
+    <line x1="0" y1="832" x2="1920" y2="832" stroke="#B88A4A" stroke-width="1.5" stroke-opacity="0.4" />
+    
+    <!-- Platform Floor (Granite stone paving with perspective lines) -->
+    <polygon points="0,845 1920,845 1920,1080 0,1080" fill="url(#platformFloorGrad)" />
+    
+    <!-- Stone Joint Scoring Lines across the platform -->
+    <g stroke="#1F1B15" stroke-width="1.5" opacity="0.6">
+      <line x1="120" y1="845" x2="40" y2="1080" />
+      <line x1="280" y1="845" x2="220" y2="1080" />
+      <line x1="460" y1="845" x2="420" y2="1080" />
+      <line x1="640" y1="845" x2="620" y2="1080" />
+      <line x1="820" y1="845" x2="810" y2="1080" />
+      <line x1="1000" y1="845" x2="1000" y2="1080" />
+      <line x1="1180" y1="845" x2="1200" y2="1080" />
+      <line x1="1360" y1="845" x2="1390" y2="1080" />
+      <line x1="1540" y1="845" x2="1590" y2="1080" />
+      <line x1="1720" y1="845" x2="1780" y2="1080" />
+
+      <!-- Horizontal stone block courses -->
+      <line x1="0" y1="890" x2="1920" y2="890" />
+      <line x1="0" y1="945" x2="1920" y2="945" />
+      <line x1="0" y1="1010" x2="1920" y2="1010" />
+    </g>
+
+    <!-- Warm lantern reflections shimmering on wet platform paving -->
+    <ellipse cx="250" cy="870" rx="160" ry="25" fill="#B88A4A" fill-opacity="0.12" />
+    <ellipse cx="1670" cy="870" rx="160" ry="25" fill="#B88A4A" fill-opacity="0.12" />
+    <ellipse cx="960" cy="860" rx="280" ry="18" fill="#B88A4A" fill-opacity="0.06" />
+
+    <!-- Tactile Victorian Platform Edge Warning Checker Line -->
+    <g fill="#B88A4A" fill-opacity="0.18">
+      <rect x="100" y="836" width="20" height="5" />
+      <rect x="140" y="836" width="20" height="5" />
+      <rect x="180" y="836" width="20" height="5" />
+      <rect x="220" y="836" width="20" height="5" />
+      <rect x="260" y="836" width="20" height="5" />
+      <rect x="300" y="836" width="20" height="5" />
+      <rect x="340" y="836" width="20" height="5" />
+      <rect x="380" y="836" width="20" height="5" />
+      <rect x="420" y="836" width="20" height="5" />
+      <rect x="460" y="836" width="20" height="5" />
+      <rect x="500" y="836" width="20" height="5" />
+      <rect x="540" y="836" width="20" height="5" />
+      <rect x="580" y="836" width="20" height="5" />
+      <rect x="620" y="836" width="20" height="5" />
+      <rect x="660" y="836" width="20" height="5" />
+      <rect x="700" y="836" width="20" height="5" />
+      <rect x="740" y="836" width="20" height="5" />
+      <rect x="780" y="836" width="20" height="5" />
+      <rect x="820" y="836" width="20" height="5" />
+      <rect x="860" y="836" width="20" height="5" />
+      <rect x="900" y="836" width="20" height="5" />
+      <rect x="940" y="836" width="20" height="5" />
+      <rect x="980" y="836" width="20" height="5" />
+      <rect x="1020" y="836" width="20" height="5" />
+      <rect x="1060" y="836" width="20" height="5" />
+      <rect x="1100" y="836" width="20" height="5" />
+      <rect x="1140" y="836" width="20" height="5" />
+      <rect x="1180" y="836" width="20" height="5" />
+      <rect x="1220" y="836" width="20" height="5" />
+      <rect x="1260" y="836" width="20" height="5" />
+      <rect x="1300" y="836" width="20" height="5" />
+      <rect x="1340" y="836" width="20" height="5" />
+      <rect x="1380" y="836" width="20" height="5" />
+      <rect x="1420" y="836" width="20" height="5" />
+      <rect x="1460" y="836" width="20" height="5" />
+      <rect x="1500" y="836" width="20" height="5" />
+      <rect x="1540" y="836" width="20" height="5" />
+      <rect x="1580" y="836" width="20" height="5" />
+      <rect x="1620" y="836" width="20" height="5" />
+      <rect x="1660" y="836" width="20" height="5" />
+      <rect x="1700" y="836" width="20" height="5" />
+      <rect x="1740" y="836" width="20" height="5" />
+      <rect x="1780" y="836" width="20" height="5" />
+      <rect x="1820" y="836" width="20" height="5" />
+    </g>
+  </g>
+
+  <!-- LAYER 9: LOW-LYING STEAM / ROLLING FOG MIST -->
+  <g fill="#E8D9BA" opacity="0.08">
+    <ellipse cx="400" cy="830" rx="360" ry="40" />
+    <ellipse cx="960" cy="820" rx="420" ry="45" />
+    <ellipse cx="1500" cy="830" rx="380" ry="40" />
+    <ellipse cx="700" cy="840" rx="260" ry="30" />
+    <ellipse cx="1200" cy="840" rx="280" ry="32" />
+  </g>
+</svg>

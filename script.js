@@ -7,17 +7,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* =========================================================
      1. GLOBAL CONSTANTS & SECTION DEFINITIONS (8 CONVENTIONAL)
+     Home • About • Education • Experience & Leadership • Projects • Skills • Certificates • Contact
      ========================================================= */
   const NAV_OFFSET = 78;
 
   const SECTION_REGISTRY = {
     'home': 'CHAPTER 01 // ARCHIVE ADMISSION',
     'about': 'CHAPTER 02 // DOSSIER & GAZETTE',
-    'projects': 'CHAPTER 03 // CLASSIFIED PROJECTS',
+    'education': 'CHAPTER 03 // ACADEMIC RECORD',
     'leadership': 'CHAPTER 04 // LEADERSHIP & GUILD',
-    'skills': 'CHAPTER 05 // WORKSHOP ARSENAL',
-    'education': 'CHAPTER 06 // ACADEMIC RECORD',
-    'certificates': 'CHAPTER 07 // THE SCREENING ROOM',
+    'projects': 'CHAPTER 05 // CLASSIFIED PROJECTS',
+    'skills': 'CHAPTER 06 // WORKSHOP ARSENAL',
+    'certificates': 'CHAPTER 07 // AUTOMATIC SCREENING ROOM',
     'contact': 'CHAPTER 08 // SECURE TRANSMISSION'
   };
 
@@ -156,9 +157,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const particles = [];
     const maxParticles = isFinePointer ? 85 : 30;
 
-    // Palette: warm gold, amber, brass, bright ivory
+    // Palette: warm parchment, gold, amber, bronze
     const sparkPalette = [
-      'rgba(232, 220, 194,',  // Ivory #E8DCC2
+      'rgba(232, 217, 186,',  // Parchment #E8D9BA
       'rgba(212, 163, 89,',   // Gold #D4A359
       'rgba(184, 138, 74,',   // Antique Gold #B88A4A
       'rgba(255, 170, 70,',   // Warm Furnace Amber
@@ -254,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
         lastMoveTime = now;
         createSparkTrail(e.clientX, e.clientY, 2);
 
-        // Occasional mini radial spark (1 in 40 moves)
+        // Occasional mini radial spark
         if (Math.random() < 0.025) {
           triggerSparkBurst(e.clientX, e.clientY, 6);
         }
@@ -271,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'button, a, .screening-tab, .lens-tab, .case-file-dossier, .workshop-panel'
     );
     interactiveElements.forEach(el => {
-      el.addEventListener('mouseenter', (e) => {
+      el.addEventListener('mouseenter', () => {
         const rect = el.getBoundingClientRect();
         triggerSparkBurst(rect.left + rect.width / 2, rect.top + rect.height / 2, 7);
       }, { passive: true });
@@ -341,41 +342,59 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* =========================================================
-     8. STATS COUNT-UP ANIMATION
+     8. RESTORED STATS COUNT-UP ANIMATION (REQUIREMENT 4 & 13)
+     Preserves authentic numbers and animates smoothly on entry
      ========================================================= */
-  const statNumbers = document.querySelectorAll('.stat-num');
+  const statElements = document.querySelectorAll('.stat-num, .count-up');
   let statsTriggered = false;
 
-  if (statNumbers.length > 0) {
+  if (statElements.length > 0) {
     const statsContainer = document.getElementById('about-stats');
-    const statsObserver = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting && !statsTriggered) {
-        statsTriggered = true;
-        statNumbers.forEach(stat => {
-          const rawText = stat.innerText.trim();
-          const target = parseInt(rawText, 10);
-          const suffix = rawText.replace(/[0-9]/g, '');
-          if (isNaN(target)) return;
 
-          let current = 0;
-          const duration = 1500;
-          const step = Math.max(1, Math.ceil(target / (duration / 20)));
+    const animateStatistics = () => {
+      if (statsTriggered) return;
+      statsTriggered = true;
 
-          const timer = setInterval(() => {
-            current += step;
-            if (current >= target) {
-              stat.innerText = target + suffix;
-              clearInterval(timer);
-            } else {
-              stat.innerText = current + suffix;
-            }
-          }, 20);
-        });
-        statsObserver.unobserve(entries[0].target);
-      }
-    }, { threshold: 0.3 });
+      statElements.forEach(stat => {
+        const targetVal = parseInt(
+          stat.getAttribute('data-target') || stat.innerText.replace(/[^0-9]/g, ''),
+          10
+        );
+        if (isNaN(targetVal)) return;
 
-    if (statsContainer) statsObserver.observe(statsContainer);
+        if (prefersReduced) {
+          stat.innerText = targetVal;
+          return;
+        }
+
+        let current = 0;
+        const duration = 1600;
+        const step = Math.max(1, Math.ceil(targetVal / (duration / 25)));
+
+        const timer = setInterval(() => {
+          current += step;
+          if (current >= targetVal) {
+            stat.innerText = targetVal;
+            clearInterval(timer);
+          } else {
+            stat.innerText = current;
+          }
+        }, 25);
+      });
+    };
+
+    if (statsContainer) {
+      const statsObserver = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          animateStatistics();
+          statsObserver.unobserve(entries[0].target);
+        }
+      }, { threshold: 0.2 });
+
+      statsObserver.observe(statsContainer);
+    } else {
+      animateStatistics();
+    }
   }
 
   /* =========================================================
@@ -548,7 +567,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* =========================================================
-     10. CHAPTER 05: SKILLS WORKSHOP TELEMETRY & AMBIENT GLOW
+     10. CHAPTER 06: SKILLS WORKSHOP TELEMETRY & AMBIENT GLOW
      ========================================================= */
   const workshopPanels = document.querySelectorAll('.workshop-panel');
   if (workshopPanels.length > 0) {
@@ -568,7 +587,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* =========================================================
-     11. CHAPTER 06: THE ROLLING PARCHMENT (EDUCATION)
+     11. CHAPTER 03: THE ROLLING PARCHMENT (EDUCATION)
      ========================================================= */
   const parchmentSheet = document.getElementById('parchmentSheet');
   if (parchmentSheet) {
@@ -585,9 +604,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* =========================================================
-     12. CHAPTER 07: THE ARCHIVE SCREENING ROOM (CERTIFICATES)
-     Framed projection display, aspect ratio preservation,
-     light-sweep reveal, counter, prev/next & thumbnail tabs
+     12. CHAPTER 07: CERTIFICATES — AUTOMATIC INFINITE TAB DISPLAY
+     (REQUIREMENT 11: Continuous cinematic auto-advancing presentation)
      ========================================================= */
   const CERTIFICATE_DATA = [
     {
@@ -678,10 +696,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let currentCertIndex = 0;
   const totalCerts = CERTIFICATE_DATA.length;
+  const AUTOPLAY_CYCLE_MS = 4600; // 4.6 seconds per certificate
 
   const projectorMat = document.getElementById('projectorMatBoard');
   const screeningActiveImg = document.getElementById('screeningActiveImg');
   const screeningCounter = document.getElementById('screeningCounterPill');
+  const activeTabCode = document.getElementById('screeningActiveTabCode');
+  const activeTabTitle = document.getElementById('screeningActiveTabTitle');
+  const countdownBar = document.getElementById('screeningCountdownBar');
   const certCatText = document.getElementById('certCatText');
   const certTitleText = document.getElementById('certTitleText');
   const certDescText = document.getElementById('certDescText');
@@ -689,25 +711,38 @@ document.addEventListener('DOMContentLoaded', () => {
   const prevCertBtn = document.getElementById('prevCertBtn');
   const nextCertBtn = document.getElementById('nextCertBtn');
 
-  function displayCertificate(index) {
-    if (index < 0) index = totalCerts - 1;
-    if (index >= totalCerts) index = 0;
-    currentCertIndex = index;
+  let cycleStartTime = null;
+  let isCertPaused = false;
+  let isCertSectionVisible = false;
 
+  function displayCertificate(index, isManual = false) {
+    currentCertIndex = (index + totalCerts) % totalCerts;
     const cert = CERTIFICATE_DATA[currentCertIndex];
     if (!cert) return;
 
-    // Projection screen reveal with light-sweep
+    // Reset cycle timer on advance
+    cycleStartTime = performance.now();
+    if (countdownBar) countdownBar.style.width = '0%';
+
+    // Update active tab header (Requirement 11)
+    const paddedIndex = String(currentCertIndex + 1).padStart(2, '0');
+    const paddedTotal = String(totalCerts).padStart(2, '0');
+    
+    if (activeTabCode) activeTabCode.innerText = `REC // ${paddedIndex}`;
+    if (activeTabTitle) activeTabTitle.innerText = cert.title;
+    if (screeningCounter) screeningCounter.innerText = `RECORD ${paddedIndex} OF ${paddedTotal}`;
+
+    // Smooth horizontal slide & crossfade transition
     if (screeningActiveImg) {
-      screeningActiveImg.style.transition = 'opacity 0.22s ease, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1)';
+      screeningActiveImg.style.transition = 'opacity 0.22s ease, transform 0.26s cubic-bezier(0.16, 1, 0.3, 1)';
       screeningActiveImg.style.opacity = '0.35';
-      screeningActiveImg.style.transform = 'scale(0.97)';
+      screeningActiveImg.style.transform = isManual ? 'translateX(12px) scale(0.98)' : 'translateX(8px) scale(0.99)';
 
       setTimeout(() => {
         screeningActiveImg.src = cert.img;
         screeningActiveImg.alt = `${cert.title} — ${cert.category}`;
         screeningActiveImg.style.opacity = '1';
-        screeningActiveImg.style.transform = 'scale(1)';
+        screeningActiveImg.style.transform = 'translateX(0) scale(1)';
       }, 180);
     }
 
@@ -715,23 +750,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const sweep = document.querySelector('.screening-spotlight-sweep');
     if (sweep) {
       sweep.style.animation = 'none';
-      // Force reflow
       void sweep.offsetWidth;
       sweep.style.animation = 'spotlightSweep 1.2s ease-out';
     }
 
-    // Update Counter & Metadata
-    const paddedIndex = String(currentCertIndex + 1).padStart(2, '0');
-    const paddedTotal = String(totalCerts).padStart(2, '0');
-    if (screeningCounter) {
-      screeningCounter.innerText = `RECORD ${paddedIndex} OF ${paddedTotal}`;
-    }
-
+    // Update Metadata Text
     if (certCatText) certCatText.innerText = cert.category;
     if (certTitleText) certTitleText.innerText = cert.title;
     if (certDescText) certDescText.innerText = cert.desc;
 
-    // Update Thumbnail Tabs & Scroll into view
+    // Update Thumbnail Tabs & Scroll active into view
     screeningTabs.forEach((tab, i) => {
       if (i === currentCertIndex) {
         tab.classList.add('active');
@@ -744,32 +772,92 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Prev / Next button clicks
+  // Automatic infinite cycling loop with countdown bar
+  function runCertificateAutoplay(timestamp) {
+    if (!cycleStartTime) cycleStartTime = timestamp;
+
+    if (!isCertPaused && isCertSectionVisible && !document.hidden && !prefersReduced) {
+      const elapsed = timestamp - cycleStartTime;
+      const progress = Math.min(100, (elapsed / AUTOPLAY_CYCLE_MS) * 100);
+
+      if (countdownBar) {
+        countdownBar.style.width = `${progress}%`;
+      }
+
+      if (elapsed >= AUTOPLAY_CYCLE_MS) {
+        displayCertificate(currentCertIndex + 1);
+        cycleStartTime = timestamp;
+      }
+    } else {
+      // Advance cycle start time when paused so countdown does not jump
+      cycleStartTime = timestamp;
+    }
+
+    requestAnimationFrame(runCertificateAutoplay);
+  }
+
+  // Viewport Observer for Certificates Section (pauses auto-cycle when out of view)
+  const certSection = document.getElementById('certificates');
+  if (certSection) {
+    const certObserver = new IntersectionObserver((entries) => {
+      isCertSectionVisible = entries[0].isIntersecting;
+      if (isCertSectionVisible) {
+        cycleStartTime = performance.now();
+      }
+    }, { threshold: 0.15 });
+
+    certObserver.observe(certSection);
+  }
+
+  // Pause on hover over presentation area
+  const certFrame = document.querySelector('.screening-projector-frame');
+  const certDossier = document.querySelector('.screening-dossier-column');
+  [certFrame, certDossier].forEach(el => {
+    if (el) {
+      el.addEventListener('mouseenter', () => { isCertPaused = true; });
+      el.addEventListener('mouseleave', () => { 
+        isCertPaused = false; 
+        cycleStartTime = performance.now();
+      });
+    }
+  });
+
+  // Pause on browser tab blur / hide
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      isCertPaused = true;
+    } else {
+      isCertPaused = false;
+      cycleStartTime = performance.now();
+    }
+  });
+
+  // Prev / Next button manual clicks
   if (prevCertBtn) {
     prevCertBtn.addEventListener('click', () => {
-      displayCertificate(currentCertIndex - 1);
+      displayCertificate(currentCertIndex - 1, true);
     });
   }
 
   if (nextCertBtn) {
     nextCertBtn.addEventListener('click', () => {
-      displayCertificate(currentCertIndex + 1);
+      displayCertificate(currentCertIndex + 1, true);
     });
   }
 
   // Thumbnail Tab clicks & keyboard navigation
   screeningTabs.forEach((tab, index) => {
     tab.addEventListener('click', () => {
-      displayCertificate(index);
+      displayCertificate(index, true);
     });
 
     tab.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
         e.preventDefault();
-        displayCertificate(currentCertIndex + 1);
+        displayCertificate(currentCertIndex + 1, true);
       } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
         e.preventDefault();
-        displayCertificate(currentCertIndex - 1);
+        displayCertificate(currentCertIndex - 1, true);
       }
     });
   });
@@ -793,26 +881,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Keyboard navigation when user is in certificates section
   window.addEventListener('keydown', (e) => {
-    // Only intercept if modal is NOT open
     const modal = document.getElementById('certModal');
     if (modal && modal.classList.contains('open')) return;
 
-    const certSection = document.getElementById('certificates');
     if (certSection) {
       const rect = certSection.getBoundingClientRect();
       const isInView = rect.top < window.innerHeight * 0.7 && rect.bottom > window.innerHeight * 0.2;
       if (isInView) {
         if (e.key === 'ArrowLeft') {
-          displayCertificate(currentCertIndex - 1);
+          displayCertificate(currentCertIndex - 1, true);
         } else if (e.key === 'ArrowRight') {
-          displayCertificate(currentCertIndex + 1);
+          displayCertificate(currentCertIndex + 1, true);
         }
       }
     }
   });
 
-  // Initial display setup
+  // Initial display setup & launch continuous presentation
   displayCertificate(0);
+  requestAnimationFrame(runCertificateAutoplay);
 
   /* =========================================================
      13. HIGH-PERFORMANCE AMBIENT SMOKE CANVAS

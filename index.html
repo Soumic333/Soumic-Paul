@@ -11,7 +11,7 @@
   <!-- GOOGLE FONTS: Oswald & Bebas Neue (Condensed Display), Cormorant Garamond & Playfair Display (Editorial Serif), Libre Franklin (Interface), DM Mono (Metadata) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Libre+Franklin:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Oswald:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Libre+Franklin:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Oswald:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -60,10 +60,10 @@
         <nav>
           <a href="#home"><span class="nav-dot"></span>Home</a>
           <a href="#about"><span class="nav-dot"></span>About</a>
-          <a href="#projects"><span class="nav-dot"></span>Projects</a>
-          <a href="#leadership"><span class="nav-dot"></span>Leadership</a>
-          <a href="#skills"><span class="nav-dot"></span>Skills</a>
           <a href="#education"><span class="nav-dot"></span>Education</a>
+          <a href="#leadership"><span class="nav-dot"></span>Experience &amp; Leadership</a>
+          <a href="#projects"><span class="nav-dot"></span>Projects</a>
+          <a href="#skills"><span class="nav-dot"></span>Skills</a>
           <a href="#certificates"><span class="nav-dot"></span>Certificates</a>
           <a href="#contact"><span class="nav-dot"></span>Contact</a>
         </nav>
@@ -79,51 +79,47 @@
   </header>
 
   <main id="top" class="archive-main">
-
-    <!-- =========================================================
-         SECTION 01: HOME — CINEMATIC FULL-VIEWPORT HERO
-         CENTERED SP_HERO PORTRAIT & EDITORIAL DISPLAY HEADLINES
-         ========================================================= -->
     <section class="archive-chapter hero-chapter poster-hero" id="home">
-      <!-- GASLIGHT LANTERNS & SELECTIVE AMBIENT GLOW -->
+      <!-- ATMOSPHERIC SVG RAILWAY PLATFORM BACKGROUND -->
       <div class="hero-backdrop" aria-hidden="true">
+        <img src="assets/hero_railway_platform.svg" alt="1920s British Railway Station Platform" class="hero-railway-svg" />
         <div class="gaslight-lantern lamp-left"></div>
         <div class="gaslight-lantern lamp-right"></div>
+      </div>
+
+      <!-- OVERSIZED HORIZONTAL CONTINUOUS MARQUEE WALL BEHIND PORTRAIT -->
+      <div class="hero-marquee-wall" aria-hidden="true">
+        <div class="marquee-row">
+          <div class="marquee-track-ltr">
+            <span class="marquee-text-chunk">SOUMIC PAUL <span class="marquee-bullet">✦</span> SOUMIC PAUL <span class="marquee-bullet">✦</span> SOUMIC PAUL <span class="marquee-bullet">✦</span> SOUMIC PAUL <span class="marquee-bullet">✦</span></span>
+            <span class="marquee-text-chunk">SOUMIC PAUL <span class="marquee-bullet">✦</span> SOUMIC PAUL <span class="marquee-bullet">✦</span> SOUMIC PAUL <span class="marquee-bullet">✦</span> SOUMIC PAUL <span class="marquee-bullet">✦</span></span>
+          </div>
+        </div>
+        <div class="marquee-row">
+          <div class="marquee-track-rtl">
+            <span class="marquee-text-chunk">ELECTRICAL ENGINEER <span class="marquee-bullet">✦</span> CREATIVE TECHNOLOGIST <span class="marquee-bullet">✦</span> AI FILMMAKER <span class="marquee-bullet">✦</span> SOUMIC PAUL <span class="marquee-bullet">✦</span></span>
+            <span class="marquee-text-chunk">ELECTRICAL ENGINEER <span class="marquee-bullet">✦</span> CREATIVE TECHNOLOGIST <span class="marquee-bullet">✦</span> AI FILMMAKER <span class="marquee-bullet">✦</span> SOUMIC PAUL <span class="marquee-bullet">✦</span></span>
+          </div>
+        </div>
       </div>
 
       <div class="poster-hero-container">
         <!-- TOP DOCKET TAG -->
         <div class="poster-archival-header">
-          <span class="docket-tag">SHELBY CREATIVE ARCHIVE</span>
+          <span class="docket-tag">SOUMIC PAUL // CREATIVE PORTFOLIO</span>
           <span class="docket-sep">•</span>
-          <span class="docket-tag">DIRECT WIRE // REF: SP-2026</span>
+          <span class="docket-tag">DIRECT WIRE REF: SP-2026</span>
           <span class="docket-sep">•</span>
           <span class="docket-tag">BIRMINGHAM TO DHAKA</span>
         </div>
 
-        <!-- POSTER HEADLINE GROUP -->
-        <div class="poster-headline-block">
-          <h1 class="poster-main-title">SOUMIC PAUL</h1>
-          <div class="poster-motto">
-            <span class="poster-motto-text">An Engineer by Discipline. A Creator by Instinct.</span>
-          </div>
-          <div class="poster-disciplines-bar">
-            <span>AI FILMMAKING</span>
-            <span class="bullet">✦</span>
-            <span>CREATIVE TECHNOLOGY</span>
-            <span class="bullet">✦</span>
-            <span>ELECTRICAL ENGINEERING</span>
-            <span class="bullet">✦</span>
-            <span>VISUAL STORYTELLING</span>
-          </div>
-        </div>
-
-        <!-- CENTERED CINEMATIC FOREGROUND PORTRAIT (SP_HERO) -->
+        <!-- CENTERED CINEMATIC FOREGROUND PORTRAIT (SP_HERO) STANDING ON PLATFORM -->
         <div class="hero-center-portrait-wrap">
           <div class="portrait-halo-light" aria-hidden="true"></div>
           <div class="portrait-stage">
             <img src="assets/SP_HERO.png" alt="Soumic Paul in dark vintage tailored suit with sunglasses" class="hero-poster-img" />
           </div>
+          <div class="portrait-platform-shadow" aria-hidden="true"></div>
           <div class="portrait-archival-tag">
             <span class="tag-fig">FIGURE 01</span>
             <span class="tag-title">SOUMIC PAUL // THE CREATIVE ARCHIVIST</span>
@@ -133,24 +129,29 @@
 
         <!-- POSTER FOOTER / LEAD COPY & ACTIONS -->
         <div class="poster-lead-block">
+          <div class="poster-motto">
+            <h2 class="poster-motto-text">An Engineer by Discipline. A Creator by Instinct.</h2>
+          </div>
+
           <p class="poster-synopsis">
-            Electrical &amp; Electronic Engineering undergraduate blending technology, business thinking, and leadership.
+            Electrical &amp; Electronic Engineering undergraduate blending hands-on technology, strategic business thinking, and AI-directed cinematic storytelling.
           </p>
 
           <div class="poster-cta-row">
             <a href="#projects" class="archive-btn primary-brass">
-              <span>✦ OPEN PROJECTS</span>
+              <span>EXPLORE MY WORK</span>
               <span class="btn-arrow">→</span>
             </a>
-            <a href="#about" class="archive-btn secondary-charcoal">
-              <span>READ DOSSIER</span>
+            <a href="assets/Soumic_Kundu_Paul_CV.pdf" target="_blank" rel="noreferrer" class="archive-btn secondary-charcoal">
+              <span>VIEW MY PROFILE (CV)</span>
+              <span>↗</span>
             </a>
           </div>
 
           <!-- CINEMATIC BILLING BLOCK -->
           <div class="poster-billing-strip">
             <div class="billing-col">
-              <span class="bill-label">STATION:</span>
+              <span class="bill-label">LOCATION:</span>
               <strong class="bill-val">DHAKA, BANGLADESH</strong>
             </div>
             <div class="billing-sep">|</div>
@@ -160,8 +161,8 @@
             </div>
             <div class="billing-sep">|</div>
             <div class="billing-col">
-              <span class="bill-label">SPECIALIZATION:</span>
-              <strong class="bill-val">ENGINEERING + BUSINESS + AI</strong>
+              <span class="bill-label">DISCIPLINES:</span>
+              <strong class="bill-val">ENGINEERING + AI CINEMA + LEADERSHIP</strong>
             </div>
           </div>
 
@@ -199,11 +200,7 @@
       </div>
     </div>
 
-    <!-- =========================================================
-         SECTION 02: ABOUT — THE PERSONAL DOSSIER
-         SP_ABOUT PORTRAIT WITH ARCHIVAL CORNER BRACKETS & GAZETTE
-         ========================================================= -->
-    <section class="archive-chapter about-chapter" id="about">
+<section class="archive-chapter about-chapter" id="about">
       <div class="chapter-badge">ABOUT // PERSONAL MEMORANDUM</div>
       
       <div class="about-grid">
@@ -242,11 +239,26 @@
           </div>
 
           <!-- PROVEN RECORD COUNTERS -->
+                    <!-- PROVEN RECORD COUNTERS (RESTORED NUMERICAL VALUES) -->
           <div class="archival-stats" id="about-stats">
             <div class="stat-card">
-              <div class="stat-number"><span class="count-up" data-target="50">0</span><span class="plus">+</span></div>
+              <div class="stat-number"><span class="stat-num count-up" data-target="50">50</span><span class="plus">+</span></div>
               <div class="stat-label">Slide Designs For Business Case Competitions</div>
             </div>
+            <div class="stat-card">
+              <div class="stat-number"><span class="stat-num count-up" data-target="200">200</span><span class="plus">+</span></div>
+              <div class="stat-label">Event Participants Coordinated in Robotics</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number"><span class="stat-num count-up" data-target="70">70</span><span class="plus">+</span></div>
+              <div class="stat-label">Volunteers Mobilized &amp; Mentored</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number"><span class="stat-num count-up" data-target="15">15</span><span class="plus">+</span></div>
+              <div class="stat-label">Global &amp; National Honors / Finalist Recognitions</div>
+            </div>
+          </div>
+        </div>
             <div class="stat-card">
               <div class="stat-number"><span class="count-up" data-target="200">0</span><span class="plus">+</span></div>
               <div class="stat-label">Event Participants Coordinated in Robotics</div>
@@ -371,10 +383,189 @@
       </div>
     </section>
 
-    <!-- =========================================================
-         SECTION 03: PROJECTS — CASE FILES & THE NEXT REEL
-         ========================================================= -->
-    <section class="archive-chapter work-chapter" id="projects">
+<section class="archive-chapter education-chapter" id="education">
+      <div class="chapter-badge">EDUCATION // ACADEMIC RECORD</div>
+
+      <div class="section-heading-centered">
+        <p class="section-kicker">INSTITUTIONAL FOUNDATIONS</p>
+        <h2 class="section-title">The parchment records that <em>sharpened the mind.</em></h2>
+        <div class="brass-rule"></div>
+      </div>
+
+      <div class="parchment-scroll-stage" id="parchmentScrollStage">
+        <!-- TOP ROLLER BAR -->
+        <div class="parchment-roller-bar roller-top">
+          <div class="roller-finial finial-left"></div>
+          <div class="roller-core"></div>
+          <div class="roller-finial finial-right"></div>
+        </div>
+
+        <!-- UNROLLING PARCHMENT SHEET -->
+        <div class="parchment-sheet" id="parchmentSheet">
+          <div class="parchment-header-crest">
+            <span class="crest-code">ACADEMIA • CURRICULUM • EST. 2020</span>
+            <h3 class="parchment-main-title">OFFICIAL REGISTRY OF SCHOLARSHIP</h3>
+            <p class="parchment-subtitle">Authentic academic qualifications and foundational training</p>
+            <div class="parchment-flourish">❦</div>
+          </div>
+
+          <div class="parchment-entries-list">
+            <!-- 1. AUST -->
+            <div class="parchment-entry">
+              <div class="entry-seal">✦</div>
+              <div class="entry-body">
+                <div class="entry-meta">
+                  <span class="entry-years">2023 – PRESENT</span>
+                  <span class="entry-tag">BACHELOR OF SCIENCE</span>
+                </div>
+                <h4 class="entry-degree">B.Sc. in Electrical &amp; Electronic Engineering</h4>
+                <p class="entry-school">Ahsanullah University of Science &amp; Technology (AUST)</p>
+                <p class="entry-details">Rigorous curriculum in circuits, power electronics, signals &amp; systems, computational modeling, and strategic project execution.</p>
+              </div>
+            </div>
+
+            <!-- 2. AKMCC -->
+            <div class="parchment-entry">
+              <div class="entry-seal">✦</div>
+              <div class="entry-body">
+                <div class="entry-meta">
+                  <span class="entry-years">2020 – 2022</span>
+                  <span class="entry-tag">HIGHER SECONDARY CERTIFICATE</span>
+                </div>
+                <h4 class="entry-degree">Higher Secondary Certificate (HSC) — Science</h4>
+                <p class="entry-school">Abdul Kadir Mollah City College (AKMCC)</p>
+                <p class="entry-details">Advanced analytical focus in Higher Mathematics, Applied Physics, and Chemical Sciences.</p>
+              </div>
+            </div>
+
+            <!-- 3. GSCA -->
+            <div class="parchment-entry">
+              <div class="entry-seal">✦</div>
+              <div class="entry-body">
+                <div class="entry-meta">
+                  <span class="entry-years">UNTIL 2020</span>
+                  <span class="entry-tag">SECONDARY SCHOOL CERTIFICATE</span>
+                </div>
+                <h4 class="entry-degree">Secondary School Certificate (SSC) — Science</h4>
+                <p class="entry-school">Gazipur Shaheen Cadet Academy (GSCA)</p>
+                <p class="entry-details">Foundational science, cadency discipline, organizational structure, and analytical problem-solving.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="parchment-footer-stamp">
+            <div class="wax-seal-emblem">
+              <span>VERIFIED</span>
+              <strong>AUST EEE</strong>
+            </div>
+            <div class="stamp-citation">
+              <span>ARCHIVAL CERTIFICATE // REF: EDU-SP-2026</span>
+              <span>AUTHENTICATED BY ORDER OF THE ARCHIVIST</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BOTTOM ROLLER BAR -->
+        <div class="parchment-roller-bar roller-bottom">
+          <div class="roller-finial finial-left"></div>
+          <div class="roller-core"></div>
+          <div class="roller-finial finial-right"></div>
+        </div>
+      </div>
+    </section>
+
+<section class="archive-chapter experience-chapter" id="leadership">
+      <div class="chapter-badge">LEADERSHIP // OPERATIONS &amp; COMMISSIONS</div>
+
+      <div class="section-heading-centered">
+        <p class="section-kicker">OPERATIONAL COMMAND &amp; CASE STRATEGY</p>
+        <h2 class="section-title">Investigating leadership through a <em>cinematic lens.</em></h2>
+        <div class="brass-rule"></div>
+      </div>
+
+      <div class="lens-investigation-layout">
+        <!-- THE CAMERA LENS VIEWING MECHANISM -->
+        <div class="lens-viewfinder-column">
+          <div class="cine-lens-barrel" id="cineLensBarrel">
+            <!-- REVOLVING OUTER BEZEL -->
+            <div class="lens-outer-bezel">
+              <span class="bezel-mark mark-top">50mm F/1.4</span>
+              <span class="bezel-mark mark-right">COATED OPTICS</span>
+              <span class="bezel-mark mark-bottom">N° 1926-SP</span>
+              <span class="bezel-mark mark-left">ANAMORPHIC</span>
+            </div>
+
+            <!-- FIXED HIGH-CONTRAST OPTICAL VIEWING DISC -->
+            <div class="lens-sight-glass">
+              <div class="glass-glare"></div>
+              <div class="viewfinder-grid-lines">
+                <span class="v-crosshair"></span>
+              </div>
+              <!-- AUST_RC_clean.png has transparent background with crisp ivory text & green robot -->
+              <img src="assets/AUST_RC_clean.png" alt="AUST Robotics Club Emblem" class="lens-subject-img" id="lensSubjectImg" />
+            </div>
+
+            <div class="lens-readouts-bar">
+              <span id="lensShutterSpec">SHUTTER: 1/1000s</span>
+              <span id="lensApertureSpec">APERTURE: f/1.4</span>
+              <span id="lensFocalSpec">FOCUS: 50mm PRIME</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- DOSSIER & RECORD SELECTION COLUMN -->
+        <div class="lens-dossier-column">
+          <!-- SELECTOR TABS -->
+          <div class="lens-record-tabs" role="tablist" aria-label="Select leadership case file">
+            <button class="lens-tab active" role="tab" aria-selected="true" data-index="0">
+              <span class="tab-code">REC // 01</span>
+              <span class="tab-label">AUST ROBOTICS CLUB</span>
+            </button>
+            <button class="lens-tab" role="tab" aria-selected="false" data-index="1">
+              <span class="tab-code">REC // 02</span>
+              <span class="tab-label">TICKIFY AMBASSADOR</span>
+            </button>
+            <button class="lens-tab" role="tab" aria-selected="false" data-index="2">
+              <span class="tab-code">REC // 03</span>
+              <span class="tab-label">HSBC BUSINESS CASE</span>
+            </button>
+            <button class="lens-tab" role="tab" aria-selected="false" data-index="3">
+              <span class="tab-code">REC // 04</span>
+              <span class="tab-label">PRISM AI CREATIVE</span>
+            </button>
+          </div>
+
+          <!-- ACTIVE DOSSIER RECORD DISPLAY -->
+          <div class="lens-active-dossier" id="lensActiveDossier">
+            <div class="dossier-card-masthead">
+              <span class="dossier-index-mark">REC // 01</span>
+              <span class="dossier-stamp-seal">OFFICIAL DISPATCH RECORD</span>
+            </div>
+            <div class="dossier-lead-row">
+              <div>
+                <p class="dossier-org-name">AUST ROBOTICS CLUB</p>
+                <h3 class="dossier-position-title">Assistant Director – Administration</h3>
+              </div>
+              <span class="dossier-tenure-badge">JAN 2025 – PRESENT</span>
+            </div>
+            <p class="dossier-body-narrative">
+              Oversee high-stakes administrative operations, coordinate cross-team engineering workflows, govern schedules, and drive large-scale organizational initiatives across the university.
+            </p>
+            <ul class="dossier-verified-points">
+              <li>Led end-to-end planning and flawless execution of 2 major national robotics events.</li>
+              <li>Coordinated 200+ event participants and 70+ operational volunteers on the ground.</li>
+              <li>Managed vendor negotiations, equipment procurement, and comprehensive event logistics.</li>
+              <li>Engineered cross-functional frameworks for prompt conflict resolution and execution.</li>
+            </ul>
+            <div class="dossier-action-bar">
+              <span class="dossier-citation-code">REF: ARC-ADM-2025-SP</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section class="archive-chapter work-chapter" id="projects">
       <div class="chapter-badge">PROJECTS // CASE FILES &amp; PRODUCTIONS</div>
 
       <div class="section-heading-centered">
@@ -518,108 +709,40 @@
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- =========================================================
-         SECTION 04: LEADERSHIP — THE CINEMATIC CAMERA LENS
-         TRANSPARENT HIGH-CONTRAST LOGO & REVOLVING BEZEL
-         ========================================================= -->
-    <section class="archive-chapter experience-chapter" id="leadership">
-      <div class="chapter-badge">LEADERSHIP // OPERATIONS &amp; COMMISSIONS</div>
-
-      <div class="section-heading-centered">
-        <p class="section-kicker">OPERATIONAL COMMAND &amp; CASE STRATEGY</p>
-        <h2 class="section-title">Investigating leadership through a <em>cinematic lens.</em></h2>
-        <div class="brass-rule"></div>
-      </div>
-
-      <div class="lens-investigation-layout">
-        <!-- THE CAMERA LENS VIEWING MECHANISM -->
-        <div class="lens-viewfinder-column">
-          <div class="cine-lens-barrel" id="cineLensBarrel">
-            <!-- REVOLVING OUTER BEZEL -->
-            <div class="lens-outer-bezel">
-              <span class="bezel-mark mark-top">50mm F/1.4</span>
-              <span class="bezel-mark mark-right">COATED OPTICS</span>
-              <span class="bezel-mark mark-bottom">N° 1926-SP</span>
-              <span class="bezel-mark mark-left">ANAMORPHIC</span>
+    
+      <!-- UPCOMING AI WORK / THE NEXT REEL -->
+      <article class="upcoming-reel-module">
+        <div class="upcoming-reel-strip">
+          <span class="reel-docket-badge">THE NEXT REEL // IN PRODUCTION</span>
+          <span class="reel-status-pill">COMING SOON // 2026</span>
+        </div>
+        <div class="upcoming-reel-grid">
+          <div class="reel-media-placeholder">
+            <div class="reel-film-perforations"></div>
+            <div class="reel-film-perforations-bottom"></div>
+            <div class="reel-slate-text">
+              <span>CASE FILE // 03</span><br>
+              <strong>CINEMATIC AI COMMERCIALS</strong><br>
+              <span>DIFFUSION SYNTHESIS &amp; SOUNDSCAPES</span>
             </div>
-
-            <!-- FIXED HIGH-CONTRAST OPTICAL VIEWING DISC -->
-            <div class="lens-sight-glass">
-              <div class="glass-glare"></div>
-              <div class="viewfinder-grid-lines">
-                <span class="v-crosshair"></span>
-              </div>
-              <!-- AUST_RC_clean.png has transparent background with crisp ivory text & green robot -->
-              <img src="assets/AUST_RC_clean.png" alt="AUST Robotics Club Emblem" class="lens-subject-img" id="lensSubjectImg" />
-            </div>
-
-            <div class="lens-readouts-bar">
-              <span id="lensShutterSpec">SHUTTER: 1/1000s</span>
-              <span id="lensApertureSpec">APERTURE: f/1.4</span>
-              <span id="lensFocalSpec">FOCUS: 50mm PRIME</span>
+          </div>
+          <div class="reel-content-details">
+            <p class="section-kicker">CINEMATIC AI EXPERIMENTAL LAB</p>
+            <h3>Generative Advertising &amp; Narrative Films</h3>
+            <p>Directing high-concept visual storyboards, prompt choreography, neural camera motion, and cinematic soundscapes for next-generation brands and festival competition circuits.</p>
+            <div class="reel-pipeline-pills">
+              <span>Midjourney v6</span>
+              <span>Runway Gen-3</span>
+              <span>Kling AI</span>
+              <span>Premiere Pro</span>
+              <span>DaVinci Resolve</span>
             </div>
           </div>
         </div>
-
-        <!-- DOSSIER & RECORD SELECTION COLUMN -->
-        <div class="lens-dossier-column">
-          <!-- SELECTOR TABS -->
-          <div class="lens-record-tabs" role="tablist" aria-label="Select leadership case file">
-            <button class="lens-tab active" role="tab" aria-selected="true" data-index="0">
-              <span class="tab-code">REC // 01</span>
-              <span class="tab-label">AUST ROBOTICS CLUB</span>
-            </button>
-            <button class="lens-tab" role="tab" aria-selected="false" data-index="1">
-              <span class="tab-code">REC // 02</span>
-              <span class="tab-label">TICKIFY AMBASSADOR</span>
-            </button>
-            <button class="lens-tab" role="tab" aria-selected="false" data-index="2">
-              <span class="tab-code">REC // 03</span>
-              <span class="tab-label">HSBC BUSINESS CASE</span>
-            </button>
-            <button class="lens-tab" role="tab" aria-selected="false" data-index="3">
-              <span class="tab-code">REC // 04</span>
-              <span class="tab-label">PRISM AI CREATIVE</span>
-            </button>
-          </div>
-
-          <!-- ACTIVE DOSSIER RECORD DISPLAY -->
-          <div class="lens-active-dossier" id="lensActiveDossier">
-            <div class="dossier-card-masthead">
-              <span class="dossier-index-mark">REC // 01</span>
-              <span class="dossier-stamp-seal">OFFICIAL DISPATCH RECORD</span>
-            </div>
-            <div class="dossier-lead-row">
-              <div>
-                <p class="dossier-org-name">AUST ROBOTICS CLUB</p>
-                <h3 class="dossier-position-title">Assistant Director – Administration</h3>
-              </div>
-              <span class="dossier-tenure-badge">JAN 2025 – PRESENT</span>
-            </div>
-            <p class="dossier-body-narrative">
-              Oversee high-stakes administrative operations, coordinate cross-team engineering workflows, govern schedules, and drive large-scale organizational initiatives across the university.
-            </p>
-            <ul class="dossier-verified-points">
-              <li>Led end-to-end planning and flawless execution of 2 major national robotics events.</li>
-              <li>Coordinated 200+ event participants and 70+ operational volunteers on the ground.</li>
-              <li>Managed vendor negotiations, equipment procurement, and comprehensive event logistics.</li>
-              <li>Engineered cross-functional frameworks for prompt conflict resolution and execution.</li>
-            </ul>
-            <div class="dossier-action-bar">
-              <span class="dossier-citation-code">REF: ARC-ADM-2025-SP</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      </article>
     </section>
 
-    <!-- =========================================================
-         SECTION 05: SKILLS — THE CREATIVE ENGINEERING WORKSHOP
-         3 INTERACTIVE INSTRUMENT PANELS WITH AUTHENTIC SVG ICONS
-         ========================================================= -->
-    <section class="archive-chapter skills-chapter" id="skills">
+<section class="archive-chapter skills-chapter" id="skills">
       <div class="chapter-badge">SKILLS // CREATIVE ENGINEERING WORKSHOP</div>
 
       <div class="section-heading-centered">
@@ -827,106 +950,7 @@
       </div>
     </section>
 
-    <!-- =========================================================
-         SECTION 06: EDUCATION — THE ROLLING ACADEMIC ARCHIVE
-         UNROLLING VINTAGE PARCHMENT SCROLL WITH WAX SEAL
-         ========================================================= -->
-    <section class="archive-chapter education-chapter" id="education">
-      <div class="chapter-badge">EDUCATION // ACADEMIC RECORD</div>
-
-      <div class="section-heading-centered">
-        <p class="section-kicker">INSTITUTIONAL FOUNDATIONS</p>
-        <h2 class="section-title">The parchment records that <em>sharpened the mind.</em></h2>
-        <div class="brass-rule"></div>
-      </div>
-
-      <div class="parchment-scroll-stage" id="parchmentScrollStage">
-        <!-- TOP ROLLER BAR -->
-        <div class="parchment-roller-bar roller-top">
-          <div class="roller-finial finial-left"></div>
-          <div class="roller-core"></div>
-          <div class="roller-finial finial-right"></div>
-        </div>
-
-        <!-- UNROLLING PARCHMENT SHEET -->
-        <div class="parchment-sheet" id="parchmentSheet">
-          <div class="parchment-header-crest">
-            <span class="crest-code">ACADEMIA • CURRICULUM • EST. 2020</span>
-            <h3 class="parchment-main-title">OFFICIAL REGISTRY OF SCHOLARSHIP</h3>
-            <p class="parchment-subtitle">Authentic academic qualifications and foundational training</p>
-            <div class="parchment-flourish">❦</div>
-          </div>
-
-          <div class="parchment-entries-list">
-            <!-- 1. AUST -->
-            <div class="parchment-entry">
-              <div class="entry-seal">✦</div>
-              <div class="entry-body">
-                <div class="entry-meta">
-                  <span class="entry-years">2023 – PRESENT</span>
-                  <span class="entry-tag">BACHELOR OF SCIENCE</span>
-                </div>
-                <h4 class="entry-degree">B.Sc. in Electrical &amp; Electronic Engineering</h4>
-                <p class="entry-school">Ahsanullah University of Science &amp; Technology (AUST)</p>
-                <p class="entry-details">Rigorous curriculum in circuits, power electronics, signals &amp; systems, computational modeling, and strategic project execution.</p>
-              </div>
-            </div>
-
-            <!-- 2. AKMCC -->
-            <div class="parchment-entry">
-              <div class="entry-seal">✦</div>
-              <div class="entry-body">
-                <div class="entry-meta">
-                  <span class="entry-years">2020 – 2022</span>
-                  <span class="entry-tag">HIGHER SECONDARY CERTIFICATE</span>
-                </div>
-                <h4 class="entry-degree">Higher Secondary Certificate (HSC) — Science</h4>
-                <p class="entry-school">Abdul Kadir Mollah City College (AKMCC)</p>
-                <p class="entry-details">Advanced analytical focus in Higher Mathematics, Applied Physics, and Chemical Sciences.</p>
-              </div>
-            </div>
-
-            <!-- 3. GSCA -->
-            <div class="parchment-entry">
-              <div class="entry-seal">✦</div>
-              <div class="entry-body">
-                <div class="entry-meta">
-                  <span class="entry-years">UNTIL 2020</span>
-                  <span class="entry-tag">SECONDARY SCHOOL CERTIFICATE</span>
-                </div>
-                <h4 class="entry-degree">Secondary School Certificate (SSC) — Science</h4>
-                <p class="entry-school">Gazipur Shaheen Cadet Academy (GSCA)</p>
-                <p class="entry-details">Foundational science, cadency discipline, organizational structure, and analytical problem-solving.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="parchment-footer-stamp">
-            <div class="wax-seal-emblem">
-              <span>VERIFIED</span>
-              <strong>AUST EEE</strong>
-            </div>
-            <div class="stamp-citation">
-              <span>ARCHIVAL CERTIFICATE // REF: EDU-SP-2026</span>
-              <span>AUTHENTICATED BY ORDER OF THE ARCHIVIST</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- BOTTOM ROLLER BAR -->
-        <div class="parchment-roller-bar roller-bottom">
-          <div class="roller-finial finial-left"></div>
-          <div class="roller-core"></div>
-          <div class="roller-finial finial-right"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================================================
-         SECTION 07: CERTIFICATES — THE ARCHIVE SCREENING ROOM
-         LARGE FRAMED VIEWING SCREEN, PREV/NEXT CONTROLS & THUMBNAIL TABS
-         ========================================================= -->
-    <section class="archive-chapter certificates-chapter" id="certificates">
+<section class="archive-chapter certificates-chapter" id="certificates">
       <div class="chapter-badge">CERTIFICATES // THE ARCHIVE SCREENING ROOM</div>
 
       <div class="section-heading-centered">
@@ -940,11 +964,25 @@
         
         <!-- PROJECTION SCREEN VIEWING FRAME -->
         <div class="screening-projector-frame">
+          <!-- ACTIVE CERTIFICATE TAB-LIKE HEADER (REQUIREMENT 11) -->
+          <div class="screening-active-tab-header">
+            <div class="active-tab-badge">
+              <span class="tab-pulse-dot"></span>
+              <span class="tab-code" id="screeningActiveTabCode">REC // 01</span>
+              <span class="tab-divider">•</span>
+              <span class="tab-live-title" id="screeningActiveTabTitle">Deputy Executive</span>
+            </div>
+            <div class="screening-countdown-bar-wrap" title="Auto-advancing presentation">
+              <div class="screening-countdown-bar" id="screeningCountdownBar"></div>
+            </div>
+          </div>
+
           <div class="projector-mat-board" id="projectorMatBoard" title="Click to enlarge and inspect document" tabindex="0" role="button" aria-label="Enlarge active certificate">
             <div class="screening-spotlight-sweep"></div>
             <img src="assets/Certificates/Deputy%20Executive.png" alt="Active Certificate Screen" class="screening-active-img" id="screeningActiveImg" />
             <div class="inspect-badge-overlay">✦ CLICK TO ENLARGE</div>
           </div>
+        </div>
         </div>
 
         <!-- CONTROLS & METADATA COLUMN -->
@@ -1019,10 +1057,7 @@
       </div>
     </section>
 
-    <!-- =========================================================
-         SECTION 08: CONTACT — THE FINAL TRANSMISSION
-         ========================================================= -->
-    <section class="archive-chapter contact-chapter" id="contact">
+<section class="archive-chapter contact-chapter" id="contact">
       <div class="chapter-badge">CONTACT // TRANSMISSION WIRE</div>
 
       <div class="contact-dossier-inner">
@@ -1075,7 +1110,6 @@
         </div>
       </div>
     </section>
-
   </main>
 
   <!-- =========================================================

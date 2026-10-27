@@ -7,35 +7,34 @@
   /* =========================================================
      1. THE CINEMATIC DESIGN SYSTEM (EXACT SPECIFICATION)
      ========================================================= */
-  --color-coal-black: #0B0A08;
-  --color-charcoal: #171511;
-  --color-antique-gold: #B88A4A;
-  --color-warm-brass: #8E6837;
-  --color-vintage-ivory: #E8DCC2;
-  --color-muted-ash: #A49A8A;
+  --color-coal-black: #11110F;
+  --color-charcoal: #1A1713;
+  --color-surface-elevated: #221E19;
+  --color-surface-card: #181512;
+  
+  --color-vintage-ivory: #E8D9BA;      /* Warm parchment primary text */
+  --color-antique-gold: #B88A4A;       /* Antique gold accent */
+  --color-warm-brass: #8E6837;         /* Warm brass secondary accent */
+  --color-muted-ash: #A69C8D;          /* Muted warm grey secondary text */
+  --color-border: #59442B;             /* Subtle bronze border */
+  --color-border-bright: rgba(184, 138, 74, 0.65);
+  --color-glow-gold: rgba(184, 138, 74, 0.20);
+  --color-ember: rgba(224, 163, 78, 0.95);
 
   /* FUNCTIONAL MAPPINGS */
   --color-bg-primary: var(--color-coal-black);
   --color-bg-secondary: var(--color-charcoal);
-  --color-surface: #13120E;
-  --color-surface-elevated: #1C1914;
-  --color-surface-card: #161410;
-
-  --color-accent-gold: var(--color-antique-gold);
-  --color-accent-brass: var(--color-warm-brass);
+  --color-surface: var(--color-charcoal);
   --color-text-primary: var(--color-vintage-ivory);
   --color-text-secondary: var(--color-muted-ash);
-
-  --color-border: rgba(184, 138, 74, 0.22);
-  --color-border-bright: rgba(184, 138, 74, 0.55);
-  --color-glow-gold: rgba(184, 138, 74, 0.16);
-  --color-ember: rgba(224, 163, 78, 0.9);
+  --color-accent-gold: var(--color-antique-gold);
+  --color-accent-brass: var(--color-warm-brass);
 
   /* TYPOGRAPHY */
   --font-display: 'Oswald', 'Bebas Neue', sans-serif;
   --font-serif: 'Cormorant Garamond', 'Playfair Display', serif;
   --font-sans: 'Libre Franklin', sans-serif;
-  --font-mono: 'DM Mono', monospace;
+  --font-mono: 'IBM Plex Mono', 'DM Mono', monospace;
 
   /* TIMING & EASING */
   --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
@@ -547,8 +546,8 @@ body.shelby-archive {
 }
 
 /* =========================================================
-   7. HERO SECTION — CINEMATIC FULL VIEWPORT (100% PROPORTION)
-   Centered prominent SP_HERO portrait, large display headlines
+   7. HERO SECTION — CINEMATIC PLATFORM (1920s BIRMINGHAM)
+   Oversized horizontal moving SOUMIC PAUL typography behind portrait
    ========================================================= */
 
 .poster-hero {
@@ -559,183 +558,265 @@ body.shelby-archive {
   justify-content: center;
   position: relative;
   overflow: hidden;
-  padding: 80px 48px 60px;
-  background: radial-gradient(circle at 50% 48%, rgba(28, 25, 20, 0.75) 0%, rgba(11, 10, 8, 0.98) 85%);
+  padding: 60px 24px 50px;
+  background: radial-gradient(circle at 50% 50%, #1A1713 0%, #11110F 85%);
   text-align: center;
   border-radius: 4px;
 }
 
+/* ATMOSPHERIC SVG RAILWAY PLATFORM BACKGROUND */
 .hero-backdrop {
   position: absolute;
   inset: 0;
   pointer-events: none !important;
   z-index: 1;
+  overflow: hidden;
+}
+
+.hero-railway-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+  filter: contrast(1.15) brightness(0.9);
 }
 
 .gaslight-lantern {
   position: absolute;
-  top: 15%;
-  width: 180px;
-  height: 180px;
+  top: 18%;
+  width: 220px;
+  height: 220px;
   border-radius: 50%;
-  filter: blur(60px);
-  background: radial-gradient(circle, rgba(184, 138, 74, 0.35) 0%, transparent 70%);
+  filter: blur(70px);
+  background: radial-gradient(circle, rgba(184, 138, 74, 0.40) 0%, transparent 70%);
   animation: gaslampFlicker 4s infinite alternate ease-in-out;
 }
 
-.lamp-left { left: 8%; }
-.lamp-right { right: 8%; }
+.lamp-left { left: 5%; }
+.lamp-right { right: 5%; }
 
 @keyframes gaslampFlicker {
-  0%, 100% { opacity: 0.7; transform: scale(1); }
-  50% { opacity: 0.95; transform: scale(1.1); }
+  0%, 100% { opacity: 0.65; transform: scale(1); }
+  50% { opacity: 0.95; transform: scale(1.12); }
 }
+
+/* =========================================================
+   OVERSIZED ANIMATED NAME TYPOGRAPHY (BEHIND PORTRAIT)
+   Continuous, seamless dual-track parallax title-card composition
+   ========================================================= */
+
+.hero-marquee-wall {
+  position: absolute;
+  top: 14%;
+  left: 0;
+  width: 100%;
+  pointer-events: none !important;
+  z-index: 2;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0.22;
+  user-select: none;
+}
+
+.marquee-row {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-track-ltr {
+  display: flex;
+  white-space: nowrap;
+  animation: scrollMarqueeLTR 45s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track-rtl {
+  display: flex;
+  white-space: nowrap;
+  animation: scrollMarqueeRTL 55s linear infinite;
+  will-change: transform;
+}
+
+.marquee-text-chunk {
+  font-family: var(--font-display);
+  font-size: clamp(80px, 12vw, 175px);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 0.88;
+  color: var(--color-vintage-ivory);
+  -webkit-text-stroke: 1.5px var(--color-antique-gold);
+  text-shadow: 0 0 25px rgba(184, 138, 74, 0.3);
+  display: inline-block;
+  padding-right: 48px;
+}
+
+.marquee-bullet {
+  color: var(--color-antique-gold);
+  font-size: 0.5em;
+  vertical-align: middle;
+  margin: 0 16px;
+}
+
+@keyframes scrollMarqueeLTR {
+  0% { transform: translate3d(-50%, 0, 0); }
+  100% { transform: translate3d(0%, 0, 0); }
+}
+
+@keyframes scrollMarqueeRTL {
+  0% { transform: translate3d(0%, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+/* =========================================================
+   HERO FOREGROUND CONTAINER & PLATFORM STAGE
+   ========================================================= */
 
 .poster-hero-container {
   position: relative;
-  z-index: 2;
-  max-width: 1240px;
+  z-index: 5;
+  max-width: 1320px;
   width: 100%;
   margin: 0 auto;
 }
 
 .poster-archival-header {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
+  gap: 12px;
   font-family: var(--font-mono);
-  font-size: 11.5px;
+  font-size: 11px;
   letter-spacing: 0.24em;
   color: var(--color-antique-gold);
-  margin-bottom: 22px;
+  margin-bottom: 18px;
+  background: rgba(26, 23, 19, 0.7);
+  padding: 6px 18px;
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
 }
 
 .docket-sep {
   color: var(--color-warm-brass);
 }
 
-.poster-main-title {
-  font-family: var(--font-display);
-  font-size: clamp(64px, 9vw, 130px);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: var(--color-vintage-ivory);
-  line-height: 0.92;
-  margin-bottom: 14px;
-  text-transform: uppercase;
-}
-
-.poster-motto {
-  margin-bottom: 16px;
-}
-
-.poster-motto-text {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: clamp(20px, 2.6vw, 32px);
-  color: var(--color-antique-gold);
-}
-
-.poster-disciplines-bar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.18em;
-  color: var(--color-muted-ash);
-  margin-bottom: 36px;
-}
-
-.poster-disciplines-bar .bullet {
-  color: var(--color-antique-gold);
-  font-size: 9px;
-}
-
-/* CENTERED CINEMATIC FOREGROUND PORTRAIT (SP_HERO) */
+/* PHYSICAL PLATFORM & CENTERED PORTRAIT */
 .hero-center-portrait-wrap {
   position: relative;
-  margin: 0 auto 36px;
+  margin: 10px auto 28px;
   display: inline-block;
 }
 
 .portrait-halo-light {
   position: absolute;
-  top: 50%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 440px;
-  height: 440px;
+  width: 520px;
+  height: 520px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(184, 138, 74, 0.28) 0%, rgba(142, 104, 55, 0.15) 50%, transparent 75%);
-  filter: blur(50px);
+  background: radial-gradient(circle, rgba(184, 138, 74, 0.32) 0%, rgba(142, 104, 55, 0.16) 45%, transparent 70%);
+  filter: blur(60px);
   z-index: 1;
 }
 
 .portrait-stage {
   position: relative;
   z-index: 2;
-  border-bottom: 2px solid var(--color-antique-gold);
 }
 
 .hero-poster-img {
   display: block;
-  max-width: 480px;
+  max-width: 540px;
   width: 100%;
-  height: clamp(360px, 46vh, 560px);
+  height: clamp(400px, 52vh, 620px);
   object-fit: contain;
-  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.9)) contrast(1.05);
+  filter: drop-shadow(0 0 16px rgba(184, 138, 74, 0.28)) drop-shadow(0 25px 40px rgba(0, 0, 0, 0.95)) contrast(1.06);
   transition: transform 0.5s var(--ease-cinematic);
 }
 
 .hero-center-portrait-wrap:hover .hero-poster-img {
-  transform: scale(1.025);
+  transform: scale(1.02);
+}
+
+/* Platform Floor Reflection & Ground Shadow */
+.portrait-platform-shadow {
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 78%;
+  height: 22px;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.95) 0%, rgba(184, 138, 74, 0.15) 50%, transparent 80%);
+  border-bottom: 2px solid var(--color-antique-gold);
+  z-index: 3;
 }
 
 .portrait-archival-tag {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
-  margin-top: 12px;
+  gap: 12px;
+  margin-top: 14px;
   font-family: var(--font-mono);
   font-size: 10.5px;
   letter-spacing: 0.2em;
   color: var(--color-antique-gold);
 }
 
+/* FOREGROUND CONTENT HIERARCHY */
+.poster-lead-block {
+  position: relative;
+  z-index: 6;
+}
+
+.poster-motto {
+  margin-bottom: 12px;
+}
+
+.poster-motto-text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(22px, 2.8vw, 36px);
+  color: var(--color-vintage-ivory);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+}
+
 .poster-synopsis {
-  font-size: 18px;
+  font-size: 17px;
   color: var(--color-muted-ash);
-  max-width: 760px;
-  margin: 0 auto 32px;
-  line-height: 1.7;
+  max-width: 780px;
+  margin: 0 auto 26px;
+  line-height: 1.65;
 }
 
 .poster-cta-row {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 18px;
-  margin-bottom: 40px;
+  gap: 16px;
+  margin-bottom: 30px;
 }
 
 .poster-billing-strip {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 24px;
-  padding: 16px 28px;
-  background: var(--color-surface-elevated);
+  gap: 22px;
+  padding: 12px 24px;
+  background: rgba(26, 23, 19, 0.85);
   border: 1px solid var(--color-border);
   font-family: var(--font-mono);
-  font-size: 11.5px;
+  font-size: 11px;
   letter-spacing: 0.14em;
-  max-width: 960px;
-  margin: 0 auto 28px;
+  max-width: 920px;
+  margin: 0 auto 22px;
 }
 
 .bill-label {
@@ -757,7 +838,7 @@ body.shelby-archive {
   justify-content: center;
   gap: 8px;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: 0.2em;
   color: var(--color-muted-ash);
 }
@@ -1683,14 +1764,15 @@ body.shelby-archive {
 }
 
 /* =========================================================
-   13. CERTIFICATES — THE ARCHIVE SCREENING ROOM
-   Large elegant framed screen, soft spotlight sweep, 12 thumbnail tabs
+   13. CERTIFICATES — AUTOMATIC INFINITE TAB DISPLAY
+   Cinematic presentation with active tab header, progress timer,
+   crossfade & slide transitions, and indefinite looping
    ========================================================= */
 
 .screening-room-layout {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 48px;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
   align-items: start;
 }
 
@@ -1698,15 +1780,93 @@ body.shelby-archive {
 .screening-projector-frame {
   background: var(--color-surface-elevated);
   border: 2px solid var(--color-antique-gold);
-  padding: 24px;
+  padding: 20px;
   border-radius: 4px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 24px rgba(184, 138, 74, 0.2);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75), 0 0 24px rgba(184, 138, 74, 0.22);
   position: relative;
+}
+
+/* ACTIVE CERTIFICATE TAB-LIKE HEADER (REQUIREMENT 11) */
+.screening-active-tab-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: var(--color-charcoal);
+  border: 1px solid var(--color-border);
+  border-bottom: 2px solid var(--color-antique-gold);
+  padding: 10px 18px;
+  margin-bottom: 16px;
+  border-radius: 2px;
+}
+
+.active-tab-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--color-vintage-ivory);
+  text-transform: uppercase;
+}
+
+.tab-pulse-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--color-antique-gold);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--color-antique-gold);
+  animation: tabDotPulse 1.8s infinite;
+}
+
+@keyframes tabDotPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.7); }
+}
+
+.tab-code {
+  color: var(--color-antique-gold);
+  font-weight: 600;
+}
+
+.tab-divider {
+  color: var(--color-warm-brass);
+}
+
+.tab-live-title {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--color-vintage-ivory);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 320px;
+}
+
+/* COUNTDOWN PROGRESS BAR INDICATOR */
+.screening-countdown-bar-wrap {
+  width: 140px;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.screening-countdown-bar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-warm-brass), var(--color-antique-gold));
+  box-shadow: 0 0 6px var(--color-antique-gold);
+  transition: width 0.1s linear;
 }
 
 .projector-mat-board {
   position: relative;
-  background: #000;
+  background: #080706;
   border: 1px solid var(--color-border);
   min-height: 440px;
   display: flex;
@@ -1714,12 +1874,13 @@ body.shelby-archive {
   justify-content: center;
   overflow: hidden;
   cursor: pointer;
+  border-radius: 2px;
 }
 
 .screening-spotlight-sweep {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(232, 220, 194, 0.15) 0%, transparent 45%, rgba(184, 138, 74, 0.12) 80%, transparent 100%);
+  background: linear-gradient(135deg, rgba(232, 217, 186, 0.15) 0%, transparent 45%, rgba(184, 138, 74, 0.12) 80%, transparent 100%);
   pointer-events: none;
   z-index: 2;
 }
@@ -1731,27 +1892,24 @@ body.shelby-archive {
   display: block;
   position: relative;
   z-index: 1;
-  transition: opacity 0.35s ease, transform 0.35s var(--ease-cinematic);
-}
-
-.screening-active-img.screen-fade {
-  opacity: 0.3;
-  transform: scale(0.97);
+  transition: opacity 0.38s ease, transform 0.42s var(--ease-cinematic);
+  will-change: transform, opacity;
 }
 
 .inspect-badge-overlay {
   position: absolute;
-  bottom: 16px;
-  right: 16px;
-  background: rgba(11, 10, 8, 0.88);
+  bottom: 14px;
+  right: 14px;
+  background: rgba(17, 17, 15, 0.92);
   border: 1px solid var(--color-antique-gold);
   color: var(--color-vintage-ivory);
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: 0.14em;
   padding: 6px 14px;
   z-index: 3;
   pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
 }
 
 /* SCREENING CONTROLS & METADATA COLUMN */
@@ -1775,6 +1933,10 @@ body.shelby-archive {
   letter-spacing: 0.18em;
   color: var(--color-antique-gold);
   font-weight: 600;
+  background: var(--color-surface);
+  padding: 6px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
 }
 
 .screening-nav-arrows {
@@ -1785,7 +1947,7 @@ body.shelby-archive {
 .screen-arrow-btn {
   width: 38px;
   height: 38px;
-  background: var(--color-surface-elevated);
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
   color: var(--color-vintage-ivory);
   font-size: 16px;
@@ -1800,7 +1962,7 @@ body.shelby-archive {
 .screen-arrow-btn:hover {
   border-color: var(--color-antique-gold);
   background: var(--color-antique-gold);
-  color: #0B0A08;
+  color: #11110F;
 }
 
 .screening-details-box {
@@ -1808,7 +1970,8 @@ body.shelby-archive {
   border: 1px solid var(--color-border);
   padding: 24px;
   border-radius: 4px;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
+  border-left: 3px solid var(--color-antique-gold);
 }
 
 .screening-details-box .meta-cat {
@@ -1817,6 +1980,7 @@ body.shelby-archive {
   letter-spacing: 0.18em;
   color: var(--color-antique-gold);
   margin-bottom: 6px;
+  text-transform: uppercase;
 }
 
 .screening-details-box h3 {
@@ -1824,6 +1988,7 @@ body.shelby-archive {
   font-size: 26px;
   color: var(--color-vintage-ivory);
   margin-bottom: 8px;
+  letter-spacing: 0.04em;
 }
 
 .screening-details-box p {
@@ -1832,12 +1997,12 @@ body.shelby-archive {
   line-height: 1.6;
 }
 
-/* THUMBNAIL REEL TABS */
+/* THUMBNAIL REEL TABS (12 CERTIFICATES) */
 .screening-reel-tabs {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
-  max-height: 240px;
+  max-height: 230px;
   overflow-y: auto;
   padding-right: 6px;
 }
@@ -1855,7 +2020,141 @@ body.shelby-archive {
 .screening-tab:hover,
 .screening-tab.active {
   border-color: var(--color-antique-gold);
-  background: rgba(184, 138, 74, 0.14);
+  background: rgba(184, 138, 74, 0.16);
+  box-shadow: inset 0 0 10px rgba(184, 138, 74, 0.12);
+}
+
+.tab-num {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  color: var(--color-antique-gold);
+  display: block;
+}
+
+.tab-name {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-vintage-ivory);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+/* UPCOMING AI PRODUCTIONS MODULE IN PROJECTS */
+.upcoming-reel-module {
+  margin-top: 48px;
+  background: linear-gradient(135deg, rgba(26, 23, 19, 0.95) 0%, rgba(17, 17, 15, 0.98) 100%);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-antique-gold);
+  border-radius: 4px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.upcoming-reel-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.reel-docket-badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--color-antique-gold);
+}
+
+.reel-status-pill {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: #11110F;
+  background: var(--color-antique-gold);
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 2px;
+}
+
+.upcoming-reel-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.reel-media-placeholder {
+  position: relative;
+  height: 220px;
+  background: #0B0A08;
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.reel-film-perforations {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 14px;
+  background-image: repeating-linear-gradient(90deg, #1A1713 0px, #1A1713 12px, transparent 12px, transparent 20px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.reel-film-perforations-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 14px;
+  background-image: repeating-linear-gradient(90deg, #1A1713 0px, #1A1713 12px, transparent 12px, transparent 20px);
+  border-top: 1px solid var(--color-border);
+}
+
+.reel-slate-text {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: var(--color-antique-gold);
+}
+
+.reel-content-details h3 {
+  font-family: var(--font-display);
+  font-size: 26px;
+  color: var(--color-vintage-ivory);
+  margin-bottom: 10px;
+  letter-spacing: 0.04em;
+}
+
+.reel-content-details p {
+  font-size: 14.5px;
+  color: var(--color-muted-ash);
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+
+.reel-pipeline-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.reel-pipeline-pills span {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--color-vintage-ivory);
+  background: var(--color-charcoal);
+  border: 1px solid var(--color-border);
+  padding: 4px 10px;
 }
 
 .tab-num {
@@ -2829,6 +3128,18 @@ body.shelby-archive {
 
   .screening-reel-tabs {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .upcoming-reel-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tab-live-title {
+    max-width: 180px;
+  }
+
+  .screening-countdown-bar-wrap {
+    width: 80px;
   }
 
   .credits-row {
