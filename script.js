@@ -465,27 +465,6 @@ document.addEventListener('DOMContentLoaded', () => {
         "Advanced through rigorous university preliminaries to represent AUST on the national qualifying stage."
       ],
       citation: "REF: HSBC-BC-2025-NAT"
-    },
-    {
-      org: "PRISM AI CREATIVE AWARDS",
-      role: "Worldwide Top 15 Finalist",
-      tenure: "2026 // GLOBAL STAGE",
-      scene: "04",
-      take: "GLOBAL-15",
-      roll: "2026-GLB",
-      spec: { shutter: "1/250s", aperture: "f/1.2", focal: "24mm CINE" },
-      img: "assets/Prism_Logo.png",
-      imgClass: "logo-prism",
-      imgAlt: "PRISM AI Creative Awards Emblem",
-      index: "REC // 04",
-      seal: "CREATIVE TECH COMMENDATION",
-      narrative: "Selected into the Top 15 Finalist cohort out of more than 4,000+ international participants in the flagship AI Advertisement discipline. Developed a cinematic narrative utilizing leading generative video synthesis.",
-      points: [
-        "Recognized worldwide among top 15 entries for pioneering cinematic generative direction and narrative coherence.",
-        "Integrated cutting-edge AI diffusion models with high-precision post-production color grading and sound design.",
-        "Demonstrated the fusion of engineering discipline with instinctual cinematic worldbuilding."
-      ],
-      citation: "REF: PRM-TOP15-2026-GLB"
     }
   ];
 

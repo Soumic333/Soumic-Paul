@@ -92,12 +92,141 @@
 
       <div class="poster-hero-container">
 
-        <!-- CENTERED CINEMATIC FOREGROUND PORTRAIT (SP_HERO) WITH NATURAL GRADIENT DISSOLVE -->
-        <div class="hero-center-portrait-wrap">
-          <div class="portrait-halo-light" aria-hidden="true"></div>
-          <div class="portrait-stage">
-            <img src="assets/SP_HERO.png" alt="Soumic Paul in dark vintage tailored suit with sunglasses" class="hero-poster-img" />
+        <!-- CINEMA THEATRICAL HERO STAGE (STYLE OF IMAGE 4 WITH ANIMATED ELEMENTS) -->
+        <div class="hero-cinema-theatre-stage">
+          
+          <!-- TOP 5 GOLDEN CINEMA STARS WITH TWINKLING GLINTS -->
+          <div class="cinema-stage-stars" aria-hidden="true">
+            <span class="stage-star star-1">★</span>
+            <span class="stage-star star-2">★</span>
+            <span class="stage-star star-3">★</span>
+            <span class="stage-star star-4">★</span>
+            <span class="stage-star star-5">★</span>
+            <span class="star-glint glint-1">✦</span>
+            <span class="star-glint glint-2">✦</span>
           </div>
+
+          <!-- WAVING 35MM FILM REEL TAPE RUNNING THROUGH BACKGROUND -->
+          <div class="hero-waving-film-tape" aria-hidden="true">
+            <svg viewBox="0 0 1200 240" fill="none" xmlns="http://www.w3.org/2000/svg" class="tape-wave-svg" preserveAspectRatio="none">
+              <path d="M -50 180 Q 250 80 550 160 T 1250 120" stroke="#D4AF37" stroke-width="42" opacity="0.45" stroke-linecap="round" fill="none" />
+              <!-- Sprocket perforations on tape -->
+              <path d="M -50 168 Q 250 68 550 148 T 1250 108" stroke="#100D09" stroke-width="5" stroke-dasharray="10 8" fill="none" />
+              <path d="M -50 192 Q 250 92 550 172 T 1250 132" stroke="#100D09" stroke-width="5" stroke-dasharray="10 8" fill="none" />
+            </svg>
+          </div>
+
+          <!-- LEFT: VINTAGE GOLDEN 35MM MOVIE CAMERA ON TRIPOD (ANIMATED) -->
+          <div class="hero-moving-camera" aria-label="35mm Cinema Camera">
+            <svg class="camera-prop-svg" viewBox="0 0 200 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="cameraGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FFE885" />
+                  <stop offset="40%" stop-color="#D4AF37" />
+                  <stop offset="80%" stop-color="#9C721D" />
+                  <stop offset="100%" stop-color="#FFD700" />
+                </linearGradient>
+              </defs>
+              <!-- Tripod Legs -->
+              <line x1="100" y1="120" x2="30" y2="270" stroke="#7A5222" stroke-width="6" stroke-linecap="round" />
+              <line x1="100" y1="120" x2="100" y2="275" stroke="#9C6B2F" stroke-width="6" stroke-linecap="round" />
+              <line x1="100" y1="120" x2="170" y2="270" stroke="#7A5222" stroke-width="6" stroke-linecap="round" />
+              <!-- Tripod Struts & Brass Fittings -->
+              <polygon points="90,115 110,115 106,128 94,128" fill="url(#cameraGoldGrad)" />
+              <line x1="55" y1="210" x2="145" y2="210" stroke="#D4AF37" stroke-width="2.5" />
+              <!-- Camera Body -->
+              <rect x="65" y="60" width="75" height="55" rx="5" fill="url(#cameraGoldGrad)" stroke="#FFE885" stroke-width="1.5" />
+              <rect x="72" y="68" width="40" height="25" rx="3" fill="#1C160F" />
+              <!-- Rotating Film Mag Reel 1 -->
+              <g class="camera-reel reel-left">
+                <circle cx="75" cy="40" r="26" fill="url(#cameraGoldGrad)" stroke="#FFE885" stroke-width="1.5" />
+                <circle cx="75" cy="40" r="16" fill="#1A140D" />
+                <circle cx="75" cy="40" r="5" fill="url(#cameraGoldGrad)" />
+                <line x1="75" y1="24" x2="75" y2="56" stroke="url(#cameraGoldGrad)" stroke-width="2" />
+                <line x1="59" y1="40" x2="91" y2="40" stroke="url(#cameraGoldGrad)" stroke-width="2" />
+              </g>
+              <!-- Rotating Film Mag Reel 2 -->
+              <g class="camera-reel reel-right">
+                <circle cx="125" cy="40" r="26" fill="url(#cameraGoldGrad)" stroke="#FFE885" stroke-width="1.5" />
+                <circle cx="125" cy="40" r="16" fill="#1A140D" />
+                <circle cx="125" cy="40" r="5" fill="url(#cameraGoldGrad)" />
+                <line x1="125" y1="24" x2="125" y2="56" stroke="url(#cameraGoldGrad)" stroke-width="2" />
+                <line x1="109" y1="40" x2="141" y2="40" stroke="url(#cameraGoldGrad)" stroke-width="2" />
+              </g>
+              <!-- Big Cine Anamorphic Lens -->
+              <polygon points="140,75 185,62 185,102 140,88" fill="url(#cameraGoldGrad)" />
+              <ellipse cx="185" cy="82" rx="5" ry="20" fill="#FFE885" />
+              <ellipse cx="185" cy="82" rx="3" ry="16" fill="#0C1D36" />
+              <!-- Blinking Red Tally Light -->
+              <circle cx="72" cy="73" r="3.5" class="camera-tally-light" />
+              <!-- Matte Box & Sunshade -->
+              <polygon points="185,62 196,56 196,108 185,102" fill="url(#cameraGoldGrad)" />
+            </svg>
+            <div class="camera-light-beam" aria-hidden="true"></div>
+          </div>
+
+          <!-- CENTER: SOLIDLY GROUNDED HERO PORTRAIT (NOT FLOATING) -->
+          <div class="hero-grounded-centerpiece">
+            <!-- Warm Studio Spotlight from above -->
+            <div class="stage-spotlight-cone" aria-hidden="true"></div>
+            
+            <!-- Hero Foreground Portrait -->
+            <div class="portrait-stage-grounded">
+              <img src="assets/SP_HERO.png" alt="Soumic Paul in dark vintage tailored suit with sunglasses" class="hero-poster-img grounded-hero-img" />
+            </div>
+
+            <!-- PHYSICAL STAGE BASE & SOLID CONTACT SHADOW (ELIMINATES FLOATING) -->
+            <div class="hero-pedestal-platform" aria-hidden="true">
+              <div class="pedestal-contact-shadow"></div>
+              <div class="pedestal-disc-top"></div>
+              <div class="pedestal-disc-rim"></div>
+            </div>
+          </div>
+
+          <!-- RIGHT: DUAL GOLDEN MOVIE REELS (SPINNING CONTINUOUSLY) -->
+          <div class="hero-moving-reels" aria-label="Spinning 35mm Film Reels">
+            <svg class="reels-prop-svg" viewBox="0 0 220 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="reelsGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FFE885" />
+                  <stop offset="45%" stop-color="#D4AF37" />
+                  <stop offset="75%" stop-color="#9C721D" />
+                  <stop offset="100%" stop-color="#FFD700" />
+                </linearGradient>
+              </defs>
+              <!-- Winding Film Strip Connection between reels -->
+              <path d="M 85 85 Q 140 135 150 185" stroke="#120F0B" stroke-width="12" />
+              <path d="M 85 85 Q 140 135 150 185" stroke="#D4AF37" stroke-width="2" stroke-dasharray="6 4" />
+              <!-- Top Golden Reel (Spinning Clockwise) -->
+              <g class="spinning-reel reel-upper">
+                <circle cx="85" cy="85" r="68" fill="url(#reelsGoldGrad)" stroke="#FFE885" stroke-width="3" />
+                <circle cx="85" cy="85" r="48" fill="#161109" />
+                <!-- 5 Reel Spokes Holes -->
+                <circle cx="85" cy="55" r="14" fill="#0A0806" stroke="url(#reelsGoldGrad)" stroke-width="2" />
+                <circle cx="113" cy="76" r="14" fill="#0A0806" stroke="url(#reelsGoldGrad)" stroke-width="2" />
+                <circle cx="102" cy="110" r="14" fill="#0A0806" stroke="url(#reelsGoldGrad)" stroke-width="2" />
+                <circle cx="68" cy="110" r="14" fill="#0A0806" stroke="url(#reelsGoldGrad)" stroke-width="2" />
+                <circle cx="57" cy="76" r="14" fill="#0A0806" stroke="url(#reelsGoldGrad)" stroke-width="2" />
+                <circle cx="85" cy="85" r="15" fill="url(#reelsGoldGrad)" />
+                <circle cx="85" cy="85" r="6" fill="#161109" />
+              </g>
+              <!-- Lower Golden Reel (Spinning Counter-Clockwise) -->
+              <g class="spinning-reel reel-lower">
+                <circle cx="145" cy="190" r="54" fill="url(#reelsGoldGrad)" stroke="#FFE885" stroke-width="2.5" />
+                <circle cx="145" cy="190" r="38" fill="#161109" />
+                <circle cx="145" cy="166" r="11" fill="#0A0806" stroke="url(#reelsGoldGrad)" stroke-width="1.8" />
+                <circle cx="168" cy="182" r="11" fill="#0A0806" stroke="url(#reelsGoldGrad)" stroke-width="1.8" />
+                <circle cx="158" cy="210" r="11" fill="#0A0806" stroke="url(#reelsGoldGrad)" stroke-width="1.8" />
+                <circle cx="132" cy="210" r="11" fill="#0A0806" stroke="url(#reelsGoldGrad)" stroke-width="1.8" />
+                <circle cx="122" cy="182" r="11" fill="#0A0806" stroke="url(#reelsGoldGrad)" stroke-width="1.8" />
+                <circle cx="145" cy="190" r="12" fill="url(#reelsGoldGrad)" />
+                <circle cx="145" cy="190" r="5" fill="#161109" />
+              </g>
+            </svg>
+            <span class="star-glint glint-reel-1">✦</span>
+            <span class="star-glint glint-reel-2">✦</span>
+          </div>
+
         </div>
 
         <!-- FILMOGRAPHY STYLE PRODUCTION SLATE & THEATRICAL BILLING (REQUIREMENT: FILMOGRAPHY STYLE) -->
@@ -178,29 +307,36 @@
     </section>
 
     <!-- ARCHIVAL MARQUEE TICKER TAPE -->
-    <div class="vintage-ticker" aria-label="Field of practice">
+    <div class="vintage-ticker golden-film-ticker" aria-label="Field of practice">
+      <!-- THEATRICAL GOLD CORNER LIGHTS & FILM SPROCKETS (STYLE OF IMAGE 2) -->
+      <div class="ticker-film-sprockets top-sprockets"></div>
+      <div class="ticker-corner-lights" aria-hidden="true"></div>
+      
       <div class="ticker-track">
         <div class="ticker-content">
-          <span>AI FILMMAKING</span><i>✦</i>
-          <span>CREATIVE TECHNOLOGY</span><i>✦</i>
-          <span>ELECTRICAL ENGINEERING</span><i>✦</i>
-          <span>BUSINESS CASE STRATEGY</span><i>✦</i>
-          <span>PROJECT LEADERSHIP</span><i>✦</i>
-          <span>VISUAL EXPERIMENTATION</span><i>✦</i>
-          <span>CINEMATIC ADVERTISING</span><i>✦</i>
-          <span>OPERATIONS MANAGEMENT</span><i>✦</i>
+          <span>AI FILMMAKING</span><i class="film-frame-bullet">◆</i>
+          <span>CREATIVE TECHNOLOGY</span><i class="film-frame-bullet">◆</i>
+          <span>ELECTRICAL ENGINEERING</span><i class="film-frame-bullet">◆</i>
+          <span>BUSINESS CASE STRATEGY</span><i class="film-frame-bullet">◆</i>
+          <span>PROJECT LEADERSHIP</span><i class="film-frame-bullet">◆</i>
+          <span>VISUAL EXPERIMENTATION</span><i class="film-frame-bullet">◆</i>
+          <span>CINEMATIC ADVERTISING</span><i class="film-frame-bullet">◆</i>
+          <span>OPERATIONS MANAGEMENT</span><i class="film-frame-bullet">◆</i>
         </div>
         <div class="ticker-content" aria-hidden="true">
-          <span>AI FILMMAKING</span><i>✦</i>
-          <span>CREATIVE TECHNOLOGY</span><i>✦</i>
-          <span>ELECTRICAL ENGINEERING</span><i>✦</i>
-          <span>BUSINESS CASE STRATEGY</span><i>✦</i>
-          <span>PROJECT LEADERSHIP</span><i>✦</i>
-          <span>VISUAL EXPERIMENTATION</span><i>✦</i>
-          <span>CINEMATIC ADVERTISING</span><i>✦</i>
-          <span>OPERATIONS MANAGEMENT</span><i>✦</i>
+          <span>AI FILMMAKING</span><i class="film-frame-bullet">◆</i>
+          <span>CREATIVE TECHNOLOGY</span><i class="film-frame-bullet">◆</i>
+          <span>ELECTRICAL ENGINEERING</span><i class="film-frame-bullet">◆</i>
+          <span>BUSINESS CASE STRATEGY</span><i class="film-frame-bullet">◆</i>
+          <span>PROJECT LEADERSHIP</span><i class="film-frame-bullet">◆</i>
+          <span>VISUAL EXPERIMENTATION</span><i class="film-frame-bullet">◆</i>
+          <span>CINEMATIC ADVERTISING</span><i class="film-frame-bullet">◆</i>
+          <span>OPERATIONS MANAGEMENT</span><i class="film-frame-bullet">◆</i>
         </div>
       </div>
+
+      <div class="ticker-film-sprockets bottom-sprockets"></div>
+    </div>
     </div>
 
 <section class="archive-chapter about-chapter" id="about">
@@ -241,25 +377,325 @@
             </p>
           </div>
 
-          <!-- PROVEN RECORD COUNTERS -->
-                    <!-- PROVEN RECORD COUNTERS (RESTORED NUMERICAL VALUES) -->
-                    <div class="archival-stats" id="about-stats">
-            <div class="stat-card">
-              <div class="stat-number"><span class="stat-num count-up" data-target="50">50</span><span class="plus">+</span></div>
-              <div class="stat-label">Slide Designs For Business Case Competitions</div>
+          <!-- PROVEN RECORD LAUREL AWARDS (STYLE OF IMAGE 1) -->
+          <div class="archival-stats laurel-awards-grid" id="about-stats">
+            <div class="laurel-stat-card">
+              <div class="laurel-wreath-wrap">
+                <!-- GOLDEN LAUREL WREATH SVG EMBLEM (STYLE OF IMAGE 1) -->
+                <svg class="laurel-wreath-svg" viewBox="0 0 240 210" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="goldFeatherGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#FFE27A" />
+                      <stop offset="35%" stop-color="#D4AF37" />
+                      <stop offset="70%" stop-color="#9C721D" />
+                      <stop offset="100%" stop-color="#F5D061" />
+                    </linearGradient>
+                  </defs>
+                  <!-- 5 GOLD AWARDS STARS AT TOP -->
+                  <g fill="url(#goldFeatherGrad)" class="laurel-stars">
+                    <!-- Center star -->
+                    <polygon points="120,8 123,17 132,17 125,22 127,31 120,26 113,31 115,22 108,17 117,17" transform="scale(0.85) translate(21, 2)" />
+                    <!-- Left inner star -->
+                    <polygon points="120,8 123,17 132,17 125,22 127,31 120,26 113,31 115,22 108,17 117,17" transform="scale(0.7) translate(36, 12)" />
+                    <!-- Right inner star -->
+                    <polygon points="120,8 123,17 132,17 125,22 127,31 120,26 113,31 115,22 108,17 117,17" transform="scale(0.7) translate(68, 12)" />
+                    <!-- Left outer star -->
+                    <polygon points="120,8 123,17 132,17 125,22 127,31 120,26 113,31 115,22 108,17 117,17" transform="scale(0.55) translate(62, 34)" />
+                    <!-- Right outer star -->
+                    <polygon points="120,8 123,17 132,17 125,22 127,31 120,26 113,31 115,22 108,17 117,17" transform="scale(0.55) translate(138, 34)" />
+                  </g>
+                  <!-- LEFT LAUREL FEATHER BRANCH -->
+                  <g fill="url(#goldFeatherGrad)">
+                    <!-- Branch Stem -->
+                    <path d="M 120 196 C 75 192 36 150 42 70" stroke="url(#goldFeatherGrad)" stroke-width="2.5" stroke-linecap="round" fill="none" />
+                    <!-- Leaf Pairs curving up -->
+                    <path d="M 42 70 C 35 62 30 52 38 46 C 45 52 46 62 42 70 Z" />
+                    <path d="M 44 74 C 54 68 62 66 65 74 C 58 78 48 78 44 74 Z" />
+                    <path d="M 40 92 C 30 84 26 74 34 68 C 41 74 42 84 40 92 Z" />
+                    <path d="M 43 96 C 53 90 62 90 64 98 C 57 102 47 101 43 96 Z" />
+                    <path d="M 41 116 C 30 110 24 100 32 94 C 39 100 42 108 41 116 Z" />
+                    <path d="M 46 120 C 56 114 65 116 66 124 C 58 127 49 125 46 120 Z" />
+                    <path d="M 48 140 C 36 136 30 126 38 120 C 45 125 48 133 48 140 Z" />
+                    <path d="M 54 144 C 64 139 74 142 74 150 C 66 152 57 149 54 144 Z" />
+                    <path d="M 62 162 C 50 160 44 150 51 144 C 58 148 62 155 62 162 Z" />
+                    <path d="M 68 165 C 78 162 86 166 85 174 C 77 175 70 170 68 165 Z" />
+                    <path d="M 84 180 C 72 180 66 172 73 166 C 80 169 84 175 84 180 Z" />
+                    <path d="M 90 182 C 100 181 107 186 104 194 C 97 193 91 187 90 182 Z" />
+                  </g>
+                  <!-- RIGHT LAUREL FEATHER BRANCH -->
+                  <g fill="url(#goldFeatherGrad)">
+                    <!-- Branch Stem -->
+                    <path d="M 120 196 C 165 192 204 150 198 70" stroke="url(#goldFeatherGrad)" stroke-width="2.5" stroke-linecap="round" fill="none" />
+                    <!-- Leaf Pairs curving up -->
+                    <path d="M 198 70 C 205 62 210 52 202 46 C 195 52 194 62 198 70 Z" />
+                    <path d="M 196 74 C 186 68 178 66 175 74 C 182 78 192 78 196 74 Z" />
+                    <path d="M 200 92 C 210 84 214 74 206 68 C 199 74 198 84 200 92 Z" />
+                    <path d="M 197 96 C 187 90 178 90 176 98 C 183 102 193 101 197 96 Z" />
+                    <path d="M 199 116 C 210 110 216 100 208 94 C 201 100 198 108 199 116 Z" />
+                    <path d="M 194 120 C 184 114 175 116 174 124 C 182 127 191 125 194 120 Z" />
+                    <path d="M 192 140 C 204 136 210 126 202 120 C 195 125 192 133 192 140 Z" />
+                    <path d="M 186 144 C 176 139 166 142 166 150 C 174 152 183 149 186 144 Z" />
+                    <path d="M 178 162 C 190 160 196 150 189 144 C 182 148 178 155 178 162 Z" />
+                    <path d="M 172 165 C 162 162 154 166 155 174 C 163 175 170 170 172 165 Z" />
+                    <path d="M 156 180 C 168 180 174 172 167 166 C 160 169 156 175 156 180 Z" />
+                    <path d="M 150 182 C 140 181 133 186 136 194 C 143 193 149 187 150 182 Z" />
+                  </g>
+                  <!-- BASE TIE RIBBON -->
+                  <path d="M 110 193 Q 120 202 130 193 Q 120 197 110 193 Z" fill="url(#goldFeatherGrad)" />
+                  <path d="M 112 196 Q 106 206 102 210 Q 110 206 115 198 Z" fill="url(#goldFeatherGrad)" />
+                  <path d="M 128 196 Q 134 206 138 210 Q 130 206 125 198 Z" fill="url(#goldFeatherGrad)" />
+                </svg>
+
+                <!-- NUMBER & PLUS EMBEDDED INSIDE GOLDEN LAUREL FEATHER -->
+                <div class="laurel-center-content">
+                  <div class="laurel-stat-number">
+                    <span class="stat-num count-up" data-target="50">50</span><span class="laurel-plus">+</span>
+                  </div>
+                  <div class="laurel-banner-pill">
+                    <span>SLIDE DESIGNS</span>
+                  </div>
+                </div>
+              </div>
+              <div class="laurel-stat-sublabel">Business Case Competitions</div>
             </div>
-            <div class="stat-card">
-              <div class="stat-number"><span class="stat-num count-up" data-target="200">200</span><span class="plus">+</span></div>
-              <div class="stat-label">Event Participants Coordinated in Robotics</div>
+            <div class="laurel-stat-card">
+              <div class="laurel-wreath-wrap">
+                <!-- GOLDEN LAUREL WREATH SVG EMBLEM (STYLE OF IMAGE 1) -->
+                <svg class="laurel-wreath-svg" viewBox="0 0 240 210" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="goldFeatherGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#FFE27A" />
+                      <stop offset="35%" stop-color="#D4AF37" />
+                      <stop offset="70%" stop-color="#9C721D" />
+                      <stop offset="100%" stop-color="#F5D061" />
+                    </linearGradient>
+                  </defs>
+                  <!-- 5 GOLD AWARDS STARS AT TOP -->
+                  <g fill="url(#goldFeatherGrad)" class="laurel-stars">
+                    <!-- Center star -->
+                    <polygon points="120,8 123,17 132,17 125,22 127,31 120,26 113,31 115,22 108,17 117,17" transform="scale(0.85) translate(21, 2)" />
+                    <!-- Left inner star -->
+                    <polygon points="120,8 123,17 132,17 125,22 127,31 120,26 113,31 115,22 108,17 117,17" transform="scale(0.7) translate(36, 12)" />
+                    <!-- Right inner star -->
+                    <polygon points="120,8 123,17 132,17 125,22 127,31 120,26 113,31 115,22 108,17 117,17" transform="scale(0.7) translate(68, 12)" />
+                    <!-- Left outer star -->
+                    <polygon points="120,8 123,17 132,17 125,22 127,31 120,26 113,31 115,22 108,17 117,17" transform="scale(0.55) translate(62, 34)" />
+                    <!-- Right outer star -->
+                    <polygon points="120,8 123,17 132,17 125,22 127,31 120,26 113,31 115,22 108,17 117,17" transform="scale(0.55) translate(138, 34)" />
+                  </g>
+                  <!-- LEFT LAUREL FEATHER BRANCH -->
+                  <g fill="url(#goldFeatherGrad)">
+                    <!-- Branch Stem -->
+                    <path d="M 120 196 C 75 192 36 150 42 70" stroke="url(#goldFeatherGrad)" stroke-width="2.5" stroke-linecap="round" fill="none" />
+                    <!-- Leaf Pairs curving up -->
+                    <path d="M 42 70 C 35 62 30 52 38 46 C 45 52 46 62 42 70 Z" />
+                    <path d="M 44 74 C 54 68 62 66 65 74 C 58 78 48 78 44 74 Z" />
+                    <path d="M 40 92 C 30 84 26 74 34 68 C 41 74 42 84 40 92 Z" />
+                    <path d="M 43 96 C 53 90 62 90 64 98 C 57 102 47 101 43 96 Z" />
+                    <path d="M 41 116 C 30 110 24 100 32 94 C 39 100 42 108 41 116 Z" />
+                    <path d="M 46 120 C 56 114 65 116 66 124 C 58 127 49 125 46 120 Z" />
+                    <path d="M 48 140 C 36 136 30 126 38 120 C 45 125 48 133 48 140 Z" />
+                    <path d="M 54 144 C 64 139 74 142 74 150 C 66 152 57 149 54 144 Z" />
+                    <path d="M 62 162 C 50 160 44 150 51 144 C 58 148 62 155 62 162 Z" />
+                    <path d="M 68 165 C 78 162 86 166 85 174 C 77 175 70 170 68 165 Z" />
+                    <path d="M 84 180 C 72 180 66 172 73 166 C 80 169 84 175 84 180 Z" />
+                    <path d="M 90 182 C 100 181 107 186 104 194 C 97 193 91 187 90 182 Z" />
+                  </g>
+                  <!-- RIGHT LAUREL FEATHER BRANCH -->
+                  <g fill="url(#goldFeatherGrad)">
+                    <!-- Branch Stem -->
+                    <path d="M 120 196 C 165 192 204 150 198 70" stroke="url(#goldFeatherGrad)" stroke-width="2.5" stroke-linecap="round" fill="none" />
+                    <!-- Leaf Pairs curving up -->
+                    <path d="M 198 70 C 205 62 210 52 202 46 C 195 52 194 62 198 70 Z" />
+                    <path d="M 196 74 C 186 68 178 66 175 74 C 182 78 192 78 196 74 Z" />
+                    <path d="M 200 92 C 210 84 214 74 206 68 C 199 74 198 84 200 92 Z" />
+                    <path d="M 197 96 C 187 90 178 90 176 98 C 183 102 193 101 197 96 Z" />
+                    <path d="M 199 116 C 210 110 216 100 208 94 C 201 100 198 108 199 116 Z" />
+                    <path d="M 194 120 C 184 114 175 116 174 124 C 182 127 191 125 194 120 Z" />
+                    <path d="M 192 140 C 204 136 210 126 202 120 C 195 125 192 133 192 140 Z" />
+                    <path d="M 186 144 C 176 139 166 142 166 150 C 174 152 183 149 186 144 Z" />
+                    <path d="M 178 162 C 190 160 196 150 189 144 C 182 148 178 155 178 162 Z" />
+                    <path d="M 172 165 C 162 162 154 166 155 174 C 163 175 170 170 172 165 Z" />
+                    <path d="M 156 180 C 168 180 174 172 167 166 C 160 169 156 175 156 180 Z" />
+                    <path d="M 150 182 C 140 181 133 186 136 194 C 143 193 149 187 150 182 Z" />
+                  </g>
+                  <!-- BASE TIE RIBBON -->
+                  <path d="M 110 193 Q 120 202 130 193 Q 120 197 110 193 Z" fill="url(#goldFeatherGrad)" />
+                  <path d="M 112 196 Q 106 206 102 210 Q 110 206 115 198 Z" fill="url(#goldFeatherGrad)" />
+                  <path d="M 128 196 Q 134 206 138 210 Q 130 206 125 198 Z" fill="url(#goldFeatherGrad)" />
+                </svg>
+
+                <!-- NUMBER & PLUS EMBEDDED INSIDE GOLDEN LAUREL FEATHER -->
+                <div class="laurel-center-content">
+                  <div class="laurel-stat-number">
+                    <span class="stat-num count-up" data-target="200">200</span><span class="laurel-plus">+</span>
+                  </div>
+                  <div class="laurel-banner-pill">
+                    <span>EVENT PARTICIPANTS</span>
+                  </div>
+                </div>
+              </div>
+              <div class="laurel-stat-sublabel">Coordinated in Robotics Events</div>
             </div>
-            <div class="stat-card">
-              <div class="stat-number"><span class="stat-num count-up" data-target="70">70</span><span class="plus">+</span></div>
-              <div class="stat-label">Volunteers Mobilized &amp; Mentored</div>
+            <div class="laurel-stat-card">
+              <div class="laurel-wreath-wrap">
+                <!-- GOLDEN LAUREL WREATH SVG EMBLEM (STYLE OF IMAGE 1) -->
+                <svg class="laurel-wreath-svg" viewBox="0 0 240 210" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="goldFeatherGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#FFE27A" />
+                      <stop offset="35%" stop-color="#D4AF37" />
+                      <stop offset="70%" stop-color="#9C721D" />
+                      <stop offset="100%" stop-color="#F5D061" />
+                    </linearGradient>
+                  </defs>
+                  <!-- 5 GOLD AWARDS STARS AT TOP -->
+                  <g fill="url(#goldFeatherGrad)" class="laurel-stars">
+                    <!-- Center star -->
+                    <polygon points="120,8 123,17 132,17 125,22 127,31 120,26 113,31 115,22 108,17 117,17" transform="scale(0.85) translate(21, 2)" />
+                    <!-- Left inner star -->
+                    <polygon points="120,8 123,17 132,17 125,22 127,31 120,26 113,31 115,22 108,17 117,17" transform="scale(0.7) translate(36, 12)" />
+                    <!-- Right inner star -->
+                    <polygon points="120,8 123,17 132,17 125,22 127,31 120,26 113,31 115,22 108,17 117,17" transform="scale(0.7) translate(68, 12)" />
+                    <!-- Left outer star -->
+                    <polygon points="120,8 123,17 132,17 125,22 127,31 120,26 113,31 115,22 108,17 117,17" transform="scale(0.55) translate(62, 34)" />
+                    <!-- Right outer star -->
+                    <polygon points="120,8 123,17 132,17 125,22 127,31 120,26 113,31 115,22 108,17 117,17" transform="scale(0.55) translate(138, 34)" />
+                  </g>
+                  <!-- LEFT LAUREL FEATHER BRANCH -->
+                  <g fill="url(#goldFeatherGrad)">
+                    <!-- Branch Stem -->
+                    <path d="M 120 196 C 75 192 36 150 42 70" stroke="url(#goldFeatherGrad)" stroke-width="2.5" stroke-linecap="round" fill="none" />
+                    <!-- Leaf Pairs curving up -->
+                    <path d="M 42 70 C 35 62 30 52 38 46 C 45 52 46 62 42 70 Z" />
+                    <path d="M 44 74 C 54 68 62 66 65 74 C 58 78 48 78 44 74 Z" />
+                    <path d="M 40 92 C 30 84 26 74 34 68 C 41 74 42 84 40 92 Z" />
+                    <path d="M 43 96 C 53 90 62 90 64 98 C 57 102 47 101 43 96 Z" />
+                    <path d="M 41 116 C 30 110 24 100 32 94 C 39 100 42 108 41 116 Z" />
+                    <path d="M 46 120 C 56 114 65 116 66 124 C 58 127 49 125 46 120 Z" />
+                    <path d="M 48 140 C 36 136 30 126 38 120 C 45 125 48 133 48 140 Z" />
+                    <path d="M 54 144 C 64 139 74 142 74 150 C 66 152 57 149 54 144 Z" />
+                    <path d="M 62 162 C 50 160 44 150 51 144 C 58 148 62 155 62 162 Z" />
+                    <path d="M 68 165 C 78 162 86 166 85 174 C 77 175 70 170 68 165 Z" />
+                    <path d="M 84 180 C 72 180 66 172 73 166 C 80 169 84 175 84 180 Z" />
+                    <path d="M 90 182 C 100 181 107 186 104 194 C 97 193 91 187 90 182 Z" />
+                  </g>
+                  <!-- RIGHT LAUREL FEATHER BRANCH -->
+                  <g fill="url(#goldFeatherGrad)">
+                    <!-- Branch Stem -->
+                    <path d="M 120 196 C 165 192 204 150 198 70" stroke="url(#goldFeatherGrad)" stroke-width="2.5" stroke-linecap="round" fill="none" />
+                    <!-- Leaf Pairs curving up -->
+                    <path d="M 198 70 C 205 62 210 52 202 46 C 195 52 194 62 198 70 Z" />
+                    <path d="M 196 74 C 186 68 178 66 175 74 C 182 78 192 78 196 74 Z" />
+                    <path d="M 200 92 C 210 84 214 74 206 68 C 199 74 198 84 200 92 Z" />
+                    <path d="M 197 96 C 187 90 178 90 176 98 C 183 102 193 101 197 96 Z" />
+                    <path d="M 199 116 C 210 110 216 100 208 94 C 201 100 198 108 199 116 Z" />
+                    <path d="M 194 120 C 184 114 175 116 174 124 C 182 127 191 125 194 120 Z" />
+                    <path d="M 192 140 C 204 136 210 126 202 120 C 195 125 192 133 192 140 Z" />
+                    <path d="M 186 144 C 176 139 166 142 166 150 C 174 152 183 149 186 144 Z" />
+                    <path d="M 178 162 C 190 160 196 150 189 144 C 182 148 178 155 178 162 Z" />
+                    <path d="M 172 165 C 162 162 154 166 155 174 C 163 175 170 170 172 165 Z" />
+                    <path d="M 156 180 C 168 180 174 172 167 166 C 160 169 156 175 156 180 Z" />
+                    <path d="M 150 182 C 140 181 133 186 136 194 C 143 193 149 187 150 182 Z" />
+                  </g>
+                  <!-- BASE TIE RIBBON -->
+                  <path d="M 110 193 Q 120 202 130 193 Q 120 197 110 193 Z" fill="url(#goldFeatherGrad)" />
+                  <path d="M 112 196 Q 106 206 102 210 Q 110 206 115 198 Z" fill="url(#goldFeatherGrad)" />
+                  <path d="M 128 196 Q 134 206 138 210 Q 130 206 125 198 Z" fill="url(#goldFeatherGrad)" />
+                </svg>
+
+                <!-- NUMBER & PLUS EMBEDDED INSIDE GOLDEN LAUREL FEATHER -->
+                <div class="laurel-center-content">
+                  <div class="laurel-stat-number">
+                    <span class="stat-num count-up" data-target="70">70</span><span class="laurel-plus">+</span>
+                  </div>
+                  <div class="laurel-banner-pill">
+                    <span>VOLUNTEERS</span>
+                  </div>
+                </div>
+              </div>
+              <div class="laurel-stat-sublabel">Mobilized & Mentored on Ground</div>
             </div>
-            <div class="stat-card">
-              <div class="stat-number"><span class="stat-num count-up" data-target="15">15</span><span class="plus">+</span></div>
-              <div class="stat-label">Global &amp; National Honors / Finalist Recognitions</div>
+            <div class="laurel-stat-card">
+              <div class="laurel-wreath-wrap">
+                <!-- GOLDEN LAUREL WREATH SVG EMBLEM (STYLE OF IMAGE 1) -->
+                <svg class="laurel-wreath-svg" viewBox="0 0 240 210" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="goldFeatherGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#FFE27A" />
+                      <stop offset="35%" stop-color="#D4AF37" />
+                      <stop offset="70%" stop-color="#9C721D" />
+                      <stop offset="100%" stop-color="#F5D061" />
+                    </linearGradient>
+                  </defs>
+                  <!-- 5 GOLD AWARDS STARS AT TOP -->
+                  <g fill="url(#goldFeatherGrad)" class="laurel-stars">
+                    <!-- Center star -->
+                    <polygon points="120,8 123,17 132,17 125,22 127,31 120,26 113,31 115,22 108,17 117,17" transform="scale(0.85) translate(21, 2)" />
+                    <!-- Left inner star -->
+                    <polygon points="120,8 123,17 132,17 125,22 127,31 120,26 113,31 115,22 108,17 117,17" transform="scale(0.7) translate(36, 12)" />
+                    <!-- Right inner star -->
+                    <polygon points="120,8 123,17 132,17 125,22 127,31 120,26 113,31 115,22 108,17 117,17" transform="scale(0.7) translate(68, 12)" />
+                    <!-- Left outer star -->
+                    <polygon points="120,8 123,17 132,17 125,22 127,31 120,26 113,31 115,22 108,17 117,17" transform="scale(0.55) translate(62, 34)" />
+                    <!-- Right outer star -->
+                    <polygon points="120,8 123,17 132,17 125,22 127,31 120,26 113,31 115,22 108,17 117,17" transform="scale(0.55) translate(138, 34)" />
+                  </g>
+                  <!-- LEFT LAUREL FEATHER BRANCH -->
+                  <g fill="url(#goldFeatherGrad)">
+                    <!-- Branch Stem -->
+                    <path d="M 120 196 C 75 192 36 150 42 70" stroke="url(#goldFeatherGrad)" stroke-width="2.5" stroke-linecap="round" fill="none" />
+                    <!-- Leaf Pairs curving up -->
+                    <path d="M 42 70 C 35 62 30 52 38 46 C 45 52 46 62 42 70 Z" />
+                    <path d="M 44 74 C 54 68 62 66 65 74 C 58 78 48 78 44 74 Z" />
+                    <path d="M 40 92 C 30 84 26 74 34 68 C 41 74 42 84 40 92 Z" />
+                    <path d="M 43 96 C 53 90 62 90 64 98 C 57 102 47 101 43 96 Z" />
+                    <path d="M 41 116 C 30 110 24 100 32 94 C 39 100 42 108 41 116 Z" />
+                    <path d="M 46 120 C 56 114 65 116 66 124 C 58 127 49 125 46 120 Z" />
+                    <path d="M 48 140 C 36 136 30 126 38 120 C 45 125 48 133 48 140 Z" />
+                    <path d="M 54 144 C 64 139 74 142 74 150 C 66 152 57 149 54 144 Z" />
+                    <path d="M 62 162 C 50 160 44 150 51 144 C 58 148 62 155 62 162 Z" />
+                    <path d="M 68 165 C 78 162 86 166 85 174 C 77 175 70 170 68 165 Z" />
+                    <path d="M 84 180 C 72 180 66 172 73 166 C 80 169 84 175 84 180 Z" />
+                    <path d="M 90 182 C 100 181 107 186 104 194 C 97 193 91 187 90 182 Z" />
+                  </g>
+                  <!-- RIGHT LAUREL FEATHER BRANCH -->
+                  <g fill="url(#goldFeatherGrad)">
+                    <!-- Branch Stem -->
+                    <path d="M 120 196 C 165 192 204 150 198 70" stroke="url(#goldFeatherGrad)" stroke-width="2.5" stroke-linecap="round" fill="none" />
+                    <!-- Leaf Pairs curving up -->
+                    <path d="M 198 70 C 205 62 210 52 202 46 C 195 52 194 62 198 70 Z" />
+                    <path d="M 196 74 C 186 68 178 66 175 74 C 182 78 192 78 196 74 Z" />
+                    <path d="M 200 92 C 210 84 214 74 206 68 C 199 74 198 84 200 92 Z" />
+                    <path d="M 197 96 C 187 90 178 90 176 98 C 183 102 193 101 197 96 Z" />
+                    <path d="M 199 116 C 210 110 216 100 208 94 C 201 100 198 108 199 116 Z" />
+                    <path d="M 194 120 C 184 114 175 116 174 124 C 182 127 191 125 194 120 Z" />
+                    <path d="M 192 140 C 204 136 210 126 202 120 C 195 125 192 133 192 140 Z" />
+                    <path d="M 186 144 C 176 139 166 142 166 150 C 174 152 183 149 186 144 Z" />
+                    <path d="M 178 162 C 190 160 196 150 189 144 C 182 148 178 155 178 162 Z" />
+                    <path d="M 172 165 C 162 162 154 166 155 174 C 163 175 170 170 172 165 Z" />
+                    <path d="M 156 180 C 168 180 174 172 167 166 C 160 169 156 175 156 180 Z" />
+                    <path d="M 150 182 C 140 181 133 186 136 194 C 143 193 149 187 150 182 Z" />
+                  </g>
+                  <!-- BASE TIE RIBBON -->
+                  <path d="M 110 193 Q 120 202 130 193 Q 120 197 110 193 Z" fill="url(#goldFeatherGrad)" />
+                  <path d="M 112 196 Q 106 206 102 210 Q 110 206 115 198 Z" fill="url(#goldFeatherGrad)" />
+                  <path d="M 128 196 Q 134 206 138 210 Q 130 206 125 198 Z" fill="url(#goldFeatherGrad)" />
+                </svg>
+
+                <!-- NUMBER & PLUS EMBEDDED INSIDE GOLDEN LAUREL FEATHER -->
+                <div class="laurel-center-content">
+                  <div class="laurel-stat-number">
+                    <span class="stat-num count-up" data-target="15">15</span><span class="laurel-plus">+</span>
+                  </div>
+                  <div class="laurel-banner-pill">
+                    <span>GLOBAL HONORS</span>
+                  </div>
+                </div>
+              </div>
+              <div class="laurel-stat-sublabel">National Laurels & Finalist Accolades</div>
             </div>
+          </div>
           </div>
 
           <div class="about-footer-meta">
@@ -413,7 +849,6 @@
                 </div>
                 <h4 class="entry-degree">B.Sc. in Electrical &amp; Electronic Engineering</h4>
                 <p class="entry-school">Ahsanullah University of Science &amp; Technology (AUST)</p>
-                <p class="entry-details">Rigorous curriculum in circuits, power electronics, signals &amp; systems, computational modeling, and strategic project execution.</p>
               </div>
             </div>
 
@@ -427,7 +862,6 @@
                 </div>
                 <h4 class="entry-degree">Higher Secondary Certificate (HSC) — Science</h4>
                 <p class="entry-school">Abdul Kadir Mollah City College (AKMCC)</p>
-                <p class="entry-details">Advanced analytical focus in Higher Mathematics, Applied Physics, and Chemical Sciences.</p>
               </div>
             </div>
 
@@ -441,7 +875,6 @@
                 </div>
                 <h4 class="entry-degree">Secondary School Certificate (SSC) — Science</h4>
                 <p class="entry-school">Gazipur Shaheen Cadet Academy (GSCA)</p>
-                <p class="entry-details">Foundational science, cadency discipline, organizational structure, and analytical problem-solving.</p>
               </div>
             </div>
           </div>
@@ -496,10 +929,6 @@
           <button class="clapper-scene-tab" role="tab" aria-selected="false" data-index="2" onclick="switchLeadershipScene(2)">
             <span class="scene-tab-tag">SCENE 03</span>
             <span class="scene-tab-title">HSBC BUSINESS CASE</span>
-          </button>
-          <button class="clapper-scene-tab" role="tab" aria-selected="false" data-index="3" onclick="switchLeadershipScene(3)">
-            <span class="scene-tab-tag">SCENE 04</span>
-            <span class="scene-tab-title">PRISM AI CREATIVE</span>
           </button>
         </div>
 

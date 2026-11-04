@@ -4264,3 +4264,526 @@ body.shelby-archive {
     display: none !important;
   }
 }
+
+/* =========================================================
+   PERSONAL MEMORANDUM — GOLDEN LAUREL AWARDS (STYLE OF IMAGE 1)
+   ========================================================= */
+
+.laurel-awards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin: 36px 0 28px;
+  width: 100%;
+}
+
+.laurel-stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 10px 6px;
+}
+
+.laurel-stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.laurel-wreath-wrap {
+  position: relative;
+  width: 220px;
+  height: 195px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.laurel-wreath-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 4px 14px rgba(212, 175, 55, 0.4));
+  transition: filter 0.35s ease, transform 0.35s ease;
+}
+
+.laurel-stat-card:hover .laurel-wreath-svg {
+  filter: drop-shadow(0 0 22px rgba(255, 215, 0, 0.65));
+}
+
+.laurel-center-content {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 130px;
+  pointer-events: none;
+}
+
+.laurel-stat-number {
+  font-family: var(--font-display);
+  font-size: 38px;
+  font-weight: 800;
+  color: #FFF6D6;
+  line-height: 1;
+  margin-bottom: 8px;
+  text-shadow: 0 0 16px rgba(212, 175, 55, 0.7);
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.laurel-plus {
+  color: #FFD700;
+  font-size: 26px;
+  font-weight: 700;
+  margin-left: 2px;
+}
+
+.laurel-banner-pill {
+  background: linear-gradient(180deg, #E6C252 0%, #B88A4A 60%, #855C1A 100%);
+  color: #0E0C09;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 2px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6), inset 0 1px 1px #FFF2B2;
+  white-space: nowrap;
+}
+
+.laurel-stat-sublabel {
+  font-size: 13px;
+  line-height: 1.45;
+  color: #DCD0BD;
+  text-align: center;
+  margin-top: 10px;
+  max-width: 190px;
+}
+
+@media (max-width: 1024px) {
+  .laurel-awards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .laurel-awards-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .laurel-wreath-wrap {
+    width: 200px;
+    height: 180px;
+  }
+  .laurel-stat-number {
+    font-size: 34px;
+  }
+}
+
+/* =========================================================
+   GLOWING GOLDEN FILM STRIP TICKER (STYLE OF IMAGE 2 FOR IMAGE 3)
+   ========================================================= */
+
+.golden-film-ticker {
+  position: relative;
+  background: radial-gradient(ellipse at 50% 50%, #20170A 0%, #0A0806 85%);
+  border-top: 3px solid #D4AF37;
+  border-bottom: 3px solid #D4AF37;
+  padding: 22px 0;
+  overflow: hidden;
+  box-shadow: 0 0 32px rgba(212, 175, 55, 0.28), inset 0 0 40px rgba(0, 0, 0, 0.95);
+  z-index: 5;
+}
+
+/* TOP AND BOTTOM 35MM SPROCKET PERFORATIONS (STYLE OF IMAGE 2) */
+.ticker-film-sprockets {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 9px;
+  background-color: #D4AF37;
+  background-image: repeating-linear-gradient(
+    90deg,
+    #0A0806 0px,
+    #0A0806 9px,
+    transparent 9px,
+    transparent 19px
+  );
+  z-index: 4;
+}
+
+.ticker-film-sprockets.top-sprockets {
+  top: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.ticker-film-sprockets.bottom-sprockets {
+  bottom: 0;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.8);
+}
+
+/* THEATRICAL GOLD CORNER LIGHT BEAMS */
+.ticker-corner-lights {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: 
+    radial-gradient(circle at 4% 0%, rgba(255, 215, 0, 0.5) 0%, transparent 40%),
+    radial-gradient(circle at 96% 0%, rgba(255, 215, 0, 0.5) 0%, transparent 40%),
+    radial-gradient(circle at 50% 100%, rgba(212, 175, 55, 0.22) 0%, transparent 60%);
+  z-index: 3;
+}
+
+.golden-film-ticker .ticker-track {
+  display: flex;
+  width: max-content;
+  animation: tickerScroll 36s linear infinite;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.golden-film-ticker .ticker-content {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing: 0.16em;
+  color: #FFECA8;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.55);
+  white-space: nowrap;
+}
+
+.golden-film-ticker .film-frame-bullet {
+  font-style: normal;
+  color: #FFD700;
+  font-size: 13px;
+  text-shadow: 0 0 12px #FFD700;
+}
+
+/* =========================================================
+   HERO SECTION — THEATRICAL CINEMA STAGE (STYLE OF IMAGE 4)
+   Vintage camera on tripod, spinning film reels, stars & grounded hero
+   ========================================================= */
+
+.hero-cinema-theatre-stage {
+  position: relative;
+  width: 100%;
+  max-width: 1320px;
+  margin: 10px auto 30px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  min-height: 540px;
+}
+
+/* TOP 5 GOLDEN CINEMA STARS WITH TWINKLING GLINTS */
+.cinema-stage-stars {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 5;
+}
+
+.stage-star {
+  color: #FFD700;
+  font-size: 22px;
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.85));
+  animation: starPulse 3s infinite alternate ease-in-out;
+}
+
+.stage-star.star-3 {
+  font-size: 28px;
+  transform: translateY(-4px);
+}
+
+.stage-star.star-2, .stage-star.star-4 {
+  animation-delay: 0.5s;
+}
+
+.stage-star.star-1, .stage-star.star-5 {
+  animation-delay: 1s;
+}
+
+@keyframes starPulse {
+  0% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6)); }
+  100% { transform: scale(1.12); filter: drop-shadow(0 0 16px rgba(255, 215, 0, 1)); }
+}
+
+.star-glint {
+  position: absolute;
+  color: #FFFFFF;
+  font-size: 14px;
+  pointer-events: none;
+  animation: glintTwinkle 2.4s infinite ease-in-out;
+}
+
+.glint-1 { top: -6px; left: 24%; }
+.glint-2 { bottom: -6px; right: 26%; animation-delay: 1.2s; }
+
+@keyframes glintTwinkle {
+  0%, 100% { opacity: 0; transform: scale(0.4) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.3) rotate(45deg); filter: drop-shadow(0 0 8px #FFF); }
+}
+
+/* WAVING 35MM FILM TAPE RUNNING ACROSS STAGE */
+.hero-waving-film-tape {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  width: 100%;
+  height: 180px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.tape-wave-svg {
+  width: 100%;
+  height: 100%;
+  animation: tapeWaveSway 10s infinite alternate ease-in-out;
+}
+
+@keyframes tapeWaveSway {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(10px); }
+}
+
+/* LEFT: VINTAGE GOLDEN 35MM MOVIE CAMERA ON TRIPOD (ANIMATED) */
+.hero-moving-camera {
+  position: absolute;
+  left: 3%;
+  bottom: 12px;
+  width: 210px;
+  height: 290px;
+  z-index: 3;
+}
+
+.camera-prop-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.9));
+}
+
+.camera-reel {
+  transform-origin: 75px 40px;
+  animation: cameraReelRotate 8s linear infinite;
+}
+
+.camera-reel.reel-right {
+  transform-origin: 125px 40px;
+  animation-duration: 7s;
+}
+
+@keyframes cameraReelRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.camera-tally-light {
+  fill: #FF0000;
+  animation: tallyBlink 1.2s infinite;
+}
+
+@keyframes tallyBlink {
+  0%, 100% { opacity: 1; filter: drop-shadow(0 0 6px #FF0000); }
+  50% { opacity: 0.2; filter: none; }
+}
+
+.camera-light-beam {
+  position: absolute;
+  top: 55px;
+  left: 175px;
+  width: 320px;
+  height: 180px;
+  background: radial-gradient(ellipse at 0% 50%, rgba(255, 215, 0, 0.22) 0%, rgba(212, 175, 55, 0.05) 55%, transparent 75%);
+  transform: rotate(-10deg);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* RIGHT: DUAL GOLDEN MOVIE REELS (SPINNING CONTINUOUSLY) */
+.hero-moving-reels {
+  position: absolute;
+  right: 3%;
+  bottom: 20px;
+  width: 230px;
+  height: 290px;
+  z-index: 3;
+}
+
+.reels-prop-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.9));
+}
+
+.spinning-reel.reel-upper {
+  transform-origin: 85px 85px;
+  animation: reelSpinUpper 9s linear infinite;
+}
+
+.spinning-reel.reel-lower {
+  transform-origin: 145px 190px;
+  animation: reelSpinLower 7s linear infinite reverse;
+}
+
+@keyframes reelSpinUpper {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes reelSpinLower {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.glint-reel-1 {
+  top: 70px;
+  right: 140px;
+  animation-delay: 0.7s;
+}
+
+.glint-reel-2 {
+  bottom: 80px;
+  right: 50px;
+  animation-delay: 1.8s;
+}
+
+/* CENTER: SOLIDLY GROUNDED HERO PORTRAIT (NOT FLOATING) */
+.hero-grounded-centerpiece {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.stage-spotlight-cone {
+  position: absolute;
+  top: -70px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 520px;
+  height: 600px;
+  background: radial-gradient(ellipse at 50% 12%, rgba(212, 175, 55, 0.3) 0%, rgba(184, 138, 74, 0.08) 55%, transparent 75%);
+  filter: blur(35px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.portrait-stage-grounded {
+  position: relative;
+  z-index: 3;
+}
+
+.hero-poster-img.grounded-hero-img {
+  display: block;
+  max-width: 520px;
+  width: 100%;
+  height: clamp(420px, 54vh, 640px);
+  object-fit: contain;
+  filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.35)) drop-shadow(0 25px 45px rgba(0, 0, 0, 0.98)) contrast(1.06);
+  /* Solid silhouette - no waist cut off, extending to physical platform */
+  -webkit-mask-image: none;
+  mask-image: none;
+  transition: transform 0.4s var(--ease-cinematic);
+}
+
+.hero-grounded-centerpiece:hover .grounded-hero-img {
+  transform: scale(1.02);
+}
+
+/* PHYSICAL STAGE BASE & SOLID CONTACT SHADOW (ELIMINATES FLOATING) */
+.hero-pedestal-platform {
+  position: relative;
+  width: 440px;
+  height: 40px;
+  margin-top: -24px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pedestal-contact-shadow {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 420px;
+  height: 28px;
+  background: radial-gradient(ellipse, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.85) 60%, transparent 80%);
+  filter: blur(4px);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.pedestal-disc-top {
+  position: relative;
+  width: 440px;
+  height: 24px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, #32271A 0%, #17120C 65%, #0B0907 100%);
+  border: 2px solid #D4AF37;
+  box-shadow: 0 0 24px rgba(212, 175, 55, 0.45), inset 0 0 16px rgba(212, 175, 55, 0.25);
+  z-index: 2;
+}
+
+.pedestal-disc-rim {
+  position: relative;
+  width: 450px;
+  height: 12px;
+  margin-top: -8px;
+  border-radius: 0 0 50% 50% / 0 0 100% 100%;
+  background: linear-gradient(180deg, #D4AF37 0%, #7D5B18 100%);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.95);
+  z-index: 1;
+}
+
+/* RESPONSIVE HERO CINEMA STAGE */
+@media (max-width: 1100px) {
+  .hero-moving-camera {
+    left: -10px;
+    width: 170px;
+    height: 240px;
+    opacity: 0.85;
+  }
+  .hero-moving-reels {
+    right: -10px;
+    width: 180px;
+    height: 240px;
+    opacity: 0.85;
+  }
+}
+
+@media (max-width: 850px) {
+  .hero-moving-camera, .hero-moving-reels {
+    display: none;
+  }
+  .hero-cinema-theatre-stage {
+    min-height: 420px;
+  }
+  .hero-poster-img.grounded-hero-img {
+    max-width: 340px;
+  }
+  .hero-pedestal-platform {
+    width: 320px;
+  }
+  .pedestal-disc-top {
+    width: 320px;
+  }
+  .pedestal-disc-rim {
+    width: 330px;
+  }
+}
