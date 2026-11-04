@@ -1947,6 +1947,18 @@ body.shelby-archive {
   box-shadow: 0 4px 22px rgba(0, 0, 0, 0.75);
 }
 
+.lens-subject-img.logo-tickify {
+  max-width: 145px;
+  max-height: 145px;
+  filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.75)) !important;
+}
+
+.lens-subject-img.logo-hsbc {
+  max-width: 165px;
+  max-height: 55px;
+  filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.75)) !important;
+}
+
 /* Rack-focus pull animation on scene change */
 .lens-subject-img.rack-focus {
   animation: lensFocusPull 0.44s cubic-bezier(0.16, 1, 0.3, 1);
@@ -2337,7 +2349,6 @@ body.shelby-archive {
     0% { filter: none !important; transform: scale(0.92); opacity: 0.4; }
     100% { filter: none !important; transform: scale(1); opacity: 1; }
   }
-}
 }
 
 /* =========================================================
@@ -4695,8 +4706,8 @@ body.shelby-archive {
   object-fit: contain;
   filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.35)) drop-shadow(0 25px 45px rgba(0, 0, 0, 0.98)) contrast(1.06);
   /* Solid silhouette - no waist cut off, extending to physical platform */
-  -webkit-mask-image: none;
-  mask-image: none;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
   transition: transform 0.4s var(--ease-cinematic);
 }
 
@@ -4785,5 +4796,16 @@ body.shelby-archive {
   }
   .pedestal-disc-rim {
     width: 330px;
+  }
+}
+
+/* MOBILE UI & PERFORMANCE: DISABLE HEAVY FILTERS ON < 900px */
+@media (max-width: 900px) {
+  .stage-spotlight-cone {
+    filter: none !important;
+    opacity: 0.35;
+  }
+  .laurel-wreath-svg {
+    filter: none !important;
   }
 }

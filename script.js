@@ -610,7 +610,10 @@ document.addEventListener('DOMContentLoaded', () => {
   window.renderLeadershipRecord = renderLeadershipRecord;
 
   // Global scene switch caller for robust click response
+  let activeSceneIndex = 0;
   window.switchLeadershipScene = function(index) {
+    if (typeof index !== 'number' || index < 0 || index >= leadershipRecords.length) return;
+    activeSceneIndex = index;
     const tabs = document.querySelectorAll('.clapper-scene-tab');
     tabs.forEach((t, i) => {
       if (i === index) {
@@ -625,12 +628,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   window.triggerLensInteraction = function() {
-    const activeTab = document.querySelector('.clapper-scene-tab.active');
-    let currentIdx = 0;
-    if (activeTab) {
-      currentIdx = parseInt(activeTab.getAttribute('data-index') || '0', 10);
-    }
-    renderLeadershipRecord(currentIdx);
+    renderLeadershipRecord(activeSceneIndex);
   };
 
   // Scene tab click handling
