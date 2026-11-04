@@ -4284,8 +4284,14 @@ body.shelby-archive {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
-  margin: 36px 0 28px;
+  margin: 44px 0 32px;
   width: 100%;
+  box-sizing: border-box;
+  padding: 30px 20px;
+  background: rgba(20, 16, 12, 0.7);
+  border: 1px solid rgba(184, 138, 74, 0.3);
+  border-radius: 4px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(184, 138, 74, 0.04);
 }
 
 .laurel-stat-card {
@@ -4295,6 +4301,8 @@ body.shelby-archive {
   text-align: center;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   padding: 10px 6px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .laurel-stat-card:hover {
@@ -4303,7 +4311,8 @@ body.shelby-archive {
 
 .laurel-wreath-wrap {
   position: relative;
-  width: 220px;
+  width: 100%;
+  max-width: 220px;
   height: 195px;
   display: flex;
   align-items: center;
