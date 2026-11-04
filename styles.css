@@ -1719,45 +1719,7 @@ body.shelby-archive {
 .dist-mark.mark-5 { bottom: 8px; left: 45%; }
 .dist-mark.mark-6 { left: 10px; top: 52%; }
 
-/* MECHANICAL APERTURE IRIS BLADES (MOTION GRAPHIC) */
-.lens-iris-blades-group {
-  position: absolute;
-  inset: 38px;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.iris-blade {
-  position: absolute;
-  width: 50%;
-  height: 50%;
-  top: 25%;
-  left: 25%;
-  border-top: 2px solid rgba(184, 138, 74, 0.35);
-  border-radius: 50% 0;
-  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
-  transform-origin: 0% 0%;
-}
-
-.iris-blade.b1 { transform: rotate(0deg); }
-.iris-blade.b2 { transform: rotate(45deg); }
-.iris-blade.b3 { transform: rotate(90deg); }
-.iris-blade.b4 { transform: rotate(135deg); }
-.iris-blade.b5 { transform: rotate(180deg); }
-.iris-blade.b6 { transform: rotate(225deg); }
-.iris-blade.b7 { transform: rotate(270deg); }
-.iris-blade.b8 { transform: rotate(315deg); }
-
-.lens-iris-blades-group.iris-contracting .iris-blade {
-  animation: irisBladeSnap 0.52s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-@keyframes irisBladeSnap {
-  0% { transform: scale(1.15); opacity: 0.7; }
-  45% { transform: scale(0.85); opacity: 0.95; }
-  100% { transform: scale(1); opacity: 0.4; }
-}
+/* Clean optical aperture aperture stage */
 
 /* OPTICAL SIGHT GLASS (HIGH CONTRAST, ZERO COLOR BLENDING) */
 .lens-sight-glass {
@@ -1808,27 +1770,7 @@ body.shelby-archive {
 .corner-bottom-left { bottom: 20px; left: 24px; }
 .corner-bottom-right { bottom: 20px; right: 24px; }
 
-.reticle-center-circle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 44px;
-  height: 44px;
-  transform: translate(-50%, -50%);
-  border: 1px dashed rgba(184, 138, 74, 0.4);
-  border-radius: 50%;
-}
 
-.reticle-crosshair {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 22px;
-  height: 22px;
-  transform: translate(-50%, -50%);
-  border-left: 1px solid rgba(184, 138, 74, 0.7);
-  border-top: 1px solid rgba(184, 138, 74, 0.7);
-}
 
 .hud-rec-bar {
   position: absolute;

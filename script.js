@@ -497,8 +497,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const clapperArmTop = document.getElementById('clapperArmTop');
   const filmClapperboard = document.getElementById('filmClapperboard');
   const lensOuterBezel = document.getElementById('lensOuterBezel');
-  const lensIrisRing = document.getElementById('lensIrisRing');
-  const lensStreak = document.getElementById('lensAnamorphicStreak');
+    const lensStreak = document.getElementById('lensAnamorphicStreak');
   const cineLensBarrel = document.getElementById('cineLensBarrel');
   const clapperSticksAssembly = document.getElementById('clapperSticksAssembly');
 
@@ -568,13 +567,7 @@ document.addEventListener('DOMContentLoaded', () => {
       gearTrack.style.transform = `rotate(${bezelRotation * 1.5}deg)`;
     }
 
-    // 3. Mechanical Aperture Iris Pulse
-    if (lensIrisRing) {
-      lensIrisRing.classList.remove('iris-contracting');
-      void lensIrisRing.offsetWidth;
-      lensIrisRing.classList.add('iris-contracting');
-    }
-
+    
     // 4. Anamorphic Lens Flare Beam Sweep
     if (lensStreak) {
       lensStreak.classList.remove('streak-active');
