@@ -409,7 +409,6 @@ document.addEventListener('DOMContentLoaded', () => {
       scene: "01",
       take: "EXEC // DIR",
       roll: "2025-SP",
-      camera: "ARRI ALEXA 65 // 50mm CINE PRIME f/1.4",
       spec: { shutter: "1/1000s", aperture: "f/1.4", focal: "50mm PRIME" },
       img: "assets/AUST_RC.png",
       imgClass: "logo-aust-rc",
@@ -432,7 +431,6 @@ document.addEventListener('DOMContentLoaded', () => {
       scene: "02",
       take: "AMBASSADOR",
       roll: "2026-TCK",
-      camera: "RED V-RAPTOR // 35mm CINE WIDE f/2.0",
       spec: { shutter: "1/500s", aperture: "f/2.0", focal: "35mm WIDE" },
       img: "assets/Tickify_clean.png",
       imgClass: "logo-tickify",
@@ -454,7 +452,6 @@ document.addEventListener('DOMContentLoaded', () => {
       scene: "03",
       take: "NAT-FINALS",
       roll: "2025-NAT",
-      camera: "SONY VENICE 2 // 85mm TELE CINE f/2.8",
       spec: { shutter: "1/1000s", aperture: "f/2.8", focal: "85mm TELE" },
       img: "assets/HSBC_Logo.svg",
       imgClass: "logo-hsbc",
@@ -476,7 +473,6 @@ document.addEventListener('DOMContentLoaded', () => {
       scene: "04",
       take: "GLOBAL-15",
       roll: "2026-GLB",
-      camera: "PANAVISION DXL2 // 24mm ANAMORPHIC f/1.2",
       spec: { shutter: "1/250s", aperture: "f/1.2", focal: "24mm CINE" },
       img: "assets/Prism_Logo.png",
       imgClass: "logo-prism",
@@ -507,6 +503,34 @@ document.addEventListener('DOMContentLoaded', () => {
   const clapperSticksAssembly = document.getElementById('clapperSticksAssembly');
 
   let bezelRotation = 0;
+  let distanceRotation = 0;
+
+  // Running 24 FPS Cinema Timecode (Motion Graphic)
+  let timecodeFrames = 18;
+  let timecodeSeconds = 24;
+  let timecodeMinutes = 1;
+  let timecodeHours = 0;
+  const timecodeEl = document.getElementById('hudTimecode');
+
+  setInterval(() => {
+    timecodeFrames++;
+    if (timecodeFrames >= 24) {
+      timecodeFrames = 0;
+      timecodeSeconds++;
+      if (timecodeSeconds >= 60) {
+        timecodeSeconds = 0;
+        timecodeMinutes++;
+        if (timecodeMinutes >= 60) {
+          timecodeMinutes = 0;
+          timecodeHours++;
+        }
+      }
+    }
+    if (timecodeEl) {
+      const pad = (n) => String(n).padStart(2, '0');
+      timecodeEl.innerText = `${pad(timecodeHours)}:${pad(timecodeMinutes)}:${pad(timecodeSeconds)}:${pad(timecodeFrames)}`;
+    }
+  }, 1000 / 24);
 
   function triggerClapperSnap() {
     if (clapperArmTop) {
@@ -520,6 +544,7 @@ document.addEventListener('DOMContentLoaded', () => {
       filmClapperboard.classList.add('board-vibrate');
     }
   }
+  window.triggerClapperSnap = triggerClapperSnap;
 
   function renderLeadershipRecord(recIndex) {
     const data = leadershipRecords[recIndex];
@@ -528,25 +553,36 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Cinematic Clapper Snap
     triggerClapperSnap();
 
-    // 2. Camera Lens Bezel rotation (focus ring dial)
+    // 2. Camera Lens Bezel & Distance Scale Rotation (Motion Graphic)
     bezelRotation += 90;
+    distanceRotation -= 60;
     if (lensOuterBezel) {
       lensOuterBezel.style.transform = `rotate(${bezelRotation}deg)`;
     }
-
-    // 3. Aperture Iris Pulse & Anamorphic Streak Sweep
-    if (lensIrisRing) {
-      lensIrisRing.classList.remove('iris-pulse');
-      void lensIrisRing.offsetWidth;
-      lensIrisRing.classList.add('iris-pulse');
+    const distRing = document.getElementById('lensDistanceRing');
+    if (distRing) {
+      distRing.style.transform = `rotate(${distanceRotation}deg)`;
     }
+    const gearTrack = document.getElementById('lensGearTrack');
+    if (gearTrack) {
+      gearTrack.style.transform = `rotate(${bezelRotation * 1.5}deg)`;
+    }
+
+    // 3. Mechanical Aperture Iris Pulse
+    if (lensIrisRing) {
+      lensIrisRing.classList.remove('iris-contracting');
+      void lensIrisRing.offsetWidth;
+      lensIrisRing.classList.add('iris-contracting');
+    }
+
+    // 4. Anamorphic Lens Flare Beam Sweep
     if (lensStreak) {
       lensStreak.classList.remove('streak-active');
       void lensStreak.offsetWidth;
       lensStreak.classList.add('streak-active');
     }
 
-    // 4. Optical Focus Pull on Genuine Logo (Zero color blending)
+    // 5. Optical Focus Pull on Genuine Logo (Zero color blending)
     if (lensSubjectImg) {
       lensSubjectImg.classList.remove('rack-focus');
       void lensSubjectImg.offsetWidth;
@@ -555,65 +591,88 @@ document.addEventListener('DOMContentLoaded', () => {
       lensSubjectImg.className = `lens-subject-img ${data.imgClass || ''} rack-focus`;
     }
 
-    // 5. Update Telemetry Readouts
+    // 6. Update Telemetry Readouts
     if (lensShutterSpec) lensShutterSpec.innerText = `SHUTTER: ${data.spec.shutter}`;
     if (lensApertureSpec) lensApertureSpec.innerText = `APERTURE: ${data.spec.aperture}`;
     if (lensFocalSpec) lensFocalSpec.innerText = `FOCUS: ${data.spec.focal}`;
 
-    // 6. Update Hollywood Film Clapperboard Slate Fields
+    // 7. Update Hollywood Film Clapperboard Slate Fields
     const slateValProd = document.getElementById('slateValProd');
     const slateValScene = document.getElementById('slateValScene');
     const slateValTake = document.getElementById('slateValTake');
     const slateValRoll = document.getElementById('slateValRoll');
     const slateValDirector = document.getElementById('slateValDirector');
-    const slateValCamera = document.getElementById('slateValCamera');
     const slateValDate = document.getElementById('slateValDate');
     const slateNarrativeText = document.getElementById('slateNarrativeText');
     const slateVerifiedPoints = document.getElementById('slateVerifiedPoints');
     const slateCitation = document.getElementById('slateCitation');
 
     if (slateValProd) {
-      slateValProd.style.opacity = '0.3';
-      setTimeout(() => {
-        slateValProd.innerText = data.org;
-        slateValProd.style.opacity = '1';
-      }, 140);
+      slateValProd.innerText = data.org;
+      slateValProd.classList.remove('val-pop');
+      void slateValProd.offsetWidth;
+      slateValProd.classList.add('val-pop');
     }
-    if (slateValScene) slateValScene.innerText = data.scene;
-    if (slateValTake) slateValTake.innerText = data.take;
-    if (slateValRoll) slateValRoll.innerText = data.roll;
+    if (slateValScene) {
+      slateValScene.innerText = data.scene;
+      slateValScene.classList.remove('val-pop');
+      void slateValScene.offsetWidth;
+      slateValScene.classList.add('val-pop');
+    }
+    if (slateValTake) {
+      slateValTake.innerText = data.take;
+      slateValTake.classList.remove('val-pop');
+      void slateValTake.offsetWidth;
+      slateValTake.classList.add('val-pop');
+    }
+    if (slateValRoll) {
+      slateValRoll.innerText = data.roll;
+      slateValRoll.classList.remove('val-pop');
+      void slateValRoll.offsetWidth;
+      slateValRoll.classList.add('val-pop');
+    }
     if (slateValDirector) slateValDirector.innerText = `SOUMIC PAUL // ${data.role}`;
-    if (slateValCamera) slateValCamera.innerText = data.camera;
     if (slateValDate) slateValDate.innerText = data.tenure;
 
     if (slateNarrativeText) {
-      slateNarrativeText.style.opacity = '0.3';
-      setTimeout(() => {
-        slateNarrativeText.innerText = data.narrative;
-        slateNarrativeText.style.opacity = '1';
-      }, 150);
+      slateNarrativeText.innerText = data.narrative;
     }
     if (slateVerifiedPoints) {
-      slateVerifiedPoints.style.opacity = '0.3';
-      setTimeout(() => {
-        slateVerifiedPoints.innerHTML = data.points.map(pt => `<li>${pt}</li>`).join('');
-        slateVerifiedPoints.style.opacity = '1';
-      }, 160);
+      slateVerifiedPoints.innerHTML = data.points.map(pt => `<li>${pt}</li>`).join('');
     }
     if (slateCitation) slateCitation.innerText = data.citation;
   }
+  window.renderLeadershipRecord = renderLeadershipRecord;
+
+  // Global scene switch caller for robust click response
+  window.switchLeadershipScene = function(index) {
+    const tabs = document.querySelectorAll('.clapper-scene-tab');
+    tabs.forEach((t, i) => {
+      if (i === index) {
+        t.classList.add('active');
+        t.setAttribute('aria-selected', 'true');
+      } else {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      }
+    });
+    renderLeadershipRecord(index);
+  };
+
+  window.triggerLensInteraction = function() {
+    const activeTab = document.querySelector('.clapper-scene-tab.active');
+    let currentIdx = 0;
+    if (activeTab) {
+      currentIdx = parseInt(activeTab.getAttribute('data-index') || '0', 10);
+    }
+    renderLeadershipRecord(currentIdx);
+  };
 
   // Scene tab click handling
   if (clapperTabs.length > 0) {
     clapperTabs.forEach((tab, index) => {
       tab.addEventListener('click', () => {
-        clapperTabs.forEach(t => {
-          t.classList.remove('active');
-          t.setAttribute('aria-selected', 'false');
-        });
-        tab.classList.add('active');
-        tab.setAttribute('aria-selected', 'true');
-        renderLeadershipRecord(index);
+        window.switchLeadershipScene(index);
       });
 
       // Keyboard arrow navigation
@@ -628,31 +687,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (targetIndex !== -1) {
           e.preventDefault();
           clapperTabs[targetIndex].focus();
-          clapperTabs[targetIndex].click();
+          window.switchLeadershipScene(targetIndex);
         }
       });
     });
-  }
-
-  // Interactive clap on clicking the clapper sticks assembly
-  if (clapperSticksAssembly) {
-    clapperSticksAssembly.addEventListener('click', () => {
-      triggerClapperSnap();
-    });
-  }
-
-  // Interactive focus pull on clicking the cine lens barrel
-  if (cineLensBarrel) {
-    cineLensBarrel.addEventListener('click', () => {
-      // Find currently active index and cycle or re-trigger focus pull
-      const activeTab = document.querySelector('.clapper-scene-tab.active');
-      let currentIdx = 0;
-      if (activeTab) {
-        currentIdx = parseInt(activeTab.getAttribute('data-index') || '0', 10);
-      }
-      renderLeadershipRecord(currentIdx);
-    });
-  });
   }
 
   /* =========================================================

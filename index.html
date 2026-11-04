@@ -468,6 +468,10 @@
     </section>
 
 <section class="archive-chapter experience-chapter" id="leadership">
+      <!-- CINEMATIC PROJECTOR LIGHT BEAM MOTION GRAPHIC -->
+      <div class="cine-projector-beam" aria-hidden="true"></div>
+      <div class="cine-anamorphic-glow" aria-hidden="true"></div>
+
       <div class="chapter-badge">LEADERSHIP // CINEMATIC PRODUCTION SLATE</div>
 
       <div class="section-heading-centered">
@@ -481,19 +485,19 @@
         
         <!-- SCENE SELECTOR TABS -->
         <div class="clapper-scene-nav" role="tablist" aria-label="Select leadership production scene">
-          <button class="clapper-scene-tab active" role="tab" aria-selected="true" data-index="0">
+          <button class="clapper-scene-tab active" role="tab" aria-selected="true" data-index="0" onclick="switchLeadershipScene(0)">
             <span class="scene-tab-tag">SCENE 01</span>
             <span class="scene-tab-title">AUST ROBOTICS CLUB</span>
           </button>
-          <button class="clapper-scene-tab" role="tab" aria-selected="false" data-index="1">
+          <button class="clapper-scene-tab" role="tab" aria-selected="false" data-index="1" onclick="switchLeadershipScene(1)">
             <span class="scene-tab-tag">SCENE 02</span>
             <span class="scene-tab-title">TICKIFY</span>
           </button>
-          <button class="clapper-scene-tab" role="tab" aria-selected="false" data-index="2">
+          <button class="clapper-scene-tab" role="tab" aria-selected="false" data-index="2" onclick="switchLeadershipScene(2)">
             <span class="scene-tab-tag">SCENE 03</span>
             <span class="scene-tab-title">HSBC BUSINESS CASE</span>
           </button>
-          <button class="clapper-scene-tab" role="tab" aria-selected="false" data-index="3">
+          <button class="clapper-scene-tab" role="tab" aria-selected="false" data-index="3" onclick="switchLeadershipScene(3)">
             <span class="scene-tab-tag">SCENE 04</span>
             <span class="scene-tab-title">PRISM AI CREATIVE</span>
           </button>
@@ -503,7 +507,11 @@
           
           <!-- LEFT: CINEMATIC CAMERA LENS VIEWING MECHANISM (GENUINE LOGOS, NO COLOR BLENDING) -->
           <div class="lens-viewfinder-column">
-            <div class="cine-lens-barrel" id="cineLensBarrel" title="50mm Cine Prime Lens // Click to Rack Focus">
+            <div class="cine-lens-barrel" id="cineLensBarrel" onclick="triggerLensInteraction()" title="50mm Cine Prime Lens // Click to Rack Focus & Pulse Iris">
+              
+              <!-- OUTER CINE GEAR TRACK (FOLLOW FOCUS MOTOR RIBS) -->
+              <div class="lens-gear-track" id="lensGearTrack"></div>
+
               <!-- ENGRAVED ROTATING FOCUS BEZEL -->
               <div class="lens-outer-bezel" id="lensOuterBezel">
                 <span class="bezel-mark mark-top">50mm F/1.4</span>
@@ -512,22 +520,64 @@
                 <span class="bezel-mark mark-left">ANAMORPHIC</span>
               </div>
 
-              <!-- APERTURE IRIS BLADES RING -->
-              <div class="lens-iris-ring" id="lensIrisRing"></div>
+              <!-- ROTATING FOCUS DISTANCE SCALE RING -->
+              <div class="lens-distance-ring" id="lensDistanceRing">
+                <span class="dist-mark mark-1">0.8m</span>
+                <span class="dist-mark mark-2">1.2m</span>
+                <span class="dist-mark mark-3">2.0m</span>
+                <span class="dist-mark mark-4">3.5m</span>
+                <span class="dist-mark mark-5">5m</span>
+                <span class="dist-mark mark-6">∞</span>
+              </div>
+
+              <!-- MECHANICAL APERTURE IRIS BLADES (MOTION GRAPHIC) -->
+              <div class="lens-iris-blades-group" id="lensIrisRing">
+                <span class="iris-blade b1"></span>
+                <span class="iris-blade b2"></span>
+                <span class="iris-blade b3"></span>
+                <span class="iris-blade b4"></span>
+                <span class="iris-blade b5"></span>
+                <span class="iris-blade b6"></span>
+                <span class="iris-blade b7"></span>
+                <span class="iris-blade b8"></span>
+              </div>
 
               <!-- OPTICAL SIGHT GLASS (CRISP, HIGH CONTRAST, ZERO COLOR BLENDING) -->
               <div class="lens-sight-glass" id="lensSightGlass">
                 <div class="lens-glass-reflection"></div>
-                <div class="lens-reticle-overlay">
+                
+                <!-- CINEMATIC VIEWFINDER HUD OVERLAY -->
+                <div class="lens-hud-overlay">
+                  <!-- 2.39:1 CORNER FRAMING MARKS -->
+                  <span class="hud-corner corner-top-left">⌜</span>
+                  <span class="hud-corner corner-top-right">⌝</span>
+                  <span class="hud-corner corner-bottom-left">⌞</span>
+                  <span class="hud-corner corner-bottom-right">⌟</span>
+                  
+                  <!-- CENTER RETICLE & CROSSHAIR -->
+                  <div class="reticle-center-circle"></div>
                   <span class="reticle-crosshair"></span>
-                  <div class="reticle-frame-box"></div>
-                  <span class="reticle-rec-dot"></span>
+
+                  <!-- LIVE RECORDING INDICATOR & TIMECODE -->
+                  <div class="hud-rec-bar">
+                    <span class="hud-rec-dot"></span>
+                    <span class="hud-rec-text">REC</span>
+                    <span class="hud-timecode" id="hudTimecode">00:01:24:18</span>
+                  </div>
+
+                  <!-- OPTICAL SPECS HUD TAG -->
+                  <div class="hud-focal-tag">2.39:1 CINE RAW</div>
                 </div>
+
+                <!-- FLOATING OPTICAL BOKEH MOTES -->
+                <div class="lens-bokeh-mote mote-1"></div>
+                <div class="lens-bokeh-mote mote-2"></div>
+                <div class="lens-bokeh-mote mote-3"></div>
                 
                 <!-- ANAMORPHIC BLUE/GOLD FLARE SWEEP -->
                 <div class="lens-anamorphic-streak" id="lensAnamorphicStreak"></div>
 
-                <!-- GENUINE LOGO STAGE (NO COLOR BLENDING) -->
+                <!-- GENUINE LOGO STAGE (ZERO COLOR BLENDING - AUTHENTIC BRAND FIDELITY) -->
                 <div class="lens-subject-frame" id="lensSubjectFrame">
                   <img src="assets/AUST_RC.png" alt="AUST Robotics Club Official Insignia" class="lens-subject-img logo-aust-rc" id="lensSubjectImg" />
                 </div>
@@ -551,7 +601,7 @@
             <div class="film-clapperboard" id="filmClapperboard">
               
               <!-- TOP HINGED CLAPPER STICKS ASSEMBLY -->
-              <div class="clapper-sticks-assembly" id="clapperSticksAssembly" title="Click to clap the slate!">
+              <div class="clapper-sticks-assembly" id="clapperSticksAssembly" onclick="triggerClapperSnap()" title="Click to clap the slate!">
                 <!-- LEFT METAL HINGE BRACKET WITH 3 RIVETS -->
                 <div class="clapper-hinge-bracket">
                   <span class="hinge-rivet rivet-1"></span>
@@ -601,13 +651,7 @@
                   <div class="slate-value" id="slateValDirector">SOUMIC PAUL // Assistant Director – Administration</div>
                 </div>
 
-                <!-- CAMERA ROW -->
-                <div class="slate-grid-row slate-row-camera">
-                  <div class="slate-label">CAMERA</div>
-                  <div class="slate-value" id="slateValCamera">ARRI ALEXA 65 // 50mm CINE PRIME f/1.4</div>
-                </div>
-
-                <!-- DATE ROW -->
+                <!-- DATE ROW (CAMERA ROW REMOVED PER USER INSTRUCTION) -->
                 <div class="slate-grid-row slate-row-date">
                   <div class="slate-label">DATE</div>
                   <div class="slate-value" id="slateValDate">JAN 2025 – PRESENT</div>
