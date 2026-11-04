@@ -552,19 +552,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Cinematic Clapper Snap
     triggerClapperSnap();
 
-    // 2. Camera Lens Bezel & Distance Scale Rotation (Motion Graphic)
-    bezelRotation += 90;
-    distanceRotation -= 60;
-    if (lensOuterBezel) {
-      lensOuterBezel.style.transform = `rotate(${bezelRotation}deg)`;
-    }
-    const distRing = document.getElementById('lensDistanceRing');
-    if (distRing) {
-      distRing.style.transform = `rotate(${distanceRotation}deg)`;
-    }
-    const gearTrack = document.getElementById('lensGearTrack');
-    if (gearTrack) {
-      gearTrack.style.transform = `rotate(${bezelRotation * 1.5}deg)`;
+    // 2. Camera Lens Tactile Focus Pulse (Continuous circulation preserved)
+    const barrel = document.getElementById('cineLensBarrel');
+    if (barrel) {
+      barrel.classList.remove('barrel-focus-pulse');
+      void barrel.offsetWidth;
+      barrel.classList.add('barrel-focus-pulse');
     }
 
     

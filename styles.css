@@ -1662,23 +1662,37 @@ body.shelby-archive {
   transform: scale(1.015);
 }
 
-/* OUTER KNURLED GEAR TEETH (CINE FOLLOW-FOCUS RING) */
+/* OUTER KNURLED GEAR TEETH (CINE FOLLOW-FOCUS RING) - CONTINUOUS CIRCULATION */
 .lens-gear-track {
   position: absolute;
   inset: -6px;
   border-radius: 50%;
-  border: 4px dashed rgba(184, 138, 74, 0.35);
+  border: 4px dashed rgba(184, 138, 74, 0.4);
   pointer-events: none;
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: lensCirculateGear 24s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
-/* ROTATING DECORATIVE FOCUS BEZEL */
+@keyframes lensCirculateGear {
+  from { transform: rotate(0deg) translateZ(0); }
+  to { transform: rotate(360deg) translateZ(0); }
+}
+
+/* ROTATING DECORATIVE FOCUS BEZEL - CONTINUOUS CIRCULATION */
 .lens-outer-bezel {
   position: absolute;
   inset: 6px;
   border-radius: 50%;
-  border: 1px dashed rgba(184, 138, 74, 0.45);
-  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px dashed rgba(184, 138, 74, 0.5);
+  animation: lensCirculateBezel 36s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+@keyframes lensCirculateBezel {
+  from { transform: rotate(0deg) translateZ(0); }
+  to { transform: rotate(360deg) translateZ(0); }
 }
 
 .bezel-mark {
@@ -1694,14 +1708,21 @@ body.shelby-archive {
 .mark-left { left: 8px; top: 50%; transform: translateY(-50%) rotate(-90deg); }
 .mark-right { right: 6px; top: 50%; transform: translateY(-50%) rotate(90deg); }
 
-/* ROTATING FOCUS DISTANCE SCALE RING */
+/* ROTATING FOCUS DISTANCE SCALE RING - CONTINUOUS CIRCULATION */
 .lens-distance-ring {
   position: absolute;
   inset: 18px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   pointer-events: none;
-  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: lensCirculateDist 48s linear infinite reverse;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+@keyframes lensCirculateDist {
+  from { transform: rotate(0deg) translateZ(0); }
+  to { transform: rotate(360deg) translateZ(0); }
 }
 
 .dist-mark {
@@ -1718,6 +1739,17 @@ body.shelby-archive {
 .dist-mark.mark-4 { bottom: 18px; right: 28%; }
 .dist-mark.mark-5 { bottom: 8px; left: 45%; }
 .dist-mark.mark-6 { left: 10px; top: 52%; }
+
+/* Barrel focus pulse on scene switch */
+.cine-lens-barrel.barrel-focus-pulse {
+  animation: barrelFocusPulse 0.44s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes barrelFocusPulse {
+  0% { transform: scale(1); }
+  45% { transform: scale(1.035); }
+  100% { transform: scale(1); }
+}
 
 /* Clean optical aperture aperture stage */
 
