@@ -1,1 +1,14 @@
-<svg fill="#ffffff" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>HSBC</title><path d="m24 12.007-5.996 5.997V5.996L24 12.007zm-5.996-6.01H6.01l5.996 6.01 5.997-6.01zM0 12.006l6.01 5.997V5.996L0 12.007zm6.01 5.997h11.994l-5.997-5.997-5.996 5.997z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 36" width="160" height="36">
+  <g transform="translate(0, 6)">
+    <!-- Official HSBC Red Triangles (#DB0011) -->
+    <polygon points="0,12 12,0 12,24" fill="#DB0011"/>
+    <polygon points="48,12 36,0 36,24" fill="#DB0011"/>
+    <polygon points="12,0 36,0 24,12" fill="#DB0011"/>
+    <polygon points="12,24 36,24 24,12" fill="#DB0011"/>
+    <!-- Official HSBC White Triangles -->
+    <polygon points="12,0 12,24 24,12" fill="#FFFFFF"/>
+    <polygon points="36,0 36,24 24,12" fill="#FFFFFF"/>
+  </g>
+  <!-- Official HSBC Wordmark -->
+  <text x="60" y="26" font-family="'Univers Next Pro', Univers, Arial, Helvetica, sans-serif" font-size="22" font-weight="bold" letter-spacing="1.5" fill="#FFFFFF">HSBC</text>
+</svg>

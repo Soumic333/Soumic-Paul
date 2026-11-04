@@ -269,7 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Interactive elements trigger controlled spark burst
     const interactiveElements = document.querySelectorAll(
-      'button, a, .screening-tab, .lens-tab, .case-file-dossier, .workshop-panel'
+      'button, a, .screening-tab, .clapper-scene-tab, .clapper-sticks-assembly, .case-file-dossier, .workshop-panel'
     );
     interactiveElements.forEach(el => {
       el.addEventListener('mouseenter', () => {
@@ -406,8 +406,13 @@ document.addEventListener('DOMContentLoaded', () => {
       org: "AUST ROBOTICS CLUB",
       role: "Assistant Director – Administration",
       tenure: "JAN 2025 – PRESENT",
+      scene: "01",
+      take: "EXEC // DIR",
+      roll: "2025-SP",
+      camera: "ARRI ALEXA 65 // 50mm CINE PRIME f/1.4",
       spec: { shutter: "1/1000s", aperture: "f/1.4", focal: "50mm PRIME" },
-      img: "assets/AUST_RC_clean.png",
+      img: "assets/AUST_RC.png",
+      imgClass: "logo-aust-rc",
       imgAlt: "AUST Robotics Club Official Insignia",
       index: "REC // 01",
       seal: "OFFICIAL DISPATCH RECORD",
@@ -424,9 +429,14 @@ document.addEventListener('DOMContentLoaded', () => {
       org: "TICKIFY",
       role: "Student Ambassador",
       tenure: "SEPT 2026 – PRESENT",
+      scene: "02",
+      take: "AMBASSADOR",
+      roll: "2026-TCK",
+      camera: "RED V-RAPTOR // 35mm CINE WIDE f/2.0",
       spec: { shutter: "1/500s", aperture: "f/2.0", focal: "35mm WIDE" },
       img: "assets/Tickify_clean.png",
-      imgAlt: "Tickify Ambassador Emblem",
+      imgClass: "logo-tickify",
+      imgAlt: "Tickify Brand Emblem",
       index: "REC // 02",
       seal: "CAMPUS LIAISON DOSSIER",
       narrative: "Representing Tickify within the university ecosystem — driving strategic awareness, successfully onboarding student creators, and channeling vital user feedback directly back to the engineering team.",
@@ -441,9 +451,14 @@ document.addEventListener('DOMContentLoaded', () => {
       org: "HSBC BUSINESS CASE COMPETITION",
       role: "National Round Qualifier",
       tenure: "2025 // NATIONAL STAGE",
+      scene: "03",
+      take: "NAT-FINALS",
+      roll: "2025-NAT",
+      camera: "SONY VENICE 2 // 85mm TELE CINE f/2.8",
       spec: { shutter: "1/1000s", aperture: "f/2.8", focal: "85mm TELE" },
       img: "assets/HSBC_Logo.svg",
-      imgAlt: "HSBC Business Case Emblem",
+      imgClass: "logo-hsbc",
+      imgAlt: "HSBC Business Case Official Emblem",
       index: "REC // 03",
       seal: "STRATEGIC COMPETITION RECORD",
       narrative: "Competed in Bangladesh's foremost undergraduate business strategy arena, formulating high-impact turnaround blueprints under strict time-lock constraints.",
@@ -458,8 +473,13 @@ document.addEventListener('DOMContentLoaded', () => {
       org: "PRISM AI CREATIVE AWARDS",
       role: "Worldwide Top 15 Finalist",
       tenure: "2026 // GLOBAL STAGE",
+      scene: "04",
+      take: "GLOBAL-15",
+      roll: "2026-GLB",
+      camera: "PANAVISION DXL2 // 24mm ANAMORPHIC f/1.2",
       spec: { shutter: "1/250s", aperture: "f/1.2", focal: "24mm CINE" },
       img: "assets/Prism_Logo.png",
+      imgClass: "logo-prism",
       imgAlt: "PRISM AI Creative Awards Emblem",
       index: "REC // 04",
       seal: "CREATIVE TECH COMMENDATION",
@@ -473,73 +493,121 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ];
 
-  const lensTabs = document.querySelectorAll('.lens-tab');
+  const clapperTabs = document.querySelectorAll('.clapper-scene-tab');
   const lensSubjectImg = document.getElementById('lensSubjectImg');
   const lensShutterSpec = document.getElementById('lensShutterSpec');
   const lensApertureSpec = document.getElementById('lensApertureSpec');
   const lensFocalSpec = document.getElementById('lensFocalSpec');
-  const activeDossierCard = document.getElementById('lensActiveDossier');
+  const clapperArmTop = document.getElementById('clapperArmTop');
+  const filmClapperboard = document.getElementById('filmClapperboard');
+  const lensOuterBezel = document.getElementById('lensOuterBezel');
+  const lensIrisRing = document.getElementById('lensIrisRing');
+  const lensStreak = document.getElementById('lensAnamorphicStreak');
+  const cineLensBarrel = document.getElementById('cineLensBarrel');
+  const clapperSticksAssembly = document.getElementById('clapperSticksAssembly');
+
+  let bezelRotation = 0;
+
+  function triggerClapperSnap() {
+    if (clapperArmTop) {
+      clapperArmTop.classList.remove('arm-clapping');
+      void clapperArmTop.offsetWidth; // Force reflow
+      clapperArmTop.classList.add('arm-clapping');
+    }
+    if (filmClapperboard) {
+      filmClapperboard.classList.remove('board-vibrate');
+      void filmClapperboard.offsetWidth;
+      filmClapperboard.classList.add('board-vibrate');
+    }
+  }
 
   function renderLeadershipRecord(recIndex) {
     const data = leadershipRecords[recIndex];
     if (!data) return;
 
-    // Optical focus pulse animation
-    if (lensSubjectImg) {
-      lensSubjectImg.style.transition = 'opacity 0.22s ease, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1)';
-      lensSubjectImg.style.opacity = '0.25';
-      lensSubjectImg.style.transform = 'scale(0.88)';
+    // 1. Cinematic Clapper Snap
+    triggerClapperSnap();
 
-      setTimeout(() => {
-        lensSubjectImg.src = data.img;
-        lensSubjectImg.alt = data.imgAlt;
-        lensSubjectImg.style.opacity = '1';
-        lensSubjectImg.style.transform = 'scale(1)';
-      }, 200);
+    // 2. Camera Lens Bezel rotation (focus ring dial)
+    bezelRotation += 90;
+    if (lensOuterBezel) {
+      lensOuterBezel.style.transform = `rotate(${bezelRotation}deg)`;
     }
 
-    // Update technical optical readouts
+    // 3. Aperture Iris Pulse & Anamorphic Streak Sweep
+    if (lensIrisRing) {
+      lensIrisRing.classList.remove('iris-pulse');
+      void lensIrisRing.offsetWidth;
+      lensIrisRing.classList.add('iris-pulse');
+    }
+    if (lensStreak) {
+      lensStreak.classList.remove('streak-active');
+      void lensStreak.offsetWidth;
+      lensStreak.classList.add('streak-active');
+    }
+
+    // 4. Optical Focus Pull on Genuine Logo (Zero color blending)
+    if (lensSubjectImg) {
+      lensSubjectImg.classList.remove('rack-focus');
+      void lensSubjectImg.offsetWidth;
+      lensSubjectImg.src = data.img;
+      lensSubjectImg.alt = data.imgAlt;
+      lensSubjectImg.className = `lens-subject-img ${data.imgClass || ''} rack-focus`;
+    }
+
+    // 5. Update Telemetry Readouts
     if (lensShutterSpec) lensShutterSpec.innerText = `SHUTTER: ${data.spec.shutter}`;
     if (lensApertureSpec) lensApertureSpec.innerText = `APERTURE: ${data.spec.aperture}`;
     if (lensFocalSpec) lensFocalSpec.innerText = `FOCUS: ${data.spec.focal}`;
 
-    // Update dossier text with smooth reveal
-    if (activeDossierCard) {
-      activeDossierCard.style.transition = 'opacity 0.22s ease, transform 0.22s ease';
-      activeDossierCard.style.opacity = '0.35';
-      activeDossierCard.style.transform = 'translateY(6px)';
+    // 6. Update Hollywood Film Clapperboard Slate Fields
+    const slateValProd = document.getElementById('slateValProd');
+    const slateValScene = document.getElementById('slateValScene');
+    const slateValTake = document.getElementById('slateValTake');
+    const slateValRoll = document.getElementById('slateValRoll');
+    const slateValDirector = document.getElementById('slateValDirector');
+    const slateValCamera = document.getElementById('slateValCamera');
+    const slateValDate = document.getElementById('slateValDate');
+    const slateNarrativeText = document.getElementById('slateNarrativeText');
+    const slateVerifiedPoints = document.getElementById('slateVerifiedPoints');
+    const slateCitation = document.getElementById('slateCitation');
 
+    if (slateValProd) {
+      slateValProd.style.opacity = '0.3';
       setTimeout(() => {
-        activeDossierCard.innerHTML = `
-          <div class="dossier-card-masthead">
-            <span class="dossier-index-mark">${data.index}</span>
-            <span class="dossier-stamp-seal">${data.seal}</span>
-          </div>
-          <div class="dossier-lead-row">
-            <div>
-              <p class="dossier-org-name">${data.org}</p>
-              <h3 class="dossier-position-title">${data.role}</h3>
-            </div>
-            <span class="dossier-tenure-badge">${data.tenure}</span>
-          </div>
-          <p class="dossier-body-narrative">${data.narrative}</p>
-          <ul class="dossier-verified-points">
-            ${data.points.map(pt => `<li>${pt}</li>`).join('')}
-          </ul>
-          <div class="dossier-action-bar">
-            <span class="dossier-citation-code">${data.citation}</span>
-          </div>
-        `;
-        activeDossierCard.style.opacity = '1';
-        activeDossierCard.style.transform = 'translateY(0)';
-      }, 190);
+        slateValProd.innerText = data.org;
+        slateValProd.style.opacity = '1';
+      }, 140);
     }
+    if (slateValScene) slateValScene.innerText = data.scene;
+    if (slateValTake) slateValTake.innerText = data.take;
+    if (slateValRoll) slateValRoll.innerText = data.roll;
+    if (slateValDirector) slateValDirector.innerText = `SOUMIC PAUL // ${data.role}`;
+    if (slateValCamera) slateValCamera.innerText = data.camera;
+    if (slateValDate) slateValDate.innerText = data.tenure;
+
+    if (slateNarrativeText) {
+      slateNarrativeText.style.opacity = '0.3';
+      setTimeout(() => {
+        slateNarrativeText.innerText = data.narrative;
+        slateNarrativeText.style.opacity = '1';
+      }, 150);
+    }
+    if (slateVerifiedPoints) {
+      slateVerifiedPoints.style.opacity = '0.3';
+      setTimeout(() => {
+        slateVerifiedPoints.innerHTML = data.points.map(pt => `<li>${pt}</li>`).join('');
+        slateVerifiedPoints.style.opacity = '1';
+      }, 160);
+    }
+    if (slateCitation) slateCitation.innerText = data.citation;
   }
 
-  if (lensTabs.length > 0) {
-    lensTabs.forEach((tab, index) => {
+  // Scene tab click handling
+  if (clapperTabs.length > 0) {
+    clapperTabs.forEach((tab, index) => {
       tab.addEventListener('click', () => {
-        lensTabs.forEach(t => {
+        clapperTabs.forEach(t => {
           t.classList.remove('active');
           t.setAttribute('aria-selected', 'false');
         });
@@ -552,18 +620,39 @@ document.addEventListener('DOMContentLoaded', () => {
       tab.addEventListener('keydown', (e) => {
         let targetIndex = -1;
         if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-          targetIndex = (index + 1) % lensTabs.length;
+          targetIndex = (index + 1) % clapperTabs.length;
         } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-          targetIndex = (index - 1 + lensTabs.length) % lensTabs.length;
+          targetIndex = (index - 1 + clapperTabs.length) % clapperTabs.length;
         }
 
         if (targetIndex !== -1) {
           e.preventDefault();
-          lensTabs[targetIndex].focus();
-          lensTabs[targetIndex].click();
+          clapperTabs[targetIndex].focus();
+          clapperTabs[targetIndex].click();
         }
       });
     });
+  }
+
+  // Interactive clap on clicking the clapper sticks assembly
+  if (clapperSticksAssembly) {
+    clapperSticksAssembly.addEventListener('click', () => {
+      triggerClapperSnap();
+    });
+  }
+
+  // Interactive focus pull on clicking the cine lens barrel
+  if (cineLensBarrel) {
+    cineLensBarrel.addEventListener('click', () => {
+      // Find currently active index and cycle or re-trigger focus pull
+      const activeTab = document.querySelector('.clapper-scene-tab.active');
+      let currentIdx = 0;
+      if (activeTab) {
+        currentIdx = parseInt(activeTab.getAttribute('data-index') || '0', 10);
+      }
+      renderLeadershipRecord(currentIdx);
+    });
+  });
   }
 
   /* =========================================================

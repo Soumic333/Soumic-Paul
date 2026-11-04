@@ -1510,9 +1510,77 @@ body.shelby-archive {
   align-items: center;
 }
 
+/* =========================================================
+   CHAPTER 04: LEADERSHIP — HOLLYWOOD FILM CLAPPERBOARD SLATE
+   Matched precisely to Image 3 reference with cine lens viewfinder
+   ========================================================= */
+
+.clapper-production-stage {
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* SCENE SELECTOR TABS */
+.clapper-scene-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 34px;
+  justify-content: center;
+}
+
+.clapper-scene-tab {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border);
+  color: var(--color-muted-ash);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.22s var(--ease-smooth);
+  border-radius: 2px;
+}
+
+.clapper-scene-tab .scene-tab-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-antique-gold);
+  margin-bottom: 3px;
+  letter-spacing: 0.12em;
+}
+
+.clapper-scene-tab .scene-tab-title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.clapper-scene-tab:hover,
+.clapper-scene-tab.active {
+  border-color: var(--color-antique-gold);
+  background: rgba(184, 138, 74, 0.14);
+  color: var(--color-vintage-ivory);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), inset 0 0 12px rgba(184, 138, 74, 0.12);
+}
+
+/* 2-COLUMN EXPERIENCE GRID */
+.clapper-experience-grid {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* ---------------------------------------------------------
+   LEFT COLUMN: CINEMATIC CAMERA LENS VIEWING MECHANISM
+   --------------------------------------------------------- */
 .lens-viewfinder-column {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .cine-lens-barrel {
@@ -1526,20 +1594,17 @@ body.shelby-archive {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  user-select: none;
 }
 
-/* ROTATING DECORATIVE OUTER BEZEL */
+/* ROTATING DECORATIVE FOCUS BEZEL */
 .lens-outer-bezel {
   position: absolute;
   inset: 6px;
   border-radius: 50%;
   border: 1px dashed rgba(184, 138, 74, 0.45);
-  animation: lensRingRotate 45s linear infinite;
-}
-
-@keyframes lensRingRotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .bezel-mark {
@@ -1555,73 +1620,167 @@ body.shelby-archive {
 .mark-left { left: 8px; top: 50%; transform: translateY(-50%) rotate(-90deg); }
 .mark-right { right: 6px; top: 50%; transform: translateY(-50%) rotate(90deg); }
 
-/* OPTICAL VIEWING DISC: CLEAR, CRISP, HIGH-CONTRAST */
+/* APERTURE IRIS BLADES RING */
+.lens-iris-ring {
+  position: absolute;
+  inset: 24px;
+  border-radius: 50%;
+  border: 2px solid rgba(184, 138, 74, 0.22);
+  pointer-events: none;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+}
+
+.lens-iris-ring.iris-pulse {
+  animation: irisBladePulse 0.55s ease-out;
+}
+
+@keyframes irisBladePulse {
+  0% { transform: scale(0.92); opacity: 0.3; }
+  50% { transform: scale(1.06); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 0.4; }
+}
+
+/* OPTICAL VIEWING DISC (HIGH CONTRAST, ZERO COLOR BLENDING) */
 .lens-sight-glass {
   width: 220px;
   height: 220px;
   border-radius: 50%;
-  border: 2px solid rgba(184, 138, 74, 0.7);
-  background: radial-gradient(circle, #26231C 0%, #13110E 90%);
+  border: 2px solid rgba(184, 138, 74, 0.75);
+  background: radial-gradient(circle, #211D18 0%, #0F0E0B 90%);
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.85), 0 0 20px rgba(184, 138, 74, 0.2);
+  box-shadow: inset 0 0 32px rgba(0, 0, 0, 0.95), 0 0 20px rgba(184, 138, 74, 0.25);
 }
 
-.glass-glare {
+/* OPTICAL COATING GLASS REFLECTION */
+.lens-glass-reflection {
   position: absolute;
   top: -40%;
   left: -40%;
   width: 180%;
   height: 180%;
-  background: linear-gradient(135deg, rgba(232, 220, 194, 0.22) 0%, transparent 40%, rgba(184, 138, 74, 0.15) 60%, transparent 100%);
+  background: linear-gradient(135deg, rgba(232, 220, 194, 0.18) 0%, transparent 40%, rgba(184, 138, 74, 0.12) 60%, transparent 100%);
   pointer-events: none;
   z-index: 3;
 }
 
-.viewfinder-grid-lines {
+/* RETICLE OVERLAY */
+.lens-reticle-overlay {
   position: absolute;
   inset: 0;
   pointer-events: none;
   z-index: 2;
-  border: 1px solid rgba(184, 138, 74, 0.18);
 }
 
-.v-crosshair {
+.reticle-crosshair {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   transform: translate(-50%, -50%);
-  border-left: 1px solid var(--color-antique-gold);
-  border-top: 1px solid var(--color-antique-gold);
-  opacity: 0.6;
+  border-left: 1px solid rgba(184, 138, 74, 0.65);
+  border-top: 1px solid rgba(184, 138, 74, 0.65);
+  pointer-events: none;
 }
 
-/* SHARP STATIONARY CENTRAL LOGO */
+.reticle-frame-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 170px;
+  height: 120px;
+  transform: translate(-50%, -50%);
+  border: 1px dashed rgba(184, 138, 74, 0.22);
+}
+
+.reticle-rec-dot {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #E53935;
+  box-shadow: 0 0 6px #E53935;
+  animation: recBlink 1.8s infinite;
+}
+
+@keyframes recBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+
+/* ANAMORPHIC FLARE STREAK */
+.lens-anamorphic-streak {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(94, 161, 255, 0.8) 45%, #FFFFFF 50%, rgba(245, 197, 24, 0.8) 55%, transparent 100%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.lens-anamorphic-streak.streak-active {
+  animation: anamorphicSweep 0.52s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes anamorphicSweep {
+  0% { transform: translateY(-40px) scaleX(0.4); opacity: 0; }
+  50% { opacity: 0.95; transform: translateY(0px) scaleX(1.1); }
+  100% { transform: translateY(40px) scaleX(0.4); opacity: 0; }
+}
+
+/* GENUINE LOGO STAGE (ZERO COLOR BLENDING - PURE BRAND COLORS) */
+.lens-subject-frame {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
 .lens-subject-img {
   max-width: 140px;
   max-height: 140px;
   object-fit: contain;
-  position: relative;
-  z-index: 1;
-  filter: drop-shadow(0 0 10px rgba(184, 138, 74, 0.3));
-  transition: filter 0.3s ease, transform 0.3s var(--ease-cinematic);
+  filter: none !important; /* STRICT: NO COLOR BLENDING */
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+  will-change: transform, opacity;
 }
 
-.lens-subject-img.defocus {
-  filter: blur(14px);
-  transform: scale(0.9);
+/* Circular optical aperture badge backing specifically for AUST Robotics Club so its genuine dark text & green robot are 100% visible */
+.lens-subject-img.logo-aust-rc {
+  background: #FFFFFF;
+  border-radius: 50%;
+  padding: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
 }
 
+/* Rack-focus pull animation on scene change */
+.lens-subject-img.rack-focus {
+  animation: lensFocusPull 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes lensFocusPull {
+  0% { filter: blur(14px) !important; transform: scale(0.9); opacity: 0.35; }
+  60% { filter: blur(4px) !important; transform: scale(1.03); opacity: 0.9; }
+  100% { filter: none !important; transform: scale(1); opacity: 1; }
+}
+
+/* TELEMETRY READOUTS BAR */
 .lens-readouts-bar {
   position: absolute;
   bottom: -40px;
   display: flex;
-  gap: 18px;
+  gap: 16px;
   font-family: var(--font-mono);
   font-size: 10.5px;
   color: var(--color-antique-gold);
@@ -1629,120 +1788,244 @@ body.shelby-archive {
   white-space: nowrap;
 }
 
-/* RECORD TABS & CASE LOG */
-.lens-record-tabs {
+.lens-instruction-pill {
+  margin-top: 56px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  color: var(--color-warm-brass);
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 28px;
+  align-items: center;
+  gap: 8px;
+  background: rgba(26, 23, 19, 0.6);
+  padding: 6px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
 }
 
-.lens-tab {
+.rec-pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #E53935;
+  box-shadow: 0 0 6px #E53935;
+  animation: recBlink 1.8s infinite;
+}
+
+/* ---------------------------------------------------------
+   RIGHT COLUMN: THE AUTHENTIC HOLLYWOOD FILM CLAPPERBOARD SLATE
+   Matched precisely to Image 3 reference
+   --------------------------------------------------------- */
+.clapper-slate-column {
+  width: 100%;
+}
+
+.film-clapperboard {
+  background: #141414;
+  border-radius: 4px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.92), 0 0 0 1px rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.25s ease;
+}
+
+.film-clapperboard.board-vibrate {
+  animation: clapperVibrate 0.32s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+@keyframes clapperVibrate {
+  0% { transform: translateY(0); }
+  25% { transform: translateY(2px); }
+  50% { transform: translateY(-1px); }
+  75% { transform: translateY(1px); }
+  100% { transform: translateY(0); }
+}
+
+/* HINGED CLAPPER STICKS ASSEMBLY */
+.clapper-sticks-assembly {
+  position: relative;
+  height: 66px;
+  background: #0E0E0E;
+  cursor: pointer;
+  user-select: none;
+  overflow: visible;
+  border-bottom: 2px solid #141414;
+}
+
+/* LEFT METAL HINGE BRACKET WITH 3 RIVETS */
+.clapper-hinge-bracket {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 48px;
+  background: linear-gradient(180deg, #2A2A2A 0%, #171717 100%);
+  border-right: 2px solid #333333;
+  z-index: 10;
   display: flex;
   flex-direction: column;
-  padding: 12px 20px;
-  background: var(--color-surface-elevated);
-  border: 1px solid var(--color-border);
-  color: var(--color-muted-ash);
-  cursor: pointer;
-  text-align: left;
-  transition: all 0.2s ease;
-  border-radius: 2px;
+  justify-content: space-around;
+  align-items: center;
+  padding: 8px 0;
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.6);
 }
 
-.lens-tab .tab-code {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--color-antique-gold);
-  margin-bottom: 3px;
+.hinge-rivet {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #EAEAEA 0%, #888888 70%, #444444 100%);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.8), inset 0 1px 1px #FFFFFF;
 }
 
-.lens-tab .tab-label {
-  font-family: var(--font-display);
-  font-size: 15px;
-  letter-spacing: 0.06em;
+/* CLAPPER ARMS (ZEBRA STRIPED BARS) */
+.clapper-arm {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 30px;
 }
 
-.lens-tab:hover,
-.lens-tab.active {
-  border-color: var(--color-antique-gold);
-  background: rgba(184, 138, 74, 0.14);
-  color: var(--color-vintage-ivory);
+.clapper-arm-top {
+  top: 4px;
+  z-index: 5;
+  transform-origin: 24px 30px;
+  transform: rotate(-16deg);
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.lens-active-dossier {
-  background: var(--color-surface-elevated);
-  border: 1px solid var(--color-border);
-  padding: 36px;
-  border-radius: 4px;
-  transition: opacity 0.25s ease, transform 0.25s ease;
+.clapper-arm-top.arm-clapping {
+  animation: clapperSnapAction 0.44s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.dossier-card-masthead {
+@keyframes clapperSnapAction {
+  0% { transform: rotate(-24deg); }
+  30% { transform: rotate(-30deg); }
+  65% { transform: rotate(1.8deg); }
+  85% { transform: rotate(-1deg); }
+  100% { transform: rotate(-16deg); }
+}
+
+.clapper-arm-bottom {
+  bottom: 2px;
+  z-index: 4;
+}
+
+.clapper-zebra-stripes {
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    135deg,
+    #141414 0px,
+    #141414 24px,
+    #FFFFFF 24px,
+    #FFFFFF 48px
+  );
+  border: 1px solid #111111;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.25);
+}
+
+/* SLATE BODY (MATTE BLACK SLATE WITH CRISP WHITE GRIDS - IMAGE 3) */
+.clapper-slate-body {
+  border: 3px solid #FFFFFF;
+  margin: 8px;
+  background: #141414;
+}
+
+.slate-grid-row {
+  border-bottom: 2px solid #FFFFFF;
+  padding: 12px 18px;
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 14px;
-  font-family: var(--font-mono);
-  font-size: 11.5px;
-}
-
-.dossier-index-mark {
-  color: var(--color-antique-gold);
-}
-
-.dossier-stamp-seal {
-  color: var(--color-vintage-ivory);
-  letter-spacing: 0.14em;
-}
-
-.dossier-lead-row {
-  display: flex;
-  justify-content: space-between;
   align-items: baseline;
-  margin-bottom: 16px;
+  gap: 16px;
+  background: #141414;
 }
 
-.dossier-org-name {
+.slate-label {
   font-family: var(--font-mono);
   font-size: 11.5px;
-  color: var(--color-antique-gold);
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: #FFFFFF;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
-.dossier-position-title {
+.slate-value {
   font-family: var(--font-display);
-  font-size: 26px;
-  color: var(--color-vintage-ivory);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #FFFFFF;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.dossier-tenure-badge {
-  font-family: var(--font-mono);
+.slate-val-prod {
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  color: #FFFFFF;
+}
+
+/* 3-COLUMN ROW: SCENE | TAKE | ROLL (MATCHING IMAGE 3 EXACTLY) */
+.slate-row-trio {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 0;
+  gap: 0;
+}
+
+.slate-cell {
+  padding: 12px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-right: 2px solid #FFFFFF;
+}
+
+.slate-cell:last-child {
+  border-right: none;
+}
+
+.slate-cell .slate-label {
   font-size: 11px;
-  color: var(--color-muted-ash);
 }
 
-.dossier-body-narrative {
-  font-size: 15.5px;
-  color: var(--color-muted-ash);
-  line-height: 1.75;
+.slate-cell .slate-value {
+  font-size: 18px;
+}
+
+/* EXECUTIVE DOSSIER NARRATIVE & VERIFIED POINTS SECTION */
+.slate-dossier-narrative {
+  padding: 24px 20px;
+  background: #111111;
+  border-top: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.slate-narrative-text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #D4CEBF;
   margin-bottom: 20px;
+  transition: opacity 0.22s ease;
 }
 
-.dossier-verified-points {
+.slate-verified-points {
   list-style: none;
-  margin-bottom: 26px;
+  padding: 0;
+  margin: 0 0 22px 0;
 }
 
-.dossier-verified-points li {
+.slate-verified-points li {
   position: relative;
-  padding-left: 22px;
-  font-size: 14.5px;
-  color: var(--color-vintage-ivory);
+  padding-left: 24px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #F0E8D8;
   margin-bottom: 10px;
-  line-height: 1.55;
 }
 
-.dossier-verified-points li::before {
-  content: '✦';
+.slate-verified-points li::before {
+  content: "✦";
   position: absolute;
   left: 0;
   color: var(--color-antique-gold);
@@ -1750,19 +2033,118 @@ body.shelby-archive {
   top: 2px;
 }
 
-.dossier-action-bar {
+.slate-meta-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 20px;
-  border-top: 1px solid var(--color-border);
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-.dossier-citation-code {
+.slate-dispatch-citation {
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: 11px;
   color: var(--color-antique-gold);
+  letter-spacing: 0.18em;
+}
+
+.slate-sync-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.7);
   letter-spacing: 0.16em;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 4px 10px;
+  border-radius: 2px;
+}
+
+/* ---------------------------------------------------------
+   RESPONSIVE MEDIA QUERIES (MOBILE UI & PERFORMANCE RULE COMPLIANT)
+   --------------------------------------------------------- */
+@media (max-width: 980px) {
+  .clapper-experience-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 32px;
+  }
+
+  .clapper-slate-column {
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cine-lens-barrel {
+    width: 280px;
+    height: 280px;
+  }
+
+  .lens-sight-glass {
+    width: 180px;
+    height: 180px;
+  }
+
+  .lens-subject-img {
+    max-width: 110px;
+    max-height: 110px;
+  }
+
+  .lens-subject-img.logo-aust-rc {
+    padding: 8px;
+  }
+
+  .slate-row-trio {
+    grid-template-columns: 1fr;
+  }
+
+  .slate-cell {
+    border-right: none;
+    border-bottom: 2px solid #FFFFFF;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .slate-cell:last-child {
+    border-bottom: none;
+  }
+
+  .slate-grid-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 10px 14px;
+  }
+
+  .slate-val-prod {
+    font-size: 17px;
+  }
+
+  .slate-value {
+    font-size: 15px;
+  }
+
+  .clapper-scene-tab {
+    padding: 8px 14px;
+  }
+
+  .clapper-scene-tab .scene-tab-title {
+    font-size: 13px;
+  }
+}
+
+/* MOBILE RULE: DISABLE HEAVY BLUR FILTER ON < 900px */
+@media (max-width: 900px) {
+  .lens-subject-img.rack-focus {
+    animation: lensFocusPullMobile 0.3s ease-out;
+  }
+
+  @keyframes lensFocusPullMobile {
+    0% { filter: none !important; transform: scale(0.92); opacity: 0.4; }
+    100% { filter: none !important; transform: scale(1); opacity: 1; }
+  }
 }
 
 /* =========================================================
